@@ -67,7 +67,7 @@
   .lede{margin-top:16px;font-size:13.5px;line-height:1.55;color:rgba(34,24,18,.88);
     padding:12px 14px;background:rgba(255,246,224,.85);border-left:3px solid var(--rust);border-radius:2px;overflow-wrap:break-word;word-break:break-word;hyphens:auto}
   .lede b{font-family:var(--f-h);font-weight:600;font-style:italic;font-size:14.5px;color:var(--rust);display:block;margin-bottom:4px}
-  .stats{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .stats{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .stats > div{padding:10px 12px;background:rgba(255,246,224,.55);border-left:2px solid var(--rust);border-radius:2px}
   .stats b{display:block;font-family:var(--f-h);font-weight:500;font-size:24px;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1}
   .stats span{display:block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(34,24,18,.62);margin-top:4px}
@@ -78,12 +78,12 @@
   .cloud{position:absolute;z-index:1;opacity:.7}
 
   /* mountains + scene */
-  .scene-strip{position:relative;height:210px;margin-top:22px;overflow:hidden}
+  .scene-strip{position:relative;height:160px;margin-top:18px;overflow:hidden}
   .scene-strip .band{position:absolute;left:0;right:0}
   .scene-strip svg{display:block;width:100%;height:100%}
-  .scene-strip .plain{position:absolute;left:0;right:0;top:120px;bottom:0;
+  .scene-strip .plain{position:absolute;left:0;right:0;top:90px;bottom:0;
     background:linear-gradient(180deg,var(--grass-3) 0%,var(--grass-4) 55%,var(--grass-5) 100%)}
-  .yurts{position:absolute;left:0;right:0;bottom:6px;height:130px;pointer-events:none}
+  .yurts{position:absolute;left:0;right:0;bottom:4px;height:100px;pointer-events:none}
   .yurts svg{position:absolute;bottom:0}
 
   /* ornament band */
@@ -254,10 +254,6 @@
 
   <div class="hero-inner">
     <h1 class="htitle">Қазақ мұралары<br><em>3д</em> форматында</h1>
-    <div class="lede">
-      <b>Дала Мұрасы</b>
-      Қазақ этно‑мұрасының цифрлық каталогы: жүздеген экспонат, 3D‑модельдер, дәстүр және ойындар.
-    </div>
     <div class="stats">
       <div><b>142</b><span>экспонат</span></div>
       <div><b>38</b><span>3D моделі</span></div>
@@ -268,12 +264,12 @@
 
   <!-- little scenic strip -->
   <div class="scene-strip">
-    <div class="band" style="top:8px;height:70px">
+    <div class="band" style="top:0;height:56px">
       <svg viewBox="0 0 400 70" preserveAspectRatio="none">
         <path fill="#7fa0b5" opacity=".85" d="M0 70 L0 44 L40 30 L80 40 L130 22 L180 34 L230 20 L280 34 L330 22 L380 32 L400 26 L400 70 Z"/>
       </svg>
     </div>
-    <div class="band" style="top:36px;height:80px">
+    <div class="band" style="top:28px;height:70px">
       <svg viewBox="0 0 400 80" preserveAspectRatio="none">
         <path fill="#5d7a3c" d="M0 80 L0 44 L50 26 L110 46 L170 22 L230 42 L290 20 L350 42 L400 26 L400 80 Z"/>
       </svg>
@@ -633,6 +629,22 @@
         <span class="cat">Тұрмыстық</span>
         <h4>Астау</h4>
         <div class="meta"><span>586 қаралым</span><span class="tag">◆ 3D</span></div>
+      </div>
+    </div>
+
+    <div class="card"
+         data-model="models/torsyk_kymyz.glb"
+         data-no="087" data-cat="Тұрмыстық · ыдыс" data-title-a="Тор" data-title-b="сық"
+         data-sub="Былғарыдан жасалған қымыз ыдысы · мүйіз оюмен"
+         data-desc="Торсық — қоңыр былғарыдан тігілген қымыз сақтайтын ыдыс. Бүйірінде «мүйіз» оюлары кестеленген. Мойны жіңішке, тығыны ағаштан. Батыс ҚО тарихи-өлкетану музейінен."
+         data-facts='[["Материал","қоңыр былғары"],["Тығыны","ағаш"],["Ою","мүйіз"],["Мұражай","Батыс ҚО"]]'
+         data-camera="0deg 78deg auto">
+      <div class="fig"><img class="poster" src="assets/posters/torsyk.png" alt=""></div>
+      <div class="body">
+        <span class="num">Nº 087</span>
+        <span class="cat">Тұрмыстық</span>
+        <h4>Торсық</h4>
+        <div class="meta"><span>394 қаралым</span><span class="tag">◆ 3D</span></div>
       </div>
     </div>
 
