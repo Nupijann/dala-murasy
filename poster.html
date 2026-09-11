@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>poster</title>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.0.0/dist/model-viewer.min.js"></script>
+<style>
+  html,body{margin:0;padding:0;width:100%;height:100%;background:transparent;overflow:hidden}
+  model-viewer{width:100vw;height:100vh;background:transparent;--poster-color:transparent}
+</style>
+</head><body>
+<model-viewer
+  id="mv"
+  camera-controls="false"
+  interaction-prompt="none"
+  disable-zoom
+  disable-pan
+  shadow-intensity="1.2"
+  shadow-softness="0.9"
+  exposure="1.1"
+  environment-image="neutral"
+  loading="eager">
+</model-viewer>
+<script>
+  const params = new URLSearchParams(location.search);
+  const src = params.get('src');
+  const orbit = params.get('orbit') || '20deg 78deg auto';
+  const mv = document.getElementById('mv');
+  mv.cameraOrbit = orbit;
+  mv.src = src;
+  mv.addEventListener('load', () => {
+    document.title = 'poster-ready';
+  });
+  mv.addEventListener('error', e => {
+    document.title = 'poster-error';
+  });
+</script>
+</body></html>

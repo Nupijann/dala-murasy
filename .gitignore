@@ -1,0 +1,8 @@
+# deploy artefacts
+node_modules/
+.netlify/
+.DS_Store
+Thumbs.db
+
+# dev-only server tools (uncomment if you want to keep out of git)
+# poster.html

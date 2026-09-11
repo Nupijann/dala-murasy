@@ -1,0 +1,878 @@
+<!doctype html>
+<html lang="kk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#8a3418">
+<title>Дала Мұрасы · Nomad Codex — mobile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.0.0/dist/model-viewer.min.js"></script>
+<style>
+  :root{
+    --ink:#221812; --ink-2:#3a2a20;
+    --paper:#f6ecd5; --paper-2:#ede0c1; --cream:#fbf4e0;
+    --gold:#c48a2b; --gold-2:#e0b25a;
+    --rust:#8a3418; --rust-2:#6a2510;
+    --sage:#4d6a34; --sage-2:#365023;
+    --sky-1:#f6d3a2; --sky-2:#eab692; --sky-3:#b7c9d6; --sky-4:#7fa3bd;
+    --grass-3:#547a30; --grass-4:#3a5820; --grass-5:#23361a;
+    --f-h:"Cormorant Garamond","Times New Roman",serif;
+    --f-b:"Inter",-apple-system,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html,body{background:var(--paper);color:var(--ink);font-family:var(--f-b);-webkit-font-smoothing:antialiased}
+  body{overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  em{font-style:italic}
+  button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
+  img,svg{display:block;max-width:100%}
+
+  /* ─── top bar ─── */
+  .bar{position:sticky;top:0;z-index:20;background:rgba(255,246,224,.94);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(138,52,24,.18);
+    padding:10px 14px;display:flex;align-items:center;gap:10px}
+  .brand{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
+  .brand-mark{width:32px;height:32px;flex-shrink:0}
+  .brand-name{font-family:var(--f-h);font-weight:600;font-size:15.5px;line-height:1;letter-spacing:.01em}
+  .brand-sub{display:block;font-family:var(--f-h);font-style:italic;font-size:9.5px;color:var(--rust);letter-spacing:.18em;text-transform:uppercase;margin-top:3px}
+  .lang-mini{padding:5px 9px;font-size:10.5px;font-weight:600;letter-spacing:.08em;
+    background:var(--rust);color:var(--paper);border-radius:4px}
+  .burger{width:36px;height:36px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;
+    border:1px solid rgba(34,24,18,.22);border-radius:6px;flex-shrink:0}
+  .burger span{width:16px;height:1.6px;background:var(--ink);border-radius:2px}
+
+  /* ─── nav drawer ─── */
+  .drawer{position:fixed;inset:0 0 0 auto;width:78%;max-width:320px;background:var(--paper);z-index:30;
+    transform:translateX(100%);transition:transform .3s ease;box-shadow:-8px 0 28px rgba(0,0,0,.24);
+    padding:64px 24px 24px;display:flex;flex-direction:column;gap:6px}
+  .drawer.open{transform:none}
+  .drawer a{padding:14px 8px;font-size:16px;font-family:var(--f-h);border-bottom:1px solid rgba(138,52,24,.14)}
+  .drawer a.active{color:var(--rust);font-style:italic}
+  .drawer .close{position:absolute;top:16px;right:16px;width:34px;height:34px;border:1px solid rgba(34,24,18,.22);border-radius:6px;
+    display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--ink)}
+  .scrim{position:fixed;inset:0;background:rgba(20,14,8,.5);z-index:25;opacity:0;pointer-events:none;transition:opacity .3s}
+  .scrim.on{opacity:1;pointer-events:auto}
+
+  /* ─── hero ─── */
+  .hero{position:relative;overflow:hidden;isolation:isolate;
+    background:linear-gradient(180deg,var(--sky-4) 0%,var(--sky-3) 25%,#dcd0c0 46%,var(--sky-1) 60%,var(--sky-2) 72%)}
+  .hero-inner{position:relative;padding:28px 20px 0;z-index:5}
+  .kicker{display:inline-block;font-family:var(--f-h);font-style:italic;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--rust);padding:5px 12px;background:rgba(255,246,224,.72);border:1px solid rgba(138,52,24,.35);border-radius:20px;margin-bottom:16px}
+  .htitle{font-family:var(--f-h);font-weight:500;font-size:38px;line-height:1.04;letter-spacing:-.01em;overflow-wrap:break-word;word-break:break-word;hyphens:auto}
+  .htitle em{color:var(--rust)}
+  .lede{margin-top:16px;font-size:13.5px;line-height:1.55;color:rgba(34,24,18,.88);
+    padding:12px 14px;background:rgba(255,246,224,.85);border-left:3px solid var(--rust);border-radius:2px;overflow-wrap:break-word;word-break:break-word;hyphens:auto}
+  .lede b{font-family:var(--f-h);font-weight:600;font-style:italic;font-size:14.5px;color:var(--rust);display:block;margin-bottom:4px}
+  .stats{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .stats > div{padding:10px 12px;background:rgba(255,246,224,.55);border-left:2px solid var(--rust);border-radius:2px}
+  .stats b{display:block;font-family:var(--f-h);font-weight:500;font-size:24px;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1}
+  .stats span{display:block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(34,24,18,.62);margin-top:4px}
+
+  /* sun + clouds decorative */
+  .sun{position:absolute;top:44px;right:28px;width:88px;height:88px;border-radius:50%;
+    background:radial-gradient(circle,#fffdf1 0%,#ffe9b4 45%,rgba(255,210,140,.25) 70%,transparent 100%);z-index:1}
+  .cloud{position:absolute;z-index:1;opacity:.7}
+
+  /* mountains + scene */
+  .scene-strip{position:relative;height:210px;margin-top:22px;overflow:hidden}
+  .scene-strip .band{position:absolute;left:0;right:0}
+  .scene-strip svg{display:block;width:100%;height:100%}
+  .scene-strip .plain{position:absolute;left:0;right:0;top:120px;bottom:0;
+    background:linear-gradient(180deg,var(--grass-3) 0%,var(--grass-4) 55%,var(--grass-5) 100%)}
+  .yurts{position:absolute;left:0;right:0;bottom:6px;height:130px;pointer-events:none}
+  .yurts svg{position:absolute;bottom:0}
+
+  /* ornament band */
+  .orn{position:relative;z-index:5;height:26px;overflow:hidden;
+    background:linear-gradient(180deg,var(--rust) 0%,var(--rust-2) 100%);
+    border-top:1px solid rgba(196,138,43,.35);border-bottom:1px solid rgba(0,0,0,.25);
+    box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)}
+  .orn svg{display:block;width:100%;height:100%}
+
+  /* ─── section head ─── */
+  .sect{padding:24px 20px 14px;background:var(--paper)}
+  .sect h2{font-family:var(--f-h);font-weight:500;font-size:26px;letter-spacing:-.005em}
+  .sect h2 em{color:var(--rust)}
+  .sect .sub{display:block;font-family:var(--f-h);font-style:italic;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(138,52,24,.75);margin-top:4px}
+
+  /* filter row (horizontal scroll) */
+  .filt{display:flex;gap:8px;overflow-x:auto;padding:14px 20px 18px;background:var(--paper);
+    scrollbar-width:none;-ms-overflow-style:none}
+  .filt::-webkit-scrollbar{display:none}
+  .filt span{flex-shrink:0;padding:8px 14px;font-size:12.5px;letter-spacing:.03em;color:rgba(34,24,18,.72);
+    border:1px solid rgba(138,52,24,.28);border-radius:20px;background:rgba(255,246,224,.55)}
+  .filt span.on{background:var(--rust);color:var(--paper);border-color:var(--rust)}
+
+  /* ─── cards ─── */
+  .grid-wrap{background:var(--paper-2);padding:18px 16px 24px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media (min-width:640px){.grid{grid-template-columns:1fr 1fr 1fr;gap:14px}}
+  .card{background:var(--cream);border:1px solid rgba(138,52,24,.18);border-radius:8px;overflow:hidden;
+    box-shadow:0 6px 16px rgba(60,40,20,.08);position:relative;cursor:pointer}
+  .card.selected{border-color:var(--rust);box-shadow:0 0 0 1px var(--rust),0 10px 22px rgba(138,52,24,.2)}
+  .card[data-model] .fig::after{content:"◆ 3D";position:absolute;bottom:8px;right:10px;
+    font-family:var(--f-h);font-style:italic;font-size:10.5px;letter-spacing:.12em;color:var(--rust);
+    background:rgba(255,246,224,.9);padding:3px 8px;border-radius:12px;border:1px solid rgba(138,52,24,.28);z-index:3}
+  .card .num{position:absolute;top:10px;right:12px;font-family:var(--f-h);font-style:italic;font-size:11px;letter-spacing:.1em;color:var(--rust);z-index:3}
+  .fig{position:relative;height:130px;overflow:hidden;
+    background:linear-gradient(180deg,#e8d6ac 0%,#c9a25e 100%);
+    border-bottom:1px solid rgba(138,52,24,.18);display:flex;align-items:center;justify-content:center}
+  @media (min-width:640px){.fig{height:150px}}
+  .fig svg{position:absolute;inset:0;width:100%;height:100%}
+  .fig .poster{position:absolute;left:8%;top:6%;width:84%;height:88%;object-fit:contain;
+    filter:drop-shadow(0 5px 10px rgba(0,0,0,.16)) drop-shadow(0 2px 3px rgba(0,0,0,.08))}
+  .fig .badge{position:absolute;top:8px;left:8px;padding:3px 8px;font-size:10px;font-weight:500;letter-spacing:.1em;
+    background:var(--rust);color:var(--paper);border-radius:3px;z-index:2}
+  .fig .label{position:absolute;bottom:8px;left:10px;right:10px;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:rgba(34,24,18,.75);z-index:2;font-style:italic;font-family:var(--f-h)}
+  .body{padding:10px 12px 12px}
+  .cat{font-family:var(--f-h);font-style:italic;font-size:11px;letter-spacing:.04em;color:var(--rust);display:block;margin-bottom:2px}
+  .card h4{font-family:var(--f-h);font-weight:600;font-size:16.5px;color:var(--ink);letter-spacing:-.005em;line-height:1.15}
+  .meta{margin-top:8px;padding-top:8px;display:flex;justify-content:space-between;font-size:10.5px;color:rgba(34,24,18,.62);
+    border-top:1px dotted rgba(138,52,24,.28);letter-spacing:.02em}
+  .meta .tag{color:var(--rust);font-weight:500}
+
+  /* ─── detail viewer (stacked) ─── */
+  .detail-wrap{background:var(--paper);padding:26px 16px 30px}
+  .detail{background:var(--cream);border:1px solid rgba(138,52,24,.25);border-radius:10px;overflow:hidden;
+    box-shadow:0 14px 30px rgba(60,40,20,.16)}
+  .viewer{position:relative;height:340px;background:
+    radial-gradient(ellipse 70% 55% at 50% 40%,#efdcb2 0%,#b78a45 65%,#6a4b1e 100%);
+    display:flex;align-items:center;justify-content:center}
+  .viewer .vbadge{position:absolute;top:12px;left:12px;padding:5px 10px;font-size:10.5px;letter-spacing:.14em;
+    background:var(--rust);color:var(--paper);border-radius:3px;font-weight:500}
+  .viewer .vrot{position:absolute;top:12px;right:12px;padding:5px 10px;font-size:10.5px;letter-spacing:.14em;
+    color:var(--ink);background:rgba(255,246,224,.9);border:1px solid rgba(138,52,24,.32);border-radius:3px;
+    font-family:var(--f-h);font-style:italic}
+  .viewer svg{max-height:100%;width:auto}
+  .viewer model-viewer{width:100%;height:100%;--poster-color:transparent;background:transparent}
+  .vctrl{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:2px;
+    background:rgba(30,20,12,.85);border:1px solid rgba(232,196,120,.4);border-radius:22px;padding:3px}
+  .vctrl button{padding:7px 12px;font-size:11px;letter-spacing:.06em;color:rgba(255,246,224,.85);border-radius:18px}
+  .vctrl button.on{background:var(--gold-2);color:var(--ink)}
+  .info{padding:22px 20px 24px}
+  .info .no{font-family:var(--f-h);font-style:italic;font-size:10.5px;letter-spacing:.26em;color:var(--rust);text-transform:uppercase;font-weight:500}
+  .info h3{font-family:var(--f-h);font-weight:500;font-size:34px;color:var(--ink);letter-spacing:-.01em;margin-top:6px;line-height:1.04}
+  .info h3 em{color:inherit;font-style:normal;font-weight:inherit}
+  .info .cat{font-family:var(--f-h);font-style:italic;font-size:13px;color:rgba(34,24,18,.7);margin-top:6px}
+  .info p{font-size:14px;line-height:1.6;color:rgba(34,24,18,.88);margin-top:14px}
+  .facts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
+  .fact{background:rgba(138,52,24,.06);border-left:3px solid var(--rust);padding:10px 12px;border-radius:2px}
+  .fact b{display:block;font-family:var(--f-h);font-style:italic;font-weight:500;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--rust);margin-bottom:3px}
+  .fact span{font-size:13px;color:var(--ink);font-weight:500}
+  .qr-row{display:flex;gap:12px;align-items:center;margin-top:18px;padding:12px;border:1px dashed rgba(138,52,24,.45);border-radius:4px;background:rgba(255,246,224,.55)}
+  .qr-code{width:56px;height:56px;flex-shrink:0;background:
+    conic-gradient(from 0deg,#000 25%,#fff 0 50%,#000 0 75%,#fff 0),#fff;
+    background-size:12px 12px;border:2px solid var(--ink);border-radius:4px}
+  .qr-row div{font-size:12px;line-height:1.5;color:rgba(34,24,18,.88)}
+  .qr-row b{font-family:var(--f-h);font-style:italic;font-weight:600;font-size:13px;color:var(--rust);display:block;margin-bottom:3px}
+  .actions{margin-top:20px;display:grid;grid-template-columns:1fr;gap:10px}
+  .btn{padding:14px 18px;font-size:13.5px;letter-spacing:.04em;border-radius:6px;font-weight:500;text-align:center}
+  .btn-p{background:var(--rust);color:var(--paper);box-shadow:0 4px 12px rgba(138,52,24,.24)}
+  .btn-g{color:var(--ink);border:1px solid rgba(34,24,18,.35);background:transparent}
+
+  /* ─── footer ─── */
+  .foot{background:#1c1108;color:rgba(246,236,213,.62);padding:22px 20px 26px;
+    display:flex;flex-direction:column;gap:6px;font-size:11.5px;letter-spacing:.06em;
+    border-top:1px solid rgba(196,138,43,.25)}
+  .foot em{color:var(--gold-2);font-family:var(--f-h);font-style:italic}
+
+  /* ─── bottom nav (mobile-style tab bar) ─── */
+  .tabbar{position:sticky;bottom:0;z-index:15;background:rgba(28,17,8,.96);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    border-top:1px solid rgba(196,138,43,.28);
+    display:grid;grid-template-columns:repeat(3,1fr);padding:8px 4px 10px;
+    padding-bottom:calc(10px + env(safe-area-inset-bottom))}
+  .tabbar a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 2px;
+    font-size:9.5px;letter-spacing:.04em;color:rgba(246,236,213,.7);text-align:center;line-height:1.15}
+  .tabbar a.on{color:var(--gold-2)}
+  .tabbar svg{width:20px;height:20px;display:block}
+</style>
+</head>
+<body>
+
+<!-- top bar -->
+<header class="bar">
+  <div class="brand">
+    <svg class="brand-mark" viewBox="0 0 44 44">
+      <path d="M4 22 L22 4 L40 22 L22 40 Z" fill="none" stroke="#8a3418" stroke-width="1.5"/>
+      <path d="M10 22 L22 10 L34 22 L22 34 Z" fill="none" stroke="#c48a2b" stroke-width="1"/>
+      <text x="22" y="28" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="18" font-weight="600" fill="#8a3418">Д</text>
+    </svg>
+    <div>
+      <div class="brand-name">Дала Мұрасы</div>
+      <span class="brand-sub">Nomad · Codex</span>
+    </div>
+  </div>
+  <span class="lang-mini">KZ</span>
+  <button class="burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+<nav class="drawer" id="drawer">
+  <button class="close" id="close">×</button>
+  <a class="active" href="#exhibits">Экспонаттар</a>
+  <a href="#nomads">Көшпенділер іздері</a>
+  <a href="#quiz">Викторина</a>
+  <div style="display:flex;gap:6px;margin:14px 0 6px">
+    <span style="padding:6px 10px;font-size:11px;font-weight:600;letter-spacing:.08em;background:var(--rust);color:var(--paper);border-radius:4px">KZ</span>
+    <span style="padding:6px 10px;font-size:11px;font-weight:500;letter-spacing:.08em;color:var(--ink);border:1px solid rgba(34,24,18,.22);border-radius:4px">RU</span>
+    <span style="padding:6px 10px;font-size:11px;font-weight:500;letter-spacing:.08em;color:var(--ink);border:1px solid rgba(34,24,18,.22);border-radius:4px">EN</span>
+  </div>
+  <a href="index.html">↔ Desktop нұсқа</a>
+</nav>
+
+<!-- hero -->
+<section class="hero">
+  <div class="sun"></div>
+  <div class="cloud" style="top:24px;left:12px">
+    <svg width="110" height="26" viewBox="0 0 180 42" fill="#fff8ea">
+      <ellipse cx="40" cy="26" rx="34" ry="12"/><ellipse cx="72" cy="20" rx="30" ry="14"/>
+      <ellipse cx="108" cy="24" rx="34" ry="12"/><ellipse cx="140" cy="28" rx="26" ry="10"/>
+    </svg>
+  </div>
+  <div class="cloud" style="top:150px;right:18px;opacity:.5">
+    <svg width="90" height="22" viewBox="0 0 140 34" fill="#fff8ea">
+      <ellipse cx="30" cy="20" rx="26" ry="9"/><ellipse cx="60" cy="16" rx="24" ry="11"/>
+      <ellipse cx="92" cy="20" rx="28" ry="9"/>
+    </svg>
+  </div>
+
+  <div class="hero-inner">
+    <h1 class="htitle">Қазақ мұралары<br><em>3д</em> форматында</h1>
+    <div class="lede">
+      <b>Дала Мұрасы</b>
+      Қазақ этно‑мұрасының цифрлық каталогы: жүздеген экспонат, 3D‑модельдер, дәстүр және ойындар.
+    </div>
+    <div class="stats">
+      <div><b>142</b><span>экспонат</span></div>
+      <div><b>38</b><span>3D моделі</span></div>
+      <div><b>12</b><span>дәстүр</span></div>
+      <div><b>06</b><span>ойын</span></div>
+    </div>
+  </div>
+
+  <!-- little scenic strip -->
+  <div class="scene-strip">
+    <div class="band" style="top:8px;height:70px">
+      <svg viewBox="0 0 400 70" preserveAspectRatio="none">
+        <path fill="#7fa0b5" opacity=".85" d="M0 70 L0 44 L40 30 L80 40 L130 22 L180 34 L230 20 L280 34 L330 22 L380 32 L400 26 L400 70 Z"/>
+      </svg>
+    </div>
+    <div class="band" style="top:36px;height:80px">
+      <svg viewBox="0 0 400 80" preserveAspectRatio="none">
+        <path fill="#5d7a3c" d="M0 80 L0 44 L50 26 L110 46 L170 22 L230 42 L290 20 L350 42 L400 26 L400 80 Z"/>
+      </svg>
+    </div>
+    <div class="plain"></div>
+
+    <!-- yurts + horses (mini) -->
+    <div class="yurts">
+      <!-- Left yurt -->
+      <svg style="left:6%;width:64px;height:56px" viewBox="0 0 120 98">
+        <defs>
+          <radialGradient id="mfeltL" cx="50%" cy="55%" r="65%">
+            <stop offset="0" stop-color="#fdf2d8"/><stop offset="1" stop-color="#d6c395"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="60" cy="94" rx="52" ry="5" fill="rgba(0,0,0,.28)"/>
+        <path d="M14 92 L14 62 C14 42 30 22 60 12 C90 22 106 42 106 62 L106 92 Z" fill="url(#mfeltL)" stroke="#8a6a3a" stroke-width="1"/>
+        <g stroke="#b89a63" stroke-width=".8" fill="none" opacity=".8">
+          <path d="M60 12 L20 62"/><path d="M60 12 L60 58"/><path d="M60 12 L100 62"/>
+        </g>
+        <ellipse cx="60" cy="14" rx="14" ry="4" fill="#5a3a1d"/>
+        <line x1="14" y1="62" x2="106" y2="62" stroke="#6a4a24" stroke-width="1.2"/>
+        <rect x="50" y="66" width="20" height="26" fill="#8a3418" stroke="#3a1608" stroke-width="1"/>
+      </svg>
+      <!-- Central big yurt -->
+      <svg style="left:40%;width:92px;height:80px" viewBox="0 0 180 150">
+        <defs>
+          <radialGradient id="mfeltC" cx="50%" cy="55%" r="65%">
+            <stop offset="0" stop-color="#fdf2d8"/><stop offset="1" stop-color="#d0bc8d"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="90" cy="144" rx="82" ry="6" fill="rgba(0,0,0,.32)"/>
+        <path d="M14 140 L14 94 C14 66 34 36 90 18 C146 36 166 66 166 94 L166 140 Z" fill="url(#mfeltC)" stroke="#8a6a3a" stroke-width="1.2"/>
+        <g stroke="#b89a63" stroke-width=".9" fill="none" opacity=".8">
+          <path d="M90 18 L20 94"/><path d="M90 18 L90 82"/><path d="M90 18 L160 94"/>
+        </g>
+        <ellipse cx="90" cy="22" rx="22" ry="6" fill="#5a3a1d"/>
+        <line x1="14" y1="94" x2="166" y2="94" stroke="#6a4a24" stroke-width="1.6"/>
+        <rect x="74" y="102" width="32" height="38" fill="#8a3418" stroke="#3a1608" stroke-width="1.2"/>
+      </svg>
+      <!-- Right yurt -->
+      <svg style="right:8%;width:56px;height:52px" viewBox="0 0 130 106">
+        <defs>
+          <radialGradient id="mfeltR" cx="50%" cy="55%" r="65%">
+            <stop offset="0" stop-color="#f6ecd0"/><stop offset="1" stop-color="#cebb8b"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="65" cy="100" rx="58" ry="5" fill="rgba(0,0,0,.3)"/>
+        <path d="M14 98 L14 66 C14 44 30 22 65 12 C100 22 116 44 116 66 L116 98 Z" fill="url(#mfeltR)" stroke="#8a6a3a" stroke-width="1"/>
+        <g stroke="#b89a63" stroke-width=".7" fill="none" opacity=".8">
+          <path d="M65 12 L22 66"/><path d="M65 12 L65 60"/><path d="M65 12 L108 66"/>
+        </g>
+        <ellipse cx="65" cy="14" rx="15" ry="5" fill="#5a3a1d"/>
+        <line x1="14" y1="66" x2="116" y2="66" stroke="#6a4a24" stroke-width="1.2"/>
+        <rect x="53" y="70" width="24" height="28" fill="#8a3418" stroke="#3a1608" stroke-width="1"/>
+      </svg>
+
+      <img src="assets/animals/horse-b.svg" alt="жылқы" style="position:absolute;left:24%;bottom:0;width:46px;height:34px"/>
+      <img src="assets/animals/camel.svg"  alt="түйе"  style="position:absolute;left:64%;bottom:0;width:22px;height:32px"/>
+      <img src="assets/animals/lamb.svg"   alt="қой"   style="position:absolute;left:76%;bottom:0;width:24px;height:24px"/>
+    </div>
+  </div>
+</section>
+
+<!-- ornament band -->
+<div class="orn">
+  <svg xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="oyu" x="0" y="0" width="42" height="26" patternUnits="userSpaceOnUse">
+        <g fill="none" stroke="#f0be6c" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M0 13 L 42 13" opacity=".55"/>
+          <path d="M21 13 C 15 13, 12 10, 12 7 C 12 4.5, 14.5 3.2, 16.5 5 C 18 6.4, 16.5 8.2, 14.8 7.3"/>
+          <path d="M21 13 C 27 13, 30 10, 30 7 C 30 4.5, 27.5 3.2, 25.5 5 C 24 6.4, 25.5 8.2, 27.2 7.3"/>
+          <path d="M21 13 C 15 13, 12 16, 12 19 C 12 21.5, 14.5 22.8, 16.5 21 C 18 19.6, 16.5 17.8, 14.8 18.7"/>
+          <path d="M21 13 C 27 13, 30 16, 30 19 C 30 21.5, 27.5 22.8, 25.5 21 C 24 19.6, 25.5 17.8, 27.2 18.7"/>
+          <circle cx="21" cy="13" r="1.4" fill="#f0be6c" stroke="none"/>
+        </g>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#oyu)"/>
+  </svg>
+</div>
+
+<!-- section head -->
+<div class="sect" id="exhibits">
+  <h2>Таңдаулы <em>экспонаттар</em></h2>
+  <span class="sub">Featured artefacts</span>
+</div>
+
+<!-- filters (scrollable) -->
+<div class="filt">
+  <span class="on">Барлығы</span>
+  <span>Тұрмыс</span>
+  <span>Киім</span>
+  <span>Музыка</span>
+  <span>Қолөнер</span>
+  <span>Ойын</span>
+  <span>Зергерлік</span>
+</div>
+
+<!-- cards -->
+<div class="grid-wrap">
+  <div class="grid">
+
+    <div class="card"
+         data-model="models/yurt-low-quality-texture/source/yurt_low_quality_texture.glb"
+         data-no="001" data-cat="Тұрғын жай" data-title-a="Киіз " data-title-b="үй"
+         data-sub="Қазақтың дәстүрлі көшпелі үйі · шаңырақ, кереге, уық"
+         data-desc="Киіз үй — көшпелі қазақтардың дәстүрлі тұрғын үйі. Кереге, уық, шаңырақ — үш негізгі элемент. Ешбір шеге қолданылмаған, тек ағаш пен киіз."
+         data-facts='[["Диаметр","6–8 м"],["Уық","40–60"],["Тірегі","шаңырақ"],["Материал","киіз · ағаш"]]'
+         data-camera="180deg 80deg auto">
+      <div class="fig">
+        <span class="badge">3D</span>
+        <img class="poster" src="assets/posters/ak-orda.png" alt="">
+        <span class="label">киіз үй</span>
+      </div>
+      <div class="body">
+        <span class="num">Nº 001</span>
+        <span class="cat">Тұрғын жай</span>
+        <h4>Киіз үй</h4>
+        <div class="meta"><span>1 200 қаралым</span><span class="tag">◇ 3D</span></div>
+      </div>
+    </div>
+
+    <div class="card selected"
+         data-model="models/dombyra_by_sultan_elamanov.glb"
+         data-no="014" data-cat="Музыка" data-title-a="Дом" data-title-b="быра"
+         data-sub="Екі ішекті шертпелі аспап · дәстүрлі"
+         data-desc="Домбыра — қазақтың жаны. Қарағаш пен қайыңнан жасалған шанағы, ішегі — түйенің шудасы, кейін жіп. Күйші саусағының жанасуымен ғасырлар үнін жеткізеді."
+         data-facts='[["Ұзындығы","1 260 мм"],["Ішек","2 · нейлон"],["Пернелер","19"],["Күй","3 · 07:40"]]'
+         data-camera="0deg 75deg auto">
+      <div class="fig">
+        <span class="badge">360°</span>
+        <img class="poster" src="assets/posters/dombyra.png" alt="">
+        <span class="label">домбыра · қара ағаш</span>
+      </div>
+      <div class="body">
+        <span class="num">Nº 014</span>
+        <span class="cat">Музыка</span>
+        <h4>Домбыра</h4>
+        <div class="meta"><span>980 қаралым</span><span class="tag">◆ Таңдалды</span></div>
+      </div>
+    </div>
+
+    <div class="card"
+         data-model="models/kazakh_qobyz_kobyz.glb"
+         data-no="019" data-cat="Музыка" data-title-a="Қо" data-title-b="быз"
+         data-sub="Ежелгі ысқы аспап · Қорқыттың серігі"
+         data-desc="Қобыз — Қорқыт атаның аспабы. Ағаштан ойылған қуысы, ешкі‑терімен қапталған. Ат жалынан тартылған 2 ішек, садақтай иілген ысқыш."
+         data-facts='[["Ұзындығы","≈ 620 мм"],["Ішек","2 · ат жалы"],["Материал","қайың · ешкі‑тері"],["Ғасыры","IX–X ғ."]]'
+         data-camera="180deg 75deg auto">
+      <div class="fig">
+        <span class="badge">3D</span>
+        <img class="poster" src="assets/posters/qobyz.png" alt="">
+        <span class="label">қобыз · қайың</span>
+      </div>
+      <div class="body">
+        <span class="num">Nº 019</span>
+        <span class="cat">Музыка</span>
+        <h4>Қобыз</h4>
+        <div class="meta"><span>412 қаралым</span><span class="tag">◆ 3D</span></div>
+      </div>
+    </div>
+
+    <div class="card"
+         data-model="models/kazakh_shapan.glb"
+         data-no="027" data-cat="Ұлттық киім" data-title-a="Ша" data-title-b="пан"
+         data-sub="Ұзын сырт киім · зерлі, оюмен көмкерілген"
+         data-desc="Шапан — ерлер мен әйелдер киетін ұзын сырт киім. Матасы: жібек, барқыт, жүн. Оюлар — қошқар мүйіз, қазтабан."
+         data-facts='[["Ұзындығы","≈ 130 см"],["Матасы","жібек · барқыт"],["Ою","қошқар мүйіз"],["Салтанат","той · жиын"]]'
+         data-camera="20deg 80deg auto">
+      <div class="fig">
+        <span class="badge">3D</span>
+        <img class="poster" src="assets/posters/shapan.png" alt="">
+        <span class="label">шапан</span>
+      </div>
+      <div class="body">
+        <span class="num">Nº 027</span>
+        <span class="cat">Ұлттық киім</span>
+        <h4>Шапан</h4>
+        <div class="meta"><span>745 қаралым</span><span class="tag">◇ QR</span></div>
+      </div>
+    </div>
+
+    <div class="card"
+         data-model="models/taqiya_grey_m_kazakh_national_headdress.glb"
+         data-no="032" data-cat="Ұлттық киім · бас киім" data-title-a="Тақия " data-title-b="ер"
+         data-sub="Ерлердің жеңіл бас киімі · сұр барқыт"
+         data-desc="Тақия — жаз мезгіліне арналған жеңіл бас киім. Барқыттан тігіледі, оюмен көмкерілген."
+         data-facts='[["Диаметр","≈ 190 мм"],["Материал","сұр барқыт"],["Ою","қошқар мүйіз"],["Мезгіл","жаз · көктем"]]'
+         data-camera="20deg 78deg auto">
+      <div class="fig">
+        <span class="badge">3D</span>
+        <img class="poster" src="assets/posters/taqiya-er.png" alt="">
+        <span class="label">тақия · ер</span>
+      </div>
+      <div class="body">
+        <span class="num">Nº 032</span>
+        <span class="cat">Бас киім</span>
+        <h4>Тақия ер</h4>
+        <div class="meta"><span>287 қаралым</span><span class="tag">◆ 3D</span></div>
+      </div>
+    </div>
+
+    <div class="card"
+         data-model="models/taqiya_yellow_f_kazakh_traditional_headdress.glb"
+         data-no="034" data-cat="Ұлттық киім · бас киім" data-title-a="Тақия " data-title-b="қыз"
+         data-sub="Қыздардың мерекелік бас киімі · сары зерлі"
+         data-desc="Қыз тақиясы — тойда, мерекеде киетін ашық түсті, зерлі кестелі бас киім. Үстіне үкі қауырсыны бекітіледі."
+         data-facts='[["Диаметр","≈ 180 мм"],["Материал","сары мата"],["Кесте","зер · моншақ"],["Үкі","қауырсын"]]'
+         data-camera="20deg 78deg auto">
+      <div class="fig">
+        <span class="badge">3D</span>
+        <img class="poster" src="assets/posters/taqiya-qyz.png" alt="">
+        <span class="label">тақия · қыз</span>
+      </div>
+      <div class="body">
+        <span class="num">Nº 034</span>
+        <span class="cat">Бас киім</span>
+        <h4>Тақия қыз</h4>
+        <div class="meta"><span>301 қаралым</span><span class="tag">◆ 3D</span></div>
+      </div>
+    </div>
+
+    <div class="card"
+         data-model="models/saukele_ethno_variant_traditional_headdress.glb"
+         data-no="038" data-cat="Ұлттық киім · бас киім" data-title-a="Сәу" data-title-b="келе"
+         data-sub="Келіншектің салтанатты бас киімі · биік конус"
+         data-desc="Сәукеле — қазақ қызының ұзатылу тойында киетін ең қымбат бас киімі. Биіктігі 70 см. Күміс, маржан, аққу қауырсынымен әшекейленген."
+         data-facts='[["Биіктігі","≈ 70 см"],["Зергерлігі","күміс · алтын"],["Тас","маржан · ақық"],["Мерейі","ұзату тойы"]]'
+         data-camera="15deg 80deg auto">
+      <div class="fig">
+        <span class="badge">3D</span>
+        <img class="poster" src="assets/posters/saukele.png" alt="">
+        <span class="label">сәукеле · салтанат</span>
+      </div>
+      <div class="body">
+        <span class="num">Nº 038</span>
+        <span class="cat">Бас киім</span>
+        <h4>Сәукеле</h4>
+        <div class="meta"><span>896 қаралым</span><span class="tag">◆ 3D</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="fig">
+        <span class="badge">Макро</span>
+        <svg viewBox="0 0 200 190">
+          <circle cx="100" cy="60" r="24" fill="none" stroke="#c48a2b" stroke-width="2.5"/>
+          <path d="M100 84 L100 100 M100 100 L82 130 L100 158 L118 130 Z" fill="#e0b25a" stroke="#8a5c1a" stroke-width="1"/>
+          <circle cx="100" cy="130" r="6" fill="#7a2f18" stroke="#3a1408" stroke-width=".8"/>
+        </svg>
+        <span class="label">күміс · алтын</span>
+      </div>
+      <div class="body">
+        <span class="num">Nº 041</span>
+        <span class="cat">Зергерлік</span>
+        <h4>Сырға</h4>
+        <div class="meta"><span>612 қаралым</span><span class="tag">◇ QR</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="fig">
+        <span class="badge">Ойын</span>
+        <svg viewBox="0 0 200 190">
+          <rect x="20" y="60" width="160" height="70" rx="6" fill="#8a5c1a" stroke="#3a2010" stroke-width="1.2"/>
+          <g fill="#3a2010">
+            <circle cx="38" cy="80" r="5"/><circle cx="56" cy="80" r="5"/><circle cx="74" cy="80" r="5"/>
+            <circle cx="92" cy="80" r="5"/><circle cx="110" cy="80" r="5"/><circle cx="128" cy="80" r="5"/>
+            <circle cx="146" cy="80" r="5"/><circle cx="164" cy="80" r="5"/>
+            <circle cx="38" cy="110" r="5"/><circle cx="56" cy="110" r="5"/><circle cx="74" cy="110" r="5"/>
+            <circle cx="92" cy="110" r="5"/><circle cx="110" cy="110" r="5"/><circle cx="128" cy="110" r="5"/>
+            <circle cx="146" cy="110" r="5"/><circle cx="164" cy="110" r="5"/>
+          </g>
+          <ellipse cx="20" cy="95" rx="16" ry="24" fill="#5a3a1d" stroke="#3a2010" stroke-width="1"/>
+          <ellipse cx="180" cy="95" rx="16" ry="24" fill="#5a3a1d" stroke="#3a2010" stroke-width="1"/>
+        </svg>
+        <span class="label">ағаш тақта</span>
+      </div>
+      <div class="body">
+        <span class="num">Nº 052</span>
+        <span class="cat">Ұлттық ойын</span>
+        <h4>Тоғызқұмалақ</h4>
+        <div class="meta"><span>1 040 қаралым</span><span class="tag">◇ Ойна</span></div>
+      </div>
+    </div>
+
+    <div class="card"
+         data-model="models/qamshy_kamshy.glb"
+         data-no="071" data-cat="Қолөнер" data-title-a="Қам" data-title-b="шы"
+         data-sub="Былғарыдан өрілген қамшы · жылқышы аспабы"
+         data-desc="Қамшы — жылқышының, батырдың қолындағы белгі. Сабы ағаш немесе мүйіз, өрімі — 8, 16 өрім. Оюмен, күмістің тартпасымен көмкерілген."
+         data-facts='[["Ұзындығы","≈ 1 100 мм"],["Өрімі","8 · 16"],["Сабы","қайың · мүйіз"],["Мағынасы","бедел · күш"]]'
+         data-camera="90deg 75deg auto">
+      <div class="fig">
+        <span class="badge">3D</span>
+        <img class="poster" src="assets/posters/qamshy.png" alt="">
+        <span class="label">қамшы · өрім</span>
+      </div>
+      <div class="body">
+        <span class="num">Nº 071</span>
+        <span class="cat">Қолөнер</span>
+        <h4>Қамшы</h4>
+        <div class="meta"><span>612 қаралым</span><span class="tag">◆ 3D</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="fig">
+        <span class="badge">3D</span>
+        <svg viewBox="0 0 200 190">
+          <path d="M40 100 C 40 70, 80 60, 100 60 C 120 60, 160 70, 160 100 L 160 130 C 160 138, 152 142, 144 138 L 130 132 L 70 132 L 56 138 C 48 142, 40 138, 40 130 Z" fill="#6a3a1a" stroke="#2a1408" stroke-width="1.4"/>
+          <path d="M60 90 C 80 76, 120 76, 140 90" fill="none" stroke="#c48a2b" stroke-width="1"/>
+          <path d="M100 60 L100 40 M92 46 L100 40 L108 46" fill="none" stroke="#8a5c1a" stroke-width="1.4"/>
+          <circle cx="100" cy="80" r="4" fill="#c48a2b"/>
+        </svg>
+        <span class="label">былғары</span>
+      </div>
+      <div class="body">
+        <span class="num">Nº 068</span>
+        <span class="cat">Қолөнер</span>
+        <h4>Ер‑тұрман</h4>
+        <div class="meta"><span>528 қаралым</span><span class="tag">◇ 360°</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="fig">
+        <span class="badge">360°</span>
+        <svg viewBox="0 0 200 190">
+          <path d="M76 30 L124 30 L134 58 L142 90 L138 156 C 138 170, 120 176, 100 176 C 80 176, 62 170, 62 156 L 58 90 L 66 58 Z" fill="#3a1e0a" stroke="#1a0f06" stroke-width="1.4"/>
+          <path d="M76 30 L124 30 L128 44 L72 44 Z" fill="#5a3a1d"/>
+          <path d="M72 60 C 90 68, 110 68, 128 60" fill="none" stroke="#c48a2b" stroke-width=".7"/>
+          <path d="M66 100 C 90 108, 110 108, 134 100" fill="none" stroke="#c48a2b" stroke-width=".7"/>
+        </svg>
+        <span class="label">қымыз ыдысы</span>
+      </div>
+      <div class="body">
+        <span class="num">Nº 083</span>
+        <span class="cat">Тұрмыстық</span>
+        <h4>Саба</h4>
+        <div class="meta"><span>430 қаралым</span><span class="tag">◇ 3D</span></div>
+      </div>
+    </div>
+
+    <div class="card"
+         data-model="models/astau_tabaq.glb"
+         data-no="054" data-cat="Тұрмыстық · ыдыс" data-title-a="Ас" data-title-b="тау"
+         data-sub="Ағаштан ойылған үлкен табақ · дастархан"
+         data-desc="Астау — қазақтың дәстүрлі ағаш табағы. Бесбармақ, ет, палау салып тартылады. Қайыңнан жасалған, жиегі оюмен көмкерілген."
+         data-facts='[["Материал","қайың · тал"],["Диаметр","500–800 мм"],["Ою","қошқар мүйіз"],["Дәстүр","бесбармақ"]]'
+         data-camera="35deg 78deg auto">
+      <div class="fig"><img class="poster" src="assets/posters/astau.png" alt=""></div>
+      <div class="body">
+        <span class="num">Nº 054</span>
+        <span class="cat">Тұрмыстық</span>
+        <h4>Астау</h4>
+        <div class="meta"><span>586 қаралым</span><span class="tag">◆ 3D</span></div>
+      </div>
+    </div>
+
+    <div class="card"
+         data-model="models/asyk-bone/source/Asyk.glb"
+         data-no="108" data-cat="Ұлттық ойын" data-title-a="Асы" data-title-b="қ"
+         data-sub="Қой сүйегінен жасалған · ежелгі ойын"
+         data-desc="Асық — қой асығынан жасалған ежелгі бала ойыны. Балалардың шеберлігі мен тапқырлығын шыңдайды. Түрлері: сақа, алшы, бүк."
+         data-facts='[["Материал","қой сүйегі"],["Салмағы","15–20 г"],["Түрі","сақа · алшы"],["Жасы","1000+ жыл"]]'
+         data-camera="15deg 75deg auto">
+      <div class="fig">
+        <span class="badge">3D</span>
+        <img class="poster" src="assets/posters/asyk.png" alt="">
+        <span class="label">қой сүйегі</span>
+      </div>
+      <div class="body">
+        <span class="num">Nº 108</span>
+        <span class="cat">Ұлттық ойын</span>
+        <h4>Асық</h4>
+        <div class="meta"><span>325 қаралым</span><span class="tag">◆ 3D</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="fig">
+        <span class="badge">Ою</span>
+        <svg viewBox="0 0 200 190">
+          <rect x="20" y="30" width="160" height="130" rx="4" fill="#7a2f18" stroke="#2a1408" stroke-width="1.4"/>
+          <rect x="28" y="38" width="144" height="114" fill="none" stroke="#c48a2b" stroke-width="1"/>
+          <g fill="none" stroke="#e0b25a" stroke-width="1.4">
+            <path d="M100 60 C 90 60, 82 68, 82 78 C 82 88, 90 96, 100 96 C 110 96, 118 88, 118 78 C 118 68, 110 60, 100 60 Z"/>
+            <path d="M100 96 L100 116"/>
+            <path d="M88 116 C 88 126, 96 132, 100 132 C 104 132, 112 126, 112 116"/>
+          </g>
+        </svg>
+        <span class="label">қошқар мүйіз</span>
+      </div>
+      <div class="body">
+        <span class="num">Nº 097</span>
+        <span class="cat">Қолөнер</span>
+        <h4>Тұскиіз</h4>
+        <div class="meta"><span>815 қаралым</span><span class="tag">◇ QR</span></div>
+      </div>
+    </div>
+
+    <div class="card"
+         data-model="models/besik.glb"
+         data-no="004" data-cat="Тұрмыстық · тәрбие" data-title-a="Бе" data-title-b="сік"
+         data-sub="Қазақтың ағаштан ойылған дәстүрлі бесігі"
+         data-desc="Бесік — қайыңнан, талдан ойылған, оюмен көмкерілген бала бесігі. «Бесікке салу», «тұсау кесер» — сәбидің алғашқы дәстүрлері."
+         data-facts='[["Материал","қайың · тал"],["Ұзындығы","≈ 700 мм"],["Ою","қошқар мүйіз"],["Дәстүр","бесікке салу"]]'
+         data-camera="25deg 78deg auto">
+      <div class="fig"><img class="poster" src="assets/posters/besik.png" alt=""></div>
+      <div class="body">
+        <span class="num">Nº 004</span>
+        <span class="cat">Тұрмыстық</span>
+        <h4>Бесік</h4>
+        <div class="meta"><span>478 қаралым</span><span class="tag">◆ 3D</span></div>
+      </div>
+    </div>
+
+    <div class="card"
+         data-model="models/nomad_sabre.glb"
+         data-no="076" data-cat="Қару-жарақ" data-title-a="Қы" data-title-b="лыш"
+         data-sub="Қазақ жауынгерінің жүзді қаруы"
+         data-desc="Қылыш — қазақ жауынгерінің ежелгі жүзді қаруы. Жүзі болаттан соғылған, сабы ағаш пен сүйектен. Қынабы былғарымен қапталып, күміспен әсемделген."
+         data-facts='[["Ұзындығы","≈ 900 мм"],["Салмағы","≈ 1.2 кг"],["Жүзі","болат"],["Сабы","сүйек · күміс"]]'
+         data-camera="30deg 80deg auto">
+      <div class="fig"><img class="poster" src="assets/posters/qylysh.png" alt=""></div>
+      <div class="body">
+        <span class="num">Nº 076</span>
+        <span class="cat">Қару-жарақ</span>
+        <h4>Қылыш</h4>
+        <div class="meta"><span>623 қаралым</span><span class="tag">◆ 3D</span></div>
+      </div>
+    </div>
+
+    <div class="card"
+         data-model="models/balbal_tas.glb"
+         data-no="112" data-cat="Ежелгі мұра · мүсін" data-title-a="Балбал " data-title-b="тас"
+         data-sub="Ежелгі түрік мүсіні · жауынгердің ескерткіші"
+         data-desc="Балбал тас — түркі дәуірінің тастан қашалған адам бейнесіндегі ескерткіш. Атақты адамға көрсетілген құрмет ретінде қойылған. Бүгінгі құлпытас-көктастардың бастауы."
+         data-facts='[["Ғасыры","VI–VIII ғ."],["Материал","тас"],["Биіктігі","≈ 1.5 м"],["Қызметі","ескерткіш"]]'
+         data-camera="15deg 80deg auto">
+      <div class="fig"><img class="poster" src="assets/posters/balbal.png" alt=""></div>
+      <div class="body">
+        <span class="num">Nº 112</span>
+        <span class="cat">Ежелгі мұра</span>
+        <h4>Балбал тас</h4>
+        <div class="meta"><span>1 205 қаралым</span><span class="tag">◆ 3D</span></div>
+      </div>
+    </div>
+
+    <div class="card"
+         data-model="models/tamgaly_sun_man.glb"
+         data-no="099" data-cat="Ежелгі мұра · петроглиф" data-title-a="Күн басты " data-title-b="адам"
+         data-sub="Таңбалы жартасының петроглифі · қола дәуірі"
+         data-desc="Таңбалы жартасындағы «күн басты адам» — қола дәуірінің әйгілі петроглифі. Күн-құдай бейнесі, шамандық рәсімдер куәгері. ЮНЕСКО мұрасы (2004)."
+         data-facts='[["Ғасыры","XIII–XI ғ. б.з.д."],["Орны","Алматы обл."],["ЮНЕСКО","2004"],["Стилі","петроглиф"]]'
+         data-camera="0deg 75deg auto">
+      <div class="fig"><img class="poster" src="assets/posters/tamgaly.png" alt=""></div>
+      <div class="body">
+        <span class="num">Nº 099</span>
+        <span class="cat">Ежелгі мұра</span>
+        <h4>Күн басты адам</h4>
+        <div class="meta"><span>968 қаралым</span><span class="tag">◆ 3D</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- detail viewer -->
+<div class="detail-wrap">
+  <div class="detail">
+    <div class="viewer" id="viewer">
+      <span class="vbadge">360° · интерактив</span>
+      <span class="vrot" id="vrot">◐ live</span>
+      <model-viewer
+        id="mv"
+        src="models/dombyra_by_sultan_elamanov.glb"
+        alt="Домбыра"
+        camera-controls
+        touch-action="pan-y"
+        auto-rotate
+        auto-rotate-delay="1500"
+        rotation-per-second="20deg"
+        interaction-prompt="none"
+        shadow-intensity="1"
+        exposure="1"
+        environment-image="neutral"
+        loading="eager">
+      </model-viewer>
+      <div class="vctrl">
+        <button class="on">3D</button><button>360°</button><button>Аудио</button><button>Тарихы</button>
+      </div>
+    </div>
+    <div class="info" id="info">
+      <span class="no" id="i-no">Экспонат Nº 014 · Музыка</span>
+      <h3 id="i-title">Дом<em>быра</em></h3>
+      <span class="cat" id="i-sub">Екі ішекті шертпелі аспап · дәстүрлі</span>
+      <p id="i-desc">Домбыра — қазақтың жаны. Қарағаш пен қайыңнан жасалған шанағы, ішегі — түйенің шудасы, кейін жіп. Күйші саусағының жанасуымен ғасырлар үнін жеткізеді.</p>
+      <div class="facts" id="i-facts">
+        <div class="fact"><b>Ұзындығы</b><span>1 260 мм</span></div>
+        <div class="fact"><b>Ішек</b><span>2 · нейлон</span></div>
+        <div class="fact"><b>Пернелер</b><span>19</span></div>
+        <div class="fact"><b>Күй</b><span>3 · 07:40</span></div>
+      </div>
+      <div class="qr-row">
+        <div class="qr-code"></div>
+        <div>
+          <b>Күй архиві</b>
+          QR‑ды сканерлеп, Құрманғазы, Дәулеткерей, Тәттімбеттің үзінділерін тыңдаңыз.
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-p">Күйді тыңдау →</button>
+        <button class="btn btn-g">Викторина: күйші кім?</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- footer -->
+<footer class="foot">
+  <span>© Дала Мұрасы · <em>Nomad Codex</em></span>
+  <span>жоба жастарға арналған · ашық лицензия</span>
+</footer>
+
+<!-- bottom tab bar -->
+<nav class="tabbar">
+  <a href="#exhibits" class="on">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10 h18"/><path d="M9 4 v6"/></svg>
+    Экспонат
+  </a>
+  <a href="#nomads">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 L4 12 C4 8 8 4 12 4 C16 4 20 8 20 12 L20 20 Z"/><path d="M4 12 h16"/></svg>
+    Көшпелілер
+  </a>
+  <a href="#quiz">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 8 a3 3 0 1 1 4 2.5 c-1 .5-1 1.5-1 2.5"/><circle cx="12" cy="17" r=".8" fill="currentColor"/></svg>
+    Викторина
+  </a>
+</nav>
+
+<script>
+  const burger = document.getElementById('burger');
+  const drawer = document.getElementById('drawer');
+  const scrim  = document.getElementById('scrim');
+  const close  = document.getElementById('close');
+  function open(){ drawer.classList.add('open'); scrim.classList.add('on'); document.body.style.overflow='hidden'; }
+  function shut(){ drawer.classList.remove('open'); scrim.classList.remove('on'); document.body.style.overflow=''; }
+  burger.addEventListener('click', open);
+  close.addEventListener('click', shut);
+  scrim.addEventListener('click', shut);
+
+  // move cards without a 3D model to the end
+  (function sortCards(){
+    const grid = document.querySelector('.grid');
+    if (!grid) return;
+    const cards = Array.from(grid.querySelectorAll('.card'));
+    cards.sort((a,b) => (!!b.dataset.model) - (!!a.dataset.model));
+    cards.forEach(c => grid.appendChild(c));
+  })();
+
+  // model swap on card click
+  const mv    = document.getElementById('mv');
+  const iNo   = document.getElementById('i-no');
+  const iTitle= document.getElementById('i-title');
+  const iSub  = document.getElementById('i-sub');
+  const iDesc = document.getElementById('i-desc');
+  const iFacts= document.getElementById('i-facts');
+  const vrot  = document.getElementById('vrot');
+  const viewer= document.getElementById('viewer');
+
+  mv.addEventListener('camera-change', () => {
+    const orb = mv.getCameraOrbit();
+    const deg = Math.round((orb.theta * 180 / Math.PI + 360) % 360);
+    vrot.textContent = `◐ ${String(deg).padStart(3,'0')}°`;
+  });
+
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+      const model = card.dataset.model;
+      if (!model) return;
+      document.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      mv.src = model;
+      if (card.dataset.camera) mv.cameraOrbit = card.dataset.camera;
+      iNo.textContent = `Экспонат Nº ${card.dataset.no} · ${card.dataset.cat}`;
+      iTitle.innerHTML = `${card.dataset.titleA}<em>${card.dataset.titleB}</em>`;
+      iSub.textContent = card.dataset.sub;
+      iDesc.textContent = card.dataset.desc;
+      try {
+        const facts = JSON.parse(card.dataset.facts || '[]');
+        iFacts.innerHTML = facts.map(([k,v]) => `<div class="fact"><b>${k}</b><span>${v}</span></div>`).join('');
+      } catch(e){}
+      viewer.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+
+  document.querySelectorAll('.vctrl button').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('.vctrl button').forEach(x => x.classList.remove('on'));
+      b.classList.add('on');
+    });
+  });
+</script>
+
+</body>
+</html>
