@@ -233,11 +233,18 @@
   /* ─────────────────────────  detail viewer  ─────────────────── */
   .detail-wrap{background:var(--paper);padding:48px 60px 60px}
   .detail{display:grid;grid-template-columns:1.05fr 1fr;gap:28px;background:var(--cream);max-width:1600px;margin:0 auto;
-    border:1px solid rgba(138,52,24,.25);border-radius:8px;overflow:hidden;position:relative;box-shadow:var(--shadow-lg)}
+    border:1px solid rgba(138,52,24,.25);border-radius:8px;overflow:hidden;position:relative;box-shadow:var(--shadow-lg);
+    transition:grid-template-columns .55s cubic-bezier(.4,0,.2,1)}
+  .detail.history-mode{grid-template-columns:0.42fr 1.58fr}
   .detail::before{content:"";position:absolute;top:0;bottom:0;left:0;width:4px;background:var(--rust)}
   .viewer{position:relative;min-height:520px;background:
     radial-gradient(ellipse 70% 55% at 50% 40%, #efdcb2 0%, #b78a45 65%, #6a4b1e 100%);
-    display:flex;align-items:center;justify-content:center;border-right:1px solid rgba(138,52,24,.2)}
+    display:flex;align-items:center;justify-content:center;border-right:1px solid rgba(138,52,24,.2);
+    transition:min-height .55s cubic-bezier(.4,0,.2,1)}
+  .detail.history-mode .viewer{min-height:340px}
+  .detail.history-mode .info p{max-width:none;column-count:2;column-gap:36px;column-rule:1px solid rgba(138,52,24,.14);text-align:justify;
+    font-size:14.5px;line-height:1.68}
+  @media (max-width:1100px){.detail.history-mode .info p{column-count:1}}
   .viewer .vbadge{position:absolute;top:16px;left:16px;padding:6px 12px;font-size:11px;letter-spacing:.14em;
     background:var(--rust);color:var(--paper);border-radius:3px;font-weight:500}
   .viewer .vrot{position:absolute;top:16px;right:16px;padding:6px 12px;font-size:11px;letter-spacing:.14em;
@@ -275,6 +282,94 @@
   .btn-p:hover{box-shadow:0 10px 22px rgba(138,52,24,.4)}
   .btn-g{color:var(--ink);border:1px solid rgba(34,24,18,.35);background:transparent}
   .btn-g:hover{border-color:var(--rust);color:var(--rust)}
+
+  /* ─────────────────────────  quiz section  ─────────────────── */
+  .quiz-wrap{background:linear-gradient(180deg, var(--paper-2) 0%, #ecd8ab 100%);padding:56px 60px 76px}
+  .quiz-inner{max-width:1600px;margin:0 auto}
+  .quiz-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:24px;flex-wrap:wrap}
+  .quiz-head .kicker{display:block;font-family:var(--f-h);font-style:italic;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);margin-bottom:12px}
+  .quiz-head .kicker b{font-weight:600}
+  .quiz-head h2{font-family:var(--f-h);font-weight:500;font-size:56px;letter-spacing:-.008em;line-height:1.02;color:var(--ink)}
+  .quiz-head h2 em{color:var(--rust);font-style:italic}
+  .quiz-head p{font-size:14.5px;line-height:1.6;color:rgba(34,24,18,.72);max-width:520px;margin-top:12px}
+  .quiz-counts{display:flex;gap:32px;padding-left:22px;border-left:1px solid rgba(138,52,24,.35)}
+  .quiz-counts b{display:block;font-family:var(--f-h);font-weight:500;font-size:36px;color:var(--ink);line-height:1;font-variant-numeric:tabular-nums}
+  .quiz-counts span{display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(34,24,18,.62);margin-top:6px}
+  .quiz-wrap #quiz-filt{margin:24px 0 28px}
+  .quiz-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  @media (max-width:1280px){.quiz-grid{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:960px){.quiz-grid{grid-template-columns:repeat(2,1fr)}}
+  .quiz-card{background:var(--cream);border:1px solid rgba(138,52,24,.2);border-radius:8px;overflow:hidden;position:relative;
+    cursor:pointer;transition:transform .18s, box-shadow .18s, border-color .18s;box-shadow:0 6px 18px rgba(60,40,20,.08);
+    display:flex;flex-direction:column}
+  .quiz-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;
+    background:linear-gradient(90deg,var(--rust) 0%,#c48a2b 100%);opacity:.9;z-index:2}
+  .quiz-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(60,40,20,.16);border-color:rgba(138,52,24,.45)}
+  .quiz-card.passed::before{background:linear-gradient(90deg, #4d6a34 0%, #6a8a3f 100%)}
+  .quiz-card-fig{position:relative;height:200px;
+    background:linear-gradient(180deg,#e8d6ac 0%,#c9a25e 100%);
+    display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .quiz-card-fig img{width:80%;height:80%;object-fit:contain;filter:drop-shadow(0 5px 10px rgba(0,0,0,.15))}
+  .quiz-card-no{position:absolute;top:12px;right:14px;font-family:var(--f-h);font-style:italic;font-size:11.5px;color:var(--rust);letter-spacing:.1em;z-index:3}
+  .quiz-card-body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
+  .quiz-card-body .cat{font-family:var(--f-h);font-style:italic;font-size:12.5px;letter-spacing:.06em;color:var(--rust);text-transform:uppercase;margin-bottom:6px;display:block}
+  .quiz-card-body h4{font-family:var(--f-h);font-weight:500;font-size:24px;color:var(--ink);letter-spacing:-.005em;margin-bottom:12px;line-height:1.05}
+  .quiz-card-body .quiz-card-meta{margin-top:auto;padding-top:10px;border-top:1px dotted rgba(138,52,24,.28);display:flex;justify-content:space-between;font-size:12px;color:rgba(34,24,18,.62)}
+  .quiz-card-body .start-btn{color:var(--rust);font-family:var(--f-h);font-style:italic;font-weight:500;font-size:13.5px}
+  .quiz-card.passed .start-btn{color:#4d6a34}
+  .quiz-card.passed .start-btn::before{content:"✓ "}
+
+  /* Play view */
+  .quiz-play{background:var(--paper);border:1px solid rgba(138,52,24,.25);border-radius:10px;padding:34px 44px 44px;box-shadow:var(--shadow-lg)}
+  .quiz-back{display:inline-block;font-family:var(--f-h);font-style:italic;font-size:12px;color:var(--rust);letter-spacing:.2em;text-transform:uppercase;margin-bottom:20px;cursor:pointer}
+  .quiz-back::before{content:"— "}
+  .quiz-play-header{position:relative}
+  .quiz-play-crumb{position:absolute;top:0;right:0;font-family:var(--f-h);font-style:italic;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--rust)}
+  .quiz-play-eyebrow{font-family:var(--f-h);font-style:italic;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--rust);margin-bottom:10px}
+  .quiz-play-header h1{font-family:var(--f-h);font-weight:500;font-size:56px;color:var(--ink);letter-spacing:-.01em;line-height:1.02}
+  .quiz-play-header h1 em{color:rgba(34,24,18,.55);font-style:italic;font-weight:400}
+  .quiz-play-header p.play-sub{font-size:13px;color:rgba(34,24,18,.6);margin-top:8px}
+  .quiz-progress{width:100%;height:2px;background:rgba(138,52,24,.18);border-radius:2px;margin-top:22px;overflow:hidden}
+  .quiz-progress-bar{height:100%;background:var(--rust);border-radius:2px;transition:width .35s ease;width:0}
+
+  .quiz-play-body{display:grid;grid-template-columns:1fr 1.35fr;gap:36px;margin-top:30px}
+  .quiz-poster-panel{position:relative;aspect-ratio:1/1;
+    background:linear-gradient(180deg,#e8d6ac 0%,#c9a25e 100%);
+    border-radius:6px;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid rgba(138,52,24,.2)}
+  .quiz-poster-panel img{width:78%;height:78%;object-fit:contain;filter:drop-shadow(0 6px 12px rgba(0,0,0,.15))}
+  .quiz-poster-badge{position:absolute;top:14px;left:14px;background:var(--rust);color:var(--paper);
+    padding:5px 11px;font-size:11px;letter-spacing:.14em;border-radius:3px;font-weight:500}
+  .quiz-poster-label{position:absolute;bottom:12px;left:16px;font-family:var(--f-h);font-style:italic;font-size:12.5px;color:rgba(34,24,18,.7);letter-spacing:.06em}
+
+  .quiz-question-panel .quiz-q-index{font-family:var(--f-h);font-style:italic;font-size:13px;color:rgba(34,24,18,.55);letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px;display:block}
+  .quiz-question-panel h3{font-family:var(--f-h);font-weight:500;font-size:30px;color:var(--ink);line-height:1.2;margin-bottom:24px}
+
+  .quiz-answers{display:flex;flex-direction:column;gap:11px;margin-bottom:20px}
+  .quiz-ans{display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--cream);
+    border:1px solid rgba(138,52,24,.2);border-radius:6px;cursor:pointer;
+    transition:background .18s, border-color .18s, transform .12s;font-family:var(--f-b)}
+  .quiz-ans .letter{width:34px;height:34px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+    background:rgba(138,52,24,.09);color:var(--rust);font-family:var(--f-h);font-weight:600;
+    border:1px solid rgba(138,52,24,.28);border-radius:4px;font-size:14px}
+  .quiz-ans .txt{font-size:15.5px;color:var(--ink);flex:1;text-align:left}
+  .quiz-ans:hover:not(.disabled){background:rgba(255,246,224,.65);border-color:var(--rust);transform:translateX(2px)}
+  .quiz-ans.correct{background:rgba(77,106,52,.14);border-color:#4d6a34}
+  .quiz-ans.correct .letter{background:#4d6a34;color:var(--paper);border-color:#4d6a34}
+  .quiz-ans.wrong{background:rgba(138,52,24,.12);border-color:var(--rust)}
+  .quiz-ans.wrong .letter{background:var(--rust);color:var(--paper)}
+  .quiz-ans.disabled{cursor:default}
+  .quiz-explain{background:rgba(138,52,24,.06);border-left:3px solid var(--rust);padding:12px 16px;border-radius:3px;
+    font-size:14px;line-height:1.55;color:rgba(34,24,18,.86);margin-bottom:18px}
+  .quiz-explain b{font-family:var(--f-h);font-style:italic;color:var(--rust);display:block;margin-bottom:4px;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase}
+
+  .quiz-play-actions{display:flex;justify-content:flex-end;gap:12px}
+
+  .quiz-result{text-align:center;padding:48px 20px}
+  .quiz-result h3{font-family:var(--f-h);font-weight:500;font-size:44px;color:var(--ink);margin-bottom:12px}
+  .quiz-result p{color:rgba(34,24,18,.7);font-size:15px;margin-bottom:22px}
+  .quiz-result .quiz-score{margin:24px 0;font-family:var(--f-h);font-weight:500;font-size:60px;color:var(--rust);line-height:1}
+  .quiz-result .quiz-score small{font-size:24px;color:rgba(34,24,18,.5)}
+  .quiz-result .btn{margin:0 6px}
 
   /* ─────────────────────────  footer  ────────────────────────── */
   .foot{background:#1c1108;color:rgba(246,236,213,.62);padding:26px 60px;
@@ -611,7 +706,7 @@
         </div>
         <span class="cat">Тұрғын жай</span>
         <h4>Киіз үй</h4>
-        <div class="meta"><span>1 200 қаралым</span><span class="tag">◇ 3D</span></div>
+        <div class="meta"><span>1 200 қаралым</span><span class="tag">◆ 3D</span></div>
       </div>
 
       <div class="card selected"
@@ -629,7 +724,7 @@
         </div>
         <span class="cat">Музыка</span>
         <h4>Домбыра</h4>
-        <div class="meta"><span>980 қаралым</span><span class="tag">◆ Таңдалды</span></div>
+        <div class="meta"><span>980 қаралым</span><span class="tag">◆ 3D</span></div>
       </div>
 
       <div class="card"
@@ -665,7 +760,7 @@
         </div>
         <span class="cat">Ұлттық киім</span>
         <h4>Шапан</h4>
-        <div class="meta"><span>745 қаралым</span><span class="tag">◇ QR</span></div>
+        <div class="meta"><span>745 қаралым</span><span class="tag">◆ 3D</span></div>
       </div>
 
       <div class="card"
@@ -1094,6 +1189,72 @@
     </div>
   </div>
 
+  <!-- ═════ Викторина секциясы ═════ -->
+  <section class="quiz-wrap" id="quiz">
+    <div class="quiz-inner">
+      <div class="quiz-head">
+        <div>
+          <span class="kicker">INTERACTIVE · <b>28</b> QUIZZES</span>
+          <h2>Викторина <em>экспонаттар</em></h2>
+          <p>Әрбір экспонат үшін жеке викторина. Оның тарихы, материалы мен дәстүрі туралы 5–7 сұраққа жауап беріңіз.</p>
+        </div>
+        <div class="quiz-counts">
+          <div><b id="q-count">28</b><span>викторина</span></div>
+          <div><b id="q-total">140</b><span>сұрақ</span></div>
+          <div><b id="q-passed">0</b><span>өтілді</span></div>
+        </div>
+      </div>
+      <div class="filt" id="quiz-filt">
+        <span class="on" data-f="all">Барлығы</span>
+        <span data-f="home">Тұрмыс</span>
+        <span data-f="clothing">Киім</span>
+        <span data-f="music">Музыка</span>
+        <span data-f="craft">Қолөнер</span>
+        <span data-f="jewelry">Зергерлік</span>
+        <span data-f="game">Ойын</span>
+        <span data-f="weapon">Қару</span>
+        <span data-f="ancient">Ежелгі</span>
+      </div>
+      <div class="quiz-grid" id="quiz-grid"></div>
+
+      <div class="quiz-play" id="quiz-play" hidden>
+        <a class="quiz-back" id="quiz-back">Экспонаттарға оралу</a>
+        <div class="quiz-play-header">
+          <div class="quiz-play-crumb"><span id="qp-crumb-no">Nº 011</span> · <span id="qp-crumb-cat">Тұрмыс</span></div>
+          <div class="quiz-play-eyebrow">ВИКТОРИНА</div>
+          <h1><span id="qp-title">Саба</span> <em id="qp-sub">— Saba</em></h1>
+          <p class="play-sub"><span id="qp-total-q">5</span> сұрақ · сынап көріңіз</p>
+          <div class="quiz-progress"><div class="quiz-progress-bar" id="qp-bar"></div></div>
+        </div>
+        <div class="quiz-play-body" id="quiz-play-body">
+          <div class="quiz-poster-panel">
+            <div class="quiz-poster-badge" id="qp-poster-no">Nº</div>
+            <img class="quiz-poster-img" id="qp-poster-img" alt="">
+            <div class="quiz-poster-label" id="qp-poster-label"></div>
+          </div>
+          <div class="quiz-question-panel">
+            <span class="quiz-q-index">Сұрақ <span id="qp-qi">1</span> / <span id="qp-qc">5</span></span>
+            <h3 id="qp-q-text">…</h3>
+            <div class="quiz-answers" id="qp-answers"></div>
+            <div class="quiz-explain" id="qp-explain" hidden></div>
+            <div class="quiz-play-actions">
+              <button class="btn btn-p" id="qp-next" disabled>Келесі →</button>
+            </div>
+          </div>
+        </div>
+        <div class="quiz-result" id="quiz-result" hidden>
+          <h3 id="qp-result-title">Керемет!</h3>
+          <p id="qp-result-msg">Барлық сұраққа жауап бердіңіз.</p>
+          <div class="quiz-score"><span id="qp-score">0</span><small> / </small><span id="qp-score-total">5</span></div>
+          <div>
+            <button class="btn btn-p" id="qp-retry">Қайта тапсыру</button>
+            <button class="btn btn-g" id="qp-back-list">Басқа викторина</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer class="foot">
     <span>© Дала Мұрасы · <em>Nomad Codex</em></span>
     <span>жоба жастарға арналған · ашық лицензия</span>
@@ -1101,13 +1262,19 @@
 </main>
 
 <script>
-  // move cards without a 3D model to the end (defensive — after cleanup all cards have models)
+  // move cards without a 3D model to the end (defensive)
   (function sortCards(){
     const grid = document.querySelector('.grid');
     if (!grid) return;
     const cards = Array.from(grid.querySelectorAll('.card'));
     cards.sort((a,b) => (!!b.dataset.model) - (!!a.dataset.model));
     cards.forEach(c => grid.appendChild(c));
+  })();
+
+  // initialize the pre-selected card's tag to Таңдалды
+  (function initSelected(){
+    const s = document.querySelector('.card.selected .meta .tag');
+    if (s) s.textContent = '◆ Таңдалды';
   })();
 
   // classify each card into a broad category from its data-cat text
@@ -1216,8 +1383,14 @@
     card.addEventListener('click', () => {
       const model = card.dataset.model;
       if (!model) return;
-      document.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
+      document.querySelectorAll('.card').forEach(c => {
+        c.classList.remove('selected');
+        const t = c.querySelector('.meta .tag');
+        if (t) t.textContent = '◆ 3D';
+      });
       card.classList.add('selected');
+      const tag = card.querySelector('.meta .tag');
+      if (tag) tag.textContent = '◆ Таңдалды';
 
       mv.src = model;
       if (card.dataset.camera) mv.cameraOrbit = card.dataset.camera;
@@ -1240,8 +1413,9 @@
       iQrText.textContent  = meta.qrText  || 'QR-ды сканерлеп қосымша мәліметтерге қол жеткізіңіз.';
       iDesc.dataset.desc    = card.dataset.desc || '';
       iDesc.dataset.history = meta.history || card.dataset.desc || '';
-      // reset vctrl to 3D tab
+      // reset vctrl to 3D tab + collapse history-mode layout
       document.querySelectorAll('.vctrl button').forEach(b => b.classList.toggle('on', b.dataset.mode === '3d'));
+      document.querySelector('.detail').classList.remove('history-mode');
 
       viewer.scrollIntoView({behavior:'smooth', block:'center'});
 
@@ -1253,19 +1427,416 @@
     });
   });
 
-  // vctrl buttons: 3D shows description, Тарихы swaps in the historical text
+  // vctrl buttons: 3D shows description, Тарихы swaps in the historical text + resizes layout
+  const detailBox = document.querySelector('.detail');
   document.querySelectorAll('.vctrl button').forEach(b => {
     b.addEventListener('click', () => {
       document.querySelectorAll('.vctrl button').forEach(x => x.classList.remove('on'));
       b.classList.add('on');
       const mode = b.dataset.mode;
-      if (mode === 'history') {
-        iDesc.textContent = iDesc.dataset.history || iDesc.dataset.desc || '';
-      } else {
-        iDesc.textContent = iDesc.dataset.desc || '';
-      }
+      const isHistory = mode === 'history';
+      detailBox.classList.toggle('history-mode', isHistory);
+      iDesc.textContent = isHistory ? (iDesc.dataset.history || iDesc.dataset.desc || '') : (iDesc.dataset.desc || '');
     });
   });
+
+  // ═════ Expanded histories (rich text 100-200 words per exhibit) ═════
+  const HISTORY_EXT = {
+    yurt_low_quality_texture:"Киіз үй — көшпелі қазақтардың мыңжылдық тұрғын үйі. Оның арғы негізі — қола дәуірінің андрон мәдениетіндегі жеңіл лашықтар, ал бүгінгі формасы XIII ғасырға дейін толық қалыптасқан. Кереге (қабырға), уық (роз-иіндер) мен шаңырақ (жоғарғы шеңбер) — үш негізгі бөлік. Барлығы 60-нан аса уық шаңырақтан кереге бастарына тартылады, ешбір шеге қолданылмайды. Есік әрқашан күн батысы қарай ашылады: шығыстан келетін жарық — өмірдің басы. Ішіндегі кеңістік бөлінген: төр (қасиетті орын) — қарсы алдында, ер жағы — оң жақта, әйел жағы — сол жақта. Шаңырақ — от басының символы, әулет тілі. Киіз үйді жинау 40 минут ішінде мүмкін. ЮНЕСКО адамзаттың материалдық емес мәдени мұрасы тізіміне 2014 жылы енген. Астананың мемлекеттік елтаңбасында да шаңырақ бейнесі бар.",
+    dombyra_by_sultan_elamanov:"Домбыра — қазақтың рухы, оның тарихы 4000 жылдан асады. Алматы облысындағы Майтөбе үңгіріндегі жартастағы суреттер б.з.д. II мыңжылдықта осындай аспаптардың болғанын дәлелдейді. Ортағасырда Қорқыт атамен байланысты аңыздарда да сілтеме бар. Домбыраның ерекшелігі — күй өнері: бір адамның сезімін немесе тарихи оқиғаны екі ішекте айту. XIX ғ. екі мектеп қалыптасты: Батыс — Құрманғазы, Дина, Дәулеткерей есімдерімен, күйлері «Балбырауын», «Сарыарқа», «Ақсақ құлан»; Шығыс — Тәттімбет, Абыл, Түркеш есімдерімен, лирикалық және созылмалы стиль. Шанағы қарағаш немесе қайыңнан, ішегі бұрын түйе шудасынан, кейін жіп, бүгін нейлон. Ұзындығы ~1260 мм, 19 перне. Домбырада 62 күй сақталған. 2010 жылы 1 шілде Ұлттық домбыра күні жарияланды. 2014 жылы ЮНЕСКО тізіміне енген.",
+    kazakh_qobyz_kobyz:"Қобыз — түркі әлеміндегі ең ежелгі ысқы-ішекті аспап, тегі шамамен IX ғасырға барады. Қазақ фольклорында оны Қорқыт ата ойлап тапқан деп саналады: Қорқыт өлімнен қашып, қобызбен өмірді ұзартуға тырысқан аңыз бар. Аспап бір бөлек ағаштан (қайың, үйеңкі) ойылған, төменгі бөлігі ешкі-терімен қапталады. Екі ішегі ат жалынан тартылады — 60-тан 100-ге дейін жіңішке қылдар. Ысқыш садақ пішінді, ат қылымен керілген. Дауысы адам үнін, боздаған түйенің көлеңкесін, желдің азасын дәл жеткізеді. Ежелден бақсылардың — шамандардың — аспабы, тылсым үнмен рухтарды шақырып, науқастарды емдеген. Кеңес дәуірінде қобыз орындаушылығы құлдырап, XX ғ. Ыхлас Дүкенұлы қайта тірілтті. Бүгін Ұлттық консерваторияда қобыз кафедрасы бар. Қорқыттың «Жер ұйығы», «Ұшардың ұласуы» күйлері әлі орындалады.",
+    kazakh_shapan:"Шапан — қазақ ер-әйелдерінің ұзын сырт киімі, тегі ортағасырлық түркі-парсы дәстүрінен. Матасы: жібек, барқыт, бархат, жүн — қандай тері бай екеніне қарай. Ішіне жүн, мамық, мақта салынып сырылады, ал қасиеттіраққа қаралы қара мысық терісінен астар салынған. Сыртында жиегі жіңішке жіппен, ілмекпен, зерлі жіппен көмкерілген. Ою-өрнек әдетте қошқар мүйіз, қазтабан, түйе табан, өмір ағашы. Түсі әлеуметтік дәрежені білдіреді: ақ шапан — жүкті білдіретін ағалық, көгілдір — өкіл жасы кіші, қара — жасы үлкен, ал қызыл-күрең — байлар мен билер үшін. Шапан беру — «шапан жабу» — қазақтың ең жоғары құрметінің бірі. Бүгін жаңа президенттер тағайындалғанда, өнер қайраткерлеріне сыйлық ретінде де беріледі. Той, жиын, келген қонақ құрметіне лайық киім.",
+    taqiya_grey_m_kazakh_national_headdress:"Тақия — жаз мезгіліне арналған жеңіл дөңгелек бас киім. Тегі ежелгі түркі-парсы дәстүрінен: ортағасырлық миниатюраларда осындай кескіндерді көреміз. Барқыт, шәйі, кездеме, атлас матадан тігіледі, ішіне жұқа кебеже (арматура) қойылып, формасын сақтайды. Ерлер тақиясы көбіне сұр, қара, қою көк, күрең түстерде. Сыртында ою-өрнек тіпті мұқияттылықпен, ак жіппен, зерлі жіппен, кестеленеді — қошқар мүйіз, қазтабан, өмір ағашы. Тақия ер-әйел ортақ емес: ерлер жалаң тақия киеді (үстіне қалпақ немесе тымақ салады қыстауда), ал әйелдер — тек кимешек не орамалдың астынан. Тұс аймақтарында ерекше стильдер: Оңтүстікте — биік конусты, Батыста — жалпақ, Шығыста — кестелі. Бүгін тақия — жастардың ұлттық тағамдар мен той-жиындарда киіп жүретін заманауи ұлттық аксессуары.",
+    taqiya_yellow_f_kazakh_traditional_headdress:"Қыз тақиясы — жасөспірім мен бойжеткен қыздың символы. Ер тақиясынан жарқыраған түсімен, зерлі кестесімен, ажарлы моншақтарымен ерекшеленеді. Матасы — сары, қызыл, көгілдір, жасыл барқыт немесе жібек. Үстіне бір немесе екі үкі қауырсыны бекітіледі — үкі кез келген жаман көзден қорғайды деп саналған. Үкіні жоғалту үлкен қауіп деп бағаланған. Астынан күміс, алтын, моншақ, шашбау түсіріледі. Той-жиынға, ұзату тойында, ұлт мерекелерінде киіледі. Тұрмысқа шыққан соң қыз тақиясының орнына кимешек келеді — бұл әйелдіктің символы. Жас баланың тұсау кесерінде де қыз тақиясын киеді. Заманауи қазақ той-жиындарында дизайнерлер тақияны қайта тірілтіп, жаңа стильдер шығаруда — фестивальдер, той рәсімдерінде танымал.",
+    saukele_ethno_variant_traditional_headdress:"Сәукеле — қазақ қыздарының ұзату тойында киетін ең қымбат, ең биік бас киімі. XIV-XVIII ғасырларда қалыптасқан. Биіктігі 70 см-ге дейін жетеді (кейде 1 м-ге дейін). Негізі — қалың былғары немесе киіз конус, сыртынан қызыл барқытпен қапталған. Үстінде күміс, алтын, маржан, ақық, сүйек әшекейлер. Төбесінде ұзын аққу қауырсыны — оны тек хан қыздары кие алды. Екі бүйірінде ұзын шашбау — маржан жіптерінен тұратын аспа әшекейлер, олар кеудеге дейін түсіп, қыздың әр қимылында моншақ дыбыс шығарады. Сәукеле әдетте әр үлкен әулеттің өз шеберінде жасалатын, әулеттің байлығын көрсететін. Тойдан кейін жас келіншек оны 3-5 жыл киеді (тіпті бала туылғанға дейін), содан кейін «жаулық» — қарапайым басорамалмен алмасады. Бүгін сәукеле — Ұлттық музейдің ең қымбат экспонаттарының бірі, оның бір данасының құны миллиондаған долларға бағаланады.",
+    qamshy_kamshy:"Қамшы — жылқышы мен батырдың серігі, беделдің символы, қазақ мәдениетінің терең таңбасы. Сабы қайың, мүйіз (тау текесі мүйізі), кейде сүйектен ойылған, шамамен 30-40 см. Өрімі былғарыдан — тайыншаның, өгіздің терісінен, 8, 16 не 32 жіңішке қайыстан өріледі. Ең жоғары шеберлікпен 64 өрімді қамшылар да жасалған. Ұзындығы 1-1,5 метр. Күмістің шеке-тартпаларымен, оюмен көмкерілген. Түрлері: жылқы қамшысы (жіңішке), ер қамшысы (қатты), той қамшысы (әсемделген), балаушы қамшы (жеңіл). «Қамшысы үлкен» деп ел билеген адамға айтылады. Той-думанда «сүйінші сүйем» сыйлықпен қамшы беру — үлкен құрмет. Тайпалық белгі ретінде де қолданылған: әр жүз, әр рудың өз қамшы стилі. Заманауи қазақ спортында «қамшы жарысы», қамшымен ұтыс ойындары жанданып келеді.",
+    Asyk:"Асық — қой асығынан жасалған ежелгі бала ойыны, тегі скиф-сақ дәуіріне дейін кетеді. Түркі, моңғол, парсы халықтарында да түрлі формаларда бар. Асықтың төрт беті — сақа (жоғары, тегіс), алшы (иіліп жатқан), бүк (қисық) — әр бет ойында әр түрлі мағына береді. Қазақ балалары мыңдаған жыл бойы «Хан талапай», «Атбақыл», «Бес тас», «Үш табан», «Аңдыма-аңды» сынды ондаған ойын нұсқаларын білді. Сақа асық — ойынның патшасы, оны алу үшін балалар айырықша ұрыс жасайды. Асық арқылы бала логика, стратегия, дәлдік, қарым-қатынас үйренеді. Ежелгі рәсімдерде асық сәуегейлікте де қолданылған. Заманауи Қазақстанда мектептерде асық сабақтары енгізіліп жатыр, ұлттық фестивальдерде турнирлер өткізіледі. 2017 жылы асық ойыны ЮНЕСКО материалдық емес мәдени мұрасы тізіміне енген.",
+    besik:"Бесік — қазақ отбасының ең қасиетті затының бірі. Қайыңнан, талдан, тіпті арша ағашынан ойылып жасалады — бұл ағаштар «тірі» деп саналған. Оюмен, күміс сыр-мойынтіректермен көмкерілген. Ұзындығы шамамен 700 мм. Ең маңыздысы — бесіктің төменгі бөлігінде «шүмек» — сәбидің дәреттерін жинайтын арнайы құрылғы, оған қой құйрығы (қошақан) орнатылған. Бесіктің айналасында бірнеше маңызды рәсімдер: «Бесікке салу» — сәби бес күндік болғанда тұңғыш рет бесікке қою, әжелер жасайды; «Тұсау кесер» — бала жүре бастаған уақытта аяғындағы жіпті ұйығып кесу; «Шілдехана» — 40 күндік болған сәбиге арналған той. Бесіктің үстіне мысық терісі, тұмар жабылады — жаман көзден қорғау үшін. «Әлди-әлди» — қазақ ана бесік жырлары бірнеше ғасыр бойы дамыған, ЮНЕСКО тізімінде.",
+    nomad_sabre:"Қылыш — қазақ жауынгерінің жүзді қаруы, оның тарихы ежелгі сақ дәуіріне жетеді. VII-VIII ғасырларда қазақ даласында дулаттар, қыпшақтар қылышты кеңінен қолданды. Жүзі жоғары сапалы болаттан соғылған — көбіне Дамаск немесе Хорасан болатынан. Сабы қайың ағашынан, мүйізден немесе сүйектен, кейде піл сүйегімен әсемделген. Ұзындығы 90 см, салмағы 1-1,2 кг. Қынабы (сақсай) былғарымен қапталып, ұштарында күміс, алтын әшекейлер. Қылыш аңға (қаһарманға) отбасынан отбасына мұрагерлікпен қалдырылған. Жоңғар шапқыншылығы жылдарында (1723-1750) Абылай, Абылмансұр, Райымбек, Богенбай, Қабанбай, Наурызбай батырлар осы қылыштармен «Ақтабан шұбырынды» кезеңіне қарсы шайқасып, елді азат етті. XIX ғ. Кенесары ханның әскерінде қылыш ең негізгі қару болды. Бүгін мұражайлар мен әулет реликвияларында сақталуда.",
+    balbal_tas:"Балбал тас — ежелгі түркі дәуірінің (VI-IX ғасырлар) тастан қашалған адам бейнесіндегі ескерткіштер. «Балбал» сөзі «баба» деген түркі сөзінен шыққан — «үлкен ата, қорғаушы». Атақты жауынгерлердің, хандар мен билердің қабірлерінде тұрған. Қазақстанда, Моңғолияда, Алтайда, Тәңір таулары мен Оңтүстік Сібірде жүздеген үлгі табылған. Кейбір мүсіндер қолдарында тостаған ұстап тұр — өлілер дүниесіндегі мәңгілік тойды білдіреді. Кейбіреулерінде қылыш, қамшы, айылбас бекітілген. Мүрдемен бірге сол адамның қаруы, тұлпары, әйелі, малы да жерленген — ол о дүниеде өз мүлкімен жүреді деп есептелген. Ежелгі түркілер тас мүсінді қасиетті деп саналдыратын, оны құрбан беріп, өлгеннің рухына ас жасайтын. Бүгінгі қазақ құлпытас-көктастары — балбал тастардың заманауи жаңғырығы. Ұлттық мұражайлар мен ашық аспан астындағы этно-мемориалдарда сақталған.",
+    tamgaly_sun_man:"Таңбалы жартастары — Алматы облысында, Алматы қаласынан 170 км солтүстік-батысында орналасқан ежелгі петроглиф ескерткіші. 5 000-нан аса тас суреттер табылған, ең ертелері қола дәуіріне (б.з.д. XIV-XI ғасырлар) жатады. Ең әйгілі суреттердің бірі — «күн басты адам» (Solar-headed deity) — басы күн сәулесі тәрізді дөңгелек, төңірегінде сәуле, қолдары кеңге жайылған. Бұл — көне түркі-иран мифологиясындағы Күн-құдай, Митра немесе Дингир бейнесі болуы мүмкін. Ежелгі шамандық рәсімдерде осы жерде отыратын кездер болған — жақын жерде құрбан беру таспалары мен қорымдар табылған. 2004 жылы Таңбалы ЮНЕСКО дүниежүзілік мәдени мұрасы тізіміне қосылды — Қазақстанда осындай мәртебедегі 3 объектінің бірі. Бүгін мұнда археологиялық ашық аспан астындағы музей жұмыс істейді, туристерге экскурсиялар өткізіледі.",
+    astau_tabaq:"Астау (немесе тегене) — қазақ дастарханының шаңырағы. Бір бөлек қайың, тал, шыршадан ойылған. Диаметрі 50-80 см, тереңдігі 15-20 см. Жиегі әдетте қошқар мүйіз, өмір ағашы, күн-жұлдыз оюмен көмкерілген. Дайындау үшін шебер 3-6 ай бойы ағашты кептіріп, содан кейін оны арнайы қашаумен ойып шығарады — таза қолмен, машинасыз. Ең үлкен астаулар «астау патша» деп аталып, той-думанға 30-40 адамға арналған. Дастарханға тартылатын тағамдар: бесбармақ (ет + қамыр), қазы, палау, кәуап. Бесбармақ ішегін үлкенге ұсыну — үлкен құрмет, «бас ұсыну» рәсімі. Астауды жеке-жеке шаңыраққа беру дәстүрі бар — «астау беру» той сыйы. Ежелде әр әулеттің өз астауы болды, оны ұрпаққа мұра ретінде қалдырды. Заманауи қазақтарда бесбармақ тойларында әлі де бас орында тұрады.",
+    torsyk_kymyz:"Торсық — қымыс, суу немесе шұбат сақтайтын қоңыр былғары ыдыс. Тегі скиф-сақ дәуіріне барады — қазба жұмыстарында осындай кожа ыдыстардың сынықтары табылған. Дайындау процесі күрделі: ересек тайыншаның, өгіздің төстенген жағының терісін мұқият тазалап, қайыңдап, ащы сүтпен өңдеп, содан кейін екі жағы шетімен жіңішке ұсақ тігіспен қосады. Сыртына арнайы штампалармен «мүйіз», өсімдік, шыңжыр оюлары басылып әсемделеді. Мойны жіңішке, ағаш тығыны (пробкасы) бар. Торсықтың бір ерекшелігі — қымыс табиғи түрде ашуын жалғастыра береді, ыстық күнде салқын тұрғаны сол. Батыс Қазақстанда, әсіресе Атырау мен Батыс Қазақстан облыстарында осындай кожа ыдыс шеберлері әлі де жұмыс істейді. Осы экспонат — Батыс Қазақстан облыстық тарихи-өлкетану музейінен, XIX ғасырға жататын нағыз үлгі.",
+    sedlo:"Ер-тоқым (жай «ер») — жауынгер мен саятшының ажырамас серігі, мыңжылдық көшпелі мәдениетінің шыңы. Ежелгі сақ дәуірінен бері қолданылған. Ағаш қаңқа (қасы) — қатты қайыңдан ойылған, оған тері, жүн, кейде ішкі жағы киізден төселген. Сырты былғарымен қапталып, үстіне ою-өрнек басылады. Ежелде тек ер жауынгерлерге арналған, бірақ XVIII-XIX ғасырларда әсем әйелдер ері де пайда болды — жіңішке, ажарлы. Осы XIX ғ. Батыс Қазақстан облыстық мұражайының ері — сары металл (алтын жалатылған) ажурлы пластиналармен, орта тұсында қызыл ақық тастармен әсемделген. Мұндай ер тек хандардың, билердің немесе бай әулеттердің меншігі болатын. Ердің құрамында 30-дан аса бөлік бар: айыл, сағалдырық, жүген, тізгін, үзеңгі, төстік. Заманауи қазақтар салтанатты рәсімдерде осындай ерлерді әлі де көрсетеді.",
+    aibalta:"Айбалта — қазақ жауынгерінің шайқас қаруы, түркі дәуірінен бері белгілі. Аты өзінің формасынан — «ай» (жарты ай) + «балта». Басы жарты ай пішінде, жүзі 15-25 см. Сабы ағаш немесе мүйізден, ұзындығы 60-80 см. Салмағы 1-2 кг. Ежелде негізінен әскери мақсатта — жақын шайқаста, атпен шапқанда жауды бір соққымен құлату үшін қолданылған. Сабы күміспен, күміс шеке-тартпалармен, шеңберлермен қапталған. Кейбір айбалталардың сабына жіңішке жіп өткізу тесігі бар — соғыс кезінде қолдан түсіп қалмас үшін. XVIII-XIX ғасырларда айбалта тек қару ғана емес, билер мен байлардың айырым белгісі, ертегілерде — сиқырлы қару да болды. Батыстық қазақ фольклорында «айбалталы Абылай», «айбалталы Наурызбай» деген атаулар кездеседі. Осы XIX ғ. экспонат Батыс Қазақстан облыстық тарихи-өлкетану мұражайынан.",
+    qalqan:"Қалқан — жауынгердің қорғаныш қаруы, мыңжылдық ежелгі мұрасы. Осы XVIII ғ. қалқан — Ұлттық музейдің қымбат экспонаттарының бірі. Дөңес пішінді (шар тәрізді) болат парақтан жасалған, диаметрі шамамен 50-60 см. Жиегі және орта тұсы латунь (сары мыс) пластиналарымен көмкерілген. Сыртында мұқия ойылған суреттер: жаяу және атты адамдар, жабайы аңдар (арқар, мысық), әрі куфи (арабтық каллиграфиялық) стиліндегі жазулар. Куфи жазулары — Құраннан жауынгерге қатысты аяттар («Патша Аллаhқа тиесілі...») мен қорғаныш дұғалары. Ішкі жағы қызыл матамен және жұмсақ былғарымен көмкерілген — соққыны жеңілдету үшін. Мұндай әсем қалқандар тек ханзадалар мен билердің қолында болды, шайқасқа сирек шығарылған; көбіне парадтарда, той-думанда көрсетілген. Түркі, қазақ, орта азия зергерлерінің шеберлігінің шыңы.",
+    kubi:"Күбі — қымыс дайындауға арналған ағаш ыдыс. Трапеция пішінді (жоғарғы бөлігі жіңішке, төменгі жалпақ), биіктігі 60-80 см. Жіңішке қарағай тақтайшалардан (клепкалардан) жасалып, үш немесе төрт қара түсті металл шеңберлермен бекітіледі. Ішінде піспек — қымыс араластыруға арналған ұзын сапты (шамамен 90 см) ағаш аспап, оның төменгі басында арнайы ойылған дөңгелек айырғы бар. Қымыс дайындау процесі: биенің сүті күбіге құйылады, ашытқы қосылады, содан кейін піспекпен күніне 1000-2000 рет араластырылады. Осы механикалық процесс арқылы сүт ашып, «тың қымыс» пайда болады. Күбілер кейде бір-екі есе үлкен де жасалған — үлкен той-думандарға. Ақмола, Қарағанды, Павлодар облыстарында сақталатын әулеттерде мұндай күбілер XX ғ. ортасына дейін тұрмыста қолданылды. Заманауи қазақтар қымыс шаруашылығында әлі де күбі қолданады.",
+    ojau:"Ожау — қымыс, айран, шұбат сияқты сусындарды кесе, астауға құюға арналған ағаш шөміш. Бір бөлек ағаштан (қайың, тал, қара ағаш) ойып жасалады. Ұзындығы 30-50 см, тостағанының тереңдігі 6-10 см. Сабы ұзын, ұстауға ыңғайлы, кейде жіңішке оюмен көмкерілген. Ежелгі көшпелілер ыдыс-аяғының көбі осындай ағаш өнімдерінен тұрды — сырғанамайды, тесілмейді, жеңіл, көлікке жинауға оңай. Ожау дастархан рәсімінде маңызды рөл атқарады: ол әрқашан үлкеннің қолында болады, ол өзі кіші-үлкеннің ретімен қымыс құяды. Той-думандарда ондаған ожау бір мезгілде жұмыс істейді. Кейбір шеберлер ожауды оюмен, төменгі жағында арнайы ілгекпен әсемдеп жасайды — қабырғаға іліп қою үшін. Ақмола облысы (Астана айналасы) мұражайынан XX ғ. басы. Заманауи қазақтарда ожау этно-фестивальдер мен ұлттық асханада қолданылады.",
+    sandyq:"Сандық — қазақ отбасының қымбат заттарын сақтайтын ағаш жиhаз. Ежелгі көшпелі көш кезінде де маңызды рөл атқарған — түйеге артып, ұзақ жолға шыққан. Материалы: қайың, тал, қара қайың, кейде кедр ағашы. Ұзындығы 80-120 см, биіктігі 40-60 см. Сырты жұқа темірмен қапталады — тек сақтық емес, ою-өрнек әсемдігі де. Ортасында, бүйірлерінде күміс, латунь пластиналар — оюмен, ойылған суреттермен әсемделеді. Ішінде: жасау (қыздың келер шаңырағына апаратын мұрасы), кестелі шапан, кимешек, күміс әшекейлер, кітаптар, отбасы мұрасы. «Сандық толы» тілеулесі — жасау беру рәсімінде айтылатын, «Сенің отбасың мол болсын» деген мағынада. Ежелде сандықты арнайы шеберлер жасаған, оның ашылу-жабылу механизмі үлкен өнер болып саналды. Кейбір сандықтардың құлыпы 3-4 түрлі кілтпен ашылатын күрделі құрылғылар. Заманауи қазақтарда сандық — ежелгі мәдениеттің символы.",
+    togyzqumalaq:"Тоғызқұмалақ — қазақ, қырғыз, түркімен халықтарында бар ежелгі дала логикалық ойыны. «Тоғыз» + «құмалақ» — «9 тас» деген мағынада. Тегі манкала топ ойындарынан, олар 4-5 мың жыл бұрын Африкада пайда болып, Ұлы Жібек жолымен таралған. Тоғызқұмалақ тақтасы ағаштан, кейде тастан ойылған. Екі жақта тоғыздан ұя, ортасында екі үлкен «қазан» (ұтылған құмалақтарды жинайтын). Ойын басында әр ұяда 9 құмалақтан, барлығы 162. Ойыншылар кезекпен ұяны алып, оны сағат бағытына қарай айналдырады. Қиын ережелер: «отау» (тұзақ ұясын дұрыс жасау), «түсім» (қарсыласқа тас түсіру). Ойын әдетте 30-60 минутқа созылады, гроссмейстерлер арасында 3-4 сағат бола алады. 1949 жылы Қазақстан республикалық федерациясы құрылды. Бүгін дүниежүзілік чемпионаттар өткізіледі, Азия ойындарында ресми спорт. Мектептерде «тоғызқұмалақ сабағы» енгізілген.",
+    sazsyrnai:"Саз сырнай — ежелгі Түркістан жерінде қыш балшықтан күйдіріп жасалған үрмелі аспап. Тегі қола дәуіріне барады — б.з.д. II-I мыңжылдықтарда. Пішіні үлкен жұмыртқа тәрізді, 6-12 дыбыс тесігі бар. Ежелде негізінен пастухтар мен балалардың аспабы болған — жаз жайлауда мал ойлатып тұрғанда ойналған. Кейде діни рәсімдерде де қолданылған — балшықтан жасалған аспап табиғатпен тікелей байланысады деп саналған. Дауыс диапазоны шектеулі, бірақ үні тұнық және ерекше. Заманауи саз сырнайлар қыш шеберлерімен қайта тірілтіліп, түрлі формаларда жасалуда — қой, түйе, құс, шаңырақ бейнесінде. Түркістан 1500 жылдығы (2000 ж.) құрметіне арналған нұсқа Ұлттық музейде сақталған — фонында Қожа Ахмет Ясауи мазары мен түйе керуенінің бейнесі, «Түркістан 1500» жазуы. Бүгін саз сырнайды этно-музыканттар этно-джаз, world music стилдерінде қолданады.",
+    shanqobyz:"Шаңқобыз (варган) — түркі, моңғол, финн-угорь, тіпті америкалық үнділерге белгілі ежелгі тілшелі аспап. Тегі 4-5 мың жыл бұрын Азияда пайда болған. Металл (кейде ағаш) пластинадан жасалған, ортасында иіліп тұратын жіңішке тілшесі бар. Ойнау техникасы: аспапты алдыңғы тістердің арасына тығыз ұстап, тілшесін саусақпен қозғайды. Ауыз қуысы резонатор рөлін атқарады — тілдің, ерніннің, тыныстың өзгеруімен түрлі әуендер шығарылады. Ежелгі шамандық рәсімдерде, транс-медитацияда, түнгі ойындарда қолданылған. Қазақ жаугершіліктерінде шаңқобыз әндерімен түнде ойнау «жан рухтарды шақыру» деп саналды. Ер-жігіт өз қыздың сүюін білдіру үшін шаңқобызбен өз әуенін ойнайтын. XX ғ. басында дерлік ұмытылып, бүгін ұлттық аспапшылар қайта тірілтуде. Ақмола ОМ экспонаты — 2015 жылы жасалған заманауи нұсқа, бірақ дәстүрлі техникамен. Дүниежүзінде варган этно-джаз, world music стилдерінде танымал.",
+    perstenj:"Тұмсықты жүзік («Птичий клюв») — XIX ғ. Костанай зергерлерінің шығармасы, қазақ ұлттық зергерлік өнерінің биік үлгісі. Каст (тас орнатылатын шыңырауы) овал пішінді, ұштарында үшкір, «құс тұмсығы» тәрізді — сондықтан осындай атау. Материалы: жоғары сапалы күміс, ішінде кішкене тас (агат, ақық немесе бирюза) орнатылған. Әсемдеу техникалары: скан (жіңішке күміс жіптен өру), зернь (майда күміс шариктерін жапсыру), плетенка-косичка ою жиегі. Ежелгі қазақ сенімі бойынша жүзіктер жай әшекей емес, тұмар (амулет) рөлін атқарды: ішіндегі тас ие адамды жаман көзден, ауру-сырқаттан қорғайды. Әрбір тас өз белгісі бар: агат — беделді, ақық — үй-жайлы, бирюза — жолды. Костанай, Ақтөбе, Батыс Қазақстан аймақтарында зергерлердің әр әулеті болған, олардың құпиясы тек ұрпақтан ұрпаққа беріледі. Осы туынды Костанай облыстық тарихи-өлкетану музейінде.",
+    bilezik:"Білезік — қазақ әйелдерінің ұзақ уақыттан бері бас әшекейі. Ежелгі қорымдардан тапқан білезіктер б.з.д. VII-V ғасырларға дейін жетеді (сақ дәуірі). Материалдары әртүрлі: күміс, алтын, күміс+алтын біріктірмесі; түрлі-түсті тастар — ақық, маржан, бирюза, агат. Осы туынды — заманауи қазақ зергері Шапабаев Қайрат Бұлатұлының шығармасы. Массивті, ашық пішінде (тұйықталмаған, ол қолға оңай кигізіледі), беті геометриялық оюмен әшекейленген — үшбұрыш, ромб, шеңберлер. Орталық акцент — үш овал агат тас, білезіктің айналасында бірдей орналасқан. Тастар шығыңқы қапсырмаларда бекітілген. Ежелгі түркі дәстүрі бойынша білезік те тұмар — оң қолда білезік көру бақыт әкеледі деп саналды. Той сыйы, мереке жинанғанда қыздарға берілетін ажарлы зат. Шаймардан Сариев атындағы декоративті-қолданбалы өнер мұражайының экспонаты — Қазақстанның ең үлкен зергерлік коллекцияларының бірі.",
+    kese:"Кесе — XVIII-XIX ғасырлардың керамика ыдысы, оның шыққан жері — Ұлы Жібек жолы бойындағы қалалар: Отрар, Тараз, Сайрам. Ортағасырлық Отрар (Фараб) орталық Азияның ең үлкен қыш шеберлерінің бірі болды — Аль-Фараби осы жерде туылған, көне қала V-XVI ғасырларда гүлденіп тұрды. Керамика жасау процесі: жергілікті балшық жиналады, гончарлы дөңгелекте пішіні қалыптасады, содан кейін арнайы пеште 800-1000°C-ге дейін күйдіріледі. Осы кесенің ерекше техникасы — «ак фондық глазурь»: ак глазурьге көгілдір және қоңыр минералды бояулармен ою салынады. Оюлар: өсімдік мотивтері (өмір ағашы), геометриялық фигуралар, кейде куфи жазулары. Кесе әдетте қымыс, шай, тары қиыры ішуге арналған. Осы туынды — «Шым қала» тарихи-мәдени кешенінің экспонаты, Шымкент маңында ашық аспан астындағы этно-мұражай. Ортағасырлық Отрар, Сайрам, Испиджаб қалаларының рухын жаңғыртады."
+  };
+  // apply extended histories into META
+  Object.keys(HISTORY_EXT).forEach(k => { if (META[k]) META[k].history = HISTORY_EXT[k]; });
+
+  // ═════ QUIZ_DATA — 5-7 questions per exhibit ═════
+  const Q = (q, a, correct, exp) => ({q, a, correct, exp});
+  const QUIZ_DATA = {
+    yurt_low_quality_texture:{cat:'Тұрғын жай',fcat:'home',no:'001',poster:'assets/posters/ak-orda.png',label:'киіз үй',questions:[
+      Q('Киіз үйдің жоғарғы дөңгелек бөлігі қалай аталады?',['Кереге','Уық','Шаңырақ','Босаға'],2,'Шаңырақ — киіз үйдің жоғарғы шеңбері, аспанмен байланыс символы.'),
+      Q('Киіз үй есігі қандай бағыт қарай ашылады?',['Оңтүстікке','Шығысқа','Күн батысы қарай','Солтүстікке'],2,'Дәстүр бойынша есік күн батысы қарай ашылады — қасиетті бағыт.'),
+      Q('Киіз үйде әдетте неше уық болады?',['20-25','40-60','80-100','10-15'],1,'Уық саны 40-60, кейде одан да көп болуы мүмкін — киіз үйдің көлеміне қарай.'),
+      Q('Киіз үй қашан ЮНЕСКО мұрасы тізіміне енген?',['2010','2014','2018','2020'],1,'2014 жылы ЮНЕСКО адамзаттың материалдық емес мұрасы тізіміне қосылды.'),
+      Q('Киіз үй жинауға шамамен қанша уақыт кетеді?',['5-10 мин','40 мин','2-3 сағат','1 күн'],1,'Тәжірибелі шеберлер шамамен 40 минутта киіз үй тіге алады.')
+    ]},
+    dombyra_by_sultan_elamanov:{cat:'Музыка',fcat:'music',no:'014',poster:'assets/posters/dombyra.png',label:'домбыра · қара ағаш',questions:[
+      Q('Домбырада неше ішек бар?',['1','2','3','4'],1,'Дәстүрлі домбыра — екі ішекті шертпелі аспап.'),
+      Q('«Балбырауын» күйінің авторы кім?',['Дәулеткерей','Тәттімбет','Құрманғазы','Абыл'],2,'«Балбырауын» — атақты күйші Құрманғазының шығармасы.'),
+      Q('Домбыраның шанағы қандай ағаштан жасалады?',['Емен','Қарағаш немесе қайың','Қарағай','Кедр'],1,'Дәстүрлі шанақ қарағаштан немесе қайыңнан ойылады.'),
+      Q('Дәстүрлі домбыраның ұзындығы қандай?',['≈ 800 мм','≈ 1000 мм','≈ 1260 мм','≈ 1500 мм'],2,'Стандартты домбыраның ұзындығы шамамен 1260 мм.'),
+      Q('Домбыра күні қашан аталып өтіледі?',['9 мамыр','1 шілде','22 наурыз','30 тамыз'],1,'2010 жылдан бері 1 шілде — Ұлттық домбыра күні.')
+    ]},
+    kazakh_qobyz_kobyz:{cat:'Музыка',fcat:'music',no:'019',poster:'assets/posters/qobyz.png',label:'қобыз · қайың',questions:[
+      Q('Қобыздың атасы деп кім саналады?',['Абыл','Қорқыт ата','Құрманғазы','Асан қайғы'],1,'Аңыз бойынша қобызды Қорқыт ата ойлап тапқан.'),
+      Q('Қобыздың ішектері нежерден жасалады?',['Нейлон','Металл жіп','Ат жалы','Түйе жүн'],2,'Дәстүрлі қобыз ішектері ат жалынан тартылады.'),
+      Q('Қобыз шанағы неден ойылған?',['Ағаштан және ешкі-терімен қапталған','Металл','Пластик','Барқыт'],0,'Шанақ бір бөлек ағаштан ойылып, ешкі-терімен қапталады.'),
+      Q('XX ғасырда қобыз өнерін кім қайта тірілтті?',['Ыхлас Дүкенұлы','Дина Нұрпейісова','Мұқан Төлебаев','Нұрғиса Тілендиев'],0,'Ыхлас Дүкенұлы кеңес дәуірінде қобыз өнерін қайта дамытты.'),
+      Q('Ежелде қобыз кімнің қолында болған?',['Батырлардың','Бақсылардың','Балалардың','Хандардың'],1,'Ежелде қобыз — бақсылардың (шамандардың) қасиетті аспабы болған.')
+    ]},
+    kazakh_shapan:{cat:'Ұлттық киім',fcat:'clothing',no:'027',poster:'assets/posters/shapan.png',label:'шапан',questions:[
+      Q('«Шапан жабу» дегеніміз не?',['Тойға дайындалу','Құрметке лайық қонаққа сый беру','Қыстауға дайындалу','Дұға оқу'],1,'«Шапан жабу» — құрметке лайық қонаққа сый беру дәстүрі.'),
+      Q('Шапанда жиі кездесетін ою қандай?',['Гүл','Қошқар мүйіз','Жұлдыз','Крест'],1,'Ең жиі кездесетін ою — қошқар мүйіз, ол берекенің символы.'),
+      Q('Шапан қандай маталардан тігіледі?',['Тек мақта','Жібек, барқыт, жүн','Тек кожа','Полиэстер'],1,'Дәстүрлі шапан жібек, барқыт, жүн, бархат маталардан тігіледі.'),
+      Q('Ежелде қара шапан кімге тән?',['Жасы үлкен адамға','Балаға','Байлар мен билерге','Күйеу жігітке'],0,'Қара түс жасы үлкендердің шапанына тән болды.'),
+      Q('Шапан ішіне не салынады?',['Жүн, мамық немесе мақта','Сабан','Ағаш үгіндісі','Резеңке'],0,'Жылу үшін ішіне жүн, мамық, мақта салынып сырылады.')
+    ]},
+    taqiya_grey_m_kazakh_national_headdress:{cat:'Бас киім',fcat:'clothing',no:'032',poster:'assets/posters/taqiya-er.png',label:'тақия · ер',questions:[
+      Q('Тақия негізінен қандай мезгілде киіледі?',['Қыс','Күз','Жаз және көктем','Жаңа жыл'],2,'Тақия — жеңіл бас киім, негізінен жаз мезгіліне арналған.'),
+      Q('Ер тақиясының түсі әдетте қандай?',['Ашық сары','Сұр, қара, қою көк','Қызғылт','Жасыл'],1,'Ер тақиясы көбіне сұр, қара, қою көк, күрең түсті болады.'),
+      Q('Тақия ішіне не қойылады?',['Металл','Жұқа кебеже (арматура)','Жүн','Кожа'],1,'Формасын сақтау үшін ішіне жұқа кебеже (арматура) қойылады.'),
+      Q('Қыста тақия үстіне не киеді?',['Ешнәрсе','Тымақ немесе қалпақ','Орамал','Каскет'],1,'Қыс мезгілінде тақия үстіне тымақ немесе қалпақ киіледі.'),
+      Q('Тақия матасы қандай?',['Кожа','Барқыт, шәйі, кездеме','Полиэстер','Джинс'],1,'Дәстүрлі тақия барқыт, шәйі, кездеме, атлас маталардан тігіледі.')
+    ]},
+    taqiya_yellow_f_kazakh_traditional_headdress:{cat:'Бас киім',fcat:'clothing',no:'034',poster:'assets/posters/taqiya-qyz.png',label:'тақия · қыз',questions:[
+      Q('Қыз тақиясының үстіне не бекітіледі?',['Гүл','Үкі қауырсыны','Крест','Қоңырау'],1,'Үкі қауырсыны — тазалық пен арулықтың нышаны.'),
+      Q('Тұрмысқа шыққан соң қыз тақиясының орнына не келеді?',['Орамал','Тымақ','Кимешек','Ешнәрсе'],2,'Кимешек — тұрмысқа шыққан әйелдің бас киімі.'),
+      Q('Қыз тақиясының түсі қандай?',['Тек қара','Ашық — сары, қызыл, көгілдір','Ақ','Күлгін'],1,'Қыз тақиясы жарқын түсті — сары, қызыл, көгілдір, жасыл болады.'),
+      Q('Үкі қауырсыны нені білдіреді?',['Байлықты','Тазалық пен арулық','Жасты','Хандықты'],1,'Үкі қауырсыны тазалық пен арулықтың символы, жаман көзден қорғайды.'),
+      Q('Қыз тақиясы қашан киіледі?',['Күн сайын','Той, мереке кезінде','Жерлеу рәсімінде','Оқыған кезде'],1,'Қыз тақиясы негізінен той, жиын, мереке кезінде киіледі.')
+    ]},
+    saukele_ethno_variant_traditional_headdress:{cat:'Бас киім',fcat:'clothing',no:'038',poster:'assets/posters/saukele.png',label:'сәукеле · салтанат',questions:[
+      Q('Сәукеле қандай тойда киіледі?',['Тұсау кесерде','Ұзату тойында','Наурыз тойында','Балаға ат қоюда'],1,'Сәукеле — ұзату тойында келіншектің ең қымбат бас киімі.'),
+      Q('Сәукеленің биіктігі шамамен қандай болады?',['20 см','50 см','70 см','1 м'],2,'Сәукеленің биіктігі 70 см-ге дейін жетеді, кейде 1 м-ге дейін.'),
+      Q('Сәукеле үстіне қандай қауырсын салынады?',['Түйенікі','Ат жалы','Аққу қауырсыны','Тауық'],2,'Тек хан қыздары ғана аққу қауырсынын кие алды.'),
+      Q('Некеден кейін сәукеле неше жыл киіледі?',['1 жыл','3-5 жыл','10 жыл','Өмір бойы'],1,'Некеден кейін 3-5 жыл киіледі, содан кейін «жаулық» алмасады.'),
+      Q('Сәукелені қандай тастармен әсемдейді?',['Изумруд','Маржан, ақық','Жанжан','Топаз'],1,'Сәукеле күміс, алтын, маржан, ақық, аққу қауырсынымен әшекейленеді.')
+    ]},
+    qamshy_kamshy:{cat:'Қолөнер',fcat:'craft',no:'071',poster:'assets/posters/qamshy.png',label:'қамшы · өрім',questions:[
+      Q('Қамшыда ең көп неше өрім болуы мүмкін?',['4','8','32','64'],3,'Ең жоғары шеберлікпен 64 өрімді қамшылар да жасалған.'),
+      Q('Қамшының сабы неден жасалады?',['Пластик','Қайың, мүйіз немесе сүйек','Металл','Резеңке'],1,'Сабы қайың, мүйіз (тау текесі мүйізі), кейде сүйектен жасалады.'),
+      Q('«Қамшысы үлкен» деген сөз кімге айтылады?',['Балаға','Ел билеген адамға','Малшыға','Оқушыға'],1,'«Қамшысы үлкен» — беделді, ел билеген адамға айтылатын сөз.'),
+      Q('Қамшы өрімі қандай материалдан?',['Нейлон','Былғары (тайынша, өгіз терісі)','Мақта','Резеңке'],1,'Өрімі былғарыдан — тайыншаның, өгіздің терісінен өріледі.'),
+      Q('Қамшының жалпы ұзындығы қандай?',['30 см','60 см','1-1.5 м','3 м'],2,'Дәстүрлі қамшының ұзындығы 1-1.5 метр.')
+    ]},
+    Asyk:{cat:'Ұлттық ойын',fcat:'game',no:'108',poster:'assets/posters/asyk.png',label:'қой сүйегі',questions:[
+      Q('Асық қандай жануардың сүйегінен жасалады?',['Түйе','Жылқы','Қой','Бұзау'],2,'Асық — қой асығынан жасалған ежелгі бала ойыны.'),
+      Q('Асықтың төрт бетінің қайсысы «сақа» деп аталады?',['Тегіс жоғарғы','Иіліп жатқан','Қисық','Астыңғы'],0,'Сақа — асықтың жоғарғы тегіс беті, «ойынның патшасы».'),
+      Q('Қашан асық ЮНЕСКО тізіміне енген?',['2010','2015','2017','2020'],2,'2017 жылы асық ойыны ЮНЕСКО материалдық емес мұрасы тізіміне енген.'),
+      Q('Осы ойындардың қайсысы асықпен ойналмайды?',['Хан талапай','Атбақыл','Бес тас','Тоғызқұмалақ'],3,'Тоғызқұмалақ — тақтада құмалақпен ойналатын бөлек ойын.'),
+      Q('Асық ойыны балаға не үйретеді?',['Тек күш','Логика, тактика, дәлдік','Ән салуды','Ат мінуді'],1,'Асық логика, стратегия, дәлдік және қарым-қатынасты дамытады.')
+    ]},
+    besik:{cat:'Тұрмыстық',fcat:'home',no:'004',poster:'assets/posters/besik.png',label:'бесік · қайың',questions:[
+      Q('Бесік қандай ағаштан жасалады?',['Емен','Қайың, тал, арша','Кедр','Қарағай'],1,'Бесік қайыңнан, талдан, кейде арша ағашынан ойылады.'),
+      Q('«Бесікке салу» рәсімі қашан өткізіледі?',['Бала туылған сәтте','Бес күндік болғанда','Бір жасқа толғанда','Тұсау кесерде'],1,'Сәби бес күндік болғанда алғаш рет бесікке салынады.'),
+      Q('«Тұсау кесер» дегеніміз не?',['Бесік беру','Аяғындағы жіпті ұйығып кесу','Ат қою','Той жасау'],1,'Бала жүре бастаған уақытта аяғындағы жіпті кесу рәсімі.'),
+      Q('Бесіктегі «шүмек» не үшін?',['Ойнау үшін','Дәретті жинау үшін','Ас үшін','Шам үшін'],1,'Шүмек — сәбидің дәреттерін жинауға арналған арнайы құрылғы.'),
+      Q('«Шілдехана» тойы қашан өткізіледі?',['Туылған күні','40 күндік болғанда','1 жаста','Мектепке кіргенде'],1,'40 күндік болған сәбиге арналған той — «шілдехана».')
+    ]},
+    nomad_sabre:{cat:'Қару-жарақ',fcat:'weapon',no:'076',poster:'assets/posters/qylysh.png',label:'болат · сүйек',questions:[
+      Q('Қылыштың жүзі неден жасалды?',['Мыс','Болат','Күміс','Ағаш'],1,'Жүзі жоғары сапалы болаттан (Дамаск, Хорасан) соғылған.'),
+      Q('Қылыштың сабы қандай материалдан?',['Ағаш пен сүйек','Тек металл','Пластик','Резеңке'],0,'Сабы қайың ағашынан, мүйізден немесе сүйектен жасалады.'),
+      Q('Қылыштың орташа ұзындығы қандай?',['≈ 50 см','≈ 90 см','≈ 150 см','≈ 200 см'],1,'Дәстүрлі қазақ қылышының ұзындығы шамамен 90 см.'),
+      Q('Жоңғар шапқыншылығына қарсы шыққан батыр кім?',['Абылай','Шыңғыс хан','Аттила','Ұлықбек'],0,'Абылай хан, Богенбай, Қабанбай, Наурызбай — жоңғарға қарсы шыққан қаһармандар.'),
+      Q('Қылыш қынабы қандай материалдан?',['Мата','Былғары','Тек ағаш','Кожа + күміс әшекей'],3,'Қынабы (сақсай) былғарымен қапталып, күміспен әсемделген.')
+    ]},
+    balbal_tas:{cat:'Ежелгі мұра',fcat:'ancient',no:'112',poster:'assets/posters/balbal.png',label:'тас · түркі дәуірі',questions:[
+      Q('Балбал тас қай ғасырларда жасалды?',['III-V ғ.','VI-IX ғ.','X-XII ғ.','XV-XVII ғ.'],1,'Балбал тастар ежелгі түркі дәуірінде — VI-IX ғасырларда жасалған.'),
+      Q('«Балбал» сөзінің мағынасы қандай?',['Тас','Баба (үлкен ата)','Батыр','Аруақ'],1,'«Балбал» — «баба» түркі сөзінен: үлкен ата, қорғаушы.'),
+      Q('Балбал тас кімге орнатылады?',['Балаға','Атақты жауынгерлер мен билерге','Барлық адамға','Қыздарға'],1,'Атақты жауынгерлердің, хандар мен билердің қабірлеріне қойылған.'),
+      Q('Мүрдемен бірге не жерленеді?',['Ешнәрсе','Қару, тұлпары','Тек тамақ','Кітаптар'],1,'Мүрдемен бірге сол адамның қаруы, тұлпары, малы да жерленген.'),
+      Q('Балбал тастар қазір қай жерлерден табылған?',['Тек Қазақстаннан','Моңғолия, Алтай, Тәңір тау','Тек Еуропадан','Африкадан'],1,'Моңғолия, Алтай, Тәңір таулары мен Оңтүстік Сібірде табылған.')
+    ]},
+    tamgaly_sun_man:{cat:'Ежелгі мұра',fcat:'ancient',no:'099',poster:'assets/posters/tamgaly.png',label:'петроглиф · тас',questions:[
+      Q('Таңбалы петроглифтері қашан жасалды?',['V-III ғ. б.з.д.','XIV-XI ғ. б.з.д.','I-II ғ. б.з.','X-XII ғ.'],1,'Таңбалы петроглифтері қола дәуірі — XIV-XI ғасырлар б.з.д.'),
+      Q('Таңбалы қашан ЮНЕСКО тізіміне енген?',['1998','2004','2010','2015'],1,'2004 жылы Таңбалы ЮНЕСКО дүниежүзілік мұрасы тізіміне қосылды.'),
+      Q('Таңбалы қай облыста орналасқан?',['Алматы','Астана','Атырау','Ақмола'],0,'Таңбалы жартастары Алматы облысында, қаладан 170 км қашықта.'),
+      Q('Осы жерде барлығы қанша петроглиф табылған?',['≈ 500','≈ 1 000','≈ 5 000','≈ 10 000'],2,'Таңбалы кешенінде 5 000-нан аса петроглиф табылған.'),
+      Q('«Күн басты адам» кімнің бейнесі болуы мүмкін?',['Хан','Күн-құдай (Митра)','Батыр','Диқан'],1,'Ежелгі иран-түркі мифологиясындағы Күн-құдай (Митра) бейнесі.')
+    ]},
+    astau_tabaq:{cat:'Тұрмыстық',fcat:'home',no:'054',poster:'assets/posters/astau.png',label:'астау · ағаш',questions:[
+      Q('Астау қандай ағаштан жасалады?',['Емен','Қайың, тал, шырша','Кедр','Кокос'],1,'Астау бір бөлек қайың, тал немесе шыршадан ойылады.'),
+      Q('Астаудың негізгі тағамы қандай?',['Палау','Бесбармақ','Пицца','Сорпа'],1,'Астауда әдетте бесбармақ (ет + қамыр) тартылады.'),
+      Q('Астаудың диаметрі қандай?',['20-30 см','50-80 см','150-200 см','1 м-ден жоғары'],1,'Дәстүрлі астаудың диаметрі 50-80 см.'),
+      Q('«Бас ұсыну» дегеніміз не?',['Дұға оқу','Үлкенге ет бөлігін ұсыну','Сәлем беру','Есік ашу'],1,'Үлкенге қой басын ұсыну — құрметтің ең жоғары түрі.'),
+      Q('Астауды дайындауға шеберге қанша уақыт кетеді?',['1 күн','3-6 ай','1 жыл','5 жыл'],1,'Шебер ағашты кептіріп, ойып шығуға 3-6 ай жұмсайды.')
+    ]},
+    torsyk_kymyz:{cat:'Тұрмыстық',fcat:'home',no:'087',poster:'assets/posters/torsyk.png',label:'қымыз ыдысы',questions:[
+      Q('Торсықта негізінен қандай сусын сақталды?',['Су','Қымыз','Май','Балл'],1,'Торсық — негізінен қымыз, шұбат сақтауға арналған былғары ыдыс.'),
+      Q('Торсық қандай материалдан жасалады?',['Ағаш','Былғары (қоңыр, өгіз/тайынша терісі)','Қыш','Металл'],1,'Қоңыр былғарыдан — тайыншаның, өгіздің терісінен тігіледі.'),
+      Q('Торсықтың тығыны неден?',['Металл','Ағаш','Пластик','Резеңке'],1,'Мойны жіңішке, тығыны ағаштан жасалған.'),
+      Q('Торсықта қандай ою кездеседі?',['Крест','Мүйіз оюы','Гүл','Ешқандай'],1,'Бүйірінде «мүйіз» оюлары штампалып қара түспен өрнектеледі.'),
+      Q('Торсықтың тегі қай дәуірге жетеді?',['XX ғ.','XV ғ.','Скиф-сақ дәуірі','Тас дәуірі'],2,'Скиф-сақ дәуірінен бері белгілі, қазба жұмыстарында осындай сынықтар табылған.')
+    ]},
+    sedlo:{cat:'Қолөнер',fcat:'craft',no:'068',poster:'assets/posters/sedlo.png',label:'ер · былғары',questions:[
+      Q('Ер-тоқымның қаңқасы неден?',['Металл','Пластик','Ағаш (қасы)','Күміс'],2,'Ағаш қаңқа (қасы) — қатты қайыңнан ойылады.'),
+      Q('Осы XIX ғ. ерін кім қолданған?',['Ешкім','Тек балалар','Хандар мен билер','Барлық қарапайым адам'],2,'Мұндай әсем ер тек хандардың, билердің немесе бай әулеттердің меншігі болатын.'),
+      Q('Ер құрамында неше бөлік бар?',['5','10','30-дан аса','100'],2,'Ер құрамында 30-дан аса бөлік бар: айыл, сағалдырық, жүген, тізгін, үзеңгі т.б.'),
+      Q('Осы XIX ғ. ердің әшекейі неден?',['Ағаш','Сары металл (алтын жалатылған) пластиналар','Пластик','Тек былғары'],1,'Сары металл (алтын жалатылған) ажурлы пластиналармен әсемделген.'),
+      Q('Ер қашан пайда болды?',['XX ғ.','XV ғ.','Ежелгі сақ дәуірінен','Тас дәуірінде'],2,'Ежелгі сақ дәуірінен бері көшпелілер қолданған.')
+    ]},
+    aibalta:{cat:'Қару-жарақ',fcat:'weapon',no:'078',poster:'assets/posters/aibalta.png',label:'айбалта · күміс',questions:[
+      Q('Айбалтаның басы қандай пішінде?',['Дөңгелек','Жарты ай','Шаршы','Үшбұрыш'],1,'Басы жарты ай пішінде — сондықтан «ай + балта» атауы шыққан.'),
+      Q('Айбалтаның сабы неден?',['Тек ағаш','Күміспен қапталған ағаш','Тек металл','Пластик'],1,'Сабы ағаш, сыртынан күміспен қапталған.'),
+      Q('XVIII-XIX ғ. айбалта кімнің қолында айырым белгісі болды?',['Балалардың','Билер мен батырлардың','Жерлеу шеберлерінің','Диқандардың'],1,'Билер мен батырлардың қолында айырым белгісі ретінде де қолданылған.'),
+      Q('Айбалтаның салмағы шамамен қандай?',['200-500 г','1-2 кг','10 кг','20 кг'],1,'Дәстүрлі айбалтаның салмағы 1-2 кг.'),
+      Q('Айбалтаның жүзі неше см?',['5 см','15-25 см','50 см','1 м'],1,'Айбалтаның жүзі 15-25 см болады.')
+    ]},
+    qalqan:{cat:'Қару-жарақ',fcat:'weapon',no:'081',poster:'assets/posters/qalqan.png',label:'болат · латунь',questions:[
+      Q('Қалқанның жиегі қандай металдан?',['Күміс','Латунь (сары мыс)','Темір','Алтын'],1,'Жиегі латунь (сары мыс) пластиналарымен көмкерілген.'),
+      Q('Қалқанның диаметрі шамамен қандай?',['20 см','50-60 см','1 м','2 м'],1,'Дөңес пішінді қалқанның диаметрі шамамен 50-60 см.'),
+      Q('Куфи стиліндегі жазулар нені білдіреді?',['Ертегілерді','Құраннан аяттар','Хабарламаларды','Ешнәрсе'],1,'Куфи жазулары — Құраннан аяттар мен қорғаныш дұғалары.'),
+      Q('Қалқан қай ғасырға жатады?',['XV','XVIII','XX','XI'],1,'Осы қалқан XVIII ғасырдың экспонаты, Ұлттық музейде.'),
+      Q('Қалқанның ішкі жағы немен қапталған?',['Ағаш','Қызыл мата және кожа','Металл','Ешнәрсе'],1,'Ішкі жағы қызыл матамен және жұмсақ былғарымен көмкерілген.')
+    ]},
+    kubi:{cat:'Тұрмыстық',fcat:'home',no:'047',poster:'assets/posters/kubi.png',label:'қымыз күбісі',questions:[
+      Q('Күбі қандай сусынды дайындау үшін қолданылады?',['Шай','Қымыз','Су','Сорпа'],1,'Күбі — қымыс әзірлеуге арналған трапеция пішіндегі ыдыс.'),
+      Q('Күбі неше металл шеңбермен бекітіледі?',['1','2','3-4','10'],2,'Үш немесе төрт қара түсті металл шеңберлермен бекітіледі.'),
+      Q('Күбі ішіндегі піспектің ұзындығы қандай?',['20 см','90 см','2 м','5 м'],1,'Піспек — ұзын сапты (шамамен 90 см) ағаш аспап.'),
+      Q('Қымыс жасау үшін бір күнде неше рет араластыру керек?',['10-20','100','1 000 - 2 000','10 000'],2,'Күніне 1000-2000 рет араластырылады — сүт ашуы үшін.'),
+      Q('Күбінің биіктігі қандай?',['20 см','40 см','60-80 см','2 м'],2,'Дәстүрлі күбінің биіктігі 60-80 см.')
+    ]},
+    ojau:{cat:'Тұрмыстық',fcat:'home',no:'058',poster:'assets/posters/ojau.png',label:'ағаш шөміш',questions:[
+      Q('Ожау қандай мақсатта қолданылады?',['Тамақ турауға','Қымыз, айран құюға','Су тартуға','Ағаш кесуге'],1,'Ожау — қымыс, айран, шұбат сынды сусындарды құюға арналған шөміш.'),
+      Q('Ожау қандай материалдан?',['Металл','Пластик','Бір бөлек ағаш','Кожа'],2,'Бір бөлек ағаштан (қайың, тал, қара ағаш) ойылып жасалады.'),
+      Q('Ожаудың ұзындығы қандай?',['5 см','30-50 см','1 м','2 м'],1,'Ожаудың ұзындығы 30-50 см.'),
+      Q('Дастарханда ожау кімнің қолында болады?',['Балалардың','Үлкендердің','Қонақтардың','Кез келгеннің'],1,'Ожау әрқашан үлкеннің қолында болады — ол кіші-үлкеннің ретімен құяды.'),
+      Q('Ежелгі көшпелілер неге ағаш ыдыс қолданды?',['Ол қымбат','Сырғанамайды, тесілмейді, жеңіл','Металдан жақсы','Тек әдеттен'],1,'Сырғанамайды, тесілмейді, жеңіл, көшке жинауға оңай.')
+    ]},
+    sandyq:{cat:'Тұрмыстық',fcat:'home',no:'092',poster:'assets/posters/sandyq.png',label:'ағаш сандық',questions:[
+      Q('Сандық қандай маңызды рәсімде қолданылады?',['Наурыз тойында','Жасау беруде','Жерлеуде','Тұсау кесерде'],1,'Жасау беруде маңызды орын алады — «сандық толы» тілеулесі.'),
+      Q('Сандық қандай материалдан жасалады?',['Тек металл','Ағаш пен металл қаптау','Пластик','Кожа'],1,'Ағаштан жасалып, сырты жұқа темірмен қапталады.'),
+      Q('Сандықтың ұзындығы шамамен қандай?',['20 см','40 см','80-120 см','3 м'],2,'Дәстүрлі сандықтың ұзындығы 80-120 см.'),
+      Q('«Сандық толы» тілеулесі не білдіреді?',['Той жасау','Отбасың мол болсын','Ұзақ өмір','Достар табу'],1,'«Сенің отбасың мол болсын, байлыққа кенел» деген тілек.'),
+      Q('Ежелде сандықты не үшін көшке апарды?',['Ыдыс сақтау','Отбасының байлығын тасу','Тамақ пісіру','Су жинау'],1,'Көш кезінде түйеге артылып, отбасының қымбат заттары тасылған.')
+    ]},
+    togyzqumalaq:{cat:'Ұлттық ойын',fcat:'game',no:'052',poster:'assets/posters/togyzqumalaq.png',label:'ағаш тақта',questions:[
+      Q('Тоғызқұмалақ тақтасында неше ұя бар?',['9','16','18','20'],2,'Екі жақта тоғыздан ұя — барлығы 18 ұя.'),
+      Q('Ойын басында әр ұяда неше құмалақ?',['5','7','9','11'],2,'Ойын басында әр ұяда 9 құмалақтан, барлығы 162.'),
+      Q('Ортадағы үлкен ұя қалай аталады?',['Ұя','Тұзақ','Қазан','Отау'],2,'Ортадағы үлкен ұя — «қазан», ұтылған құмалақтарды жинайды.'),
+      Q('«Отау» дегеніміз не?',['Ойынды бастау','Дұрыс тұзақ ұясын жасау','Ұя бос болу','Ойынды аяқтау'],1,'«Отау» — қарсылас алдында дұрыс тұзақ ұясын жасау техникасы.'),
+      Q('Тоғызқұмалақ федерациясы қашан құрылды?',['1900','1949','1980','2010'],1,'1949 жылы Қазақстан республикалық федерациясы құрылды.')
+    ]},
+    sazsyrnai:{cat:'Музыка',fcat:'music',no:'015',poster:'assets/posters/sazsyrnai.png',label:'қыш аспап',questions:[
+      Q('Сазсырнай қандай материалдан жасалған?',['Ағаш','Металл','Қыш балшық (күйдіріп)','Кожа'],2,'Сазсырнай — қыш балшықтан күйдіріп жасалған.'),
+      Q('Сазсырнайда неше дыбыс тесігі бар?',['3','6-12','20','50'],1,'Пішіні жұмыртқа тәрізді, 6-12 дыбыс тесігі бар.'),
+      Q('Осы экспонат нешінші жылдыққа арналған?',['1000','1500','2000','5000'],1,'Түркістан 1500 жылдығы (2000 ж.) құрметіне жасалған.'),
+      Q('Ежелде саз сырнай кімнің аспабы болды?',['Тек хандардың','Пастухтар мен балалардың','Тек діни адамдардың','Батырлардың'],1,'Негізінен пастухтар мен балалардың аспабы, кейде діни рәсімдерде.'),
+      Q('Сазсырнайдың пішіні неге ұқсас?',['Шаршы','Үлкен жұмыртқа','Гүл','Ат'],1,'Пішіні үлкен жұмыртқа тәрізді, 12 дыбыс тесігі бар.')
+    ]},
+    shanqobyz:{cat:'Музыка',fcat:'music',no:'022',poster:'assets/posters/shanqobyz.png',label:'варган · тілше',questions:[
+      Q('Шаңқобыз қалай ойналады?',['Ішегі бар','Ауыз резонансымен','Үрлеп','Ұрып'],1,'Тілшесі саусақпен қозғалады, ауыз қуысы резонатор рөлін атқарады.'),
+      Q('Шаңқобыздың тілшесі неден?',['Ағаш','Металл пластина','Кожа','Түйе жүн'],1,'Тілше — металл пластинадан жасалады.'),
+      Q('Ежелде шаңқобыз кімнің аспабы болды?',['Балалардың','Бақсылардың, шамандардың','Тек әйелдердің','Диқандардың'],1,'Ежелгі шамандық рәсімдерде, транс-медитацияда қолданылған.'),
+      Q('Шаңқобызды дүниежүзінде қандай стильде қолданады?',['Классикалық','Этно-джаз, world music','Рок','Кантри'],1,'Бүгінгі дүниежүзінде этно-джаз, world music стилінде танымал.'),
+      Q('Аспаптың ыдысы неден жасалады?',['Пластик','Ағаш (трапеция пішінді)','Металл','Кожа'],1,'Ағаш ыдысы трапеция пішінді, жіп өткізетін тесігі бар.')
+    ]},
+    perstenj:{cat:'Зергерлік',fcat:'jewelry',no:'043',poster:'assets/posters/perstenj.png',label:'күміс жүзік',questions:[
+      Q('«Тұмсықты жүзік» неге осы атқа ие болды?',['Құс тәрізді','Үшкір ұшы құс тұмсығына ұқсас','Құс жасайтын','Ел атының атауы'],1,'Каст ұшы үшкір, «құс тұмсығы» тәрізді пішінге ие.'),
+      Q('Ежелгі қазақ сенімі бойынша жүзік не?',['Жай әшекей','Тұмар (амулет)','Ақша','Билік нышаны'],1,'Жүзік тұмар (амулет) ретінде жаман көзден қорғайды деп саналды.'),
+      Q('Осы жүзіктің материалы қандай?',['Алтын','Күміс','Мыс','Темір'],1,'Күмістен жасалған, ішінде кішкене тас орнатылған.'),
+      Q('Қандай техникалармен әсемделген?',['Тек ойма','Скан + зернь','Дәнекерлеу','Штампалау'],1,'Скан (күміс жіппен өру) және зернь (майда шариктер) техникасымен.'),
+      Q('Осы жүзік қайдан келді?',['Астана','Костанай ОМ','Алматы','Атырау'],1,'Костанай облыстық тарихи-өлкетану музейінен.')
+    ]},
+    bilezik:{cat:'Зергерлік',fcat:'jewelry',no:'045',poster:'assets/posters/bilezik.png',label:'күміс білезік',questions:[
+      Q('Осы білезікте неше агат тас бар?',['1','2','3','5'],2,'Орталық акцент — үш овал агат тас, білезік айналасында бірдей орналасқан.'),
+      Q('Білезіктің авторы кім?',['Ежелгі шебер','Заманауи зергер К. Шапабаев','Белгісіз','Дина Нұрпейісова'],1,'Заманауи зергер Шапабаев Қайрат Бұлатұлының шығармасы.'),
+      Q('Білезіктің пішіні қандай?',['Тұйықталған','Ашық (жартылай)','Сақина тәрізді','Тіркеме'],1,'Массивті, сәл ашылған пішінде — қолға оңай кигізіледі.'),
+      Q('Білезіктің ою типі қандай?',['Гүл','Геометрия — үшбұрыш, ромб','Хайуан суреттері','Абстракция'],1,'Беті геометриялық оюмен әшекейленген — үшбұрыш, ромб.'),
+      Q('Ежелгі білезіктер қашанғы?',['XIX ғ.','X ғ.','Сақ дәуірі (VII-V ғ. б.з.д.)','Тас дәуірі'],2,'Ежелгі қорымдардан тапқан білезіктер б.з.д. VII-V ғасырларға жетеді.')
+    ]},
+    kese:{cat:'Тұрмыстық',fcat:'home',no:'062',poster:'assets/posters/kese.png',label:'керамика',questions:[
+      Q('Осы кесе қай ғасырға жатады?',['X-XI','XVIII-XIX','XX','V-VI'],1,'Кесе XVIII-XIX ғасырларға жатады.'),
+      Q('Кесе қандай материалдан?',['Металл','Керамика','Ағаш','Кожа'],1,'Керамика — гончарлы дөңгелекте пішіні қалыптасып, обжигпен күйдірілген.'),
+      Q('Кесенің шыққан жері?',['Астана','Отрар, Тараз, Сайрам (Жібек жолы)','Мәскеу','Париж'],1,'Ұлы Жібек жолы бойындағы қалалардан — Отрар, Тараз, Сайрам.'),
+      Q('Кеседегі бояулар қандай?',['Тек ақ','Көгілдір мен қоңыр (ақ фонда)','Тек қара','Түрлі-түсті'],1,'Ақ фондық глазурьге көгілдір мен қоңыр өрнек.'),
+      Q('Кесенің биіктігі қандай?',['3 см','8.2 см','20 см','50 см'],1,'Осы кесенің биіктігі 8.2 см.')
+    ]}
+  };
+
+  // ═════ Quiz engine ═════
+  const qgrid = document.getElementById('quiz-grid');
+  const qplay = document.getElementById('quiz-play');
+  const qresult = document.getElementById('quiz-result');
+  const qpBody = document.getElementById('quiz-play-body');
+  const passedSet = new Set(); // keys of finished quizzes (localStorage)
+  try {
+    const saved = JSON.parse(localStorage.getItem('dm-quiz-passed') || '[]');
+    saved.forEach(k => passedSet.add(k));
+  } catch(e){}
+  function savePassed(){ try { localStorage.setItem('dm-quiz-passed', JSON.stringify([...passedSet])); } catch(e){} }
+
+  function totalQuestions(){
+    return Object.values(QUIZ_DATA).reduce((s,q)=>s + q.questions.length, 0);
+  }
+  document.getElementById('q-count').textContent = Object.keys(QUIZ_DATA).length;
+  document.getElementById('q-total').textContent = totalQuestions();
+  document.getElementById('q-passed').textContent = passedSet.size;
+
+  function renderQuizGrid(filter='all'){
+    qgrid.innerHTML = '';
+    Object.entries(QUIZ_DATA).forEach(([key, data]) => {
+      if (filter !== 'all' && data.fcat !== filter) return;
+      const div = document.createElement('div');
+      div.className = 'quiz-card' + (passedSet.has(key) ? ' passed' : '');
+      div.dataset.key = key;
+      div.innerHTML = `
+        <div class="quiz-card-fig">
+          <span class="quiz-card-no">Nº ${data.no}</span>
+          <img src="${data.poster}" alt="">
+        </div>
+        <div class="quiz-card-body">
+          <span class="cat">${data.cat}</span>
+          <h4>${data.questions[0] ? key.startsWith('taqiya_grey') ? 'Тақия (ер)' : key.startsWith('taqiya_yellow') ? 'Тақия (қыз)' : nameFromKey(key) : key}</h4>
+          <div class="quiz-card-meta">
+            <span>${data.questions.length} сұрақ</span>
+            <span class="start-btn">${passedSet.has(key) ? 'Қайта тапсыру →' : 'Бастау →'}</span>
+          </div>
+        </div>`;
+      div.addEventListener('click', () => openQuiz(key));
+      qgrid.appendChild(div);
+    });
+  }
+
+  function nameFromKey(key){
+    // find the card with this model key and copy its title
+    const c = Array.from(document.querySelectorAll('.card[data-model]')).find(c => keyOf(c) === key);
+    if (!c) return key;
+    return (c.dataset.titleA || '') + (c.dataset.titleB || '');
+  }
+
+  // quiz filter chips
+  document.querySelectorAll('#quiz-filt span').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('#quiz-filt span').forEach(x => x.classList.remove('on'));
+      chip.classList.add('on');
+      renderQuizGrid(chip.dataset.f);
+    });
+  });
+
+  // Play state
+  let playKey = null, qi = 0, score = 0, playData = null;
+  function openQuiz(key){
+    playKey = key;
+    playData = QUIZ_DATA[key];
+    if (!playData) return;
+    qi = 0; score = 0;
+    qgrid.hidden = true;
+    document.querySelector('#quiz-filt').hidden = true;
+    document.querySelector('.quiz-head').hidden = true;
+    qplay.hidden = false;
+    qresult.hidden = true;
+    qpBody.style.display = '';
+    document.getElementById('qp-title').textContent = nameFromKey(key);
+    document.getElementById('qp-sub').textContent = '— ' + playData.cat;
+    document.getElementById('qp-total-q').textContent = playData.questions.length;
+    document.getElementById('qp-crumb-no').textContent = 'Nº ' + playData.no;
+    document.getElementById('qp-crumb-cat').textContent = playData.cat;
+    document.getElementById('qp-poster-no').textContent = 'Nº ' + playData.no;
+    document.getElementById('qp-poster-img').src = playData.poster;
+    document.getElementById('qp-poster-label').textContent = playData.label || '';
+    document.getElementById('qp-qc').textContent = playData.questions.length;
+    renderQuestion();
+    qplay.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function renderQuestion(){
+    const q = playData.questions[qi];
+    document.getElementById('qp-qi').textContent = qi + 1;
+    document.getElementById('qp-q-text').textContent = q.q;
+    const pct = ((qi) / playData.questions.length) * 100;
+    document.getElementById('qp-bar').style.width = pct + '%';
+    const ansBox = document.getElementById('qp-answers');
+    ansBox.innerHTML = '';
+    q.a.forEach((txt, idx) => {
+      const el = document.createElement('div');
+      el.className = 'quiz-ans';
+      el.innerHTML = `<div class="letter">${'ABCDEFGH'[idx]}</div><div class="txt">${txt}</div>`;
+      el.addEventListener('click', () => selectAnswer(idx, el));
+      ansBox.appendChild(el);
+    });
+    document.getElementById('qp-explain').hidden = true;
+    const nextBtn = document.getElementById('qp-next');
+    nextBtn.disabled = true;
+    nextBtn.textContent = (qi + 1 === playData.questions.length) ? 'Аяқтау →' : 'Келесі →';
+  }
+
+  function selectAnswer(idx, el){
+    const q = playData.questions[qi];
+    const answers = document.querySelectorAll('#qp-answers .quiz-ans');
+    answers.forEach((a, i) => {
+      a.classList.add('disabled');
+      if (i === q.correct) a.classList.add('correct');
+      else if (i === idx) a.classList.add('wrong');
+    });
+    if (idx === q.correct) score++;
+    if (q.exp){
+      const exp = document.getElementById('qp-explain');
+      exp.innerHTML = `<b>${idx === q.correct ? 'Дұрыс!' : 'Дұрысы:'}</b>${q.exp}`;
+      exp.hidden = false;
+    }
+    document.getElementById('qp-next').disabled = false;
+  }
+
+  document.getElementById('qp-next').addEventListener('click', () => {
+    if (qi + 1 < playData.questions.length){
+      qi++;
+      renderQuestion();
+    } else {
+      // finish
+      document.getElementById('qp-bar').style.width = '100%';
+      qpBody.style.display = 'none';
+      qresult.hidden = false;
+      const total = playData.questions.length;
+      document.getElementById('qp-score').textContent = score;
+      document.getElementById('qp-score-total').textContent = total;
+      const pct = score / total;
+      const title = pct === 1 ? 'Керемет!' : pct >= 0.6 ? 'Жақсы!' : 'Мықтап оқыңыз';
+      const msg   = pct === 1 ? 'Барлық сұраққа дұрыс жауап бердіңіз!' : pct >= 0.6 ? 'Жарайсыз, көпшілігін дұрыс білдіңіз.' : 'Экспонаттың тарихын оқып, қайта тапсыруға болады.';
+      document.getElementById('qp-result-title').textContent = title;
+      document.getElementById('qp-result-msg').textContent = msg;
+      if (score === total) passedSet.add(playKey);
+      savePassed();
+      document.getElementById('q-passed').textContent = passedSet.size;
+    }
+  });
+
+  document.getElementById('qp-retry').addEventListener('click', () => openQuiz(playKey));
+  document.getElementById('qp-back-list').addEventListener('click', () => closeQuiz());
+  document.getElementById('quiz-back').addEventListener('click', (e) => { e.preventDefault(); closeQuiz(); });
+
+  function closeQuiz(){
+    qplay.hidden = true;
+    qgrid.hidden = false;
+    document.querySelector('#quiz-filt').hidden = false;
+    document.querySelector('.quiz-head').hidden = false;
+    renderQuizGrid(document.querySelector('#quiz-filt .on').dataset.f);
+    document.querySelector('.quiz-wrap').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  // wire the "Викторина: …" button in the featured info panel to open the current card's quiz
+  document.getElementById('i-quiz').addEventListener('click', () => {
+    const c = document.querySelector('.card.selected');
+    const k = c ? keyOf(c) : null;
+    if (k && QUIZ_DATA[k]) openQuiz(k);
+    else document.querySelector('.quiz-wrap').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  // initial render
+  renderQuizGrid('all');
 
 </script>
 </body>

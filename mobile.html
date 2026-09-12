@@ -392,7 +392,7 @@
         <span class="num">Nº 001</span>
         <span class="cat">Тұрғын жай</span>
         <h4>Киіз үй</h4>
-        <div class="meta"><span>1 200 қаралым</span><span class="tag">◇ 3D</span></div>
+        <div class="meta"><span>1 200 қаралым</span><span class="tag">◆ 3D</span></div>
       </div>
     </div>
 
@@ -412,7 +412,7 @@
         <span class="num">Nº 014</span>
         <span class="cat">Музыка</span>
         <h4>Домбыра</h4>
-        <div class="meta"><span>980 қаралым</span><span class="tag">◆ Таңдалды</span></div>
+        <div class="meta"><span>980 қаралым</span><span class="tag">◆ 3D</span></div>
       </div>
     </div>
 
@@ -452,7 +452,7 @@
         <span class="num">Nº 027</span>
         <span class="cat">Ұлттық киім</span>
         <h4>Шапан</h4>
-        <div class="meta"><span>745 қаралым</span><span class="tag">◇ QR</span></div>
+        <div class="meta"><span>745 қаралым</span><span class="tag">◆ 3D</span></div>
       </div>
     </div>
 
@@ -955,6 +955,10 @@
     cards.sort((a,b) => (!!b.dataset.model) - (!!a.dataset.model));
     cards.forEach(c => grid.appendChild(c));
   })();
+  (function initSelected(){
+    const s = document.querySelector('.card.selected .meta .tag');
+    if (s) s.textContent = '◆ Таңдалды';
+  })();
 
   function catOf(text){
     text = (text || '').toLowerCase();
@@ -1051,8 +1055,14 @@
     card.addEventListener('click', () => {
       const model = card.dataset.model;
       if (!model) return;
-      document.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
+      document.querySelectorAll('.card').forEach(c => {
+        c.classList.remove('selected');
+        const t = c.querySelector('.meta .tag');
+        if (t) t.textContent = '◆ 3D';
+      });
       card.classList.add('selected');
+      const tag = card.querySelector('.meta .tag');
+      if (tag) tag.textContent = '◆ Таңдалды';
       mv.src = model;
       if (card.dataset.camera) mv.cameraOrbit = card.dataset.camera;
       iNo.textContent = `Экспонат Nº ${card.dataset.no} · ${card.dataset.cat}`;
