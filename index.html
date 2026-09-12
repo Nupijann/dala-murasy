@@ -49,6 +49,7 @@
     --shadow-lg: 0 24px 60px rgba(30,20,10,.28);
   }
   *{box-sizing:border-box;margin:0;padding:0}
+  [hidden]{display:none!important}
   html,body{background:#100c08;color:var(--ink);font-family:var(--f-b);-webkit-font-smoothing:antialiased}
   body{
     min-height:100vh;
@@ -282,6 +283,28 @@
   .btn-p:hover{box-shadow:0 10px 22px rgba(138,52,24,.4)}
   .btn-g{color:var(--ink);border:1px solid rgba(34,24,18,.35);background:transparent}
   .btn-g:hover{border-color:var(--rust);color:var(--rust)}
+
+  /* ─────────────────────────  view router  ──────────────────── */
+  body[data-view="exhibits"] .quiz-wrap,
+  body[data-view="exhibits"] .nomads-wrap{display:none}
+  body[data-view="quiz"] .sect-head,
+  body[data-view="quiz"] .grid-wrap,
+  body[data-view="quiz"] .detail-wrap,
+  body[data-view="quiz"] .nomads-wrap{display:none}
+  body[data-view="nomads"] .sect-head,
+  body[data-view="nomads"] .grid-wrap,
+  body[data-view="nomads"] .detail-wrap,
+  body[data-view="nomads"] .quiz-wrap{display:none}
+
+  /* ─────────────────────────  nomads placeholder  ──────────── */
+  .nomads-wrap{background:var(--paper);padding:80px 60px 100px;text-align:center}
+  .nomads-inner{max-width:820px;margin:0 auto}
+  .nomads-wrap .kicker{display:block;font-family:var(--f-h);font-style:italic;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);margin-bottom:16px}
+  .nomads-wrap h2{font-family:var(--f-h);font-weight:500;font-size:56px;color:var(--ink);letter-spacing:-.008em;line-height:1.02}
+  .nomads-wrap h2 em{color:var(--rust);font-style:italic}
+  .nomads-wrap p{margin-top:20px;font-size:16px;line-height:1.7;color:rgba(34,24,18,.78)}
+  .nomads-wrap .soon{margin-top:32px;display:inline-block;padding:12px 22px;font-family:var(--f-h);font-style:italic;font-size:15px;
+    color:var(--rust);border:1px dashed rgba(138,52,24,.5);border-radius:24px}
 
   /* ─────────────────────────  quiz section  ─────────────────── */
   .quiz-wrap{background:linear-gradient(180deg, var(--paper-2) 0%, #ecd8ab 100%);padding:56px 60px 76px}
@@ -607,9 +630,9 @@
           </div>
         </div>
         <nav class="nav-links">
-          <a href="#" class="active">Экспонаттар</a>
-          <a href="#">Көшпенділер іздері</a>
-          <a href="#">Викторина</a>
+          <a href="#" class="active" data-view="exhibits">Экспонаттар</a>
+          <a href="#" data-view="nomads">Көшпенділер іздері</a>
+          <a href="#" data-view="quiz">Викторина</a>
         </nav>
         <div class="lang"><span class="on">KZ</span><span>RU</span><span>EN</span></div>
       </div>
@@ -1188,6 +1211,17 @@
       </div>
     </div>
   </div>
+
+  <!-- ═════ Көшпенділер іздері (placeholder) ═════ -->
+  <section class="nomads-wrap" id="nomads">
+    <div class="nomads-inner">
+      <span class="kicker">◆ Traces of the Nomads · in development</span>
+      <h2>Көшпенділер <em>іздері</em></h2>
+      <p>Осы бөлімде ежелгі көшпелілердің тарихи іздерін — ұлы жүздер картасы, миграция маршруттары, әйгілі хандар мен батырлар галереясы, аудио-подкасттар және интерактивті хронология орналасатын болады.</p>
+      <p>Жақын арада қосылады: <b>Ұлы Жібек жолы</b> · <b>Түркі қағанаттары</b> · <b>Хандық дәуірі</b> · <b>Ұлы Дала қаласы</b> · <b>Батырлар галереясы</b>.</p>
+      <span class="soon">Дайындалуда · Coming soon</span>
+    </div>
+  </section>
 
   <!-- ═════ Викторина секциясы ═════ -->
   <section class="quiz-wrap" id="quiz">
@@ -1827,12 +1861,33 @@
     document.querySelector('.quiz-wrap').scrollIntoView({behavior:'smooth', block:'start'});
   }
 
-  // wire the "Викторина: …" button in the featured info panel to open the current card's quiz
+  // ═════ view router (Экспонаттар / Көшпенділер іздері / Викторина) ═════
+  function setView(view){
+    document.body.dataset.view = view;
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.toggle('active', a.dataset.view === view));
+    // reset quiz play mode when leaving quiz
+    if (view !== 'quiz') { qplay.hidden = true; qgrid.hidden = false; document.querySelector('#quiz-filt').hidden = false; document.querySelector('.quiz-head').hidden = false; }
+    // scroll to top of the new view
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  document.querySelectorAll('.nav-links a[data-view]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      setView(a.dataset.view);
+    });
+  });
+  // default view
+  document.body.dataset.view = 'exhibits';
+
+  // wire the "Викторина: …" button in the featured info panel: switch to quiz view + open this exhibit's quiz
   document.getElementById('i-quiz').addEventListener('click', () => {
     const c = document.querySelector('.card.selected');
     const k = c ? keyOf(c) : null;
-    if (k && QUIZ_DATA[k]) openQuiz(k);
-    else document.querySelector('.quiz-wrap').scrollIntoView({behavior:'smooth', block:'start'});
+    setView('quiz');
+    if (k && QUIZ_DATA[k]) {
+      // wait for view switch, then open the quiz
+      setTimeout(() => openQuiz(k), 60);
+    }
   });
 
   // initial render
