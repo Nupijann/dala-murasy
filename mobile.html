@@ -115,8 +115,8 @@
     box-shadow:0 6px 16px rgba(60,40,20,.08);position:relative;cursor:pointer}
   .card.selected{border-color:var(--rust);box-shadow:0 0 0 1px var(--rust),0 10px 22px rgba(138,52,24,.2)}
   .card.hidden{display:none}
-  .fig .badge,.fig .label,.card .meta .tag{display:none}
-  .card .meta{justify-content:flex-start}
+  .fig .badge,.fig .label{display:none}
+  .card h4 em{color:inherit;font-style:normal;font-weight:inherit}
   .card .num{position:absolute;top:10px;right:12px;font-family:var(--f-h);font-style:italic;font-size:11px;letter-spacing:.1em;color:var(--rust);z-index:3}
   .fig{position:relative;height:130px;overflow:hidden;
     background:linear-gradient(180deg,#e8d6ac 0%,#c9a25e 100%);
@@ -458,7 +458,7 @@
 
     <div class="card"
          data-model="models/taqiya_grey_m_kazakh_national_headdress.glb"
-         data-no="032" data-cat="Ұлттық киім · бас киім" data-title-a="Тақия " data-title-b="ер"
+         data-no="032" data-cat="Ұлттық киім · бас киім" data-title-a="Тақия (ер)" data-title-b=""
          data-sub="Ерлердің жеңіл бас киімі · сұр барқыт"
          data-desc="Тақия — жаз мезгіліне арналған жеңіл бас киім. Барқыттан тігіледі, оюмен көмкерілген."
          data-facts='[["Диаметр","≈ 190 мм"],["Материал","сұр барқыт"],["Ою","қошқар мүйіз"],["Мезгіл","жаз · көктем"]]'
@@ -471,14 +471,14 @@
       <div class="body">
         <span class="num">Nº 032</span>
         <span class="cat">Бас киім</span>
-        <h4>Тақия ер</h4>
+        <h4>Тақия (ер)</h4>
         <div class="meta"><span>287 қаралым</span><span class="tag">◆ 3D</span></div>
       </div>
     </div>
 
     <div class="card"
          data-model="models/taqiya_yellow_f_kazakh_traditional_headdress.glb"
-         data-no="034" data-cat="Ұлттық киім · бас киім" data-title-a="Тақия " data-title-b="қыз"
+         data-no="034" data-cat="Ұлттық киім · бас киім" data-title-a="Тақия (қыз)" data-title-b=""
          data-sub="Қыздардың мерекелік бас киімі · сары зерлі"
          data-desc="Қыз тақиясы — тойда, мерекеде киетін ашық түсті, зерлі кестелі бас киім. Үстіне үкі қауырсыны бекітіледі."
          data-facts='[["Диаметр","≈ 180 мм"],["Материал","сары мата"],["Кесте","зер · моншақ"],["Үкі","қауырсын"]]'
@@ -491,7 +491,7 @@
       <div class="body">
         <span class="num">Nº 034</span>
         <span class="cat">Бас киім</span>
-        <h4>Тақия қыз</h4>
+        <h4>Тақия (қыз)</h4>
         <div class="meta"><span>301 қаралым</span><span class="tag">◆ 3D</span></div>
       </div>
     </div>
@@ -885,7 +885,7 @@
         loading="eager">
       </model-viewer>
       <div class="vctrl">
-        <button class="on">3D</button><button>360°</button><button>Аудио</button><button>Тарихы</button>
+        <button data-mode="3d" class="on">3D</button><button data-mode="history">Тарихы</button>
       </div>
     </div>
     <div class="info" id="info">
@@ -899,16 +899,16 @@
         <div class="fact"><b>Пернелер</b><span>19</span></div>
         <div class="fact"><b>Күй</b><span>3 · 07:40</span></div>
       </div>
-      <div class="qr-row">
+      <div class="qr-row" id="i-qr">
         <div class="qr-code"></div>
         <div>
-          <b>Күй архиві</b>
-          QR‑ды сканерлеп, Құрманғазы, Дәулеткерей, Тәттімбеттің үзінділерін тыңдаңыз.
+          <b id="i-qr-title">Күй архиві</b>
+          <span id="i-qr-text">QR‑ды сканерлеп, Құрманғазы, Дәулеткерей, Тәттімбеттің үзінділерін тыңдаңыз.</span>
         </div>
       </div>
-      <div class="actions">
-        <button class="btn btn-p">Күйді тыңдау →</button>
-        <button class="btn btn-g">Викторина: күйші кім?</button>
+      <div class="actions" id="i-actions">
+        <button class="btn btn-p" id="i-action">Күйді тыңдау →</button>
+        <button class="btn btn-g" id="i-quiz">Викторина: күйші кім?</button>
       </div>
     </div>
   </div>
@@ -996,6 +996,37 @@
     }).catch(()=>{});
   });
 
+  // per-exhibit metadata
+  const META = {
+    yurt_low_quality_texture:{action:"3D-туры →",quiz:"Викторина: шаңырақтың мағынасы?",qrTitle:"Виртуал экскурсия",qrText:"QR арқылы киіз үйдің ішіне кіріп, кереге, уық, шаңырақтың құрылымын жақыннан көріңіз.",history:"Киіз үй — көшпелі қазақтардың мыңжылдық тұрғын үйі. Кереге — қаттылық, уық — иілгіштік, шаңырақ — аспанмен байланыс символы. Есік күн батысы қарай ашылады. ЮНЕСКО материалдық емес мұрасы тізімінде."},
+    dombyra_by_sultan_elamanov:{action:"Күйді тыңдау →",quiz:"Викторина: «Балбырауын» кімдікі?",qrTitle:"Күй архиві",qrText:"QR арқылы Құрманғазы, Дәулеткерей, Тәттімбеттің үзінділерін тыңдаңыз.",history:"Домбыра — қазақтың рухы, сақ дәуірінен бері белгілі. XIX ғ. Құрманғазы, Дәулеткерей, Тәттімбет классикалық мектептерін қалыптастырды. Бүгін ЮНЕСКО тізімінде."},
+    kazakh_qobyz_kobyz:{action:"Қорқыт күйін тыңдау →",quiz:"Викторина: қобыздың атасы кім?",qrTitle:"Бақсылар үні",qrText:"QR арқылы Қорқыттың «Жер бауыры» күйін тыңдаңыз.",history:"Қобыз — Қорқыт атаның аспабы, IX–X ғ. пайда болған. Ат жалынан тартылған екі ішек. Бақсылар шамандық рәсімдерде қолданған."},
+    kazakh_shapan:{action:"Ою-өрнегін зерттеу →",quiz:"Викторина: шапан қандай маталардан тігіледі?",qrTitle:"Дәстүрлі тігін",qrText:"QR арқылы шапан тігу техникасы мен қазтабан, қошқар мүйіз ою түрлерін көріңіз.",history:"Шапан — ерлер мен әйелдердің салтанатты сырт киімі. «Шапан жабу» — құрметке лайық қонақтарға беру салты."},
+    taqiya_grey_m_kazakh_national_headdress:{action:"Ою-өрнек галереясы →",quiz:"Викторина: тақия қашан киіледі?",qrTitle:"Бас киім түрлері",qrText:"QR арқылы аймақтық ер тақияларының галереясын көріңіз.",history:"Тақия — жаз мезгіліне арналған жеңіл бас киім. Барқыт, шәйі, кездеме матадан тігіледі. Ерлер тақиясы — көбіне сұр, қара түсті."},
+    taqiya_yellow_f_kazakh_traditional_headdress:{action:"Той бас киімдері →",quiz:"Викторина: қыз тақиясында не бекітіледі?",qrTitle:"Қыздың тәжі",qrText:"QR арқылы қыз тақиясы мен үкі қауырсынын бекіту дәстүрін зерттеңіз.",history:"Қыз тақиясы — жас қыздың бас киімі. Үстінде үкі қауырсыны — тазалық пен арулықтың нышаны. Тұрмысқа шыққан соң орнына кимешек келеді."},
+    saukele_ethno_variant_traditional_headdress:{action:"Ұзату тойы →",quiz:"Викторина: сәукеле неше жыл киіледі?",qrTitle:"Салтанатты бас киім",qrText:"QR арқылы сәукеле коллекциясы мен маржан-күміс әшекейлерін көріңіз.",history:"Сәукеле — ұзату тойының ең қымбат бас киімі. Биіктігі 70 см-ге жетеді. Некеден кейін 3-5 жыл киіледі, содан «жаулық» алмасады."},
+    qamshy_kamshy:{action:"Өрім шеберлігі →",quiz:"Викторина: қамшыда неше өрім болады?",qrTitle:"Өрім түрлері",qrText:"QR арқылы қамшы өру техникасын, 8, 16, 32 өрім түрлерін көріңіз.",history:"Қамшы — жылқышы мен батырдың серігі, беделдің символы. Өрімі былғарыдан 8, 16, 32 талмен жасалады."},
+    Asyk:{action:"Ойнау ережелерін оқу →",quiz:"Викторина: асықтың сақа деп аталатын түрі?",qrTitle:"Асық ойындары",qrText:"QR арқылы «Хан талапай», «Атбақыл» ойындарын үйреніңіз.",history:"Асық — қой асығынан жасалған ежелгі бала ойыны. Түркі халықтарында мыңдаған жылдан бері. ЮНЕСКО материалдық емес мұрасы (2017)."},
+    besik:{action:"«Бесікке салу» дәстүрі →",quiz:"Викторина: сәби бесікке қашан салынады?",qrTitle:"Бесік жырлары",qrText:"QR арқылы «Әлди-әлди», «тұсау кесер» рәсімін тыңдаңыз.",history:"Бесік — қайыңнан, талдан ойылған дәстүрлі сәби бесігі. «Бесікке салу», «тұсау кесер», «шілдехана» — бесік айналасында өтетін маңызды дәстүрлер."},
+    nomad_sabre:{action:"Батыр аңыздары →",quiz:"Викторина: қылыштың жүзі неден?",qrTitle:"Соғыс шежіресі",qrText:"QR арқылы Қабанбай, Бөгенбай батырлардың қылыш өнерін көріңіз.",history:"Қылыш — қазақ жауынгерінің жүзді қаруы. Жоңғар шапқыншылығы кезінде Абылай, Кенесары әскерінде кең қолданылған."},
+    balbal_tas:{action:"Түркі мәдениеті →",quiz:"Викторина: балбал тас кімге орнатылады?",qrTitle:"Ежелгі түркі мұрасы",qrText:"QR арқылы Күлтегін, Тоныкөк ескерткіштерімен танысыңыз.",history:"Балбал тас — VI-VIII ғ. ежелгі түркі дәуірінің тастан қашалған адам бейнесіндегі ескерткіш. Мүрдемен бірге қару, тұлпары да жерленген."},
+    tamgaly_sun_man:{action:"Таңбалыға саяхат →",quiz:"Викторина: Таңбалы петроглифтері қашан?",qrTitle:"ЮНЕСКО мұрасы",qrText:"QR арқылы Таңбалы жартастары мен басқа петроглиф ескерткіштерін көріңіз.",history:"«Күн басты адам» — қола дәуірінің (XIII–XI ғ. б.з.д.) әйгілі петроглифі. Күн-құдай бейнесі. ЮНЕСКО дүниежүзілік мұрасы (2004)."},
+    astau_tabaq:{action:"Дастархан дәстүрі →",quiz:"Викторина: астауда қандай тағам тартылады?",qrTitle:"Дастархан",qrText:"QR арқылы бесбармақ, қазы, палаудың астауға тартылу рәсімін көріңіз.",history:"Астау — қазақ дастарханының шаңырағы. Диаметрі 500-800 мм. Жиегі қошқар мүйіз оюмен көмкерілген. Отбасының ырыс-берекесі."},
+    torsyk_kymyz:{action:"Қымыс тарихы →",quiz:"Викторина: торсықта не сақталды?",qrTitle:"Қымыс мәдениеті",qrText:"QR арқылы қымыс ашыту, дайындау дәстүрін көріңіз.",history:"Торсық — қоңыр былғарыдан тігілген қымыс ыдысы. Скиф-сақ дәуірінен бері. Мойны жіңішке, ағаш тығыны. Батыс ҚО мұражайы."},
+    sedlo:{action:"Ат әбзелдері →",quiz:"Викторина: ер-тоқым қандай бөліктерден?",qrTitle:"Ат әбзелдері",qrText:"QR арқылы қазақ ер-тұрмандарының түрлерін көріңіз.",history:"Ер-тоқым — жауынгер серігі. XIX ғ., алтын жалатылған ажурлы пластиналармен, ақық тастарымен әсемделген. Батыс ҚО мұражайы."},
+    aibalta:{action:"Батырлар қаруы →",quiz:"Викторина: айбалтаның басы қандай пішінде?",qrTitle:"Түркі қару өнері",qrText:"QR арқылы ежелгі түркі қаруларын көріңіз.",history:"Айбалта — жауынгер қаруы. Сабы күміспен қапталған, басы жарты ай пішінде. XVIII-XIX ғ. билер мен батырлардың айырым белгісі."},
+    qalqan:{action:"Куфи жазуы →",quiz:"Викторина: қалқанның жиегі неден?",qrTitle:"Ежелгі қорғаныш",qrText:"QR арқылы Ұлттық музейдегі қалқандар мен куфи жазуларын оқыңыз.",history:"Қалқан — XVIII ғ. болат парағынан жасалған қорғаныш қаруы. Куфи жазулары — Құраннан аяттар мен қорғаныш дұғалары."},
+    kubi:{action:"Қымыс піспегі →",quiz:"Викторина: күбі неше шеңбермен бекітіледі?",qrTitle:"Дәстүрлі күбі",qrText:"QR арқылы күбіде қымыс ашытудың процесін көріңіз.",history:"Күбі — қымыс әзірлеуге арналған трапеция пішіндегі ыдыс. Ішінде піспек 1000+ рет араластыратын ағаш сап."},
+    ojau:{action:"Дастархан салты →",quiz:"Викторина: ожау қандай мақсатта?",qrTitle:"Дәстүрлі ыдыстар",qrText:"QR арқылы ағаш ыдыс түрлерін көріңіз.",history:"Ожау — қымыс, айран құюға арналған ағаш шөміш. XX ғ. басы, Ақмола ОМ."},
+    sandyq:{action:"Жасау беру дәстүрі →",quiz:"Викторина: сандық қандай рәсімде?",qrTitle:"Ұзату жабдығы",qrText:"QR арқылы «сандық ашу» дәстүрін көріңіз.",history:"Сандық — қымбат заттарды сақтайтын ағаш жиhаз. «Сандық толы» тілеулесі — жасау берудің маңызды рәсімі."},
+    togyzqumalaq:{action:"Ойнау ережелері →",quiz:"Викторина: тақтада неше ұя бар?",qrTitle:"Ойын ережелері",qrText:"QR арқылы тоғызқұмалақ ережелерін оқыңыз.",history:"Тоғызқұмалақ — қазақ пен қырғыздың дала логикалық ойыны. Түркі-моңғол дәуірінен бері. Ой мен сабырлылықты шыңдайды."},
+    sazsyrnai:{action:"Түркістан үнін тыңдау →",quiz:"Викторина: сазсырнай неден жасалған?",qrTitle:"Ежелгі үн",qrText:"QR арқылы саз сырнайдың таза күйде ойналған дауысын тыңдаңыз.",history:"Саз сырнай — қыш балшықтан күйдіріп жасалған ежелгі үрмелі аспап. Түркістан 1500 жылдығы құрметіне. Ұлттық мұражай."},
+    shanqobyz:{action:"Дыбысты тыңдау →",quiz:"Викторина: шаңқобыз қалай ойналады?",qrTitle:"Резонанс",qrText:"QR арқылы шаңқобыздың ауыз резонансымен шығатын әуенін естіңіз.",history:"Шаңқобыз — түркі халықтарында тараған тілшелі аспап. Ежелгі шамандық рәсімдерде қолданылған."},
+    perstenj:{action:"Зергерлік өнері →",quiz:"Викторина: тұмсықты жүзік не үшін?",qrTitle:"Күміс өнері",qrText:"QR арқылы қазақ зергерлерінің скан, зернь техникасын көріңіз.",history:"Тұмсықты жүзік — XIX ғ. Костанай зергерлерінің шығармасы. Тас тұмар (амулет) ретінде қорғаныш беретін."},
+    bilezik:{action:"Зергер шығармалары →",quiz:"Викторина: неше агат тас бар?",qrTitle:"Заманауи зергер",qrText:"QR арқылы Шапабаев Қайрат Бұлатұлының шығармаларымен танысыңыз.",history:"Білезік — заманауи зергер Шапабаев Қайрат Бұлатұлының шығармасы. Ежелгі түркі геометрия дәстүрін қайта тірілтеді."},
+    kese:{action:"Қыш өнері →",quiz:"Викторина: осы кесе қай ғасырға?",qrTitle:"Ортағасырлық қыш",qrText:"QR арқылы Отрар, Тараз, Сайрам қыш мектептерін көріңіз.",history:"Кесе — XVIII-XIX ғ. керамика ыдысы. Ұлы Жібек жолы қалаларының — Отрар, Тараз, Сайрам — гончарлы дәстүрі жалғасы."}
+  };
+
   // model swap on card click
   const mv    = document.getElementById('mv');
   const iNo   = document.getElementById('i-no');
@@ -1003,6 +1034,10 @@
   const iSub  = document.getElementById('i-sub');
   const iDesc = document.getElementById('i-desc');
   const iFacts= document.getElementById('i-facts');
+  const iAction  = document.getElementById('i-action');
+  const iQuiz    = document.getElementById('i-quiz');
+  const iQrTitle = document.getElementById('i-qr-title');
+  const iQrText  = document.getElementById('i-qr-text');
   const vrot  = document.getElementById('vrot');
   const viewer= document.getElementById('viewer');
 
@@ -1021,13 +1056,23 @@
       mv.src = model;
       if (card.dataset.camera) mv.cameraOrbit = card.dataset.camera;
       iNo.textContent = `Экспонат Nº ${card.dataset.no} · ${card.dataset.cat}`;
-      iTitle.innerHTML = `${card.dataset.titleA}<em>${card.dataset.titleB}</em>`;
+      iTitle.innerHTML = `${card.dataset.titleA}<em>${card.dataset.titleB || ''}</em>`;
       iSub.textContent = card.dataset.sub;
       iDesc.textContent = card.dataset.desc;
       try {
         const facts = JSON.parse(card.dataset.facts || '[]');
         iFacts.innerHTML = facts.map(([k,v]) => `<div class="fact"><b>${k}</b><span>${v}</span></div>`).join('');
       } catch(e){}
+
+      const meta = META[keyOf(card)] || {};
+      iAction.textContent  = meta.action  || 'Толығырақ →';
+      iQuiz.textContent    = meta.quiz    || 'Викторина';
+      iQrTitle.textContent = meta.qrTitle || 'QR-архив';
+      iQrText.textContent  = meta.qrText  || 'QR-ды сканерлеп қосымша мәліметке қол жеткізіңіз.';
+      iDesc.dataset.desc    = card.dataset.desc || '';
+      iDesc.dataset.history = meta.history || card.dataset.desc || '';
+      document.querySelectorAll('.vctrl button').forEach(b => b.classList.toggle('on', b.dataset.mode === '3d'));
+
       viewer.scrollIntoView({behavior:'smooth', block:'start'});
 
       const k = keyOf(card);
@@ -1041,6 +1086,11 @@
     b.addEventListener('click', () => {
       document.querySelectorAll('.vctrl button').forEach(x => x.classList.remove('on'));
       b.classList.add('on');
+      if (b.dataset.mode === 'history') {
+        iDesc.textContent = iDesc.dataset.history || iDesc.dataset.desc || '';
+      } else {
+        iDesc.textContent = iDesc.dataset.desc || '';
+      }
     });
   });
 </script>
