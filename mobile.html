@@ -193,7 +193,7 @@
   .tabbar svg{width:20px;height:20px;display:block}
 
   /* ─── nomads (traces) mobile section ─── */
-  .nomads{background:var(--paper);padding:22px 18px 26px;border-top:1px solid rgba(138,52,24,.14)}
+  .nomads{background:linear-gradient(180deg, var(--paper-2) 0%, #ecd8ab 100%);padding:22px 18px 26px;border-top:1px solid rgba(138,52,24,.14)}
   .nomads h2{font-family:var(--f-h);font-weight:500;font-size:28px;line-height:1.05;letter-spacing:-.005em}
   .nomads h2 em{color:var(--rust);font-style:italic}
   .nomads .sub{display:block;font-family:var(--f-h);font-style:italic;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(138,52,24,.75);margin-top:4px}
@@ -1871,6 +1871,19 @@ async function wikiThumb(titleByLang, fallbackLabel){
       }
     });
   });
+
+  // Init preselected card's dataset so Тарихы works on first click without prior card tap
+  (function initPreselectedInfo(){
+    const c = document.querySelector('.card.selected') || document.querySelector('.card');
+    if (!c) return;
+    const meta = META[keyOf(c)] || {};
+    iDesc.dataset.desc = iDesc.textContent.trim() || c.dataset.desc || '';
+    iDesc.dataset.history = meta.history || c.dataset.desc || iDesc.dataset.desc;
+    if (meta.action)  iAction.textContent  = meta.action;
+    if (meta.quiz)    iQuiz.textContent    = meta.quiz;
+    if (meta.qrTitle) iQrTitle.textContent = meta.qrTitle;
+    if (meta.qrText)  iQrText.textContent  = meta.qrText;
+  })();
 
   // ═════ Nomads mobile: site list + bottom sheet + heritage ═════
   const N_SITES = [
