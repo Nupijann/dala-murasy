@@ -308,6 +308,30 @@
   .btn-g{color:var(--ink);border:1px solid rgba(34,24,18,.35);background:transparent}
   .btn-g:hover{border-color:var(--rust);color:var(--rust)}
 
+  /* ─────────────────────────  action modal  ─────────────────── */
+  .modal{position:fixed;inset:0;z-index:200;display:none}
+  .modal.on{display:block}
+  .modal-scrim{position:absolute;inset:0;background:rgba(20,14,8,.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);animation:mFade .2s ease}
+  .modal-body{position:relative;max-width:720px;margin:6vh auto;background:var(--paper);border:1px solid rgba(138,52,24,.3);
+    border-radius:12px;box-shadow:0 24px 60px rgba(0,0,0,.4);padding:36px 40px 32px;animation:mPop .28s cubic-bezier(.4,0,.2,1)}
+  .modal-close{position:absolute;top:14px;right:16px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+    font-size:22px;color:var(--ink);border:1px solid rgba(34,24,18,.18);border-radius:8px;background:transparent;cursor:pointer;
+    transition:background .18s, transform .18s}
+  .modal-close:hover{background:rgba(138,52,24,.08);transform:rotate(90deg)}
+  .modal-eyebrow{font-family:var(--f-h);font-style:italic;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--rust);margin-bottom:10px;display:block}
+  .modal-body h3{font-family:var(--f-h);font-weight:500;font-size:34px;color:var(--ink);line-height:1.1;letter-spacing:-.005em;margin-bottom:14px}
+  .modal-body h3 em{color:var(--rust);font-style:italic}
+  .modal-body p{font-size:14.5px;line-height:1.65;color:rgba(34,24,18,.86);margin-bottom:14px}
+  .modal-body p b{font-family:var(--f-h);font-style:italic;color:var(--rust);font-weight:500}
+  .modal-yt{position:relative;padding-top:56.25%;margin:16px 0 20px;border-radius:6px;overflow:hidden;background:#111}
+  .modal-yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .modal-list{margin:12px 0 18px;padding-left:22px}
+  .modal-list li{font-size:14px;line-height:1.55;color:rgba(34,24,18,.86);margin-bottom:6px}
+  .modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+  .modal-actions .btn{display:inline-flex;align-items:center;gap:8px}
+  @keyframes mFade{from{opacity:0}to{opacity:1}}
+  @keyframes mPop{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+
   /* ─────────────────────────  view router  ──────────────────── */
   body[data-view="exhibits"] .quiz-wrap,
   body[data-view="exhibits"] .nomads-wrap{display:none}
@@ -427,6 +451,15 @@
 </style>
 </head>
 <body>
+<div class="modal" id="action-modal" aria-hidden="true">
+  <div class="modal-scrim" data-close></div>
+  <div class="modal-body">
+    <button class="modal-close" data-close aria-label="Жабу">×</button>
+    <span class="modal-eyebrow" id="am-eyebrow">Экспонат</span>
+    <h3 id="am-title">...</h3>
+    <div id="am-content"></div>
+  </div>
+</div>
 <main class="page">
 
   <!-- ═════ hero / steppe scene ═════ -->
@@ -1914,11 +1947,82 @@
     }
   });
 
-  // wire the primary action button (Күйді тыңдау / Ойнау / Батыр аңыздары ...) → opens Тарихы tab
+  // ═════ Per-exhibit real action (music player / online game / gallery / etc.) ═════
+  // yt: YouTube video id (embedded player)  ·  link: external URL  ·  body: rich HTML
+  const ACTION = {
+    dombyra_by_sultan_elamanov:{eyebrow:'Күйді тыңдау',title:'«Балбырауын» — Құрманғазы Сағырбайұлы',body:`<p>«Балбырауын» — қазақтың домбыра күйлерінің шыңы. Құрманғазының XIX ғасырда шығарған туындысы, көңіл-күйдің ырғақты тербелісін домбыраның екі ішегінде жеткізеді. Күй атауы «балбырау» — «ерке қимыл, сылаңдау» дегенді білдіреді.</p><p><b>Тыңдаңыз:</b> төмендегі плеер немесе YouTube-тен іздеуге болады.</p>`,yt:'x8T-ZFH0jnE',link:'https://www.youtube.com/results?search_query=%D0%91%D0%B0%D0%BB%D0%B1%D1%8B%D1%80%D0%B0%D1%83%D1%8B%D0%BD+%D2%9A%D2%B1%D1%80%D0%BC%D0%B0%D0%BD%D2%93%D0%B0%D0%B7%D1%8B',linkLabel:'YouTube іздеу →'},
+    kazakh_qobyz_kobyz:{eyebrow:'Қобыз үнін тыңдау',title:'Қорқыт ата — «Жер бауыры»',body:`<p>Қорқыт ата аңызы бойынша өлімнен қашып, қобыз тартып өмірді ұзартқан. «Жер бауыры» — оның ең атақты күйі: жердің тыныс алуын, ана-жердің үнін бейнелейді. Қобыздың дыбысы адам үнін дәл жеткізеді — тамырды дірілдететін тылсым.</p>`,yt:'YMBjNVWZW1c',link:'https://www.youtube.com/results?search_query=%D2%9A%D0%BE%D1%80%D2%9B%D1%8B%D1%82+%D0%B6%D0%B5%D1%80+%D0%B1%D0%B0%D1%83%D1%8B%D1%80%D1%8B',linkLabel:'YouTube-тен тыңдау →'},
+    sazsyrnai:{eyebrow:'Ежелгі үн',title:'Саз сырнай — қыш үнінің әуені',body:`<p>Саз сырнай — б.з.д. II мыңжылдықтан бері жеткен қыш аспап. Пастухтар мен балалардың серігі, кейде діни рәсімдерде. Оның дауысы табиғи, тұнық — жермен тікелей байланысты сезіледі.</p>`,yt:'g6Sf1yZNqfE',link:'https://www.youtube.com/results?search_query=%D1%81%D0%B0%D0%B7+%D1%81%D1%8B%D1%80%D0%BD%D0%B0%D0%B9+kazakh+ocarina',linkLabel:'YouTube-тен тыңдау →'},
+    shanqobyz:{eyebrow:'Резонанс',title:'Шаңқобыз — ауыз резонансы',body:`<p>Шаңқобыз — түркі әлемінің ең ежелгі аспаптарының бірі. Металл тілшесі саусақпен қозғалып, ауыз қуысы резонатор рөлін атқарады. Ойнаушының тілі, ерні, тынысы арқылы түрлі әуендер шығарылады. Шамандық рәсімдер мен транс-медитацияда қолданылған.</p>`,yt:'V9BqCVJRHmY',link:'https://www.youtube.com/results?search_query=%D1%88%D0%B0%D2%A3%D2%9B%D0%BE%D0%B1%D1%8B%D0%B7+kazakh+jaw+harp',linkLabel:'YouTube-тен тыңдау →'},
+
+    togyzqumalaq:{eyebrow:'Ойнау',title:'Тоғызқұмалақ — онлайн ойын',body:`<p>Тоғызқұмалақ — қазақтың дала логикалық ойыны. Екі жақта 9 ұя, ортасында «қазан». Ой мен сабырды шыңдайды. XX ғ. басында федерация құрылып, бүгін дүниежүзілік чемпионаттар өткізіледі.</p><p><b>Онлайн ойнау:</b> ережелерін оқып, компьютермен немесе басқа адаммен жарысыңыз.</p>`,link:'https://togyzqumalaq.com/game/',linkLabel:'Онлайн ойнау →'},
+    Asyk:{eyebrow:'Ойын ережелері',title:'Асық ойындары — 5 негізгі түрі',body:`<ul class="modal-list"><li><b>Хан талапай</b> — балалар шеңберге тұрып, ортадағы «ханды» асықпен ұтады.</li><li><b>Атбақыл</b> — өз асығын қашықтан дәлдеп қарсылас асығын ұрып түсіру.</li><li><b>Бес тас</b> — бір қолмен 5 асықты лақтырып қайта ұстау (қыздардың сүйікті).</li><li><b>Үш табан</b> — асықты «сақа» болғанша ұрып өз атына айналдыру.</li><li><b>Аңдыма-аңды</b> — жасырын асықты табу.</li></ul><p>2017 жылы ЮНЕСКО материалдық емес мәдени мұрасы тізіміне енген.</p>`,link:'https://www.youtube.com/results?search_query=%D0%B0%D1%81%D1%8B%D2%9B+%D0%BE%D0%B9%D1%8B%D0%BD%D1%8B',linkLabel:'Ойын видеосын көру →'},
+
+    nomad_sabre:{eyebrow:'Батыр аңыздары',title:'Абылай хан және қазақ қылышы',body:`<p>Жоңғар шапқыншылығына қарсы XVIII ғасырда Абылай хан, Абылмансұр, Райымбек, Богенбай, Қабанбай, Наурызбай батырлар қылышпен елді азат етті. «Ақтабан шұбырынды» кезеңі қазақ жаугершілігінің ең қасіретті беті. Қылыш сол жылдарда жауынгердің серігі ғана емес, жанын жетелеген қасиетті қару болды.</p><p>Кенесары ханның әскерінде (1837-1847) қылыш ең негізгі қару болды.</p>`,link:'https://kk.wikipedia.org/wiki/%D0%90%D0%B1%D1%8B%D0%BB%D0%B0%D0%B9_%D1%85%D0%B0%D0%BD',linkLabel:'Wikipedia — Абылай хан →'},
+    aibalta:{eyebrow:'Түркі қаруы',title:'Айбалта — жауынгердің серігі',body:`<p>Айбалта («ай» + «балта» = «жарты ай тәрізді балта») — түркі-моңғол жауынгерлерінің шайқас қаруы. XVIII-XIX ғасырларда билер мен батырлардың қолында айырым белгісі ретінде де қолданылған. Сабы ағаш, күміспен қапталған; басы 15-25 см жүзді ай пішінді. Салмағы 1-2 кг.</p><p>Ертегілерде «айбалталы Наурызбай», «айбалталы Абылай» деген атаулар кездеседі.</p>`,link:'https://kk.wikipedia.org/wiki/%D0%90%D0%B9%D0%B1%D0%B0%D0%BB%D1%82%D0%B0',linkLabel:'Wikipedia — Айбалта →'},
+    qalqan:{eyebrow:'Куфи жазуы',title:'Қалқандағы жазулар мен куфи каллиграфиясы',body:`<p>Қалқанның сыртында куфи стиліндегі жазулар — Құраннан аяттар мен қорғаныш дұғалары. Куфи — VIII ғасырда пайда болған ежелгі арабтық каллиграфия, кейін бүкіл ислам әлемінде тараған. Оның геометриялық сипаты қалқан бетіне зор пропорциямен жазуға мүмкіндік берді.</p><p>Осы XVIII ғ. қалқан — Ұлттық музейдің қымбат экспонаттарының бірі.</p>`,link:'https://en.wikipedia.org/wiki/Kufic',linkLabel:'Куфи туралы (EN) →'},
+
+    yurt_low_quality_texture:{eyebrow:'3D-тур',title:'Киіз үйдің ішіне саяхат',body:`<p>Осы 3D-модельді жоғарыда крутить арқылы киіз үйдің сыртқы бөлігін көресіз. Ішкі бөліктерін жақыннан зерттеу үшін төмендегі әрекеттердің бірін таңдаңыз.</p><ul class="modal-list"><li><b>Шаңырақ</b> — жоғарғы дөңгелек, аспанмен байланыс символы</li><li><b>Кереге</b> — қабырға торлары (11-12 канат)</li><li><b>Уық</b> — иіндер (40-60 дана)</li><li><b>Босаға</b> — есік маңы, әрқашан күн батысы қарай</li></ul>`,link:'https://www.google.com/search?q=%D0%BA%D0%B8%D1%96%D0%B7+%D2%AF%D0%B9+%D1%88%D0%B0%D2%A3%D1%8B%D1%80%D0%B0%D2%9B+%D1%81%D1%83%D1%80%D0%B5%D1%82&tbm=isch',linkLabel:'Фото галереясы →'},
+
+    kazakh_shapan:{eyebrow:'Ою-өрнек',title:'Шапан оюлары мен матасы',body:`<p>Шапан ою-өрнегі — түркі-иран дәстүрінің қосындысы. Ең кең тараған ою түрлері:</p><ul class="modal-list"><li><b>Қошқар мүйіз</b> — берекенің символы</li><li><b>Қазтабан</b> — тасқын судай өмір</li><li><b>Түйе табан</b> — сабырлық, төзімділік</li><li><b>Өмір ағашы</b> — бірлік, ұрпақ жалғасы</li></ul><p>Матасы: жібек, барқыт, жүн, бархат. Түсі әлеуметтік дәрежені білдіреді.</p>`,link:'https://www.google.com/search?q=%D2%9B%D0%B0%D0%B7%D0%B0%D2%9B+%D1%88%D0%B0%D0%BF%D0%B0%D0%BD&tbm=isch',linkLabel:'Шапан галереясы →'},
+    taqiya_grey_m_kazakh_national_headdress:{eyebrow:'Бас киім түрлері',title:'Ер тақиясы — аймақтық ерекшеліктер',body:`<p>Әр аймақтың өз тақия стилі бар:</p><ul class="modal-list"><li><b>Оңтүстік</b> — биік конусты пішінді</li><li><b>Батыс</b> — жалпақ, дөңгелек</li><li><b>Шығыс</b> — кестелі, көлемді</li><li><b>Орталық</b> — жеңіл, орта биіктік</li></ul><p>Мата: барқыт, шәйі, кездеме, атлас. Ішінде — жұқа кебеже (арматура).</p>`,link:'https://www.google.com/search?q=%D2%9B%D0%B0%D0%B7%D0%B0%D2%9B+%D1%82%D0%B0%D2%9B%D0%B8%D1%8F+%D0%B5%D1%80&tbm=isch',linkLabel:'Ер тақия галереясы →'},
+    taqiya_yellow_f_kazakh_traditional_headdress:{eyebrow:'Той бас киімдері',title:'Қыз тақиясы — үкі қауырсынымен',body:`<p>Қыз тақиясы — жасөспірім бойжеткен қыздың символы. Ер тақиясынан жарқыраған түсімен, зерлі кестесімен, ажарлы моншақтарымен ерекшеленеді. Мата: сары, қызыл, көгілдір, жасыл барқыт немесе жібек.</p><p><b>Үкі қауырсыны</b> — қыздың бас киімінің ең қасиетті бөлігі. Тазалық пен арулықтың, жамандықтан қорғаныштың нышаны. Үкіні жоғалту үлкен қауіп деп бағаланған.</p>`,link:'https://www.google.com/search?q=%D2%9B%D1%8B%D0%B7+%D1%82%D0%B0%D2%9B%D0%B8%D1%8F&tbm=isch',linkLabel:'Қыз тақия галереясы →'},
+    saukele_ethno_variant_traditional_headdress:{eyebrow:'Ұзату тойы',title:'Сәукеле — қазақ келіншегінің тәжі',body:`<p>Сәукеле — ұзату тойында қыздың киетін ең қымбат әрі биік бас киімі. Биіктігі 70 см-ге, тіпті 1 м-ге дейін жетеді. Ежелгі әулет шеберлерінде жасалған, кейде миллиондаған тенгеге бағаланды.</p><p><b>Ұзату тойы</b> — қыздың әкесінің үйінен күйеу жағының шаңырағына көшу рәсімі. Ол күні ол сәукеле киіп келеді, бетін ақ жамылғымен жабады. Некеден кейін 3-5 жыл сәукеле киіп, содан кейін кимешек-жаулық алмасады.</p>`,link:'https://kk.wikipedia.org/wiki/%D0%A1%D3%99%D1%83%D0%BA%D0%B5%D0%BB%D0%B5',linkLabel:'Wikipedia — Сәукеле →'},
+
+    qamshy_kamshy:{eyebrow:'Шеберлер өнері',title:'Қамшы өру шеберлігі',body:`<p>Қамшы өру — қазақтың ежелгі қолөнерінің бірі. Былғарыдан 8, 16, 32, тіпті 64 талмен өріледі. Шебер жіңішке қайыс жолақтарды суда жұмсартып, содан кейін кезекпен қосып өтеді.</p><ul class="modal-list"><li><b>8 өрім</b> — қарапайым қамшы, күнделікті</li><li><b>16 өрім</b> — ажарлы, сыйға берілетін</li><li><b>32-64 өрім</b> — шеберлік шыңы, музей туындысы</li></ul><p>Сабы қайың, тау текесі мүйізі немесе сүйектен. Күмістің шеке-тартпаларымен, оюмен әшекейленеді.</p>`,link:'https://www.google.com/search?q=%D2%9B%D0%B0%D0%BC%D1%88%D1%8B+%D3%A9%D1%80%D1%96%D0%BC&tbm=isch',linkLabel:'Қамшы галереясы →'},
+    sedlo:{eyebrow:'Ат әбзелдері',title:'Ер-тұрман — түгел жабдық',body:`<p>Ер-тоқым — жауынгер мен саятшының 30-дан аса бөлікті серігі:</p><ul class="modal-list"><li><b>Ер</b> — ағаш қаңқа, былғары тыс</li><li><b>Айыл</b> — атты бекітетін белдік</li><li><b>Сағалдырық</b> — атқа кіргізетін ауыздық</li><li><b>Жүген</b> — атпен басқару жүйесі</li><li><b>Тізгін</b> — жүгенге бекітілген қайыс</li><li><b>Үзеңгі</b> — аяқ салу</li><li><b>Төстік</b> — ат кеудесіне түспес үшін</li></ul>`,link:'https://www.google.com/search?q=%D2%9B%D0%B0%D0%B7%D0%B0%D2%9B+%D0%B5%D1%80-%D1%82%D2%B1%D1%80%D0%BC%D0%B0%D0%BD&tbm=isch',linkLabel:'Ер-тұрман галереясы →'},
+
+    besik:{eyebrow:'Дәстүр',title:'«Бесікке салу» рәсімі',body:`<p>Сәби 5 күндік болғанда «бесікке салу» тойы өткізіледі. Ана мен бала өмірінің ең маңызды рәсімдерінің бірі. Тәртібі:</p><ul class="modal-list"><li>Ең үлкен әже бесіктің ырымдарын жасайды</li><li>Бесікке тұмар — қасиетті заттар: тұмарша, шүберек, сүйек — салынады</li><li>«Әлди-әлди» жырланады</li><li>Бесікке ай мен күнді көрсету — «Ай, күн көр» ырымы</li></ul><p>Кейін «тұсау кесер» (аяғындағы жіпті кесу), «шілдехана» (40 күндік той) рәсімдері жалғасады.</p>`,link:'https://www.youtube.com/results?search_query=%D0%B1%D0%B5%D1%81%D1%96%D0%BA%D0%BA%D0%B5+%D1%81%D0%B0%D0%BB%D1%83+%D1%80%D3%99%D1%81%D1%96%D0%BC%D1%96',linkLabel:'Рәсім видеосын көру →'},
+    astau_tabaq:{eyebrow:'Дастархан',title:'Бесбармақ дастарханы',body:`<p>Бесбармақ — қазақ дастарханының шаңырағы. Астауда тартылған жол:</p><ul class="modal-list"><li>Қой бас (немесе жылқы) — ең үлкенге ұсынылады</li><li>Ет — 4 бөлікке бөлінеді: жамбас, төс, омыртқа, қабырға</li><li>Қамыр — жіңішке кескіш ретте төселеді</li><li>Пияз, ащы сорпа қосылады</li></ul><p><b>«Бас ұсыну»</b> — құрметтің ең жоғары түрі. Үлкенге бас ұсынылғанда, ол өз ретімен басты бөліп, барлыққа таратады.</p>`,link:'https://www.google.com/search?q=%D0%B1%D0%B5%D1%81%D0%B1%D0%B0%D1%80%D0%BC%D0%B0%D2%9B+%D0%B4%D0%B0%D1%81%D1%82%D0%B0%D1%80%D1%85%D0%B0%D0%BD&tbm=isch',linkLabel:'Бесбармақ галереясы →'},
+    torsyk_kymyz:{eyebrow:'Қымыс мәдениеті',title:'Қымыс — көшпелілер сусыны',body:`<p>Қымыс — биенің сүтінен ашытылған қазақтың ұлттық сусыны. Мыңжылдық тарихы бар: скиф-сақ, түркі, моңғол көшпелілерінің негізгі тағамы болды.</p><p><b>Дайындалуы:</b> Бие сүті таза күбіге құйылады, ашытқы (ескі қымыстан) қосылады, күніне 1000-2000 рет піспекпен араластырылады. 24-48 сағат ашығаннан кейін қымыс дайын. Торсықта салқын күйде сақталады.</p><p>Пробиотиктерге бай, дәмдік, қуат беруші сусын.</p>`,link:'https://www.google.com/search?q=%D2%9B%D1%8B%D0%BC%D1%8B%D0%B7+%D0%B4%D0%B0%D0%B9%D1%8B%D0%BD%D0%B4%D0%B0%D1%83&tbm=isch',linkLabel:'Қымыс галереясы →'},
+    kubi:{eyebrow:'Дәстүрлі күбі',title:'Күбіде қымыс дайындау процесі',body:`<p>Күбі — қымыс дайындауға арналған ағаш ыдыс. Процесі:</p><ol class="modal-list"><li>Күбіні жуып, қой майымен жағып тазалау</li><li>Биенің таза сүтін құю (шамамен 30-40 л)</li><li>Ашытқы қосу (алдыңғы қымыс, «қор»)</li><li>Піспекпен күніне 1000-2000 рет араластыру</li><li>24-48 сағат күту</li><li>Ашыған қымысты торсыққа ауыстыру</li></ol><p>Механикалық процесс арқылы бактериялар тарайды, лактоза сүт қышқылына айналады.</p>`,link:'https://www.youtube.com/results?search_query=%D2%9B%D1%8B%D0%BC%D1%8B%D1%81+%D0%B4%D0%B0%D0%B9%D1%8B%D0%BD%D0%B4%D0%B0%D1%83',linkLabel:'Видео процесі →'},
+    ojau:{eyebrow:'Дастархан салты',title:'Ағаш ыдыс — қымыс құю дәстүрі',body:`<p>Дастарханда ожау — үлкеннің қолында. Ол «бас құюшы»: белгілі ретпен қымыс, айран, шұбат құяды.</p><ul class="modal-list"><li><b>Бірінші</b> — жасы үлкен қонаққа</li><li><b>Екінші</b> — үй иесі</li><li><b>Үшінші</b> — жасы жағынан ретпен</li><li><b>Ең соңы</b> — жас балалар</li></ul><p>Ыдысты жерге қоймай, әрқашан бір қолмен ұстап тұрады. «Ыдыс жерге түссе — сый босқа кетеді» деген сенім бар.</p>`,link:'https://www.google.com/search?q=%D0%BE%D0%B6%D0%B0%D1%83+%D0%B0%D2%93%D0%B0%D1%88+%D1%8B%D0%B4%D1%8B%D1%81&tbm=isch',linkLabel:'Ағаш ыдыс галереясы →'},
+    sandyq:{eyebrow:'Жасау беру',title:'Сандықтағы жасау — қыздың мұрасы',body:`<p>Ұзату тойында ана қыздың сандығын толтырады — «жасау». Сандық ішінде:</p><ul class="modal-list"><li>Кестелі шапан, кимешек, орамалдар</li><li>Күміс білезік, жүзік, сырға, тұмар</li><li>Кітап (жиі — Құран)</li><li>Отбасы мұрасы — ана-жарасының сыйы</li><li>Тұрмыс заттары — ыдыс, өрнектелген матал</li></ul><p><b>«Сандық ашу»</b> — жаңа үй жағында қыздың сандығын ашу рәсімі. Мазмұнын аналар мен әпкелер бағалайды.</p>`,link:'https://www.google.com/search?q=%D2%9B%D0%B0%D0%B7%D0%B0%D2%9B+%D1%81%D0%B0%D0%BD%D0%B4%D1%8B%D2%9B&tbm=isch',linkLabel:'Сандық галереясы →'},
+    kese:{eyebrow:'Отрар мектебі',title:'Ортағасырлық қыш өнері — Отрар, Тараз, Сайрам',body:`<p>Ұлы Жібек жолы бойында ортағасырлық Отрар (Фараб), Тараз, Сайрам, Испиджаб қалалары керамика өнерінің орталықтары болды. Отрар — Аль-Фараби туған жері, X-XIII ғасырларда әлемнің ірі мәдени орталықтарының бірі.</p><p><b>Керамика жасау:</b> балшық жиналады → тазаланады → гончарлы дөңгелекте пішіні қалыптасады → 800-1000°C пеште күйдіріледі → глазурь мен бояулармен әсемделеді. Ежелгі шеберлер балшыққа арнайы қоспалар (кварц, дала шпаты) қосып, кеседегі глазурьді тегіс, жарқын ететін.</p>`,link:'https://kk.wikipedia.org/wiki/%D0%9E%D1%82%D1%8B%D1%80%D0%B0%D1%80',linkLabel:'Wikipedia — Отырар →'},
+
+    balbal_tas:{eyebrow:'Ежелгі түркі мұрасы',title:'Балбал тас пен Күлтегін ескерткіштері',body:`<p>Балбал тастар — VI-IX ғасырлардағы ежелгі түркі дәуірінің тас мүсіндері. Атақты жауынгерлер мен билердің қабірлерінде тұрған. «Балбал» сөзі «баба» — үлкен ата, қорғаушы дегенді білдіреді.</p><p>Ең әйгілі мысалдар — Моңғолия жерінде табылған <b>Күлтегін</b> және <b>Тоныкөк</b> ескерткіштері (VIII ғ.). Күлтегін жазуы — ежелгі түркі жазба мәдениетінің ең маңызды үлгісі, онда Түркі қағанатының тарихы баяндалған.</p>`,link:'https://kk.wikipedia.org/wiki/%D0%9A%D2%AF%D0%BB%D1%82%D0%B5%D0%B3%D1%96%D0%BD',linkLabel:'Wikipedia — Күлтегін →'},
+    tamgaly_sun_man:{eyebrow:'ЮНЕСКО экскурсия',title:'Таңбалы жартастары — 5000 петроглиф',body:`<p>Таңбалы — Алматы облысында, Алматыдан 170 км солтүстік-батысында. 2004 жылы ЮНЕСКО дүниежүзілік мұрасы тізіміне қосылды. 5000-нан аса тас суреттер табылған.</p><p><b>Ежелгі суреттердің тақырыптары:</b></p><ul class="modal-list"><li>Күн басты құдайлар (шамамен 10 фигура)</li><li>Аңшылар мен жабайы аңдар</li><li>Ат мінген жауынгерлер</li><li>Билеу және діни рәсімдер</li><li>Мал бағу көріністері</li></ul>`,link:'https://whc.unesco.org/en/list/1145/',linkLabel:'ЮНЕСКО ресми сайты →'},
+
+    perstenj:{eyebrow:'Күміс өнері',title:'Қазақ зергерлерінің скан, зернь техникасы',body:`<p>Қазақ зергерлерінің ең маңызды 3 техникасы:</p><ul class="modal-list"><li><b>Скан</b> — жіңішке күміс сымнан өрнек жасау</li><li><b>Зернь</b> — микроскопиялық күміс шариктерін бет үстіне жапсыру</li><li><b>Шеке</b> — түрлі-түсті эмальмен көмкеру</li></ul><p><b>Тас тұмар</b>: жүзікке салынатын әр тас өз мәні бар:</p><ul class="modal-list"><li>Агат — беделді, батыл</li><li>Ақық — үй-жайлы, отбасы</li><li>Бирюза — жол, саяхат</li><li>Маржан — сүюлі, сүйкімді</li></ul>`,link:'https://www.google.com/search?q=%D2%9B%D0%B0%D0%B7%D0%B0%D2%9B+%D0%B7%D0%B5%D1%80%D0%B3%D0%B5%D1%80%D0%BB%D1%96%D0%BA+%D1%81%D0%BA%D0%B0%D0%BD+%D0%B7%D0%B5%D1%80%D0%BD%D1%8C&tbm=isch',linkLabel:'Зергерлік галереясы →'},
+    bilezik:{eyebrow:'Заманауи зергер',title:'Шапабаев Қайрат Бұлатұлы — шығармалары',body:`<p>Шапабаев Қайрат Бұлатұлы — заманауи қазақ зергері, ежелгі түркі дәстүрін қайта тірілтуші. Оның стилі — массивтілік пен геометриялық анықтық. Түркі-моңғол өнерінің қайнар көзінен нәр алып, оны заманауи күнмен байланыстырады.</p><p>Осы білезік — оның шығармаларының бірі: үш агат тас, геометриялық ою, ашық пішін. Ежелгі көшпелі ханымдардың білезіктеріне ұқсас.</p>`,link:'https://www.google.com/search?q=%D0%A8%D0%B0%D0%BF%D0%B0%D0%B1%D0%B0%D0%B5%D0%B2+%D2%9A%D0%B0%D0%B9%D1%80%D0%B0%D1%82+%D0%B7%D0%B5%D1%80%D0%B3%D0%B5%D1%80&tbm=isch',linkLabel:'Автордың шығармалары →'}
+  };
+
+  const modal = document.getElementById('action-modal');
+  function openModal(key){
+    const a = ACTION[key];
+    if (!a){
+      // fallback: open Тарихы
+      const historyBtn = document.querySelector('.vctrl button[data-mode="history"]');
+      if (historyBtn) historyBtn.click();
+      document.querySelector('.detail-wrap').scrollIntoView({behavior:'smooth', block:'start'});
+      return;
+    }
+    document.getElementById('am-eyebrow').textContent = a.eyebrow || 'Экспонат';
+    document.getElementById('am-title').innerHTML = a.title;
+    let html = a.body || '';
+    if (a.yt) html += `<div class="modal-yt"><iframe src="https://www.youtube.com/embed/${a.yt}?rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>`;
+    if (a.link) html += `<div class="modal-actions"><a class="btn btn-p" href="${a.link}" target="_blank" rel="noopener">${a.linkLabel || 'Ашу →'}</a></div>`;
+    document.getElementById('am-content').innerHTML = html;
+    modal.classList.add('on');
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){
+    modal.classList.remove('on');
+    modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    // stop any playing iframe
+    const iframe = modal.querySelector('iframe');
+    if (iframe) iframe.src = iframe.src;
+  }
+  modal.addEventListener('click', e => { if (e.target.matches('[data-close]')) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('on')) closeModal(); });
+
+  // wire the primary action button (Күйді тыңдау / Ойнау / Батыр аңыздары ...) → opens exhibit-specific modal
   document.getElementById('i-action').addEventListener('click', () => {
-    const historyBtn = document.querySelector('.vctrl button[data-mode="history"]');
-    if (historyBtn) historyBtn.click();
-    document.querySelector('.detail-wrap').scrollIntoView({behavior:'smooth', block:'start'});
+    const c = document.querySelector('.card.selected');
+    const k = c ? keyOf(c) : null;
+    openModal(k);
   });
 
   // initialize the pre-selected card's info panel (Домбыра) so Тарихы button works on first click
