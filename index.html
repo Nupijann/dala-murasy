@@ -673,7 +673,7 @@
     <!-- ═════ nav (over sky) ═════ -->
     <div class="nav-wrap">
       <div class="nav">
-        <div class="brand">
+        <a class="brand" id="brand-home" href="#" data-view="exhibits">
           <div class="brand-mark">
             <svg width="44" height="44" viewBox="0 0 44 44">
               <path d="M4 22 L22 4 L40 22 L22 40 Z" fill="none" stroke="#8a3418" stroke-width="1.5"/>
@@ -681,11 +681,8 @@
               <text x="22" y="28" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="18" font-weight="600" fill="#8a3418">Д</text>
             </svg>
           </div>
-          <div>
-            <div class="brand-name">Дала Мұрасы</div>
-            <span class="brand-sub">Nomad · Codex</span>
-          </div>
-        </div>
+          <div class="brand-name">Дала Мұрасы</div>
+        </a>
         <nav class="nav-links">
           <a href="#" class="active" data-view="exhibits">Экспонаттар</a>
           <a href="#" data-view="nomads">Көшпенділер іздері</a>
@@ -1927,10 +1924,10 @@
     // scroll to top of the new view
     window.scrollTo({top:0, behavior:'smooth'});
   }
-  document.querySelectorAll('.nav-links a[data-view]').forEach(a => {
+  document.querySelectorAll('.nav-links a[data-view], #brand-home').forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
-      setView(a.dataset.view);
+      setView(a.dataset.view || 'exhibits');
     });
   });
   // default view
@@ -1950,10 +1947,10 @@
   // ═════ Per-exhibit real action (music player / online game / gallery / etc.) ═════
   // yt: YouTube video id (embedded player)  ·  link: external URL  ·  body: rich HTML
   const ACTION = {
-    dombyra_by_sultan_elamanov:{eyebrow:'Күйді тыңдау',title:'«Балбырауын» — Құрманғазы Сағырбайұлы',body:`<p>«Балбырауын» — қазақтың домбыра күйлерінің шыңы. Құрманғазының XIX ғасырда шығарған туындысы, көңіл-күйдің ырғақты тербелісін домбыраның екі ішегінде жеткізеді. Күй атауы «балбырау» — «ерке қимыл, сылаңдау» дегенді білдіреді.</p><p><b>Тыңдаңыз:</b> төмендегі плеер немесе YouTube-тен іздеуге болады.</p>`,yt:'x8T-ZFH0jnE',link:'https://www.youtube.com/results?search_query=%D0%91%D0%B0%D0%BB%D0%B1%D1%8B%D1%80%D0%B0%D1%83%D1%8B%D0%BD+%D2%9A%D2%B1%D1%80%D0%BC%D0%B0%D0%BD%D2%93%D0%B0%D0%B7%D1%8B',linkLabel:'YouTube іздеу →'},
-    kazakh_qobyz_kobyz:{eyebrow:'Қобыз үнін тыңдау',title:'Қорқыт ата — «Жер бауыры»',body:`<p>Қорқыт ата аңызы бойынша өлімнен қашып, қобыз тартып өмірді ұзартқан. «Жер бауыры» — оның ең атақты күйі: жердің тыныс алуын, ана-жердің үнін бейнелейді. Қобыздың дыбысы адам үнін дәл жеткізеді — тамырды дірілдететін тылсым.</p>`,yt:'YMBjNVWZW1c',link:'https://www.youtube.com/results?search_query=%D2%9A%D0%BE%D1%80%D2%9B%D1%8B%D1%82+%D0%B6%D0%B5%D1%80+%D0%B1%D0%B0%D1%83%D1%8B%D1%80%D1%8B',linkLabel:'YouTube-тен тыңдау →'},
-    sazsyrnai:{eyebrow:'Ежелгі үн',title:'Саз сырнай — қыш үнінің әуені',body:`<p>Саз сырнай — б.з.д. II мыңжылдықтан бері жеткен қыш аспап. Пастухтар мен балалардың серігі, кейде діни рәсімдерде. Оның дауысы табиғи, тұнық — жермен тікелей байланысты сезіледі.</p>`,yt:'g6Sf1yZNqfE',link:'https://www.youtube.com/results?search_query=%D1%81%D0%B0%D0%B7+%D1%81%D1%8B%D1%80%D0%BD%D0%B0%D0%B9+kazakh+ocarina',linkLabel:'YouTube-тен тыңдау →'},
-    shanqobyz:{eyebrow:'Резонанс',title:'Шаңқобыз — ауыз резонансы',body:`<p>Шаңқобыз — түркі әлемінің ең ежелгі аспаптарының бірі. Металл тілшесі саусақпен қозғалып, ауыз қуысы резонатор рөлін атқарады. Ойнаушының тілі, ерні, тынысы арқылы түрлі әуендер шығарылады. Шамандық рәсімдер мен транс-медитацияда қолданылған.</p>`,yt:'V9BqCVJRHmY',link:'https://www.youtube.com/results?search_query=%D1%88%D0%B0%D2%A3%D2%9B%D0%BE%D0%B1%D1%8B%D0%B7+kazakh+jaw+harp',linkLabel:'YouTube-тен тыңдау →'},
+    dombyra_by_sultan_elamanov:{eyebrow:'Күйді тыңдау',title:'«Балбырауын» — Құрманғазы Сағырбайұлы',body:`<p>«Балбырауын» — қазақтың домбыра күйлерінің шыңы. Құрманғазының XIX ғасырда шығарған туындысы, көңіл-күйдің ырғақты тербелісін домбыраның екі ішегінде жеткізеді. Күй атауы «балбырау» — «ерке қимыл, сылаңдау» дегенді білдіреді.</p><p><b>Тыңдаңыз:</b> төмендегі плеер немесе YouTube-тен іздеуге болады.</p>`,yt:'0De6Er2QDn4',link:'https://www.youtube.com/watch?v=0De6Er2QDn4',linkLabel:'YouTube іздеу →'},
+    kazakh_qobyz_kobyz:{eyebrow:'Қобыз үнін тыңдау',title:'Қорқыт ата — «Жер бауыры»',body:`<p>Қорқыт ата аңызы бойынша өлімнен қашып, қобыз тартып өмірді ұзартқан. «Жер бауыры» — оның ең атақты күйі: жердің тыныс алуын, ана-жердің үнін бейнелейді. Қобыздың дыбысы адам үнін дәл жеткізеді — тамырды дірілдететін тылсым.</p>`,yt:'OToC-NZLXcg',link:'https://www.youtube.com/watch?v=OToC-NZLXcg',linkLabel:'YouTube-тен тыңдау →'},
+    sazsyrnai:{eyebrow:'Ежелгі үн',title:'Саз сырнай — қыш үнінің әуені',body:`<p>Саз сырнай — б.з.д. II мыңжылдықтан бері жеткен қыш аспап. Пастухтар мен балалардың серігі, кейде діни рәсімдерде. Оның дауысы табиғи, тұнық — жермен тікелей байланысты сезіледі.</p>`,yt:'1HNNdZ7e_hk',link:'https://www.youtube.com/watch?v=1HNNdZ7e_hk',linkLabel:'YouTube-тен тыңдау →'},
+    shanqobyz:{eyebrow:'Резонанс',title:'Шаңқобыз — ауыз резонансы',body:`<p>Шаңқобыз — түркі әлемінің ең ежелгі аспаптарының бірі. Металл тілшесі саусақпен қозғалып, ауыз қуысы резонатор рөлін атқарады. Ойнаушының тілі, ерні, тынысы арқылы түрлі әуендер шығарылады. Шамандық рәсімдер мен транс-медитацияда қолданылған.</p>`,yt:'eFL7OiLuyzw',link:'https://www.youtube.com/watch?v=eFL7OiLuyzw',linkLabel:'YouTube-тен тыңдау →'},
 
     togyzqumalaq:{eyebrow:'Ойнау',title:'Тоғызқұмалақ — онлайн ойын',body:`<p>Тоғызқұмалақ — қазақтың дала логикалық ойыны. Екі жақта 9 ұя, ортасында «қазан». Ой мен сабырды шыңдайды. XX ғ. басында федерация құрылып, бүгін дүниежүзілік чемпионаттар өткізіледі.</p><p><b>Онлайн ойнау:</b> ережелерін оқып, компьютермен немесе басқа адаммен жарысыңыз.</p>`,link:'https://togyzqumalaq.com/game/',linkLabel:'Онлайн ойнау →'},
     Asyk:{eyebrow:'Ойын ережелері',title:'Асық ойындары — 5 негізгі түрі',body:`<ul class="modal-list"><li><b>Хан талапай</b> — балалар шеңберге тұрып, ортадағы «ханды» асықпен ұтады.</li><li><b>Атбақыл</b> — өз асығын қашықтан дәлдеп қарсылас асығын ұрып түсіру.</li><li><b>Бес тас</b> — бір қолмен 5 асықты лақтырып қайта ұстау (қыздардың сүйікті).</li><li><b>Үш табан</b> — асықты «сақа» болғанша ұрып өз атына айналдыру.</li><li><b>Аңдыма-аңды</b> — жасырын асықты табу.</li></ul><p>2017 жылы ЮНЕСКО материалдық емес мәдени мұрасы тізіміне енген.</p>`,link:'https://www.youtube.com/results?search_query=%D0%B0%D1%81%D1%8B%D2%9B+%D0%BE%D0%B9%D1%8B%D0%BD%D1%8B',linkLabel:'Ойын видеосын көру →'},
