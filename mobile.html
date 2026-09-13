@@ -246,7 +246,7 @@
   .gh-mobile .hd p{margin-top:8px;font-size:12.5px;line-height:1.5;color:rgba(34,24,18,.72)}
   .gh-mobile .grd{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
   .gh-mini{background:#fbf3de;border:1px solid rgba(138,52,24,.2);border-radius:10px;padding:10px 12px}
-  .gh-mini .flag{font-size:20px;line-height:1}
+  .gh-mini .flag{width:32px;height:24px;object-fit:cover;border-radius:3px;box-shadow:0 1px 2px rgba(0,0,0,.15);display:block}
   .gh-mini h5{font-family:var(--f-h);font-weight:600;font-size:13px;color:var(--ink);margin-top:5px;line-height:1.15}
   .gh-mini .rl{font-family:var(--f-h);font-style:italic;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin-top:3px;display:block}
   .gh-mini ul{list-style:none;padding:0;margin:6px 0 0}
@@ -315,11 +315,10 @@
 
   <div class="hero-inner">
     <h1 class="htitle">Қазақ мұралары<br><em>3д</em> форматында</h1>
-    <div class="stats">
-      <div><b>142</b><span>экспонат</span></div>
-      <div><b>38</b><span>3D моделі</span></div>
-      <div><b>12</b><span>дәстүр</span></div>
-      <div><b>06</b><span>ойын</span></div>
+    <div class="stats" style="grid-template-columns:repeat(3,1fr)">
+      <div><b>27</b><span>экспонат</span></div>
+      <div><b>27</b><span>3D моделі</span></div>
+      <div><b>135</b><span>сұрақ</span></div>
     </div>
   </div>
 
@@ -1277,18 +1276,18 @@
   ];
 
   const N_HERITAGE = [
-    {flag:'🇰🇿',name:'Қазақстан',role:'Отан',share:['Домбыра','Айтыс','Наурыз','Бүркітпен саятшылық']},
-    {flag:'🇰🇬',name:'Қырғызстан',role:'Түркі туыс',share:['Манас','Комуз','Көкпар','Киіз үй']},
-    {flag:'🇺🇿',name:'Өзбекстан',role:'Ортақ жер',share:['Түркістан','Домбыра','Той','Жібек жолы']},
-    {flag:'🇹🇲',name:'Түрікменстан',role:'Түркі туыс',share:['Ахалтеке','Кілем','Дутар']},
-    {flag:'🇹🇷',name:'Түркия',role:'Түркі әлемі',share:['Түркі тіл','Саз','Дастан','Ат']},
-    {flag:'🇦🇿',name:'Әзірбайжан',role:'Түркі туыс',share:['Мұғам','Тар','Наурыз']},
-    {flag:'🇲🇳',name:'Моңғолия',role:'Ұлы Дала',share:['Шыңғыс хан','Морин хуур','Бүркіт']},
-    {flag:'🇨🇳',name:'Шыңжаң (ҚХР)',role:'Диаспора',share:['1.5 млн қазақ','Бүркітшілер','Наурыз']},
-    {flag:'🇷🇺',name:'Ресей (Тат · Саха · Тыва)',role:'Түркі туыс',share:['Түркі тіл','Күй','Хомус']},
-    {flag:'🇮🇷',name:'Иран',role:'Түркі диаспора',share:['Түркімен','Азери','Кілем']},
-    {flag:'🇦🇫',name:'Ауғанстан',role:'Диаспора',share:['Қазақ ауылы','Наурыз']},
-    {flag:'🇭🇺',name:'Венгрия',role:'Ежелгі туыс',share:['Мадиярлар','Ат','Тұран']}
+    {iso:'kz',name:'Қазақстан',role:'Отан',share:['Домбыра','Айтыс','Наурыз','Бүркітпен саятшылық']},
+    {iso:'kg',name:'Қырғызстан',role:'Түркі туыс',share:['Манас','Комуз','Көкпар','Киіз үй']},
+    {iso:'uz',name:'Өзбекстан',role:'Ортақ жер',share:['Түркістан','Домбыра','Той','Жібек жолы']},
+    {iso:'tm',name:'Түрікменстан',role:'Түркі туыс',share:['Ахалтеке','Кілем','Дутар']},
+    {iso:'tr',name:'Түркия',role:'Түркі әлемі',share:['Түркі тіл','Саз','Дастан','Ат']},
+    {iso:'az',name:'Әзірбайжан',role:'Түркі туыс',share:['Мұғам','Тар','Наурыз']},
+    {iso:'mn',name:'Моңғолия',role:'Ұлы Дала',share:['Шыңғыс хан','Морин хуур','Бүркіт']},
+    {iso:'cn',name:'Шыңжаң (ҚХР)',role:'Диаспора',share:['1.5 млн қазақ','Бүркітшілер','Наурыз']},
+    {iso:'ru',name:'Ресей (Тат · Саха · Тыва)',role:'Түркі туыс',share:['Түркі тіл','Күй','Хомус']},
+    {iso:'ir',name:'Иран',role:'Түркі диаспора',share:['Түркімен','Азери','Кілем']},
+    {iso:'af',name:'Ауғанстан',role:'Диаспора',share:['Қазақ ауылы','Наурыз']},
+    {iso:'hu',name:'Венгрия',role:'Ежелгі туыс',share:['Мадиярлар','Ат','Тұран']}
   ];
 
   const N_ZLABEL = {uly:'Ұлы жүз',orta:'Орта жүз',kishi:'Кіші жүз'};
@@ -1358,7 +1357,7 @@
     const g = document.getElementById('gh-mini-grid'); if (!g) return;
     g.innerHTML = N_HERITAGE.map(c => `
       <div class="gh-mini">
-        <span class="flag">${c.flag}</span>
+        <img class="flag" src="https://flagcdn.com/w80/${c.iso}.png" srcset="https://flagcdn.com/w160/${c.iso}.png 2x" width="32" height="24" alt="${c.name}" loading="lazy">
         <h5>${c.name}</h5>
         <span class="rl">${c.role}</span>
         <ul>${c.share.map(s => `<li>${s}</li>`).join('')}</ul>

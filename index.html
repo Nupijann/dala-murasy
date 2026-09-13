@@ -344,6 +344,14 @@
   body[data-view="nomads"] .detail-wrap,
   body[data-view="nomads"] .quiz-wrap{display:none}
 
+  /* Hero scene: hide on non-exhibits views, keep the nav bar visible */
+  .steppe{transition:height .55s cubic-bezier(.4,0,.2,1)}
+  .steppe > *:not(.nav-wrap){transition:opacity .35s ease .12s}
+  body:not([data-view="exhibits"]) .steppe{height:76px}
+  body:not([data-view="exhibits"]) .steppe > *:not(.nav-wrap){opacity:0;pointer-events:none;transition:opacity .28s ease}
+  .orn{transition:height .5s cubic-bezier(.4,0,.2,1), opacity .3s ease .1s}
+  body:not([data-view="exhibits"]) .orn{height:0;opacity:0;border-top:0;border-bottom:0;box-shadow:none}
+
   /* ─────────────────────────  nomads section  ─────────────── */
   .nomads-wrap{background:var(--paper);padding:56px 60px 90px}
   .nomads-inner{max-width:1600px;margin:0 auto}
@@ -449,7 +457,7 @@
   .gh-card{background:#fbf3de;border:1px solid rgba(138,52,24,.22);border-radius:12px;padding:16px 18px 18px;
     transition:.2s;position:relative;display:flex;flex-direction:column}
   .gh-card:hover{transform:translateY(-3px);border-color:var(--rust);box-shadow:0 10px 22px rgba(138,52,24,.15)}
-  .gh-card .flag{font-size:26px;line-height:1}
+  .gh-card .flag{width:40px;height:30px;object-fit:cover;border-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,.15);display:block}
   .gh-card h5{font-family:var(--f-h);font-weight:600;font-size:17px;color:var(--ink);margin-top:8px;line-height:1.2}
   .gh-card .role{font-family:var(--f-h);font-style:italic;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--rust);margin-top:4px}
   .gh-card ul{list-style:none;padding:0;margin:10px 0 0}
@@ -805,10 +813,9 @@
       <div class="hero-inner">
         <h1 class="hero-title">Қазақ мұралары <em>3Д</em> форматында</h1>
         <div class="hero-stats">
-          <div><b>142</b><span>Экспонат</span></div>
-          <div><b>38</b><span>3D моделі</span></div>
-          <div><b>12</b><span>Дәстүр</span></div>
-          <div><b>06</b><span>Ойын</span></div>
+          <div><b>27</b><span>Экспонат</span></div>
+          <div><b>27</b><span>3D моделі</span></div>
+          <div><b>135</b><span>Викторина сұрағы</span></div>
         </div>
       </div>
     </div>
@@ -2350,19 +2357,20 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
     }
   };
 
+  // iso: 2-letter country code (used with flagcdn.com). Emoji flags don't render on Windows Chrome.
   const HERITAGE = [
-    {flag:'🇰🇿',name:'Қазақстан',role:'Отан',share:['Домбыра','Ат баптау','Айтыс','Наурыз','Тас балбалдар','Бүркітпен саятшылық']},
-    {flag:'🇰🇬',name:'Қырғызстан',role:'Түркі туыс',share:['Манас эпосы','Комуз','Көкпар','Киіз үй','Мал шаруашылығы']},
-    {flag:'🇺🇿',name:'Өзбекстан',role:'Ортақ жер',share:['Түркістан жолы','Домбыра','Той дәстүрі','Жібек жолы қалалары']},
-    {flag:'🇹🇲',name:'Түрікменстан',role:'Түркі туыс',share:['Ахалтеке жылқысы','Түрікмен кілемі','Дутар','Оймақ']},
-    {flag:'🇹🇷',name:'Түркия',role:'Түркі әлемі',share:['Түркі тілдер отбасы','Саз','Дастан','Ат мәдениеті','Түркі кеңесі']},
-    {flag:'🇦🇿',name:'Әзірбайжан',role:'Түркі туыс',share:['Мұғам','Тар','Дастан','Наурыз','Оғыз тілі']},
-    {flag:'🇲🇳',name:'Моңғолия',role:'Ұлы Дала',share:['Шыңғыс хан мұрасы','Морин хуур','Бүркітпен саятшылық','Наадам','Көне түркі жазуы']},
-    {flag:'🇨🇳',name:'Шыңжаң (ҚХР)',role:'Қазақ диаспорасы',share:['1.5 млн қазақ','Бүркітшілер','Домбыра','Наурыз','Ой-Толғау']},
-    {flag:'🇷🇺',name:'Ресей (Татарстан · Саха · Тыва · Башқұрт)',role:'Түркі туыс',share:['Түркі тілдер','Күй','Хомус (шаңқобыз)','Эпостар','Наурыз']},
-    {flag:'🇮🇷',name:'Иран',role:'Түркі диаспора',share:['Түркімен','Азери','Кілем','Дастан','Оғыз тілі']},
-    {flag:'🇦🇫',name:'Ауғанстан',role:'Қазақ диаспорасы',share:['Қазақ ауылдары','Наурыз','Оймақ','Домбыра']},
-    {flag:'🇭🇺',name:'Венгрия',role:'Ежелгі туыс',share:['Мадиярлар','Ат мәдениеті','Тайпалық тарих','Тұран қозғалысы','Жетітайпа']}
+    {iso:'kz',name:'Қазақстан',role:'Отан',share:['Домбыра','Ат баптау','Айтыс','Наурыз','Тас балбалдар','Бүркітпен саятшылық']},
+    {iso:'kg',name:'Қырғызстан',role:'Түркі туыс',share:['Манас эпосы','Комуз','Көкпар','Киіз үй','Мал шаруашылығы']},
+    {iso:'uz',name:'Өзбекстан',role:'Ортақ жер',share:['Түркістан жолы','Домбыра','Той дәстүрі','Жібек жолы қалалары']},
+    {iso:'tm',name:'Түрікменстан',role:'Түркі туыс',share:['Ахалтеке жылқысы','Түрікмен кілемі','Дутар','Оймақ']},
+    {iso:'tr',name:'Түркия',role:'Түркі әлемі',share:['Түркі тілдер отбасы','Саз','Дастан','Ат мәдениеті','Түркі кеңесі']},
+    {iso:'az',name:'Әзірбайжан',role:'Түркі туыс',share:['Мұғам','Тар','Дастан','Наурыз','Оғыз тілі']},
+    {iso:'mn',name:'Моңғолия',role:'Ұлы Дала',share:['Шыңғыс хан мұрасы','Морин хуур','Бүркітпен саятшылық','Наадам','Көне түркі жазуы']},
+    {iso:'cn',name:'Шыңжаң (ҚХР)',role:'Қазақ диаспорасы',share:['1.5 млн қазақ','Бүркітшілер','Домбыра','Наурыз','Ой-Толғау']},
+    {iso:'ru',name:'Ресей (Татарстан · Саха · Тыва · Башқұрт)',role:'Түркі туыс',share:['Түркі тілдер','Күй','Хомус (шаңқобыз)','Эпостар','Наурыз']},
+    {iso:'ir',name:'Иран',role:'Түркі диаспора',share:['Түркімен','Азери','Кілем','Дастан','Оғыз тілі']},
+    {iso:'af',name:'Ауғанстан',role:'Қазақ диаспорасы',share:['Қазақ ауылдары','Наурыз','Оймақ','Домбыра']},
+    {iso:'hu',name:'Венгрия',role:'Ежелгі туыс',share:['Мадиярлар','Ат мәдениеті','Тайпалық тарих','Тұран қозғалысы','Жетітайпа']}
   ];
 
   const ZLABEL = {uly:'Ұлы жүз', orta:'Орта жүз', kishi:'Кіші жүз'};
@@ -2600,13 +2608,13 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
     });
   });
 
-  // Render heritage cards
+  // Render heritage cards — real flag PNGs via flagcdn.com (Chrome on Windows can't render emoji flags)
   (function renderHeritage(){
     const g = document.getElementById('gh-grid');
     if (!g) return;
     g.innerHTML = HERITAGE.map(c => `
       <div class="gh-card">
-        <span class="flag">${c.flag}</span>
+        <img class="flag" src="https://flagcdn.com/w80/${c.iso}.png" srcset="https://flagcdn.com/w160/${c.iso}.png 2x" width="40" height="30" alt="${c.name}" loading="lazy">
         <h5>${c.name}</h5>
         <span class="role">${c.role}</span>
         <ul>${c.share.map(s => `<li>${s}</li>`).join('')}</ul>
