@@ -246,12 +246,122 @@
   .gh-mobile .hd p{margin-top:8px;font-size:12.5px;line-height:1.5;color:rgba(34,24,18,.72)}
   .gh-mobile .grd{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
   .gh-mini{background:#fbf3de;border:1px solid rgba(138,52,24,.2);border-radius:10px;padding:10px 12px}
-  .gh-mini .flag{width:32px;height:24px;object-fit:cover;border-radius:3px;box-shadow:0 1px 2px rgba(0,0,0,.15);display:block}
+  .gh-mini .flag{width:32px;height:24px;object-fit:contain;background:rgba(0,0,0,.04);border-radius:3px;
+    box-shadow:0 1px 2px rgba(0,0,0,.15), inset 0 0 0 1px rgba(0,0,0,.08);display:block}
   .gh-mini h5{font-family:var(--f-h);font-weight:600;font-size:13px;color:var(--ink);margin-top:5px;line-height:1.15}
   .gh-mini .rl{font-family:var(--f-h);font-style:italic;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin-top:3px;display:block}
   .gh-mini ul{list-style:none;padding:0;margin:6px 0 0}
   .gh-mini li{font-size:10.5px;color:rgba(34,24,18,.72);padding:1px 0 1px 8px;position:relative;line-height:1.3}
   .gh-mini li::before{content:"·";position:absolute;left:1px;color:var(--rust);font-weight:700}
+
+  /* ─── view router ─── */
+  [hidden]{display:none!important}
+  body[data-view="exhibits"] .nomads,
+  body[data-view="exhibits"] .quiz-m,
+  body[data-view="exhibits"] .qm-play{display:none}
+  body[data-view="nomads"] .hero,
+  body[data-view="nomads"] .sect,
+  body[data-view="nomads"] .grid-wrap,
+  body[data-view="nomads"] .detail-wrap,
+  body[data-view="nomads"] .filt,
+  body[data-view="nomads"] .quiz-m,
+  body[data-view="nomads"] .qm-play{display:none}
+  body[data-view="quiz"] .hero,
+  body[data-view="quiz"] .sect,
+  body[data-view="quiz"] .grid-wrap,
+  body[data-view="quiz"] .detail-wrap,
+  body[data-view="quiz"] .filt,
+  body[data-view="quiz"] .nomads{display:none}
+
+  /* ─── Kazakhstan real map (mobile) ─── */
+  .kz-map-wrap{background:linear-gradient(180deg,#fbf3de 0%, #f2e2ba 100%);
+    border:1px solid rgba(138,52,24,.22);border-radius:12px;padding:10px;margin-top:12px;overflow:hidden}
+  .kz-map-mini{width:100%;height:auto;display:block}
+  .kz-map-mini .neighbor-fill{fill:rgba(200,180,140,.32);stroke:rgba(80,60,40,.28);stroke-width:.6;pointer-events:none}
+  .kz-map-mini .kz-outline{fill:none;stroke:#8a3418;stroke-width:1.4;stroke-linejoin:round;pointer-events:none}
+  .kz-map-mini .region{stroke:#8a3418;stroke-width:.6;cursor:pointer;transition:fill .14s}
+  .kz-map-mini .region.uly{fill:#efd5b0}
+  .kz-map-mini .region.orta{fill:#d5e2c2}
+  .kz-map-mini .region.kishi{fill:#dbc4e4}
+  .kz-map-mini .region.dim{opacity:.22}
+  .kz-map-mini .region:active, .kz-map-mini .region.sel{fill:#c86a2b;stroke:#3a1f10;stroke-width:1.2}
+  .kz-map-mini .neighbor-label{font-family:var(--f-h);font-size:9px;font-style:italic;fill:rgba(60,45,30,.55);
+    letter-spacing:.14em;text-transform:uppercase;pointer-events:none}
+  .kz-map-mini .city{cursor:pointer}
+  .kz-map-mini .city .dot{fill:#8a3418;stroke:#fff;stroke-width:1.4}
+  .kz-map-mini .city.capital .dot{fill:#221812;stroke-width:2;r:5}
+  .kz-map-mini .city text{font-family:var(--f-h);font-size:10px;font-weight:500;fill:var(--ink);
+    pointer-events:none;paint-order:stroke;stroke:rgba(253,245,223,.9);stroke-width:2}
+
+  /* Photo grid inside sheet */
+  .nom-sheet .photos{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px}
+  .nom-sheet .photos a{aspect-ratio:1;border-radius:8px;overflow:hidden;background:rgba(138,52,24,.08);
+    border:1px solid rgba(138,52,24,.2);position:relative;text-decoration:none;color:#fff}
+  .nom-sheet .photos img{width:100%;height:100%;object-fit:cover;display:block}
+  .nom-sheet .photos .cap{position:absolute;bottom:0;left:0;right:0;padding:4px 6px 5px;font-family:var(--f-h);
+    font-style:italic;font-size:10.5px;line-height:1.15;background:linear-gradient(180deg,transparent,rgba(28,17,8,.85) 55%)}
+  .nom-sheet .photos .cap b{display:block;font-weight:500;font-style:normal;font-size:9px;
+    color:rgba(255,220,170,.9);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1px}
+  .nom-sheet .photos .placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+    font-family:var(--f-h);font-style:italic;font-size:10px;color:rgba(138,52,24,.55);text-align:center;padding:6px}
+
+  /* ─── Quiz section (mobile) ─── */
+  .quiz-m{padding:24px 18px 40px;background:linear-gradient(180deg,var(--paper-2) 0%, #ecd8ab 100%);min-height:70vh}
+  .quiz-m h2{font-family:var(--f-h);font-weight:500;font-size:26px;line-height:1.05;letter-spacing:-.005em}
+  .quiz-m h2 em{color:var(--rust);font-style:italic}
+  .quiz-m .sub{display:block;font-family:var(--f-h);font-style:italic;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(138,52,24,.75);margin-top:4px}
+  .quiz-m .intro{margin-top:12px;font-size:13.5px;line-height:1.55;color:rgba(34,24,18,.78)}
+  .qm-filt{display:flex;gap:6px;overflow-x:auto;padding:14px 0 4px;-ms-overflow-style:none;scrollbar-width:none}
+  .qm-filt::-webkit-scrollbar{display:none}
+  .qm-filt span{flex-shrink:0;padding:7px 13px;font-family:var(--f-h);font-style:italic;font-size:12.5px;
+    color:var(--ink);border:1px solid rgba(138,52,24,.35);border-radius:18px;background:rgba(255,246,224,.55);white-space:nowrap;user-select:none}
+  .qm-filt span.on{background:var(--rust);color:var(--paper);border-color:var(--rust)}
+  .qm-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+  .qm-card{background:#fbf3de;border:1px solid rgba(138,52,24,.22);border-radius:12px;overflow:hidden;
+    cursor:pointer;transition:.15s;display:flex;flex-direction:column;position:relative}
+  .qm-card:active{transform:scale(.98)}
+  .qm-card .num{position:absolute;top:8px;right:10px;font-family:var(--f-h);font-style:italic;font-size:10.5px;letter-spacing:.08em;color:var(--rust);z-index:2}
+  .qm-card .poster{aspect-ratio:1.2;background:linear-gradient(135deg,#e9c99a,#c88c5a);display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .qm-card .poster img{width:80%;height:80%;object-fit:contain}
+  .qm-card .body{padding:12px 12px 14px;display:flex;flex-direction:column;gap:4px}
+  .qm-card .cat{font-family:var(--f-h);font-style:italic;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--rust)}
+  .qm-card h4{font-family:var(--f-h);font-weight:600;font-size:15.5px;line-height:1.15;color:var(--ink)}
+  .qm-card .meta{margin-top:6px;display:flex;justify-content:space-between;align-items:center;font-size:11.5px;font-family:var(--f-h);font-style:italic}
+  .qm-card .meta .count{color:rgba(34,24,18,.6)}
+  .qm-card .meta .start{color:var(--rust)}
+
+  /* Quiz play screen */
+  .qm-play{padding:20px 18px 40px;background:linear-gradient(180deg,var(--paper-2) 0%, #ecd8ab 100%);min-height:80vh}
+  .qm-play .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:12px}
+  .qm-play .qkicker{font-family:var(--f-h);font-style:italic;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--rust)}
+  .qm-play h3{font-family:var(--f-h);font-weight:500;font-size:22px;line-height:1.1;color:var(--ink);margin-top:4px}
+  .qm-play .qclose{background:none;border:1px solid var(--rust);color:var(--rust);border-radius:14px;padding:5px 12px;
+    font-family:var(--f-h);font-style:italic;font-size:12.5px;cursor:pointer;flex-shrink:0}
+  .qm-bar{height:5px;background:rgba(138,52,24,.15);border-radius:3px;overflow:hidden;margin:6px 0 16px}
+  .qm-bar > i{display:block;height:100%;background:var(--rust);transition:width .3s ease}
+  .qm-q{background:#fbf3de;border:1px solid rgba(138,52,24,.24);border-radius:12px;padding:16px 14px}
+  .qm-q .qn{font-family:var(--f-h);font-style:italic;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(138,52,24,.75)}
+  .qm-q .qt{font-family:var(--f-h);font-weight:500;font-size:17px;line-height:1.25;color:var(--ink);margin-top:6px}
+  .qm-opts{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+  .qm-opts button{text-align:left;padding:12px 14px;font-family:var(--f-b);font-size:14px;line-height:1.3;color:var(--ink);
+    background:#fdf6e2;border:1px solid rgba(138,52,24,.24);border-radius:10px;cursor:pointer;transition:.15s}
+  .qm-opts button:active{background:rgba(138,52,24,.06)}
+  .qm-opts button.correct{background:#b8d8a8;border-color:#588f42;color:#1f3d1a}
+  .qm-opts button.wrong{background:#e8b6ab;border-color:#a0432a;color:#4c1a10}
+  .qm-opts button:disabled{cursor:default}
+  .qm-exp{margin-top:12px;padding:12px 14px;background:rgba(255,246,224,.7);border-left:3px solid var(--rust);border-radius:2px;
+    font-size:13px;line-height:1.5;color:var(--ink)}
+  .qm-next{margin-top:14px;width:100%;padding:12px;background:var(--rust);color:var(--paper);border:none;border-radius:10px;
+    font-family:var(--f-h);font-style:italic;font-size:15px;cursor:pointer}
+  .qm-next:hover{background:var(--rust-2)}
+  .qm-result{background:#fbf3de;border:1px solid rgba(138,52,24,.24);border-radius:12px;padding:24px 18px;text-align:center}
+  .qm-result h3{font-family:var(--f-h);font-weight:500;font-size:24px;color:var(--ink)}
+  .qm-result .score{font-family:var(--f-h);font-weight:500;font-size:48px;color:var(--rust);margin:16px 0 6px;line-height:1}
+  .qm-result .label{font-family:var(--f-h);font-style:italic;font-size:14px;color:rgba(34,24,18,.7)}
+  .qm-result .btns{display:flex;flex-direction:column;gap:8px;margin-top:20px}
+  .qm-result .btns button{padding:12px;font-family:var(--f-h);font-style:italic;font-size:14.5px;border-radius:10px;cursor:pointer;border:1px solid var(--rust)}
+  .qm-result .btn-p{background:var(--rust);color:var(--paper)}
+  .qm-result .btn-g{background:transparent;color:var(--rust)}
 </style>
 </head>
 <body>
@@ -264,10 +374,9 @@
       <path d="M10 22 L22 10 L34 22 L22 34 Z" fill="none" stroke="#c48a2b" stroke-width="1"/>
       <text x="22" y="28" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="18" font-weight="600" fill="#8a3418">Д</text>
     </svg>
-    <div>
+    <a href="#" id="brand-home" data-view="exhibits" style="text-decoration:none;color:inherit">
       <div class="brand-name">Дала Мұрасы</div>
-      <span class="brand-sub">Nomad · Codex</span>
-    </div>
+    </a>
   </div>
   <span class="lang-mini">KZ</span>
   <button class="burger" id="burger" aria-label="Menu">
@@ -316,9 +425,9 @@
   <div class="hero-inner">
     <h1 class="htitle">Қазақ мұралары<br><em>3д</em> форматында</h1>
     <div class="stats" style="grid-template-columns:repeat(3,1fr)">
-      <div><b>27</b><span>экспонат</span></div>
-      <div><b>27</b><span>3D моделі</span></div>
-      <div><b>135</b><span>сұрақ</span></div>
+      <div><b>30</b><span>экспонат</span></div>
+      <div><b>30</b><span>3D моделі</span></div>
+      <div><b>150</b><span>сұрақ</span></div>
     </div>
   </div>
 
@@ -782,7 +891,7 @@
          data-sub="Болат қалқан · латунь жиегімен · XVIII ғ."
          data-desc="Қалқан — жауынгер қорғаныш қаруы. Болат парақ, латунь жиегі, куфи стиліндегі жазулар. Ұлттық музей."
          data-facts='[["Материал","болат · латунь"],["Диаметр","≈ 50 см"],["Ғасыры","XVIII"],["Ою","куфи"]]'
-         data-camera="0deg 78deg auto">
+         data-camera="90deg 135deg auto">
       <div class="fig"><img class="poster" src="assets/posters/qalqan.png" alt=""></div>
       <div class="body">
         <span class="num">Nº 081</span>
@@ -878,7 +987,7 @@
          data-sub="«Птичий клюв» · күміс, скан-зернь · XIX ғ."
          data-desc="Овал каст, үшкір ұш. Скан-зернь мен плетенка ою. Костанай ОМ, XIX ғ."
          data-facts='[["Материал","күміс"],["Техника","скан · зернь"],["Пішіні","овал"],["Ғасыры","XIX"]]'
-         data-camera="0deg 75deg auto">
+         data-camera="45deg 30deg auto">
       <div class="fig"><img class="poster" src="assets/posters/perstenj.png" alt=""></div>
       <div class="body">
         <span class="num">Nº 043</span>
@@ -917,6 +1026,54 @@
         <span class="cat">Тұрмыстық</span>
         <h4>Кесе</h4>
         <div class="meta"><span>438 қаралым</span><span class="tag">◆ 3D</span></div>
+      </div>
+    </div>
+
+    <div class="card"
+         data-model="models/korzhyn.glb"
+         data-no="087" data-cat="Тұрмыс · сумка" data-title-a="Қор" data-title-b="жын"
+         data-sub="Ат үстінде жұп қап · қолмен тоқылған · ою-медальон"
+         data-desc="Қоржын — көшпелі қазақтардың дәстүрлі жол сумкасы. Екі жаққа асатын жұп қап, ат-түйе үстінде тасымалдау. Жүн жіппен тоқылған, ортасында ромб медальон. ҚР Ұлттық музейі."
+         data-facts='[["Материал","жүн жіп"],["Тәсілі","қолмен тоқу"],["Тұтылған","XIX-XX ғ."],["Өнер","ою · медальон"]]'
+         data-camera="0deg 80deg auto">
+      <div class="fig"><img class="poster" src="assets/posters/korzhyn.png" alt=""></div>
+      <div class="body">
+        <span class="num">Nº 087</span>
+        <span class="cat">Тұрмыстық</span>
+        <h4>Қоржын</h4>
+        <div class="meta"><span>0 қаралым</span><span class="tag">◆ 3D</span></div>
+      </div>
+    </div>
+
+    <div class="card"
+         data-model="models/syrmaq.glb"
+         data-no="094" data-cat="Тұрмыс · кілем" data-title-a="Сыр" data-title-b="мақ"
+         data-sub="Дәстүрлі киіз кілем · ою жапсыру · үш медальон"
+         data-desc="Сырмақ — қазақтың дәстүрлі киіз кілемі. Түсті киіз кесінділерін ойып, бір-бірімен тігіп біріктіру арқылы жасалады (мозаика). Үш ромб-медальон, айналасында ою жиек."
+         data-facts='[["Материал","киіз"],["Тәсілі","ою жапсыру"],["Түсі","қоңыр · ақ · күлгін"],["Өнер","3 медальон"]]'
+         data-camera="0deg 60deg auto">
+      <div class="fig"><img class="poster" src="assets/posters/syrmaq.png" alt=""></div>
+      <div class="body">
+        <span class="num">Nº 094</span>
+        <span class="cat">Тұрмыстық</span>
+        <h4>Сырмақ</h4>
+        <div class="meta"><span>0 қаралым</span><span class="tag">◆ 3D</span></div>
+      </div>
+    </div>
+
+    <div class="card"
+         data-model="models/dulyga.glb"
+         data-no="112" data-cat="Қару · бас киім" data-title-a="Ду" data-title-b="лыға"
+         data-sub="Темір шлем + бармица · жауынгер қорғанышы"
+         data-desc="Дулыға — қазақ жауынгерінің темір қорғаныш бас киімі. Реконструкция — заманауи шебер Берік Алибай XVIII-XIX ғ. үлгісі негізінде соққан. Куполовидті, бармицамен. Шаймардан Сариев мұражайы."
+         data-facts='[["Материал","темір + былғары"],["Автор","Берік Алибай"],["Түпнұсқа","XVIII-XIX ғ."],["Бөліктер","күмбез + бармица"]]'
+         data-camera="0deg 78deg auto">
+      <div class="fig"><img class="poster" src="assets/posters/dulyga.png" alt=""></div>
+      <div class="body">
+        <span class="num">Nº 112</span>
+        <span class="cat">Қару</span>
+        <h4>Дулыға</h4>
+        <div class="meta"><span>0 қаралым</span><span class="tag">◆ 3D</span></div>
       </div>
     </div>
 
@@ -977,14 +1134,19 @@
 <!-- ═════ Көшпенділер іздері ═════ -->
 <section class="nomads" id="nomads">
   <h2>Көшпенділер <em>іздері</em></h2>
-  <span class="sub">Traces of the nomads · 15 сакральных мест</span>
-  <p class="intro">Қазақ жерінің әр түкпірі — жеке дастан. Картасынан ізді таңдап, өңірдің батырлары, ескерткіштері мен дәстүрлерімен танысыңыз.</p>
+  <span class="sub">14 облыс + 3 қала · 3 жүз</span>
+  <p class="intro">Қазақ жерінің әр түкпірі — жеке дастан. Картадан облысты немесе қаланы басып, өңірдің батырлары, ескерткіштері мен дәстүрлерімен танысыңыз.</p>
 
   <div class="nom-filt" id="nom-filt">
     <span class="on" data-z="all">Барлығы</span>
     <span data-z="uly">Ұлы жүз</span>
     <span data-z="orta">Орта жүз</span>
     <span data-z="kishi">Кіші жүз</span>
+  </div>
+
+  <!-- Real Kazakhstan map -->
+  <div class="kz-map-wrap">
+    <svg id="kz-map-mini" class="kz-map-mini" xmlns="http://www.w3.org/2000/svg" aria-label="Қазақстан картасы"></svg>
   </div>
 
   <div class="nom-grid" id="nom-grid"></div>
@@ -998,6 +1160,30 @@
     <div class="grd" id="gh-mini-grid"></div>
   </div>
 </section>
+
+<!-- ═════ Викторина (mobile) ═════ -->
+<section class="quiz-m" id="quiz">
+  <h2>Викторина <em>экспонаттар</em></h2>
+  <span class="sub">30 викторина · 150 сұрақ</span>
+  <p class="intro">Әрбір экспонат үшін жеке викторина. Оның тарихы, материалы мен дәстүрі туралы 5 сұраққа жауап беріңіз.</p>
+
+  <div class="qm-filt" id="qm-filt">
+    <span class="on" data-f="all">Барлығы</span>
+    <span data-f="home">Тұрмыс</span>
+    <span data-f="clothing">Киім</span>
+    <span data-f="music">Музыка</span>
+    <span data-f="craft">Қолөнер</span>
+    <span data-f="jewelry">Зергерлік</span>
+    <span data-f="game">Ойын</span>
+    <span data-f="weapon">Қару</span>
+    <span data-f="ancient">Ежелгі</span>
+  </div>
+
+  <div class="qm-grid" id="qm-grid"></div>
+</section>
+
+<!-- Quiz play screen (initially hidden) -->
+<section class="qm-play" id="qm-play" hidden></section>
 
 <!-- Bottom sheet for a selected site -->
 <div class="nom-sheet" id="nom-sheet" aria-hidden="true">
@@ -1014,19 +1200,506 @@
 
 <!-- bottom tab bar -->
 <nav class="tabbar">
-  <a href="#exhibits" class="on">
+  <a href="#" class="on" data-view="exhibits">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10 h18"/><path d="M9 4 v6"/></svg>
     Экспонат
   </a>
-  <a href="#nomads">
+  <a href="#" data-view="nomads">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 L4 12 C4 8 8 4 12 4 C16 4 20 8 20 12 L20 20 Z"/><path d="M4 12 h16"/></svg>
     Көшпелілер
   </a>
-  <a href="#quiz">
+  <a href="#" data-view="quiz">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 8 a3 3 0 1 1 4 2.5 c-1 .5-1 1.5-1 2.5"/><circle cx="12" cy="17" r=".8" fill="currentColor"/></svg>
     Викторина
   </a>
 </nav>
+
+<!-- Real Kazakhstan region paths + shared quiz/region data -->
+<script>
+/* Auto-generated: real KZ admin map (viewBox 1100 480). */
+const KZ_VIEWBOX = "0 0 1100 480";
+const KZ_OUTLINE_D = "M631,373L629,374L626,374L625,375L624,376L623,378L621,378L620,377L618,377L616,378L614,380L611,383L608,385L604,387L601,387L598,388L594,391L594,392L591,393L589,393L587,395L586,398L585,399L582,401L579,403L577,405L575,407L575,409L575,410L576,412L576,413L573,414L571,414L569,413L565,411L564,410L563,409L563,408L564,405L564,403L563,403L562,402L560,399L559,400L557,400L556,399L551,400L547,400L544,400L539,400L534,401L532,400L531,397L530,395L529,392L528,389L527,385L527,382L527,379L523,379L519,379L515,379L515,377L515,374L515,371L516,367L516,364L517,360L517,357L517,354L515,355L513,356L510,357L509,354L507,352L505,349L503,346L500,344L498,343L495,341L493,339L492,337L489,336L487,336L485,337L482,338L480,339L478,340L476,340L473,339L468,339L465,339L461,339L455,338L450,338L446,338L441,339L436,340L432,340L427,341L423,341L421,341L419,339L415,336L412,334L410,332L407,329L404,326L402,324L400,322L399,320L398,318L395,317L392,315L389,314L385,312L382,310L379,309L376,307L372,305L369,304L366,302L363,300L359,299L356,297L353,295L350,294L347,292L343,290L341,289L338,289L334,290L331,291L327,292L320,294L315,295L312,295L308,296L303,298L299,299L295,300L290,301L287,302L283,303L280,303L280,309L280,315L280,321L280,326L280,332L280,338L280,344L280,350L280,355L280,361L280,367L280,373L280,379L280,384L280,390L280,396L277,396L273,397L270,398L269,397L268,397L267,395L265,394L263,393L261,390L260,388L256,384L256,382L255,381L254,380L250,377L245,374L240,372L239,371L237,370L234,370L232,371L227,371L222,372L216,374L212,375L208,377L204,380L199,384L198,382L198,378L198,376L199,373L201,371L202,368L202,365L201,360L200,359L199,358L197,358L195,358L194,359L192,357L189,357L188,357L186,357L185,357L184,356L183,355L182,354L180,351L178,350L176,349L172,349L171,349L171,348L171,345L171,343L171,341L170,340L169,339L167,337L165,335L162,329L160,324L159,323L156,322L151,321L148,320L147,319L146,318L146,317L147,315L147,314L150,313L156,312L161,313L165,315L166,316L168,316L171,315L173,315L177,315L175,314L174,313L172,313L171,313L169,311L165,308L164,307L164,305L165,304L167,302L170,300L171,297L172,296L174,294L176,294L181,293L188,293L197,293L200,293L205,294L209,295L212,295L215,295L213,293L207,291L205,289L208,283L212,279L214,273L213,267L212,266L212,264L214,263L215,261L214,259L212,256L211,255L209,254L203,254L199,253L197,254L196,255L195,255L192,257L189,257L187,255L186,255L181,254L179,252L171,250L168,250L162,252L158,254L156,254L154,256L153,256L151,256L150,256L148,258L143,260L140,262L138,263L135,263L132,264L131,264L127,264L125,265L125,268L124,267L122,268L122,269L116,267L112,265L108,264L106,263L106,261L105,260L107,259L109,259L112,260L114,260L116,260L116,258L113,254L110,250L108,246L107,245L103,241L100,238L98,235L96,234L92,233L84,233L81,232L79,233L77,234L75,233L73,230L72,229L73,227L73,224L72,221L70,220L67,219L62,217L61,213L63,207L67,203L69,201L71,200L71,198L71,197L69,196L67,194L66,193L66,189L68,184L70,181L73,178L76,177L77,175L77,173L77,171L78,170L79,169L80,168L82,167L84,166L87,167L90,170L95,174L98,178L99,179L101,180L104,181L108,180L111,179L113,178L113,177L113,174L112,173L111,171L110,168L109,163L108,161L111,162L113,162L115,161L118,158L125,155L126,153L127,151L129,149L133,149L136,148L139,147L143,145L146,144L148,143L149,142L153,139L155,137L158,135L159,133L161,133L164,134L168,135L170,137L171,138L172,140L175,139L178,139L182,138L187,135L192,134L195,134L197,137L199,139L201,139L202,139L204,139L206,139L208,140L212,140L216,139L219,139L221,140L223,141L227,145L229,146L233,148L235,149L237,151L239,152L241,154L244,157L244,160L245,162L246,163L248,163L249,162L249,160L249,157L248,155L247,154L247,152L249,151L251,152L254,153L258,155L262,158L266,160L270,162L274,162L276,162L279,160L282,159L283,157L284,156L288,153L292,151L294,151L295,152L299,151L301,150L305,150L308,151L312,153L315,154L317,154L320,153L321,152L322,150L324,149L329,150L332,150L336,150L340,152L343,155L347,158L348,159L351,160L353,160L355,160L362,161L363,162L363,164L369,163L370,162L372,159L373,157L375,156L376,155L377,156L379,157L381,159L384,160L386,160L389,160L397,159L403,157L407,155L409,152L410,148L412,146L411,143L407,141L406,140L398,139L397,138L389,136L385,135L384,134L384,132L381,130L376,129L375,128L376,127L380,126L384,123L386,123L390,123L394,120L396,119L398,118L397,116L394,112L393,109L393,108L395,106L397,105L398,103L399,102L403,101L407,101L410,102L415,102L419,102L421,102L422,102L423,101L423,100L422,98L416,97L413,95L411,95L408,95L405,94L403,94L402,93L402,91L403,90L405,89L407,90L410,89L410,88L409,86L407,86L406,87L404,87L400,86L397,85L400,83L401,82L401,81L401,79L401,77L403,75L406,75L412,76L420,77L421,77L422,76L433,75L435,75L446,73L448,72L449,71L452,71L454,71L458,70L461,70L465,70L468,69L470,68L473,67L479,66L480,67L483,67L487,66L490,66L491,66L494,67L495,67L496,65L497,63L499,62L500,62L502,61L503,60L508,60L513,58L514,59L520,59L528,58L533,57L541,56L544,55L550,54L555,54L558,52L560,52L563,52L565,51L567,50L567,49L567,48L567,46L569,46L572,46L574,45L578,43L581,41L585,41L591,41L597,42L602,43L605,44L608,45L611,46L613,46L615,46L617,45L618,44L620,43L626,43L627,44L630,47L632,52L635,58L636,61L636,62L636,64L635,67L633,69L634,70L640,72L648,71L653,70L655,71L657,70L658,68L660,68L662,69L663,71L664,73L664,74L665,77L668,76L669,76L669,74L669,73L673,73L677,73L682,76L684,77L688,77L691,76L693,75L694,74L695,76L695,78L692,79L688,81L686,83L685,86L686,87L687,88L687,90L690,89L694,86L696,86L699,85L704,86L707,86L709,88L710,89L712,88L712,87L712,86L718,82L722,80L723,80L725,80L727,80L731,78L734,77L735,75L736,74L741,73L746,72L752,69L755,68L761,67L763,66L767,65L769,65L767,68L765,71L764,72L759,72L760,74L761,76L762,77L768,80L775,84L783,88L789,91L791,93L792,94L797,99L800,103L807,110L813,117L819,125L823,130L830,139L832,142L836,148L839,153L842,157L844,158L844,156L846,155L848,154L851,154L852,153L853,152L853,149L853,147L855,146L857,146L858,145L860,144L862,144L863,144L864,145L865,147L867,147L869,147L869,150L868,151L869,153L873,152L875,153L876,154L877,156L876,157L881,158L884,158L888,157L892,159L894,159L897,158L901,158L904,157L906,156L906,155L911,154L913,154L915,153L917,152L919,152L921,152L926,153L930,154L933,156L935,157L936,160L938,162L940,164L941,166L942,170L944,171L946,171L948,171L950,172L956,175L958,175L959,175L960,177L959,178L960,180L961,181L963,183L964,185L965,187L966,187L968,186L971,187L980,188L981,188L982,189L984,189L985,189L987,189L989,188L990,187L993,186L995,184L997,183L999,182L1000,183L1000,185L999,186L997,187L1000,188L1002,190L1005,194L1006,195L1008,196L1010,196L1012,197L1013,198L1014,200L1012,199L1008,199L1005,200L1004,200L1002,201L1001,202L1000,204L1001,206L1000,210L999,211L996,214L994,215L992,215L989,216L984,217L979,217L977,218L976,219L975,221L974,222L973,226L972,230L973,234L973,239L973,240L975,243L975,244L975,246L973,248L972,250L971,251L968,251L965,252L962,254L960,255L956,257L955,257L954,256L953,254L952,253L950,253L949,253L944,253L941,253L939,253L937,253L932,253L929,252L928,252L923,250L917,248L915,247L913,248L913,252L912,253L908,262L906,268L902,274L901,278L899,283L898,286L897,288L897,290L900,291L903,292L904,294L904,296L903,298L902,299L901,300L899,299L897,298L896,298L892,298L889,299L886,299L884,297L884,295L882,294L880,295L874,297L867,299L863,300L861,300L857,300L854,301L852,301L848,302L844,303L841,305L840,306L841,308L842,308L846,308L849,308L851,309L853,310L853,311L852,311L852,313L851,314L850,317L851,320L851,323L851,324L851,326L852,327L853,330L854,331L856,336L858,339L859,343L858,345L860,347L860,349L861,350L860,351L857,350L854,352L852,353L851,354L853,355L855,356L852,357L848,359L847,360L846,362L847,366L847,369L849,372L848,374L844,371L841,369L838,368L833,367L831,367L829,367L828,365L826,364L824,362L823,360L821,360L818,360L816,359L814,359L811,358L808,357L805,357L803,357L796,357L791,356L787,356L784,356L783,356L781,356L778,356L774,354L772,354L764,355L761,356L754,356L747,355L745,355L741,358L734,358L727,356L721,354L717,352L711,349L707,348L706,349L704,349L701,349L699,350L696,351L693,352L692,354L689,361L689,364L690,369L688,368L686,367L683,366L675,365L674,364L673,363L671,362L668,362L662,360L659,360L651,358L650,358L646,359L644,360L642,359L638,360L636,362L634,364L632,365L632,367L631,368L629,370L631,373Z";
+const KZ_NEIGHBORS = [{"name": "Uzbekistan", "label": "ӨЗБЕКСТАН", "d": "M631,373L635,373L637,374L633,377L630,378L627,381L623,382L619,386L613,390L615,392L618,393L624,393L626,394L627,398L631,399L635,400L637,401L641,401L642,396L645,396L646,393L647,391L648,393L651,395L652,399L657,400L659,400L660,403L662,403L665,404L670,407L675,408L678,408L682,409L673,413L671,415L669,416L665,415L665,418L661,419L658,418L656,421L654,423L652,424L648,426L646,424L643,423L639,422L634,423L632,423L624,424L622,423L620,421L617,420L621,415L625,413L623,410L622,406L619,404L616,406L612,409L609,410L603,412L601,413L597,410L593,410L592,413L590,415L592,421L592,424L588,424L584,424L577,425L580,426L583,426L581,428L582,431L580,432L577,434L576,436L575,439L574,441L571,441L567,441L564,440L560,440L555,439L551,441L549,443L546,449L553,451L554,455L559,455L563,455L565,457L563,463L564,468L565,470L568,473L570,475L569,479L566,482L564,484L562,487L559,491L557,499L553,500L549,499L546,500L543,499L540,497L534,496L527,496L527,494L527,490L527,485L530,482L524,479L521,477L517,475L514,474L512,473L509,474L506,474L501,471L493,466L487,463L484,461L481,459L475,455L472,456L467,453L463,451L457,445L452,442L446,439L443,437L437,433L434,431L432,429L430,421L428,418L426,416L424,412L422,407L420,403L417,400L413,398L410,397L407,398L404,399L401,399L396,398L392,398L386,399L379,395L377,394L377,390L377,388L376,385L379,384L377,381L374,380L374,377L374,375L371,371L362,371L358,370L356,367L352,366L349,365L345,362L341,359L340,362L336,362L332,362L334,366L337,369L339,371L336,371L335,369L333,368L329,367L326,368L324,373L320,375L313,375L310,377L307,380L303,383L304,387L305,393L307,395L305,398L301,397L292,397L287,396L280,396L280,390L280,384L280,379L280,373L280,367L280,361L280,355L280,350L280,344L280,338L280,332L280,326L280,321L280,315L280,309L280,303L283,303L287,302L290,301L295,300L299,299L303,298L308,296L312,295L315,295L320,294L327,292L331,291L334,290L338,289L341,289L343,290L347,292L350,294L353,295L356,297L359,299L363,300L366,302L369,304L372,305L376,307L379,309L382,310L385,312L389,314L392,315L395,317L398,318L400,322L402,324L404,326L407,329L410,332L412,334L415,336L419,339L421,341L427,341L432,340L436,340L441,339L446,338L450,338L455,338L461,339L465,339L468,339L473,339L476,340L478,340L482,338L485,337L487,336L492,337L493,339L495,341L498,343L500,344L503,346L505,349L507,352L509,354L510,357L513,356L515,355L517,357L517,360L516,364L516,367L515,371L515,374L515,377L519,379L523,379L527,379L527,382L527,385L528,389L529,392L530,395L532,400L534,401L539,400L544,400L547,400L551,400L556,399L559,400L562,401L564,403L563,408L564,410L569,413L571,414L575,414L575,410L575,407L577,405L579,403L582,401L585,399L587,395L589,393L594,392L598,388L601,387L604,387L608,385L611,383L614,380L616,378L620,377L622,378L624,376L626,374L631,373ZM637,432L633,432L633,430L631,427L634,427L637,428L637,432ZM650,431L648,431L650,430Z"}, {"name": "Turkmenistan", "label": "ТҮРІКМЕНСТАН", "d": "M213,460L212,457L211,453L213,460ZM280,396L287,396L292,397L299,397L303,398L306,396L305,393L304,387L303,383L307,380L310,377L313,375L320,375L323,374L326,370L327,367L332,367L334,368L336,370L338,372L337,369L334,366L331,364L334,362L339,362L341,359L345,362L348,365L352,366L355,366L358,370L362,371L369,371L373,373L374,376L374,378L377,381L379,383L376,385L377,388L377,390L376,393L379,395L385,399L392,398L395,398L401,399L404,399L407,398L410,397L413,398L417,400L419,402L422,407L424,412L426,416L428,418L430,421L432,429L434,431L437,433L443,437L446,439L452,442L457,445L462,450L467,453L472,456L475,455L481,459L483,461L487,463L493,466L501,471L506,474L509,474L512,473L514,474L517,475L521,477L524,479L528,480L527,485L527,490L527,494L527,496L523,496L517,495L513,492L509,491L506,493L506,496L504,499L499,499L494,499L490,500L487,502L486,506L484,512L482,517L481,520L480,522L476,525L472,527L469,529L467,530L461,531L457,533L452,534L449,534L448,536L447,540L446,545L441,547L438,549L436,550L432,549L428,551L426,548L423,546L421,545L418,545L415,545L411,544L408,542L406,540L403,539L404,537L404,534L401,531L403,528L402,523L402,520L402,516L391,514L382,514L379,510L376,506L373,504L367,502L364,501L362,499L360,497L359,494L357,492L350,489L347,488L344,489L341,488L338,489L335,489L330,485L327,484L321,482L316,482L313,481L312,478L310,475L306,475L302,475L299,474L297,474L294,474L289,474L288,478L285,478L282,478L277,478L271,477L266,479L263,480L259,482L255,486L251,493L249,494L245,495L241,496L239,497L232,497L230,488L230,482L230,479L231,473L231,470L230,467L231,464L231,461L231,458L230,454L228,452L227,449L223,448L219,446L215,447L214,444L216,439L220,441L222,441L225,441L223,439L221,436L222,432L217,431L214,430L210,430L210,432L211,435L208,432L206,428L205,424L204,419L206,416L207,412L208,408L209,403L212,407L214,409L218,410L223,408L227,411L229,413L231,413L236,412L239,411L242,412L242,408L247,408L249,408L251,405L251,402L248,399L241,395L238,393L236,391L235,388L234,385L233,382L230,377L225,376L222,376L217,377L214,377L210,380L208,382L206,386L208,389L207,396L207,399L205,395L201,391L199,384L204,380L208,377L211,376L216,374L222,372L227,371L232,371L237,370L240,372L245,374L250,377L254,380L256,382L260,388L263,393L267,395L269,397L273,397L277,396L280,396Z"}, {"name": "Russia", "label": "РЕСЕЙ", "d": "M1170,162L1165,162L1162,162L1159,162L1156,161L1153,161L1149,162L1147,160L1146,158L1143,157L1141,159L1138,159L1135,158L1132,155L1130,157L1128,159L1122,159L1119,159L1115,161L1112,163L1110,165L1107,165L1101,166L1098,168L1094,169L1092,171L1089,171L1085,173L1082,174L1079,174L1077,175L1074,178L1071,178L1068,179L1069,183L1067,184L1064,185L1060,187L1057,189L1053,190L1051,188L1049,191L1046,190L1043,190L1039,190L1034,191L1033,195L1030,197L1028,198L1026,198L1022,198L1018,199L1016,200L1013,198L1010,196L1006,195L1002,190L1000,188L997,187L1000,185L997,183L995,184L993,186L990,187L987,189L984,189L981,188L971,187L968,186L965,187L963,183L960,180L960,177L958,175L950,172L948,171L944,171L941,166L938,162L936,160L935,157L930,154L926,153L921,152L917,152L913,154L907,154L904,157L901,158L897,158L894,159L892,159L888,157L884,158L881,158L877,158L876,155L873,152L869,153L869,150L869,147L865,147L863,144L860,144L857,146L854,146L853,149L852,153L849,153L846,155L844,158L839,153L836,148L832,142L830,139L823,130L819,125L813,117L807,110L800,103L797,99L792,94L789,91L783,88L775,84L768,80L762,77L760,75L759,73L764,72L767,68L769,65L763,66L761,67L755,68L752,69L746,72L742,73L736,74L734,77L731,78L727,80L723,80L718,82L713,85L712,87L709,88L704,86L699,85L696,86L690,89L687,88L685,86L686,83L688,81L692,79L695,78L695,75L693,75L688,77L684,77L682,76L677,73L673,73L670,72L669,75L666,77L664,74L663,71L662,69L658,68L655,71L653,70L648,71L640,72L634,70L635,67L636,62L635,58L632,52L630,47L627,44L620,43L617,45L613,46L608,45L605,44L602,43L597,42L591,41L585,41L581,41L578,43L574,45L569,46L567,48L567,50L563,52L560,52L558,52L555,54L550,54L544,55L541,56L533,57L528,58L520,59L514,59L508,60L503,60L500,62L497,63L495,67L491,66L487,66L483,67L480,67L473,67L470,68L465,70L462,70L458,70L454,71L452,71L448,72L436,74L433,75L422,76L420,77L412,76L406,75L403,75L401,77L401,81L400,83L398,84L400,86L404,87L407,86L410,87L407,90L403,90L402,93L405,94L408,95L411,95L416,97L422,98L423,101L421,102L415,102L410,102L407,101L403,101L399,102L397,105L393,108L394,112L397,116L396,119L394,120L390,123L386,123L380,126L376,127L381,130L384,132L385,135L389,136L397,138L406,140L411,143L412,146L410,148L409,152L407,155L403,157L397,159L389,160L386,160L381,159L379,157L376,155L373,157L372,159L370,162L363,164L363,162L355,160L353,160L348,159L343,155L340,152L336,150L332,150L329,150L324,149L321,152L317,154L315,154L312,153L308,151L305,150L301,150L295,152L292,151L288,153L284,156L282,159L279,160L276,162L274,162L270,162L266,160L262,158L258,155L254,153L251,152L247,152L248,155L249,157L249,160L248,163L245,162L244,157L241,154L239,152L235,149L229,146L223,141L219,139L216,139L212,140L208,140L204,139L202,139L199,139L197,137L195,134L192,134L187,135L182,138L178,139L175,139L172,140L170,137L168,135L164,134L161,133L158,135L155,137L153,139L149,142L146,144L143,145L139,147L136,148L133,149L129,149L126,153L125,155L118,158L115,161L113,162L109,161L110,168L111,171L113,174L113,178L108,180L104,181L99,179L95,174L90,170L87,167L84,166L80,168L78,170L77,173L76,177L73,178L70,181L68,184L66,189L66,193L69,196L71,198L69,201L67,203L63,207L61,213L62,217L67,219L70,220L73,224L73,227L73,230L75,233L77,234L81,232L84,233L92,233L96,234L100,238L103,241L107,245L110,250L113,254L116,258L114,260L112,260L109,259L106,259L106,263L112,265L116,267L121,269L120,272L113,275L110,276L110,278L107,280L100,284L97,285L95,285L90,286L87,286L85,288L82,286L83,290L81,292L79,296L77,299L75,303L73,306L71,307L66,310L64,312L64,314L64,317L68,319L71,320L73,322L76,324L77,326L79,329L80,334L81,340L83,333L84,336L82,341L82,344L82,347L81,353L85,356L87,358L87,362L89,363L95,370L99,374L101,377L103,380L105,381L107,383L104,387L101,390L97,392L93,396L90,399L84,399L78,397L75,393L72,390L70,389L66,385L64,384L61,384L57,382L53,380L51,379L48,379L45,377L40,375L38,373L40,370L40,367L37,365L31,366L28,363L25,361L22,360L18,363L16,361L13,360L8,361L5,362L2,363L-1,365L-4,365L-6,362L-9,359L-15,356L-21,354L-23,352L-26,350L-29,349L-34,350L-37,348L-40,348L-44,348L-57,348L-59,347L-62,345L-68,344Z"}, {"name": "Kyrgyzstan", "label": "ҚЫРҒЫЗСТАН", "d": "M631,423L634,423L639,422L643,423L646,424L648,426L652,424L654,423L656,421L658,418L661,419L664,419L664,416L669,416L671,415L673,413L681,410L678,408L676,408L671,407L667,405L664,403L660,404L660,401L657,400L652,399L652,396L650,394L648,391L646,393L646,396L642,396L641,401L639,400L635,400L631,399L629,399L626,394L624,393L620,394L615,392L613,391L619,386L622,383L626,381L628,378L633,377L637,375L635,373L631,372L629,370L632,367L634,364L636,362L638,360L642,359L646,359L649,358L659,360L662,360L668,362L671,362L674,364L683,366L686,367L688,368L689,364L689,361L692,354L696,351L699,350L704,349L707,348L711,349L717,352L721,354L727,356L734,358L740,358L744,355L747,355L754,356L761,356L764,355L771,354L774,354L778,356L781,356L784,356L787,356L791,356L796,357L803,357L808,357L811,358L814,359L818,360L821,360L823,360L824,362L826,364L829,367L833,367L838,368L841,369L844,371L847,374L848,377L840,379L837,382L831,383L827,384L823,386L813,390L808,393L806,394L804,396L799,402L795,403L791,403L786,404L779,404L772,403L768,405L766,409L764,411L762,415L760,418L758,420L755,419L753,420L749,420L746,422L741,422L740,416L739,414L731,417L728,418L726,418L722,417L722,421L718,422L712,426L708,427L704,428L701,430L699,433L698,435L700,439L698,442L695,443L692,443L690,443L687,444L684,445L681,446L678,446L670,445L667,446L664,446L661,449L659,448L656,446L651,448L649,445L645,443L644,441L641,440L638,441L635,442L632,444L627,445L624,443L623,440L620,440L618,440L614,441L612,441L607,441L603,441L601,440L596,441L592,441L592,438L590,436L592,432L595,432L596,429L603,425L608,424L610,425L615,427L617,428L621,431L623,429L626,426L631,425Z"}, {"name": "China", "label": "ҚЫТАЙ", "d": "M798,552L796,549L797,544L793,544L791,543L786,544L783,544L779,543L774,542L770,540L767,539L764,537L762,533L758,535L755,535L752,535L751,532L749,531L747,529L748,526L748,521L747,517L745,514L741,512L736,512L734,508L729,506L724,506L722,506L718,504L715,505L711,502L715,499L718,499L722,500L726,498L728,496L725,492L723,490L724,486L723,482L722,479L720,475L722,470L720,467L714,465L709,463L705,463L703,466L699,466L696,462L695,459L696,457L697,455L695,452L693,449L694,445L695,443L698,442L700,440L699,437L699,434L701,430L703,428L708,427L712,426L716,423L720,421L721,419L726,418L728,418L731,417L738,414L740,416L741,421L746,422L749,420L753,420L755,419L758,420L760,418L762,415L764,411L766,409L768,405L772,403L777,404L786,404L789,404L795,403L799,402L804,397L806,394L808,393L813,390L823,386L826,384L831,383L837,382L839,379L848,378L848,376L849,373L847,369L847,366L846,363L847,360L852,357L855,357L853,355L851,353L854,352L857,350L860,351L860,349L858,346L859,343L858,339L856,336L854,331L852,327L851,324L851,320L850,317L851,314L851,312L854,310L851,309L849,308L846,308L842,308L840,307L841,305L844,303L848,302L852,301L857,300L861,300L867,299L874,297L880,295L884,295L886,299L889,299L892,298L896,298L899,299L902,300L903,298L904,294L900,291L897,290L898,286L899,283L901,278L902,274L906,268L908,262L912,253L913,249L917,248L923,250L928,252L932,253L937,253L939,253L944,253L949,253L952,253L954,256L956,257L960,255L962,254L965,252L968,251L971,251L973,248L975,246L975,243L973,240L973,234L972,230L973,226L974,222L976,219L979,217L984,217L989,216L992,215L994,215L999,211L1001,206L1001,202L1004,200L1008,199L1012,199L1016,200L1018,199L1022,198L1025,198L1026,201L1024,204L1025,206L1028,208L1031,210L1029,212L1031,214L1037,215L1039,217L1042,218L1043,222L1046,223L1049,225L1053,226L1056,228L1061,227L1064,227L1068,230L1070,231L1073,232L1076,230L1078,232L1081,235L1084,236L1086,239L1088,242L1088,245L1092,250L1093,253L1097,254L1100,259L1100,263L1099,268L1098,271L1099,273L1100,277L1097,280L1095,282L1093,285L1092,288L1093,291L1094,294L1097,297L1099,298L1103,298L1107,300L1110,300L1114,301L1117,301L1120,301L1124,301L1127,302L1133,303L1137,303L1142,302L1145,303L1154,304L1159,305L1162,306L1164,307L1167,310Z"}];
+const KZ_REGIONS = [{"id": "almaty_obl", "name": "Алматы облысы", "z": "uly", "en": "Almaty", "d": "M744,356L742,354L739,354L741,353L737,351L734,351L734,349L732,347L733,345L736,342L731,341L730,341L726,340L726,338L731,334L732,333L732,331L733,329L733,326L731,324L729,323L726,321L720,321L716,317L716,314L714,310L706,306L705,304L705,301L698,301L698,296L705,297L703,294L702,285L705,282L706,279L708,276L711,274L716,270L723,266L729,263L735,261L742,261L749,260L757,261L758,262L760,261L760,262L763,262L765,261L768,262L771,263L769,261L770,261L773,262L775,261L777,262L778,264L780,263L780,262L782,262L787,261L786,248L793,248L796,245L799,248L803,244L807,247L810,248L814,249L815,251L825,251L833,258L844,255L849,257L849,259L857,261L864,264L871,264L872,266L875,265L876,267L878,266L879,268L881,266L879,268L887,276L889,281L893,284L892,288L893,290L896,289L897,290L899,291L903,292L904,294L903,297L901,300L898,298L896,297L893,297L891,298L890,299L888,299L887,298L885,298L885,297L884,295L882,294L880,294L879,295L877,296L876,296L874,297L873,297L871,297L869,298L868,299L866,299L864,299L863,300L861,299L859,300L857,300L856,300L854,300L853,301L851,302L850,301L848,302L846,302L844,302L843,303L842,304L840,305L839,306L840,306L842,307L843,308L844,308L846,307L848,308L849,307L851,308L852,309L854,310L853,311L851,312L852,314L851,315L851,317L851,319L852,321L852,323L852,325L853,326L853,328L854,330L854,332L855,333L856,335L857,337L858,338L859,340L860,342L860,344L858,345L860,346L861,348L861,350L859,350L857,350L855,351L854,352L852,352L852,354L854,355L856,356L854,357L853,357L851,358L850,358L848,360L848,361L847,362L847,364L848,365L847,367L848,369L849,371L849,372L848,373L846,373L845,372L845,371L843,370L842,369L840,368L838,368L837,367L835,367L833,367L831,367L829,365L828,364L826,363L825,363L823,361L823,359L821,359L820,359L818,359L817,359L815,359L813,358L811,358L809,357L808,356L806,357L805,357L802,357L800,357L798,357L797,357L795,357L793,357L791,356L789,356L787,356L785,356L784,356L782,355L780,356L779,356L777,355L775,355L773,355L771,354L769,354L768,355L766,356L764,356L762,356L761,356L759,357L758,357L756,357L755,356L752,356L750,356L749,355L747,355L745,355Z"}, {"id": "akmola", "name": "Ақмола облысы", "z": "orta", "en": "Aqmola", "d": "M564,164L561,166L551,166L545,169L542,165L545,164L543,162L541,161L535,162L529,161L527,160L524,160L523,157L521,158L519,158L519,156L514,153L513,157L508,157L507,156L509,151L504,147L503,145L506,143L507,138L505,135L502,135L501,132L505,133L511,131L512,128L513,124L516,122L516,116L520,116L522,119L525,118L530,118L530,120L538,120L540,121L543,121L544,121L549,122L549,116L554,116L555,117L559,118L561,120L563,119L567,116L565,115L565,113L568,113L569,112L573,112L574,110L576,108L578,107L579,107L582,106L580,105L580,102L583,101L582,99L583,97L581,97L582,95L579,95L577,94L575,91L577,90L579,89L579,87L582,87L582,85L583,85L586,85L589,85L592,84L593,85L595,87L597,89L596,86L597,85L599,84L601,84L606,84L608,85L608,88L610,89L613,88L612,90L612,92L616,92L619,94L622,95L621,93L624,93L624,91L631,91L634,91L634,93L638,93L640,94L642,93L644,92L647,91L651,96L650,99L649,100L650,102L657,104L663,103L664,101L666,101L668,101L672,101L674,101L676,100L676,103L678,108L681,107L685,109L689,108L691,109L692,112L701,112L703,118L703,128L699,131L698,136L702,135L704,137L706,137L709,138L707,139L704,139L698,141L698,143L695,145L691,144L690,146L689,145L687,145L685,145L686,147L687,149L689,148L693,149L690,151L688,152L684,153L685,154L681,155L677,155L675,156L673,159L670,159L668,160L666,162L669,163L667,164L664,162L662,164L662,166L661,167L658,166L653,166L651,167L653,165L654,163L654,160L652,159L650,159L648,158L643,159L642,162L641,162L638,163L636,164L633,166L632,166L630,166L630,172L628,170L623,171L624,174L621,175L618,177L616,177L614,175L616,173L615,172L614,171L607,172L605,173L603,173L603,171L601,170L600,168L599,169L595,169L596,171L594,172L592,171L593,174L591,173L588,174L585,173L583,172L581,173L582,170L583,167L584,164L585,158L578,158L574,159L569,162L567,161L564,161L564,164Z"}, {"id": "aktobe", "name": "Ақтөбе облысы", "z": "kishi", "en": "Aqtöbe", "d": "M297,299L294,280L292,276L290,273L288,269L287,266L274,263L269,261L262,256L260,252L257,249L259,238L260,234L258,232L257,228L254,225L255,222L253,218L253,213L254,209L250,208L248,206L246,207L245,211L242,211L235,210L236,208L235,206L236,205L234,199L232,201L231,200L228,199L226,197L226,195L228,191L229,189L231,188L233,188L237,186L239,187L241,186L242,184L245,183L244,182L246,179L247,177L245,175L244,172L244,170L243,168L245,166L248,163L249,162L251,161L251,160L250,158L249,156L250,155L252,154L254,155L255,156L256,155L258,154L259,154L259,155L261,157L262,158L264,159L266,160L268,160L269,161L271,161L273,162L274,162L277,161L279,160L281,159L283,158L284,157L285,154L287,154L289,154L290,152L292,152L292,151L293,149L294,151L295,152L298,152L298,151L299,150L301,150L303,150L305,150L307,150L309,149L310,151L312,152L312,153L314,154L316,155L317,153L319,153L321,154L322,151L322,149L323,148L325,149L326,149L328,149L330,148L331,150L333,149L334,148L335,148L336,149L338,149L339,150L341,151L341,153L341,155L342,156L344,156L346,156L346,157L348,158L349,159L351,159L353,160L355,160L357,160L358,160L360,160L362,160L364,161L363,163L365,163L366,163L369,162L371,161L372,160L373,158L374,156L376,155L378,155L379,156L380,158L381,159L383,160L385,160L386,160L388,160L390,160L392,160L394,160L396,160L398,160L401,159L402,158L404,158L406,157L408,157L409,155L409,153L411,149L411,147L412,145L414,145L415,145L417,145L418,144L420,145L420,147L421,150L423,150L424,149L428,150L427,153L431,156L428,157L429,160L432,159L434,167L437,170L443,177L442,181L438,179L435,181L434,184L431,185L431,188L429,188L427,190L433,196L428,197L431,198L432,202L439,207L444,205L446,206L445,209L446,211L453,213L455,214L459,215L462,217L467,224L472,229L474,230L469,234L441,248L439,248L431,247L432,245L426,239L423,239L421,236L417,232L403,234L395,250L385,250L384,255L377,256L368,262L366,264L363,267L358,272L351,278L352,295L350,294L346,291L343,290L341,289L339,289L335,290L332,291L331,291L329,291L323,293L320,293L318,294L313,295L306,297L299,299L298,299Z"}, {"id": "atyrau", "name": "Атырау облысы", "z": "kishi", "en": "Atyrau", "d": "M136,273L135,272L134,270L136,269L137,271L136,273ZM71,221L74,222L77,222L89,223L110,225L116,226L127,229L127,227L135,227L140,226L145,223L157,217L161,215L164,214L166,212L170,211L173,210L183,212L183,215L190,216L192,215L197,217L200,217L201,216L203,210L205,210L205,204L207,205L208,202L218,203L222,202L226,198L228,199L231,200L232,201L233,199L236,205L235,206L236,208L235,210L241,210L245,211L246,209L247,207L250,207L254,209L254,213L252,217L255,222L254,225L257,228L258,232L260,234L259,238L257,249L260,252L262,256L269,261L274,263L287,266L288,269L290,272L292,276L290,275L288,275L285,275L283,274L281,272L279,273L277,272L277,270L276,268L274,268L272,268L269,265L263,269L261,269L252,270L247,271L244,271L241,272L238,272L237,272L233,273L232,275L226,278L229,280L227,281L225,282L222,283L220,283L219,284L215,283L214,285L211,285L206,284L207,282L208,281L208,280L207,279L209,278L208,277L207,275L208,274L209,272L209,271L210,269L211,268L211,266L211,265L211,263L211,261L209,261L208,260L206,260L205,261L205,259L203,259L202,258L203,256L201,256L199,256L197,257L195,258L193,259L192,258L189,258L187,257L186,257L184,256L182,256L180,256L182,257L182,259L181,258L179,256L178,256L178,255L177,255L177,254L174,253L172,252L171,253L169,252L167,253L166,254L164,254L162,254L160,254L158,256L157,257L155,256L155,257L154,259L152,258L151,256L150,258L148,258L147,260L146,261L146,259L144,260L142,262L141,263L140,263L138,264L138,265L136,266L135,267L136,268L134,268L133,269L132,270L130,268L131,270L129,270L128,269L126,268L126,267L124,266L125,267L126,269L127,270L126,271L125,269L124,267L123,266L123,268L122,269L121,267L121,269L120,268L118,268L117,267L115,267L113,266L112,265L110,264L109,263L107,263L106,262L105,260L106,259L108,258L110,259L111,260L112,261L115,260L116,259L117,257L116,256L114,254L112,253L111,250L110,248L109,246L108,245L108,242L106,242L104,242L102,241L101,240L100,238L99,237L98,236L97,234L95,233L93,233L90,234L87,234L86,234L84,233L82,233L80,232L80,234L78,235L77,235L75,234L73,233L74,231L72,229L71,228L72,227L74,226L72,225L73,223L71,222Z"}, {"id": "east_kz", "name": "Шығыс Қазақстан", "z": "orta", "en": "East Kazakhstan", "d": "M896,289L893,290L892,288L893,284L889,281L887,276L880,269L880,267L878,267L877,267L875,266L873,266L871,264L864,264L857,261L849,259L849,257L844,255L833,258L825,251L815,251L814,249L811,249L807,247L803,244L799,248L796,245L793,248L787,247L784,249L781,248L779,249L778,251L775,250L772,249L771,247L769,246L771,246L772,244L772,242L774,242L776,243L775,237L775,234L776,230L778,228L779,228L778,227L782,226L781,225L778,225L775,223L778,222L774,220L771,219L772,217L773,215L776,215L781,212L781,208L781,206L771,207L769,205L770,203L772,202L774,201L772,200L770,199L770,197L767,195L765,195L763,192L769,189L775,188L777,185L777,183L777,181L777,179L779,178L784,177L786,175L789,173L791,171L792,173L802,176L806,176L810,175L814,170L815,169L814,166L812,165L813,160L808,157L807,157L805,156L802,154L801,152L798,149L800,148L804,147L805,146L809,146L814,144L815,142L814,141L818,140L822,139L825,137L826,134L827,134L829,137L830,138L831,140L832,141L834,144L835,145L836,147L838,148L839,151L841,153L842,154L843,156L844,157L844,156L846,156L847,154L848,153L850,153L852,153L854,152L854,150L853,146L857,146L858,144L859,144L862,145L864,145L865,146L867,147L868,146L869,147L869,149L868,150L867,152L870,153L872,152L875,152L876,153L876,155L877,156L876,157L879,158L880,158L882,158L884,157L885,156L887,156L889,156L891,157L892,158L894,158L895,157L897,157L900,157L901,158L904,156L906,155L906,153L908,153L911,154L912,154L914,152L915,151L916,151L918,151L920,151L922,152L924,152L926,153L928,153L929,154L931,154L934,156L935,157L935,158L936,159L938,161L939,162L940,163L942,164L941,165L942,167L942,169L944,171L946,171L947,171L949,172L951,172L953,173L955,173L957,174L960,175L960,177L959,178L960,179L962,180L963,183L964,184L964,186L966,187L967,187L969,188L971,187L972,187L974,187L976,188L978,188L979,188L981,188L982,190L984,189L985,189L987,190L988,189L989,187L990,187L993,186L994,185L996,183L998,183L999,182L1002,182L1001,183L999,185L998,186L998,187L1000,188L1002,188L1002,190L1003,191L1004,192L1005,194L1007,195L1008,196L1010,196L1012,196L1013,198L1014,199L1012,199L1010,199L1009,199L1006,199L1004,200L1003,200L1002,201L1000,202L1000,204L1001,205L1002,206L1001,207L1001,209L1000,210L999,211L997,212L996,214L993,215L992,215L990,215L989,216L987,216L985,216L983,216L981,216L979,217L977,218L976,219L975,222L974,224L974,226L973,227L972,229L973,231L973,234L974,235L974,237L974,239L975,241L976,242L976,244L976,246L975,247L973,248L973,250L972,251L970,251L968,251L967,251L965,251L964,253L962,254L960,255L959,256L957,256L955,257L954,257L954,255L954,254L952,253L951,253L948,253L947,252L945,253L943,253L941,253L939,253L938,254L936,253L934,253L931,252L929,252L927,251L925,251L923,249L921,248L918,248L917,247L915,247L914,247L913,250L913,251L911,252L911,254L910,255L909,258L908,259L907,262L907,264L906,265L905,267L904,269L903,271L902,272L902,274L901,276L901,278L900,280L899,281L898,283L897,285L896,287L896,288Z"}, {"id": "mangystau", "name": "Маңғыстау облысы", "z": "kishi", "en": "Mangghystau", "d": "M141,302L141,304L142,305L143,307L145,307L143,307L141,306L140,304L141,303ZM206,284L211,285L214,285L215,283L219,284L220,283L222,283L225,282L227,281L229,280L226,278L232,275L233,274L236,273L238,272L241,272L244,271L247,271L252,270L261,269L263,269L269,265L272,268L273,269L275,268L277,270L277,272L279,273L281,272L283,274L285,275L287,274L290,275L292,276L294,280L297,299L295,299L293,300L290,301L288,301L286,302L283,302L282,303L281,304L281,307L281,309L281,314L281,316L281,321L281,323L281,328L281,330L281,336L281,338L281,344L281,351L281,358L281,368L281,373L281,396L279,396L277,396L276,397L273,397L272,398L271,397L269,397L267,396L265,395L264,394L263,392L261,390L261,389L260,387L259,386L257,385L256,383L256,382L255,380L254,379L253,378L251,377L249,376L246,374L245,373L243,372L241,371L239,370L237,370L235,370L233,370L231,371L229,371L227,371L225,371L222,372L219,373L218,373L215,374L212,375L210,376L208,378L206,379L205,380L203,381L201,383L199,384L198,385L198,383L199,381L198,379L197,378L197,376L198,375L199,373L201,371L201,369L203,367L203,365L202,363L201,361L203,363L204,364L205,363L205,361L203,360L202,359L199,358L197,358L195,358L194,359L193,357L191,357L189,357L187,357L185,358L184,357L183,355L182,354L181,352L179,351L179,349L176,349L174,350L172,350L170,350L170,348L171,346L171,344L171,342L170,340L169,339L168,338L167,337L165,335L164,333L164,331L163,330L162,328L161,327L161,325L160,323L158,322L156,322L154,321L152,321L150,321L148,320L146,319L146,315L147,313L149,312L150,312L152,313L154,313L156,313L158,313L160,313L161,313L163,314L164,315L166,316L168,316L169,316L171,315L172,314L173,316L175,315L174,314L172,314L170,314L169,312L168,310L167,309L165,308L163,307L162,308L160,308L161,306L162,305L163,304L165,303L166,303L167,302L169,302L170,300L170,298L171,296L173,295L174,294L176,295L177,294L179,294L180,293L182,292L184,293L186,293L187,293L189,293L191,293L193,293L195,292L197,292L199,292L201,293L202,294L205,294L204,292L204,291L206,292L208,292L209,293L208,292L206,291L205,290L206,289L207,289L205,289L204,288L205,287L207,287L206,286L206,284L207,284ZM156,305L158,305L158,306L156,305L155,304ZM202,290L203,291L204,293L202,293L201,292L201,290ZM148,301L149,303L148,304L147,305L146,304L145,302L147,302Z"}, {"id": "north_kz", "name": "Солтүстік Қазақстан", "z": "orta", "en": "North Kazakhstan", "d": "M689,90L690,92L692,94L690,93L689,96L690,98L693,96L694,95L696,95L696,98L695,99L693,100L693,102L691,102L694,102L693,104L694,106L697,106L699,103L702,103L703,105L702,107L701,110L699,109L697,109L697,111L701,111L692,112L691,109L689,109L685,109L681,107L678,108L677,103L676,101L674,101L672,101L670,101L666,101L664,101L663,103L657,104L650,103L649,101L651,100L651,97L647,92L644,91L642,93L640,94L638,94L634,93L634,91L631,91L624,91L624,93L621,93L622,95L620,95L617,92L611,92L613,91L613,88L611,89L609,88L608,85L606,84L601,84L599,84L597,85L596,86L597,88L595,88L594,86L592,85L589,84L586,86L584,85L582,85L583,87L579,87L580,88L578,90L576,90L577,93L578,94L582,95L581,97L583,97L583,99L583,101L580,102L581,105L580,107L578,107L576,108L574,109L573,111L570,112L568,113L565,113L565,115L567,116L564,118L562,119L562,120L559,118L555,117L554,116L549,116L549,122L544,121L543,121L540,121L538,120L530,120L530,118L525,118L522,119L520,116L516,116L516,108L519,108L519,105L519,102L517,101L518,99L521,99L522,98L526,99L526,97L523,96L522,89L518,89L517,87L520,85L520,81L517,81L516,78L515,76L521,74L523,74L522,71L521,71L516,69L521,68L518,64L517,60L519,59L522,59L524,58L527,58L529,57L531,57L533,57L534,56L537,56L539,56L541,56L543,55L544,55L546,54L547,54L550,54L551,55L553,54L555,54L557,53L558,52L560,51L562,52L564,52L566,52L567,50L568,49L567,48L566,46L568,46L570,46L571,46L573,46L575,45L577,45L578,44L579,42L580,42L582,42L584,43L585,42L583,41L584,40L586,40L588,41L589,42L591,42L593,41L595,41L597,42L599,42L601,42L603,43L605,43L606,44L608,46L609,46L611,47L613,47L615,46L617,46L619,44L620,43L622,44L624,44L626,43L627,43L628,45L630,46L631,47L632,49L632,50L632,52L632,54L633,55L634,57L636,58L637,58L639,59L638,60L636,62L637,65L637,66L637,68L634,67L632,67L633,69L634,69L635,71L635,73L638,72L639,71L641,71L643,72L645,73L646,73L649,73L649,71L650,70L653,70L656,70L657,71L659,72L660,71L657,70L658,68L657,67L659,67L660,67L662,69L663,70L665,72L667,72L665,73L664,74L665,75L664,77L666,78L668,77L670,77L672,77L671,76L670,74L669,75L668,73L670,72L672,73L674,73L677,73L680,75L681,76L683,76L685,77L687,77L689,76L691,77L693,75L694,74L695,74L696,77L695,79L692,79L690,79L689,81L688,81L686,84L685,84L685,86L686,87L688,88L688,89Z"}, {"id": "pavlodar", "name": "Павлодар облысы", "z": "orta", "en": "Pavlodar", "d": "M695,145L698,143L698,141L704,139L706,139L708,139L706,137L704,137L702,135L698,136L698,132L702,129L703,118L703,113L701,111L697,111L696,109L699,109L700,110L701,108L702,106L702,103L700,104L697,106L694,106L693,104L695,103L692,103L693,100L695,99L696,98L696,95L694,95L693,96L690,98L689,96L690,93L692,94L690,92L689,90L692,88L693,87L695,85L696,85L698,86L699,85L701,85L703,85L704,87L706,87L708,86L708,88L710,89L712,89L713,87L713,85L713,84L717,84L718,82L720,82L721,80L723,81L725,81L727,81L729,80L731,79L733,78L735,77L736,77L736,75L735,74L737,73L739,73L742,72L744,72L748,71L751,70L754,69L754,67L756,67L758,68L761,68L763,67L764,67L766,66L767,65L769,65L771,64L769,66L767,66L769,67L769,68L769,70L767,71L766,72L764,73L763,72L761,72L759,71L760,73L761,75L762,76L766,79L770,81L772,82L774,83L776,84L780,86L782,87L783,88L786,89L790,92L792,93L794,95L796,97L798,99L799,100L801,101L802,103L804,105L805,106L806,107L808,110L810,112L812,115L813,116L816,120L817,121L819,123L820,124L821,125L822,127L823,128L825,130L827,134L826,134L825,137L821,137L819,141L814,141L815,142L815,144L809,146L806,147L804,146L801,148L799,149L801,152L802,154L804,155L807,157L808,157L813,160L812,165L814,166L815,169L814,170L810,175L806,176L802,176L792,173L791,171L789,172L787,170L789,169L787,165L783,163L779,163L774,160L770,161L767,163L766,167L766,169L763,169L760,169L758,170L756,172L752,171L744,172L742,172L741,173L734,173L728,176L726,177L724,176L723,174L724,174L727,172L729,171L726,170L727,168L725,166L720,164L718,166L717,164L717,162L713,161L711,162L708,162L704,162L701,160L702,159L702,157L703,154L704,152L705,150L704,147L695,145Z"}, {"id": "karagandy", "name": "Қарағанды облысы", "z": "orta", "en": "Qaraghandy", "d": "M786,248L787,261L782,262L780,262L780,263L778,264L777,262L775,261L773,262L770,261L769,261L771,263L768,262L765,261L763,262L761,262L760,261L758,262L757,261L749,260L742,261L736,260L729,263L723,266L716,270L711,274L708,276L706,279L695,279L668,279L645,279L641,279L622,279L589,279L545,279L544,277L542,276L534,277L503,270L499,269L495,265L490,265L478,260L476,260L464,257L461,257L454,254L451,254L447,252L444,250L435,252L441,248L469,234L474,230L472,229L467,224L474,219L473,216L481,215L480,213L480,211L485,211L486,204L504,206L506,206L507,206L510,205L512,203L519,202L526,197L529,197L531,193L534,193L535,191L539,189L544,186L552,180L557,176L556,174L556,172L560,171L565,170L566,169L568,167L565,165L564,164L562,161L567,161L569,162L574,159L577,159L585,158L585,163L584,166L582,170L580,172L583,172L585,173L588,174L591,173L593,174L592,172L594,172L596,171L595,169L598,168L600,168L601,170L603,171L603,173L605,173L607,172L614,171L615,172L616,173L614,175L614,177L618,177L621,175L624,175L623,171L628,170L630,172L630,166L632,166L633,166L637,164L638,163L640,163L642,162L643,159L647,158L650,158L652,159L654,160L653,162L653,165L651,167L653,166L658,166L661,167L662,166L662,164L663,163L667,164L669,163L666,162L668,161L670,160L673,159L675,157L677,155L680,156L683,154L684,153L688,152L690,151L693,149L690,148L688,150L686,147L685,145L687,145L689,145L691,144L695,145L704,147L704,149L704,152L703,154L703,157L701,158L701,160L704,162L708,162L711,162L713,161L717,162L718,163L718,166L720,164L723,166L727,168L726,170L729,170L729,172L724,173L723,174L724,176L726,177L728,176L733,174L741,173L742,172L744,172L752,171L755,172L758,170L760,169L763,169L765,170L766,167L767,163L770,161L774,160L779,163L783,163L787,165L789,169L787,170L789,172L786,175L784,177L780,178L777,179L777,180L777,183L777,185L775,188L769,189L763,191L765,194L767,195L770,197L770,199L772,200L774,201L772,202L770,202L769,205L771,207L781,206L781,208L780,211L776,215L774,215L772,216L770,217L773,219L777,220L776,222L778,225L781,225L782,226L778,227L779,228L778,228L777,230L775,234L774,236L776,241L774,242L772,242L772,244L771,246L769,246L771,247L772,249L775,250L778,251L779,249L781,248L784,249L786,248Z"}, {"id": "kostanay", "name": "Қостанай облысы", "z": "orta", "en": "Qostanay", "d": "M467,224L462,217L459,215L455,214L453,213L446,211L445,209L446,207L444,205L439,207L432,202L431,198L427,198L432,196L429,191L429,188L432,189L431,185L434,184L435,181L438,179L442,181L443,178L438,172L434,167L432,159L429,160L428,157L431,156L427,153L427,151L425,149L423,150L421,150L420,147L420,145L418,144L417,145L415,145L414,145L412,144L410,142L409,141L407,141L405,141L403,141L401,140L399,140L397,139L396,138L396,136L394,136L392,136L391,136L389,136L387,136L384,134L385,133L386,132L385,131L383,131L382,130L380,129L378,130L376,129L376,127L378,126L380,126L381,126L383,125L385,123L387,122L389,122L390,122L392,122L393,120L395,120L397,119L399,118L398,116L397,114L395,113L394,112L393,110L391,109L393,107L394,107L396,105L398,104L400,103L399,102L401,102L402,101L404,100L407,101L408,101L410,101L412,101L413,102L415,101L416,101L418,101L420,102L421,102L424,101L425,100L424,98L422,98L420,98L417,97L415,96L414,95L412,96L410,96L408,95L407,94L405,94L403,94L402,92L403,90L404,89L405,89L407,89L409,89L410,89L412,88L410,86L408,86L406,87L404,87L402,87L400,86L399,86L397,86L396,85L398,84L399,83L401,82L403,81L402,80L400,79L399,78L399,77L402,77L403,78L404,76L404,75L405,74L407,74L409,74L410,76L412,76L413,76L415,75L416,76L418,75L418,76L420,77L422,77L421,75L423,74L425,75L427,75L429,75L431,75L432,75L431,76L432,77L433,78L435,77L436,76L438,75L439,74L440,73L442,73L444,73L446,73L448,73L449,72L450,71L451,71L454,71L455,71L457,70L459,70L461,70L463,69L465,69L467,69L469,68L470,68L472,68L474,68L475,67L478,68L479,67L481,67L483,66L485,66L487,67L490,65L491,65L493,66L494,67L496,67L496,65L496,63L498,62L500,61L502,61L502,60L504,60L506,60L508,60L509,60L511,59L513,58L514,58L514,60L515,60L517,60L518,63L521,68L516,69L521,71L522,71L524,73L521,74L515,76L516,78L517,80L520,81L520,85L518,86L518,89L522,89L522,95L526,97L526,99L522,98L521,99L518,99L517,101L519,102L519,105L519,108L516,108L516,116L516,122L513,124L512,128L511,131L505,133L501,132L502,135L505,135L507,138L505,142L503,145L505,147L509,151L507,156L508,157L513,157L514,153L518,155L519,157L521,157L523,157L524,160L527,160L529,161L535,162L541,161L543,162L545,164L542,165L545,169L551,166L561,166L564,164L565,165L568,166L567,168L565,170L560,171L556,172L556,174L557,176L552,180L544,186L539,189L535,191L534,193L531,193L529,197L526,197L519,202L512,203L510,205L507,206L506,206L504,206L486,204L485,211L480,211L480,212L481,215L473,216L474,219L467,224Z"}, {"id": "kyzylorda", "name": "Қызылорда облысы", "z": "uly", "en": "Qyzylorda", "d": "M517,370L517,368L517,366L517,364L517,362L517,359L517,357L517,355L515,355L513,356L511,357L510,355L509,353L508,351L508,349L507,346L505,344L503,343L501,342L499,341L498,339L496,336L495,335L493,334L492,334L490,335L486,336L484,337L482,338L480,339L477,338L473,338L472,338L469,338L466,338L462,337L459,337L457,337L454,337L450,337L447,338L445,338L442,338L440,339L436,339L433,340L431,340L429,340L427,341L424,341L422,341L420,340L417,337L415,335L412,333L410,331L409,329L408,328L405,326L404,325L402,325L399,325L396,323L394,322L390,319L388,317L386,316L383,315L377,310L374,309L373,307L370,305L368,304L366,303L365,302L362,300L358,298L356,297L354,296L351,278L358,272L363,267L366,264L368,262L377,256L384,255L385,250L395,250L403,234L417,232L421,236L423,239L426,239L432,245L431,247L438,247L441,248L435,252L444,250L447,252L451,254L454,254L461,257L463,256L476,260L478,260L490,265L495,265L499,269L503,270L534,277L542,276L543,276L545,279L544,281L548,283L549,285L547,288L546,289L546,292L544,296L549,299L552,300L553,318L552,320L554,322L558,323L561,326L568,330L566,331L564,331L563,332L563,337L560,335L560,339L558,341L558,344L555,345L556,347L557,345L559,346L559,349L561,348L559,350L551,353L545,355L539,359L532,364L529,362L522,368L519,370L517,370Z"}, {"id": "turkistan_obl", "name": "Түркістан облысы", "z": "uly", "en": "South Kazakhstan", "d": "M517,370L519,370L522,368L529,362L532,364L539,359L545,355L551,353L559,350L561,349L559,349L559,347L558,346L556,347L555,345L558,344L558,342L560,339L560,335L562,337L564,334L563,332L565,330L568,330L561,326L559,324L556,322L552,320L552,319L552,300L549,299L544,296L546,292L546,289L547,288L548,286L548,283L544,281L545,279L588,280L593,285L594,287L595,290L599,296L602,306L603,307L605,315L607,326L605,329L604,331L603,333L601,339L598,343L600,344L600,347L602,347L606,349L607,348L608,349L610,349L612,350L612,352L614,354L615,355L614,358L615,359L617,362L619,362L620,363L621,364L623,365L625,368L627,367L628,369L629,370L629,372L629,374L628,374L626,375L624,376L623,379L622,378L621,377L619,376L618,377L617,378L616,379L615,380L613,381L612,383L611,384L610,385L607,386L606,387L604,386L603,387L601,387L599,388L598,389L597,390L595,391L595,393L594,393L592,393L590,393L589,394L588,395L586,396L585,397L584,398L583,400L581,401L580,403L578,405L577,406L576,404L574,404L572,404L574,405L574,407L574,410L576,412L577,413L576,415L574,416L571,415L570,414L568,413L566,412L564,410L562,409L561,409L559,408L562,407L562,405L562,403L563,402L561,402L559,402L557,400L556,399L552,399L549,399L546,399L544,399L542,399L538,398L537,398L534,398L532,398L530,398L529,396L528,392L528,390L528,388L528,385L527,382L525,381L522,381L520,381L518,381L515,380L515,378L515,376L515,374L516,372L516,370L517,370Z"}, {"id": "west_kz", "name": "Батыс Қазақстан", "z": "kishi", "en": "West Kazakhstan", "d": "M71,221L69,219L66,219L64,218L60,217L58,216L60,212L61,210L62,209L64,206L65,204L66,203L69,202L70,201L71,199L71,197L69,196L68,195L66,194L65,193L66,191L66,189L66,188L67,186L67,184L68,181L70,180L73,179L75,178L78,175L76,172L78,171L77,169L80,168L80,167L82,166L84,165L85,166L87,167L88,168L90,169L91,170L92,172L93,173L95,174L96,175L97,177L98,178L99,179L100,180L102,181L104,182L107,180L109,179L111,179L114,177L114,175L112,174L112,173L111,171L110,170L110,167L109,165L109,163L108,162L107,161L108,160L110,161L112,161L114,161L116,160L117,159L119,157L120,157L122,156L124,156L126,155L126,153L125,152L126,150L126,149L129,149L131,148L133,149L136,148L137,147L139,146L140,145L143,145L145,144L147,144L149,143L149,141L151,141L152,140L152,138L153,136L154,135L156,136L157,137L158,137L159,135L158,134L158,132L160,133L161,134L163,134L165,135L167,134L170,134L171,135L172,136L171,137L170,139L172,139L174,139L176,139L177,137L179,138L179,140L180,139L182,138L182,137L183,135L184,134L186,134L188,135L189,135L191,134L193,133L194,133L196,134L197,135L198,137L199,139L201,140L202,140L204,139L205,139L207,139L208,139L210,140L212,139L213,139L215,138L217,139L219,139L220,139L222,140L224,141L225,142L225,143L226,145L227,146L229,146L231,147L233,147L235,147L236,148L238,150L238,151L239,152L240,154L244,155L246,155L245,157L245,159L244,161L245,162L246,163L245,166L243,168L244,170L244,172L244,174L247,175L246,178L244,182L245,183L243,183L240,185L239,187L237,186L234,186L231,188L229,189L228,191L226,195L226,197L221,201L218,203L210,203L207,205L205,204L205,210L203,210L201,215L200,217L197,217L192,215L190,216L183,215L183,213L173,210L170,211L166,212L164,214L162,215L159,217L145,223L140,226L136,226L127,227L127,229L116,226L110,225L89,223L77,222L74,222L71,221Z"}, {"id": "jambyl", "name": "Жамбыл облысы", "z": "uly", "en": "Zhambyl", "d": "M629,370L628,369L627,368L625,368L623,365L621,364L620,363L619,362L617,362L614,360L615,359L615,356L614,355L614,352L611,351L611,350L608,349L607,348L606,349L603,348L602,348L600,347L599,345L597,343L601,340L603,333L604,331L605,329L606,326L605,315L603,307L602,306L599,296L595,290L594,287L593,285L589,279L622,279L641,279L645,279L668,279L695,279L706,279L705,282L702,285L703,294L705,297L698,296L698,301L705,301L705,304L706,306L714,310L716,313L715,316L719,320L725,321L728,323L731,324L733,326L733,329L732,331L732,333L731,334L726,338L726,340L730,341L732,340L735,341L733,345L732,347L733,349L734,351L737,351L741,353L739,354L742,354L744,355L744,356L743,358L741,359L740,358L737,358L735,358L734,357L731,358L730,358L728,356L726,356L725,355L723,354L722,354L720,354L719,353L717,352L715,350L714,350L712,350L710,349L709,348L707,348L706,349L703,350L702,349L700,350L699,351L697,351L695,352L694,352L692,353L691,355L690,356L691,359L690,361L689,362L689,364L689,366L690,367L691,368L689,368L688,368L686,368L684,366L682,366L680,365L679,365L677,365L675,365L674,364L672,363L670,362L668,362L666,361L664,361L662,360L661,360L659,360L658,360L656,359L654,359L653,358L651,358L649,359L647,360L645,359L643,359L642,359L640,360L638,359L638,361L636,362L636,363L634,364L633,364L634,366L633,367L631,367L631,368L630,370Z"}];
+const KZ_CITIES = [{"id": "astana", "name": "Астана", "lon": 71.4491, "lat": 51.1694, "kind": "capital", "x": 642, "y": 147}, {"id": "almaty_c", "name": "Алматы", "lon": 76.8897, "lat": 43.222, "kind": "city", "x": 770, "y": 348}, {"id": "shymkent", "name": "Шымкент", "lon": 69.5901, "lat": 42.3417, "kind": "city", "x": 599, "y": 370}];
+const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x": 515, "y": 13}, {"label": "ҚЫТАЙ", "lon": 89, "lat": 46, "x": 1053, "y": 278}, {"label": "ҚЫРҒЫЗСТАН", "lon": 75, "lat": 41.6, "x": 726, "y": 389}, {"label": "ӨЗБЕКСТАН", "lon": 63, "lat": 41, "x": 445, "y": 404}, {"label": "ТҮРІКМЕНСТАН", "lon": 56, "lat": 39.5, "x": 281, "y": 442}, {"label": "КАСПИЙ ТЕҢІЗІ", "lon": 50, "lat": 43, "x": 140, "y": 354}];
+
+</script>
+<script>
+/* Auto-extracted from index.html (used by mobile.html; desktop keeps inline copies). */
+
+const Q = (q, a, correct, exp) => ({q, a, correct, exp});
+const QUIZ_DATA = {
+  yurt_low_quality_texture:{cat:'Тұрғын жай',fcat:'home',no:'001',poster:'assets/posters/ak-orda.png',label:'киіз үй',questions:[
+    Q('Киіз үйдің жоғарғы дөңгелек бөлігі қалай аталады?',['Кереге','Уық','Шаңырақ','Босаға'],2,'Шаңырақ — киіз үйдің жоғарғы шеңбері, аспанмен байланыс символы.'),
+    Q('Киіз үй есігі қандай бағыт қарай ашылады?',['Оңтүстікке','Шығысқа','Күн батысы қарай','Солтүстікке'],2,'Дәстүр бойынша есік күн батысы қарай ашылады — қасиетті бағыт.'),
+    Q('Киіз үйде әдетте неше уық болады?',['20-25','40-60','80-100','10-15'],1,'Уық саны 40-60, кейде одан да көп болуы мүмкін — киіз үйдің көлеміне қарай.'),
+    Q('Киіз үй қашан ЮНЕСКО мұрасы тізіміне енген?',['2010','2014','2018','2020'],1,'2014 жылы ЮНЕСКО адамзаттың материалдық емес мұрасы тізіміне қосылды.'),
+    Q('Киіз үй жинауға шамамен қанша уақыт кетеді?',['5-10 мин','40 мин','2-3 сағат','1 күн'],1,'Тәжірибелі шеберлер шамамен 40 минутта киіз үй тіге алады.')
+  ]},
+  dombyra_by_sultan_elamanov:{cat:'Музыка',fcat:'music',no:'014',poster:'assets/posters/dombyra.png',label:'домбыра · қара ағаш',questions:[
+    Q('Домбырада неше ішек бар?',['1','2','3','4'],1,'Дәстүрлі домбыра — екі ішекті шертпелі аспап.'),
+    Q('«Балбырауын» күйінің авторы кім?',['Дәулеткерей','Тәттімбет','Құрманғазы','Абыл'],2,'«Балбырауын» — атақты күйші Құрманғазының шығармасы.'),
+    Q('Домбыраның шанағы қандай ағаштан жасалады?',['Емен','Қарағаш немесе қайың','Қарағай','Кедр'],1,'Дәстүрлі шанақ қарағаштан немесе қайыңнан ойылады.'),
+    Q('Дәстүрлі домбыраның ұзындығы қандай?',['≈ 800 мм','≈ 1000 мм','≈ 1260 мм','≈ 1500 мм'],2,'Стандартты домбыраның ұзындығы шамамен 1260 мм.'),
+    Q('Домбыра күні қашан аталып өтіледі?',['9 мамыр','1 шілде','22 наурыз','30 тамыз'],1,'2010 жылдан бері 1 шілде — Ұлттық домбыра күні.')
+  ]},
+  kazakh_qobyz_kobyz:{cat:'Музыка',fcat:'music',no:'019',poster:'assets/posters/qobyz.png',label:'қобыз · қайың',questions:[
+    Q('Қобыздың атасы деп кім саналады?',['Абыл','Қорқыт ата','Құрманғазы','Асан қайғы'],1,'Аңыз бойынша қобызды Қорқыт ата ойлап тапқан.'),
+    Q('Қобыздың ішектері нежерден жасалады?',['Нейлон','Металл жіп','Ат жалы','Түйе жүн'],2,'Дәстүрлі қобыз ішектері ат жалынан тартылады.'),
+    Q('Қобыз шанағы неден ойылған?',['Ағаштан және ешкі-терімен қапталған','Металл','Пластик','Барқыт'],0,'Шанақ бір бөлек ағаштан ойылып, ешкі-терімен қапталады.'),
+    Q('XX ғасырда қобыз өнерін кім қайта тірілтті?',['Ыхлас Дүкенұлы','Дина Нұрпейісова','Мұқан Төлебаев','Нұрғиса Тілендиев'],0,'Ыхлас Дүкенұлы кеңес дәуірінде қобыз өнерін қайта дамытты.'),
+    Q('Ежелде қобыз кімнің қолында болған?',['Батырлардың','Бақсылардың','Балалардың','Хандардың'],1,'Ежелде қобыз — бақсылардың (шамандардың) қасиетті аспабы болған.')
+  ]},
+  kazakh_shapan:{cat:'Ұлттық киім',fcat:'clothing',no:'027',poster:'assets/posters/shapan.png',label:'шапан',questions:[
+    Q('«Шапан жабу» дегеніміз не?',['Тойға дайындалу','Құрметке лайық қонаққа сый беру','Қыстауға дайындалу','Дұға оқу'],1,'«Шапан жабу» — құрметке лайық қонаққа сый беру дәстүрі.'),
+    Q('Шапанда жиі кездесетін ою қандай?',['Гүл','Қошқар мүйіз','Жұлдыз','Крест'],1,'Ең жиі кездесетін ою — қошқар мүйіз, ол берекенің символы.'),
+    Q('Шапан қандай маталардан тігіледі?',['Тек мақта','Жібек, барқыт, жүн','Тек кожа','Полиэстер'],1,'Дәстүрлі шапан жібек, барқыт, жүн, бархат маталардан тігіледі.'),
+    Q('Ежелде қара шапан кімге тән?',['Жасы үлкен адамға','Балаға','Байлар мен билерге','Күйеу жігітке'],0,'Қара түс жасы үлкендердің шапанына тән болды.'),
+    Q('Шапан ішіне не салынады?',['Жүн, мамық немесе мақта','Сабан','Ағаш үгіндісі','Резеңке'],0,'Жылу үшін ішіне жүн, мамық, мақта салынып сырылады.')
+  ]},
+  taqiya_grey_m_kazakh_national_headdress:{cat:'Бас киім',fcat:'clothing',no:'032',poster:'assets/posters/taqiya-er.png',label:'тақия · ер',questions:[
+    Q('Тақия негізінен қандай мезгілде киіледі?',['Қыс','Күз','Жаз және көктем','Жаңа жыл'],2,'Тақия — жеңіл бас киім, негізінен жаз мезгіліне арналған.'),
+    Q('Ер тақиясының түсі әдетте қандай?',['Ашық сары','Сұр, қара, қою көк','Қызғылт','Жасыл'],1,'Ер тақиясы көбіне сұр, қара, қою көк, күрең түсті болады.'),
+    Q('Тақия ішіне не қойылады?',['Металл','Жұқа кебеже (арматура)','Жүн','Кожа'],1,'Формасын сақтау үшін ішіне жұқа кебеже (арматура) қойылады.'),
+    Q('Қыста тақия үстіне не киеді?',['Ешнәрсе','Тымақ немесе қалпақ','Орамал','Каскет'],1,'Қыс мезгілінде тақия үстіне тымақ немесе қалпақ киіледі.'),
+    Q('Тақия матасы қандай?',['Кожа','Барқыт, шәйі, кездеме','Полиэстер','Джинс'],1,'Дәстүрлі тақия барқыт, шәйі, кездеме, атлас маталардан тігіледі.')
+  ]},
+  taqiya_yellow_f_kazakh_traditional_headdress:{cat:'Бас киім',fcat:'clothing',no:'034',poster:'assets/posters/taqiya-qyz.png',label:'тақия · қыз',questions:[
+    Q('Қыз тақиясының үстіне не бекітіледі?',['Гүл','Үкі қауырсыны','Крест','Қоңырау'],1,'Үкі қауырсыны — тазалық пен арулықтың нышаны.'),
+    Q('Тұрмысқа шыққан соң қыз тақиясының орнына не келеді?',['Орамал','Тымақ','Кимешек','Ешнәрсе'],2,'Кимешек — тұрмысқа шыққан әйелдің бас киімі.'),
+    Q('Қыз тақиясының түсі қандай?',['Тек қара','Ашық — сары, қызыл, көгілдір','Ақ','Күлгін'],1,'Қыз тақиясы жарқын түсті — сары, қызыл, көгілдір, жасыл болады.'),
+    Q('Үкі қауырсыны нені білдіреді?',['Байлықты','Тазалық пен арулық','Жасты','Хандықты'],1,'Үкі қауырсыны тазалық пен арулықтың символы, жаман көзден қорғайды.'),
+    Q('Қыз тақиясы қашан киіледі?',['Күн сайын','Той, мереке кезінде','Жерлеу рәсімінде','Оқыған кезде'],1,'Қыз тақиясы негізінен той, жиын, мереке кезінде киіледі.')
+  ]},
+  saukele_ethno_variant_traditional_headdress:{cat:'Бас киім',fcat:'clothing',no:'038',poster:'assets/posters/saukele.png',label:'сәукеле · салтанат',questions:[
+    Q('Сәукеле қандай тойда киіледі?',['Тұсау кесерде','Ұзату тойында','Наурыз тойында','Балаға ат қоюда'],1,'Сәукеле — ұзату тойында келіншектің ең қымбат бас киімі.'),
+    Q('Сәукеленің биіктігі шамамен қандай болады?',['20 см','50 см','70 см','1 м'],2,'Сәукеленің биіктігі 70 см-ге дейін жетеді, кейде 1 м-ге дейін.'),
+    Q('Сәукеле үстіне қандай қауырсын салынады?',['Түйенікі','Ат жалы','Аққу қауырсыны','Тауық'],2,'Тек хан қыздары ғана аққу қауырсынын кие алды.'),
+    Q('Некеден кейін сәукеле неше жыл киіледі?',['1 жыл','3-5 жыл','10 жыл','Өмір бойы'],1,'Некеден кейін 3-5 жыл киіледі, содан кейін «жаулық» алмасады.'),
+    Q('Сәукелені қандай тастармен әсемдейді?',['Изумруд','Маржан, ақық','Жанжан','Топаз'],1,'Сәукеле күміс, алтын, маржан, ақық, аққу қауырсынымен әшекейленеді.')
+  ]},
+  qamshy_kamshy:{cat:'Қолөнер',fcat:'craft',no:'071',poster:'assets/posters/qamshy.png',label:'қамшы · өрім',questions:[
+    Q('Қамшыда ең көп неше өрім болуы мүмкін?',['4','8','32','64'],3,'Ең жоғары шеберлікпен 64 өрімді қамшылар да жасалған.'),
+    Q('Қамшының сабы неден жасалады?',['Пластик','Қайың, мүйіз немесе сүйек','Металл','Резеңке'],1,'Сабы қайың, мүйіз (тау текесі мүйізі), кейде сүйектен жасалады.'),
+    Q('«Қамшысы үлкен» деген сөз кімге айтылады?',['Балаға','Ел билеген адамға','Малшыға','Оқушыға'],1,'«Қамшысы үлкен» — беделді, ел билеген адамға айтылатын сөз.'),
+    Q('Қамшы өрімі қандай материалдан?',['Нейлон','Былғары (тайынша, өгіз терісі)','Мақта','Резеңке'],1,'Өрімі былғарыдан — тайыншаның, өгіздің терісінен өріледі.'),
+    Q('Қамшының жалпы ұзындығы қандай?',['30 см','60 см','1-1.5 м','3 м'],2,'Дәстүрлі қамшының ұзындығы 1-1.5 метр.')
+  ]},
+  Asyk:{cat:'Ұлттық ойын',fcat:'game',no:'108',poster:'assets/posters/asyk.png',label:'қой сүйегі',questions:[
+    Q('Асық қандай жануардың сүйегінен жасалады?',['Түйе','Жылқы','Қой','Бұзау'],2,'Асық — қой асығынан жасалған ежелгі бала ойыны.'),
+    Q('Асықтың төрт бетінің қайсысы «сақа» деп аталады?',['Тегіс жоғарғы','Иіліп жатқан','Қисық','Астыңғы'],0,'Сақа — асықтың жоғарғы тегіс беті, «ойынның патшасы».'),
+    Q('Қашан асық ЮНЕСКО тізіміне енген?',['2010','2015','2017','2020'],2,'2017 жылы асық ойыны ЮНЕСКО материалдық емес мұрасы тізіміне енген.'),
+    Q('Осы ойындардың қайсысы асықпен ойналмайды?',['Хан талапай','Атбақыл','Бес тас','Тоғызқұмалақ'],3,'Тоғызқұмалақ — тақтада құмалақпен ойналатын бөлек ойын.'),
+    Q('Асық ойыны балаға не үйретеді?',['Тек күш','Логика, тактика, дәлдік','Ән салуды','Ат мінуді'],1,'Асық логика, стратегия, дәлдік және қарым-қатынасты дамытады.')
+  ]},
+  besik:{cat:'Тұрмыстық',fcat:'home',no:'004',poster:'assets/posters/besik.png',label:'бесік · қайың',questions:[
+    Q('Бесік қандай ағаштан жасалады?',['Емен','Қайың, тал, арша','Кедр','Қарағай'],1,'Бесік қайыңнан, талдан, кейде арша ағашынан ойылады.'),
+    Q('«Бесікке салу» рәсімі қашан өткізіледі?',['Бала туылған сәтте','Бес күндік болғанда','Бір жасқа толғанда','Тұсау кесерде'],1,'Сәби бес күндік болғанда алғаш рет бесікке салынады.'),
+    Q('«Тұсау кесер» дегеніміз не?',['Бесік беру','Аяғындағы жіпті ұйығып кесу','Ат қою','Той жасау'],1,'Бала жүре бастаған уақытта аяғындағы жіпті кесу рәсімі.'),
+    Q('Бесіктегі «шүмек» не үшін?',['Ойнау үшін','Дәретті жинау үшін','Ас үшін','Шам үшін'],1,'Шүмек — сәбидің дәреттерін жинауға арналған арнайы құрылғы.'),
+    Q('«Шілдехана» тойы қашан өткізіледі?',['Туылған күні','40 күндік болғанда','1 жаста','Мектепке кіргенде'],1,'40 күндік болған сәбиге арналған той — «шілдехана».')
+  ]},
+  nomad_sabre:{cat:'Қару-жарақ',fcat:'weapon',no:'076',poster:'assets/posters/qylysh.png',label:'болат · сүйек',questions:[
+    Q('Қылыштың жүзі неден жасалды?',['Мыс','Болат','Күміс','Ағаш'],1,'Жүзі жоғары сапалы болаттан (Дамаск, Хорасан) соғылған.'),
+    Q('Қылыштың сабы қандай материалдан?',['Ағаш пен сүйек','Тек металл','Пластик','Резеңке'],0,'Сабы қайың ағашынан, мүйізден немесе сүйектен жасалады.'),
+    Q('Қылыштың орташа ұзындығы қандай?',['≈ 50 см','≈ 90 см','≈ 150 см','≈ 200 см'],1,'Дәстүрлі қазақ қылышының ұзындығы шамамен 90 см.'),
+    Q('Жоңғар шапқыншылығына қарсы шыққан батыр кім?',['Абылай','Шыңғыс хан','Аттила','Ұлықбек'],0,'Абылай хан, Богенбай, Қабанбай, Наурызбай — жоңғарға қарсы шыққан қаһармандар.'),
+    Q('Қылыш қынабы қандай материалдан?',['Мата','Былғары','Тек ағаш','Кожа + күміс әшекей'],3,'Қынабы (сақсай) былғарымен қапталып, күміспен әсемделген.')
+  ]},
+  balbal_tas:{cat:'Ежелгі мұра',fcat:'ancient',no:'112',poster:'assets/posters/balbal.png',label:'тас · түркі дәуірі',questions:[
+    Q('Балбал тас қай ғасырларда жасалды?',['III-V ғ.','VI-IX ғ.','X-XII ғ.','XV-XVII ғ.'],1,'Балбал тастар ежелгі түркі дәуірінде — VI-IX ғасырларда жасалған.'),
+    Q('«Балбал» сөзінің мағынасы қандай?',['Тас','Баба (үлкен ата)','Батыр','Аруақ'],1,'«Балбал» — «баба» түркі сөзінен: үлкен ата, қорғаушы.'),
+    Q('Балбал тас кімге орнатылады?',['Балаға','Атақты жауынгерлер мен билерге','Барлық адамға','Қыздарға'],1,'Атақты жауынгерлердің, хандар мен билердің қабірлеріне қойылған.'),
+    Q('Мүрдемен бірге не жерленеді?',['Ешнәрсе','Қару, тұлпары','Тек тамақ','Кітаптар'],1,'Мүрдемен бірге сол адамның қаруы, тұлпары, малы да жерленген.'),
+    Q('Балбал тастар қазір қай жерлерден табылған?',['Тек Қазақстаннан','Моңғолия, Алтай, Тәңір тау','Тек Еуропадан','Африкадан'],1,'Моңғолия, Алтай, Тәңір таулары мен Оңтүстік Сібірде табылған.')
+  ]},
+  tamgaly_sun_man:{cat:'Ежелгі мұра',fcat:'ancient',no:'099',poster:'assets/posters/tamgaly.png',label:'петроглиф · тас',questions:[
+    Q('Таңбалы петроглифтері қашан жасалды?',['V-III ғ. б.з.д.','XIV-XI ғ. б.з.д.','I-II ғ. б.з.','X-XII ғ.'],1,'Таңбалы петроглифтері қола дәуірі — XIV-XI ғасырлар б.з.д.'),
+    Q('Таңбалы қашан ЮНЕСКО тізіміне енген?',['1998','2004','2010','2015'],1,'2004 жылы Таңбалы ЮНЕСКО дүниежүзілік мұрасы тізіміне қосылды.'),
+    Q('Таңбалы қай облыста орналасқан?',['Алматы','Астана','Атырау','Ақмола'],0,'Таңбалы жартастары Алматы облысында, қаладан 170 км қашықта.'),
+    Q('Осы жерде барлығы қанша петроглиф табылған?',['≈ 500','≈ 1 000','≈ 5 000','≈ 10 000'],2,'Таңбалы кешенінде 5 000-нан аса петроглиф табылған.'),
+    Q('«Күн басты адам» кімнің бейнесі болуы мүмкін?',['Хан','Күн-құдай (Митра)','Батыр','Диқан'],1,'Ежелгі иран-түркі мифологиясындағы Күн-құдай (Митра) бейнесі.')
+  ]},
+  astau_tabaq:{cat:'Тұрмыстық',fcat:'home',no:'054',poster:'assets/posters/astau.png',label:'астау · ағаш',questions:[
+    Q('Астау қандай ағаштан жасалады?',['Емен','Қайың, тал, шырша','Кедр','Кокос'],1,'Астау бір бөлек қайың, тал немесе шыршадан ойылады.'),
+    Q('Астаудың негізгі тағамы қандай?',['Палау','Бесбармақ','Пицца','Сорпа'],1,'Астауда әдетте бесбармақ (ет + қамыр) тартылады.'),
+    Q('Астаудың диаметрі қандай?',['20-30 см','50-80 см','150-200 см','1 м-ден жоғары'],1,'Дәстүрлі астаудың диаметрі 50-80 см.'),
+    Q('«Бас ұсыну» дегеніміз не?',['Дұға оқу','Үлкенге ет бөлігін ұсыну','Сәлем беру','Есік ашу'],1,'Үлкенге қой басын ұсыну — құрметтің ең жоғары түрі.'),
+    Q('Астауды дайындауға шеберге қанша уақыт кетеді?',['1 күн','3-6 ай','1 жыл','5 жыл'],1,'Шебер ағашты кептіріп, ойып шығуға 3-6 ай жұмсайды.')
+  ]},
+  torsyk_kymyz:{cat:'Тұрмыстық',fcat:'home',no:'087',poster:'assets/posters/torsyk.png',label:'қымыз ыдысы',questions:[
+    Q('Торсықта негізінен қандай сусын сақталды?',['Су','Қымыз','Май','Балл'],1,'Торсық — негізінен қымыз, шұбат сақтауға арналған былғары ыдыс.'),
+    Q('Торсық қандай материалдан жасалады?',['Ағаш','Былғары (қоңыр, өгіз/тайынша терісі)','Қыш','Металл'],1,'Қоңыр былғарыдан — тайыншаның, өгіздің терісінен тігіледі.'),
+    Q('Торсықтың тығыны неден?',['Металл','Ағаш','Пластик','Резеңке'],1,'Мойны жіңішке, тығыны ағаштан жасалған.'),
+    Q('Торсықта қандай ою кездеседі?',['Крест','Мүйіз оюы','Гүл','Ешқандай'],1,'Бүйірінде «мүйіз» оюлары штампалып қара түспен өрнектеледі.'),
+    Q('Торсықтың тегі қай дәуірге жетеді?',['XX ғ.','XV ғ.','Скиф-сақ дәуірі','Тас дәуірі'],2,'Скиф-сақ дәуірінен бері белгілі, қазба жұмыстарында осындай сынықтар табылған.')
+  ]},
+  sedlo:{cat:'Қолөнер',fcat:'craft',no:'068',poster:'assets/posters/sedlo.png',label:'ер · былғары',questions:[
+    Q('Ер-тоқымның қаңқасы неден?',['Металл','Пластик','Ағаш (қасы)','Күміс'],2,'Ағаш қаңқа (қасы) — қатты қайыңнан ойылады.'),
+    Q('Осы XIX ғ. ерін кім қолданған?',['Ешкім','Тек балалар','Хандар мен билер','Барлық қарапайым адам'],2,'Мұндай әсем ер тек хандардың, билердің немесе бай әулеттердің меншігі болатын.'),
+    Q('Ер құрамында неше бөлік бар?',['5','10','30-дан аса','100'],2,'Ер құрамында 30-дан аса бөлік бар: айыл, сағалдырық, жүген, тізгін, үзеңгі т.б.'),
+    Q('Осы XIX ғ. ердің әшекейі неден?',['Ағаш','Сары металл (алтын жалатылған) пластиналар','Пластик','Тек былғары'],1,'Сары металл (алтын жалатылған) ажурлы пластиналармен әсемделген.'),
+    Q('Ер қашан пайда болды?',['XX ғ.','XV ғ.','Ежелгі сақ дәуірінен','Тас дәуірінде'],2,'Ежелгі сақ дәуірінен бері көшпелілер қолданған.')
+  ]},
+  aibalta:{cat:'Қару-жарақ',fcat:'weapon',no:'078',poster:'assets/posters/aibalta.png',label:'айбалта · күміс',questions:[
+    Q('Айбалтаның басы қандай пішінде?',['Дөңгелек','Жарты ай','Шаршы','Үшбұрыш'],1,'Басы жарты ай пішінде — сондықтан «ай + балта» атауы шыққан.'),
+    Q('Айбалтаның сабы неден?',['Тек ағаш','Күміспен қапталған ағаш','Тек металл','Пластик'],1,'Сабы ағаш, сыртынан күміспен қапталған.'),
+    Q('XVIII-XIX ғ. айбалта кімнің қолында айырым белгісі болды?',['Балалардың','Билер мен батырлардың','Жерлеу шеберлерінің','Диқандардың'],1,'Билер мен батырлардың қолында айырым белгісі ретінде де қолданылған.'),
+    Q('Айбалтаның салмағы шамамен қандай?',['200-500 г','1-2 кг','10 кг','20 кг'],1,'Дәстүрлі айбалтаның салмағы 1-2 кг.'),
+    Q('Айбалтаның жүзі неше см?',['5 см','15-25 см','50 см','1 м'],1,'Айбалтаның жүзі 15-25 см болады.')
+  ]},
+  qalqan:{cat:'Қару-жарақ',fcat:'weapon',no:'081',poster:'assets/posters/qalqan.png',label:'болат · латунь',questions:[
+    Q('Қалқанның жиегі қандай металдан?',['Күміс','Латунь (сары мыс)','Темір','Алтын'],1,'Жиегі латунь (сары мыс) пластиналарымен көмкерілген.'),
+    Q('Қалқанның диаметрі шамамен қандай?',['20 см','50-60 см','1 м','2 м'],1,'Дөңес пішінді қалқанның диаметрі шамамен 50-60 см.'),
+    Q('Куфи стиліндегі жазулар нені білдіреді?',['Ертегілерді','Құраннан аяттар','Хабарламаларды','Ешнәрсе'],1,'Куфи жазулары — Құраннан аяттар мен қорғаныш дұғалары.'),
+    Q('Қалқан қай ғасырға жатады?',['XV','XVIII','XX','XI'],1,'Осы қалқан XVIII ғасырдың экспонаты, Ұлттық музейде.'),
+    Q('Қалқанның ішкі жағы немен қапталған?',['Ағаш','Қызыл мата және кожа','Металл','Ешнәрсе'],1,'Ішкі жағы қызыл матамен және жұмсақ былғарымен көмкерілген.')
+  ]},
+  kubi:{cat:'Тұрмыстық',fcat:'home',no:'047',poster:'assets/posters/kubi.png',label:'қымыз күбісі',questions:[
+    Q('Күбі қандай сусынды дайындау үшін қолданылады?',['Шай','Қымыз','Су','Сорпа'],1,'Күбі — қымыс әзірлеуге арналған трапеция пішіндегі ыдыс.'),
+    Q('Күбі неше металл шеңбермен бекітіледі?',['1','2','3-4','10'],2,'Үш немесе төрт қара түсті металл шеңберлермен бекітіледі.'),
+    Q('Күбі ішіндегі піспектің ұзындығы қандай?',['20 см','90 см','2 м','5 м'],1,'Піспек — ұзын сапты (шамамен 90 см) ағаш аспап.'),
+    Q('Қымыс жасау үшін бір күнде неше рет араластыру керек?',['10-20','100','1 000 - 2 000','10 000'],2,'Күніне 1000-2000 рет араластырылады — сүт ашуы үшін.'),
+    Q('Күбінің биіктігі қандай?',['20 см','40 см','60-80 см','2 м'],2,'Дәстүрлі күбінің биіктігі 60-80 см.')
+  ]},
+  ojau:{cat:'Тұрмыстық',fcat:'home',no:'058',poster:'assets/posters/ojau.png',label:'ағаш шөміш',questions:[
+    Q('Ожау қандай мақсатта қолданылады?',['Тамақ турауға','Қымыз, айран құюға','Су тартуға','Ағаш кесуге'],1,'Ожау — қымыс, айран, шұбат сынды сусындарды құюға арналған шөміш.'),
+    Q('Ожау қандай материалдан?',['Металл','Пластик','Бір бөлек ағаш','Кожа'],2,'Бір бөлек ағаштан (қайың, тал, қара ағаш) ойылып жасалады.'),
+    Q('Ожаудың ұзындығы қандай?',['5 см','30-50 см','1 м','2 м'],1,'Ожаудың ұзындығы 30-50 см.'),
+    Q('Дастарханда ожау кімнің қолында болады?',['Балалардың','Үлкендердің','Қонақтардың','Кез келгеннің'],1,'Ожау әрқашан үлкеннің қолында болады — ол кіші-үлкеннің ретімен құяды.'),
+    Q('Ежелгі көшпелілер неге ағаш ыдыс қолданды?',['Ол қымбат','Сырғанамайды, тесілмейді, жеңіл','Металдан жақсы','Тек әдеттен'],1,'Сырғанамайды, тесілмейді, жеңіл, көшке жинауға оңай.')
+  ]},
+  sandyq:{cat:'Тұрмыстық',fcat:'home',no:'092',poster:'assets/posters/sandyq.png',label:'ағаш сандық',questions:[
+    Q('Сандық қандай маңызды рәсімде қолданылады?',['Наурыз тойында','Жасау беруде','Жерлеуде','Тұсау кесерде'],1,'Жасау беруде маңызды орын алады — «сандық толы» тілеулесі.'),
+    Q('Сандық қандай материалдан жасалады?',['Тек металл','Ағаш пен металл қаптау','Пластик','Кожа'],1,'Ағаштан жасалып, сырты жұқа темірмен қапталады.'),
+    Q('Сандықтың ұзындығы шамамен қандай?',['20 см','40 см','80-120 см','3 м'],2,'Дәстүрлі сандықтың ұзындығы 80-120 см.'),
+    Q('«Сандық толы» тілеулесі не білдіреді?',['Той жасау','Отбасың мол болсын','Ұзақ өмір','Достар табу'],1,'«Сенің отбасың мол болсын, байлыққа кенел» деген тілек.'),
+    Q('Ежелде сандықты не үшін көшке апарды?',['Ыдыс сақтау','Отбасының байлығын тасу','Тамақ пісіру','Су жинау'],1,'Көш кезінде түйеге артылып, отбасының қымбат заттары тасылған.')
+  ]},
+  togyzqumalaq:{cat:'Ұлттық ойын',fcat:'game',no:'052',poster:'assets/posters/togyzqumalaq.png',label:'ағаш тақта',questions:[
+    Q('Тоғызқұмалақ тақтасында неше ұя бар?',['9','16','18','20'],2,'Екі жақта тоғыздан ұя — барлығы 18 ұя.'),
+    Q('Ойын басында әр ұяда неше құмалақ?',['5','7','9','11'],2,'Ойын басында әр ұяда 9 құмалақтан, барлығы 162.'),
+    Q('Ортадағы үлкен ұя қалай аталады?',['Ұя','Тұзақ','Қазан','Отау'],2,'Ортадағы үлкен ұя — «қазан», ұтылған құмалақтарды жинайды.'),
+    Q('«Отау» дегеніміз не?',['Ойынды бастау','Дұрыс тұзақ ұясын жасау','Ұя бос болу','Ойынды аяқтау'],1,'«Отау» — қарсылас алдында дұрыс тұзақ ұясын жасау техникасы.'),
+    Q('Тоғызқұмалақ федерациясы қашан құрылды?',['1900','1949','1980','2010'],1,'1949 жылы Қазақстан республикалық федерациясы құрылды.')
+  ]},
+  sazsyrnai:{cat:'Музыка',fcat:'music',no:'015',poster:'assets/posters/sazsyrnai.png',label:'қыш аспап',questions:[
+    Q('Сазсырнай қандай материалдан жасалған?',['Ағаш','Металл','Қыш балшық (күйдіріп)','Кожа'],2,'Сазсырнай — қыш балшықтан күйдіріп жасалған.'),
+    Q('Сазсырнайда неше дыбыс тесігі бар?',['3','6-12','20','50'],1,'Пішіні жұмыртқа тәрізді, 6-12 дыбыс тесігі бар.'),
+    Q('Осы экспонат нешінші жылдыққа арналған?',['1000','1500','2000','5000'],1,'Түркістан 1500 жылдығы (2000 ж.) құрметіне жасалған.'),
+    Q('Ежелде саз сырнай кімнің аспабы болды?',['Тек хандардың','Пастухтар мен балалардың','Тек діни адамдардың','Батырлардың'],1,'Негізінен пастухтар мен балалардың аспабы, кейде діни рәсімдерде.'),
+    Q('Сазсырнайдың пішіні неге ұқсас?',['Шаршы','Үлкен жұмыртқа','Гүл','Ат'],1,'Пішіні үлкен жұмыртқа тәрізді, 12 дыбыс тесігі бар.')
+  ]},
+  shanqobyz:{cat:'Музыка',fcat:'music',no:'022',poster:'assets/posters/shanqobyz.png',label:'варган · тілше',questions:[
+    Q('Шаңқобыз қалай ойналады?',['Ішегі бар','Ауыз резонансымен','Үрлеп','Ұрып'],1,'Тілшесі саусақпен қозғалады, ауыз қуысы резонатор рөлін атқарады.'),
+    Q('Шаңқобыздың тілшесі неден?',['Ағаш','Металл пластина','Кожа','Түйе жүн'],1,'Тілше — металл пластинадан жасалады.'),
+    Q('Ежелде шаңқобыз кімнің аспабы болды?',['Балалардың','Бақсылардың, шамандардың','Тек әйелдердің','Диқандардың'],1,'Ежелгі шамандық рәсімдерде, транс-медитацияда қолданылған.'),
+    Q('Шаңқобызды дүниежүзінде қандай стильде қолданады?',['Классикалық','Этно-джаз, world music','Рок','Кантри'],1,'Бүгінгі дүниежүзінде этно-джаз, world music стилінде танымал.'),
+    Q('Аспаптың ыдысы неден жасалады?',['Пластик','Ағаш (трапеция пішінді)','Металл','Кожа'],1,'Ағаш ыдысы трапеция пішінді, жіп өткізетін тесігі бар.')
+  ]},
+  perstenj:{cat:'Зергерлік',fcat:'jewelry',no:'043',poster:'assets/posters/perstenj.png',label:'күміс жүзік',questions:[
+    Q('«Тұмсықты жүзік» неге осы атқа ие болды?',['Құс тәрізді','Үшкір ұшы құс тұмсығына ұқсас','Құс жасайтын','Ел атының атауы'],1,'Каст ұшы үшкір, «құс тұмсығы» тәрізді пішінге ие.'),
+    Q('Ежелгі қазақ сенімі бойынша жүзік не?',['Жай әшекей','Тұмар (амулет)','Ақша','Билік нышаны'],1,'Жүзік тұмар (амулет) ретінде жаман көзден қорғайды деп саналды.'),
+    Q('Осы жүзіктің материалы қандай?',['Алтын','Күміс','Мыс','Темір'],1,'Күмістен жасалған, ішінде кішкене тас орнатылған.'),
+    Q('Қандай техникалармен әсемделген?',['Тек ойма','Скан + зернь','Дәнекерлеу','Штампалау'],1,'Скан (күміс жіппен өру) және зернь (майда шариктер) техникасымен.'),
+    Q('Осы жүзік қайдан келді?',['Астана','Костанай ОМ','Алматы','Атырау'],1,'Костанай облыстық тарихи-өлкетану музейінен.')
+  ]},
+  bilezik:{cat:'Зергерлік',fcat:'jewelry',no:'045',poster:'assets/posters/bilezik.png',label:'күміс білезік',questions:[
+    Q('Осы білезікте неше агат тас бар?',['1','2','3','5'],2,'Орталық акцент — үш овал агат тас, білезік айналасында бірдей орналасқан.'),
+    Q('Білезіктің авторы кім?',['Ежелгі шебер','Заманауи зергер К. Шапабаев','Белгісіз','Дина Нұрпейісова'],1,'Заманауи зергер Шапабаев Қайрат Бұлатұлының шығармасы.'),
+    Q('Білезіктің пішіні қандай?',['Тұйықталған','Ашық (жартылай)','Сақина тәрізді','Тіркеме'],1,'Массивті, сәл ашылған пішінде — қолға оңай кигізіледі.'),
+    Q('Білезіктің ою типі қандай?',['Гүл','Геометрия — үшбұрыш, ромб','Хайуан суреттері','Абстракция'],1,'Беті геометриялық оюмен әшекейленген — үшбұрыш, ромб.'),
+    Q('Ежелгі білезіктер қашанғы?',['XIX ғ.','X ғ.','Сақ дәуірі (VII-V ғ. б.з.д.)','Тас дәуірі'],2,'Ежелгі қорымдардан тапқан білезіктер б.з.д. VII-V ғасырларға жетеді.')
+  ]},
+  kese:{cat:'Тұрмыстық',fcat:'home',no:'062',poster:'assets/posters/kese.png',label:'керамика',questions:[
+    Q('Осы кесе қай ғасырға жатады?',['X-XI','XVIII-XIX','XX','V-VI'],1,'Кесе XVIII-XIX ғасырларға жатады.'),
+    Q('Кесе қандай материалдан?',['Металл','Керамика','Ағаш','Кожа'],1,'Керамика — гончарлы дөңгелекте пішіні қалыптасып, обжигпен күйдірілген.'),
+    Q('Кесенің шыққан жері?',['Астана','Отрар, Тараз, Сайрам (Жібек жолы)','Мәскеу','Париж'],1,'Ұлы Жібек жолы бойындағы қалалардан — Отрар, Тараз, Сайрам.'),
+    Q('Кеседегі бояулар қандай?',['Тек ақ','Көгілдір мен қоңыр (ақ фонда)','Тек қара','Түрлі-түсті'],1,'Ақ фондық глазурьге көгілдір мен қоңыр өрнек.'),
+    Q('Кесенің биіктігі қандай?',['3 см','8.2 см','20 см','50 см'],1,'Осы кесенің биіктігі 8.2 см.')
+  ]},
+  korzhyn:{cat:'Тұрмыстық',fcat:'home',no:'087',poster:'assets/posters/korzhyn.png',label:'жол қапшығы',questions:[
+    Q('Қоржын не үшін пайдаланылған?',['Тағам ішу','Ат-түйе үстіне асатын жол қапшығы','Отбасында отыру','Той шатыры'],1,'Қоржын — ат немесе түйе үстіне асатын дәстүрлі жұп жол сумкасы.'),
+    Q('Қоржын қандай материалдан жасалған?',['Былғары','Жүн жіп','Пластик','Ағаш'],1,'Қоржын жуан жүн жіптен қолмен тоқылады.'),
+    Q('Қоржынның ортасында қандай ою болады?',['Күн','Ромб пішінді медальон','Жұлдыз','Жоқ'],1,'Ортасында ромб пішінді медальон — күн, әлем, отбасы символы.'),
+    Q('Қоржынның ұштарында не бар?',['Металл шеңбер','Жіп бүрлері (тұмар)','Тас','Ешнәрсе'],1,'Ұштарында жіп бүрлері — тұмар рөлін атқарады, көзге ілінбес үшін.'),
+    Q('Қоржын қандай маңызды рәсімде қолданылады?',['Наурыз','Ұзату тойы (жасау)','Тұсаукесер','Ешбірінде'],1,'Қоржын ұзатылу тойында қыздың жасауының маңызды бөлігі болып саналған.')
+  ]},
+  syrmaq:{cat:'Тұрмыстық',fcat:'home',no:'094',poster:'assets/posters/syrmaq.png',label:'киіз кілем',questions:[
+    Q('Сырмақтың негізгі техникасы қандай?',['Тоқу','Ою жапсыру (мозаика)','Кесте','Илеу'],1,'Сырмақ — түсті киіз кесінділерін бір-бірімен ұсақ тігіспен біріктіру арқылы (мозаика әдісі) жасалады.'),
+    Q('Сырмақ қандай материалдан?',['Мақта','Қой немесе түйе жүнінен басылған киіз','Жібек','Былғары'],1,'Сырмақтың негізі — киіз, қой немесе түйе жүнінен басылған қалың мата.'),
+    Q('Сырмақтың ортасында қандай ою болады?',['Күн','Үш ромб-медальон','Жұлдыз','Жоқ'],1,'Ортасында үш ромб пішінді медальон — үш жүздің немесе әулет мүшелерінің символы.'),
+    Q('Бір сырмақты жасауға қанша уақыт кетеді?',['1 күн','1-2 апта','3-6 ай','5 жыл'],2,'Бір сырмаққа шеберге 3-6 ай уақыт кетуі мүмкін.'),
+    Q('Сырмақтың қошқар мүйіз ою нені білдіреді?',['Соғыс','Береке (малшылық байлығы)','Өлім','Ешнәрсе'],1,'Қошқар мүйіз — берекенің символы, малшылықтың негізгі байлығына сілтеме.')
+  ]},
+  dulyga:{cat:'Қару',fcat:'weapon',no:'112',poster:'assets/posters/dulyga.png',label:'жауынгер шлемі',questions:[
+    Q('Дулыға деген не?',['Аяқ киім','Темір қорғаныш бас киім (шлем)','Кебіс','Кестелі жаулық'],1,'Дулыға — қазақ жауынгерінің темір қорғаныш бас киімі.'),
+    Q('Осы дулыға авторы кім?',['Абылай хан','Алибай Берік Сатынбекұлы (заманауи шебер)','Қорқыт ата','Есет батыр'],1,'Реконструкция — заманауи шебер Алибай Берік Сатынбекұлы XVIII-XIX ғ. үлгісі негізінде соққан.'),
+    Q('Бармица деген не?',['Ағаш сап','Темір сақиналардан тоқылған желкеқаптау','Түйме','Кестелі жапырақ'],1,'Бармица — жіңішке темір сақиналардан тоқылған желкеқаптау, желке мен мойынды қорғайды.'),
+    Q('Дулыға сыртындағы жазулар қандай стильде?',['Латын','Арабтық каллиграфия (куфи)','Кириллица','Ешбір'],1,'Сыртында арабтық каллиграфия стиліндегі ою — Құраннан аяттар мен қорғаныш дұғалары.'),
+    Q('Бір бармицада шамамен қанша темір сақина болады?',['100','1000','15-20 мың','1 миллион'],2,'Бір бармицада шамамен 15-20 мың темір сақина болуы мүмкін, оны жасауға айлар кетеді.')
+  ]}
+};
+
+const REGION_DATA = {
+  almaty_obl: {
+    era:'Б.з.д. V ғ. — қазіргі',
+    legend:'Іле Алатауы бөктерінде — Жетісу елі, Ұлы жүздің жүрегі. Есік қорғанынан 1969 жылы «Алтын адам» табылды — сақ жауынгері, 4000 алтын әшекеймен. 2022 жылы Жетісу облысы бөлініп шықты.',
+    batyrs:['Райымбек батыр (1705-1785)','Сүйінбай Аронұлы','Абылмансұр (Абылай хан)'],
+    monuments:['Есік «Алтын адам»','Райымбек кесенесі','Тамғалы петроглифтері (ЮНЕСКО)','Іле Алатауы қорғандары'],
+    tags:['сақ мұрасы','айтыс','бүркіт-саятшылық','ат бәйгесі'],
+    wiki:[['Алтын Адам',{ru:'Иссыкский золотой человек',en:'Golden Man'},'ЕСКЕРТКІШ'],['Райымбек батыр',{ru:'Райымбек батыр',en:'Raiymbek Batyr'},'БАТЫР'],['Тамғалы петроглифтері',{ru:'Тамгалы',en:'Tamgaly'},'ЮНЕСКО']]
+  },
+  akmola: {
+    era:'VII-XIX ғ.',
+    legend:'Есіл өзені бойында VII-XIV ғасырларда Бозоқ орта ғасырлық қала болған. Соңғы қазақ ханы Кенесары (1802-1847) осы даланы орталық еткен. Ортасында республикалық қала — Астана.',
+    batyrs:['Кенесары Қасымұлы','Абылай хан ставкасы','Наурызбай батыр'],
+    monuments:['Бозоқ қалашығы','Бурабай (Көкшетау) көлдері','Абылай хан ставкасы','Ботай мәдениеті'],
+    tags:['ұлт-азаттық','көлдер','аңшылық'],
+    wiki:[['Кенесары хан',{ru:'Кенесары Касымов',en:'Kenesary Khan'},'ХАН'],['Бурабай',{ru:'Бурабай',en:'Burabay'},'ТАБИҒАТ'],['Ботай мәдениеті',{ru:'Ботайская культура',en:'Botai culture'},'ЕЖЕЛГІ']]
+  },
+  aktobe: {
+    era:'XIV-XIX ғ.',
+    legend:'Батыс далада Есет батыр Көтібарұлы (1667-1749) жоңғарға қарсы қол бастады. Абат-Байтақ кесенесі — XIV ғасырда салынған, Қазақстанның ең әсем ортағасыр ескерткіштерінің бірі.',
+    batyrs:['Есет батыр Көтібарұлы','Айтеке би','Тілеу батыр'],
+    monuments:['Абат-Байтақ кесенесі','Хан моласы','Ырғыз-Торғай өңірі'],
+    tags:['батырлар','билер соты','мал шаруашылығы'],
+    wiki:[['Ақтөбе',{ru:'Актобе',en:'Aktobe'},'ҚАЛА'],['Абат-Байтақ',{ru:'Абат-Байтак',en:'Abat-Baitak'},'ЕСКЕРТКІШ'],['Айтеке би',{ru:'Айтеке би',en:'Aiteke Bi'},'БИ']]
+  },
+  atyrau: {
+    era:'XIII-XIX ғ.',
+    legend:'Каспий-Жайық өңірі. XIII-XVI ғасырларда Сарайшық — Алтын Орданың жаз астанасы, жеті хан жерленген. XIX ғасырда — Махамбет пен Исатайдың 1836-1838 жылғы көтерілісінің шаңырағы.',
+    batyrs:['Махамбет Өтемісұлы','Исатай Тайманұлы','Жәнібек хан','Тохтамыш'],
+    monuments:['Сарайшық (жеті хан пантеоны)','Махамбет музейі','Атырау облыстық мұражайы','Иманқара тау'],
+    tags:['Алтын Орда','жырау','айтыс','ұлт-азаттық'],
+    wiki:[['Махамбет',{ru:'Утемисов, Махамбет',en:'Makhambet Utemisuly'},'ЖЫРАУ'],['Сарайшық',{ru:'Сарайчик',en:'Saraychik'},'ЕЖЕЛГІ ҚАЛА'],['Исатай Тайманұлы',{ru:'Тайманов, Исатай',en:'Isatay Taymanuly'},'КӨТЕРІЛІС']]
+  },
+  east_kz: {
+    era:'Б.з.д. IV ғ. — қазіргі',
+    legend:'Алтай тауы етегі. Берел қорғандары (б.з.д. IV-III ғ.) — Пазырық мәдениетінің шыңы. «Алтын киімді сақ көсемі», алтын мүсіндер, ат әбзелдері табылды. 2022 жылы Абай облысы (Шыңғыстау, Абайдың Отаны) бөлініп шықты.',
+    batyrs:['Сақ көсемдері','Қабанбай батыр','Абылай хан (қыстауы)'],
+    monuments:['Берел қорғандары','Алтын киім','Ертіс жағалауы','Марқакөл көлі','Рахман бұлақтары'],
+    tags:['пазырық-сақ','алтын өнері','мұздағы қорған','аңшылық'],
+    wiki:[['Берел қорғандары',{ru:'Берель',en:'Berel burial ground'},'ЕЖЕЛГІ'],['Пазырық мәдениеті',{ru:'Пазырыкская культура',en:'Pazyryk culture'},'САҚ'],['Қабанбай батыр',{ru:'Кабанбай батыр',en:'Kabanbay Batyr'},'БАТЫР']]
+  },
+  mangystau: {
+    era:'Ортағасыр — қазіргі',
+    legend:'362 әулиелі жер. Бекет ата (1750-1813) — «Пірлердің пірі», халықтың ұстазы. Оның Оғланды жерасты мешіті — бүгінге дейін ең қасиетті зиярат орны. Шеркала тауы — таңғажайып табиғи ескерткіш.',
+    batyrs:['Бекет ата','Шопан ата','Қараман ата','Есет батыр Көтібарұлы'],
+    monuments:['Бекет ата жерасты мешіті','Шопан ата кесенесі','Шеркала тауы','Оғланды кешені','Босжыра'],
+    tags:['зиярат','сопылық','ат ұстау','жерасты мешіті'],
+    wiki:[['Бекет ата',{ru:'Бекет-Ата',en:'Beket-Ata'},'ӘУЛИЕ'],['Шопан ата',{ru:'Шопан-Ата',en:'Shopan-Ata'},'ЖЕРАСТЫ МЕШІТ'],['Шеркала',{ru:'Шеркала',en:'Sherkala'},'ТАБИҒАТ']]
+  },
+  north_kz: {
+    era:'Б.з.д. IV мың. — XIX ғ.',
+    legend:'Ежелгі Қызылжар қаласы (Петропавл) — Абылай ханның солтүстік ставкасы болды. Осы өңірде Ботай мәдениеті (~5500 ж.б.) — адамзат тарихында жылқыны алғаш қолға үйрету орны.',
+    batyrs:['Абылай хан','Жәнібек батыр','Мұқан батыр'],
+    monuments:['Абылай хан ставкасы','Ботай мәдениеті орны','Айыртау (Ыбырай Алтынсарин)','Қызылжар қаласы'],
+    tags:['жылқы қолға үйрету','дала аушылығы','айтыс'],
+    wiki:[['Ботай мәдениеті',{ru:'Ботайская культура',en:'Botai culture'},'ЕЖЕЛГІ'],['Петропавл',{ru:'Петропавловск (Казахстан)',en:'Petropavl'},'ҚАЛА'],['Абылай хан',{ru:'Абылай-хан',en:'Abylai Khan'},'ХАН']]
+  },
+  pavlodar: {
+    era:'XIX-XX ғ.',
+    legend:'Ертіс жағасында Баянауыл таулары — қазақ ағартушылары мен ғалымдарының отаны. Мәшһүр Жүсіп Көпейұлы (1858-1931), Сұлтанмахмұт Торайғыров (1893-1920), Қаныш Сәтбаев осы жерде дүниеге келді.',
+    batyrs:['Мәшһүр Жүсіп Көпейұлы','Сұлтанмахмұт Торайғыров','Қаныш Сәтбаев'],
+    monuments:['Баянауыл ұлттық паркі','Ертіс жағалауы','Мәшһүр Жүсіп мұражайы','Қ. Сәтбаев тас-мұражайы'],
+    tags:['ағарту','поэзия','ғылым','тау мәдениеті'],
+    wiki:[['Баянауыл',{ru:'Баянаул',en:'Bayanaul'},'ТАБИҒАТ'],['Мәшһүр Жүсіп',{ru:'Копеев, Машхур Жусуп',en:'Mashhur Zhusup Kopeyev'},'АҚЫН'],['Қаныш Сәтбаев',{ru:'Сатпаев, Каныш Имантаевич',en:'Kanysh Satpayev'},'ҒАЛЫМ']]
+  },
+  karagandy: {
+    era:'X-XIX ғ.',
+    legend:'Сарыарқаның кіндігі. Қасым хан (1445-1521) «Қасқа жолы» құқық жинағын жариялады. Бөгенбай батыр — Абылай ханның серігі. 2022 жылы Ұлытау облысы бөлініп шықты (Жошы хан, Алаша хан күмбездерімен).',
+    batyrs:['Бөгенбай батыр (1690-1775)','Қасым хан','Қаз дауысты Қазыбек би','Наурызбай батыр'],
+    monuments:['Бөгенбай кесенесі','Қасым хан ордасы орны','Найзатас петроглифтері','Домбауыл кесенесі (Ұлытауда)','Алаша хан күмбезі'],
+    tags:['билер соты','заң жинағы','батырлар','ежелгі күмбез'],
+    wiki:[['Бөгенбай батыр',{ru:'Богенбай батыр',en:'Bogenbay batyr'},'БАТЫР'],['Сарыарқа',{ru:'Сары-Арка',en:'Saryarka'},'ТАБИҒАТ'],['Қазыбек би',{ru:'Казыбек би',en:'Kazybek Bi'},'БИ']]
+  },
+  kostanay: {
+    era:'XIX-XX ғ.',
+    legend:'Торғай даласы — Ыбырай Алтынсарин (1841-1889) — қазақ ағартушысы, педагог, жазушының отаны. Ол алғаш қазақша-орысша мектеп ашты. 1916 жылғы Торғай көтерілісі — Аманкелді Имановтың бастауымен.',
+    batyrs:['Ыбырай Алтынсарин','Аманкелді Иманов','Кейкі батыр'],
+    monuments:['Ы. Алтынсарин мұражайы','Торғай өзені','Наурызым қорығы','Нарбозы кесенесі'],
+    tags:['ағарту','дала ағартушылық','1916 көтеріліс'],
+    wiki:[['Ыбырай Алтынсарин',{ru:'Алтынсарин, Ибрай',en:'Ibrai Altynsarin'},'АҒАРТУШЫ'],['Аманкелді Иманов',{ru:'Иманов, Амангельды',en:'Amangeldy Imanov'},'КӨТЕРІЛІС'],['Наурызым',{ru:'Наурзумский заповедник',en:'Naurzum Nature Reserve'},'ТАБИҒАТ']]
+  },
+  kyzylorda: {
+    era:'VIII-XX ғ.',
+    legend:'Сырдария жағалауы — Қорқыт ата (VIII-IX ғ.) қасиетті жері. «Қорқыт-ата» кітабы — түркі әлемінің ең көне жазба ескерткіштерінің бірі. Бүгінде Байқоңыр космодромы — ғарыш дәуірі.',
+    batyrs:['Қорқыт ата','Бухар жырау Қалқаманұлы','Тұрар Рысқұлов'],
+    monuments:['Қорқыт ата кесенесі','Сырдария','Байқоңыр космодромы','Жанкент қалашығы'],
+    tags:['жырау','дастан','ғарыш','суармалы диқаншылық'],
+    wiki:[['Қорқыт ата',{ru:'Коркыт-Ата',en:'Korkyt Ata'},'ЖЫРАУ'],['Байқоңыр',{ru:'Байконур (космодром)',en:'Baikonur Cosmodrome'},'ҒАРЫШ'],['Жанкент',{ru:'Джанкент',en:'Jankent'},'ЕЖЕЛГІ ҚАЛА']]
+  },
+  turkistan_obl: {
+    era:'V-XVI ғ.',
+    legend:'Түркі әлемінің рухани астанасы. Қожа Ахмет Ясауи (1093-1166) кесенесі — Әмір Темірдің тапсырысымен 1389-1405 жылдары салынған, ЮНЕСКО тізімінде. Отырар — Ұлы Жібек жолының түйіні, әл-Фараби осы жерде туған. Арыстан баб — Ясауидің ұстазы.',
+    batyrs:['Қожа Ахмет Ясауи','Әбу Наср әл-Фараби','Әз-Тәуке хан','Тәуекел хан','Есім хан'],
+    monuments:['Ясауи кесенесі (ЮНЕСКО)','Арыстан баб кесенесі','Отырар қалашығы','Күлтөбе','Оқшы ата'],
+    tags:['зікір','сопылық','ЮНЕСКО','поэзия'],
+    wiki:[['Ясауи кесенесі',{ru:'Мавзолей Ходжи Ахмеда Ясави',en:'Mausoleum of Khoja Ahmed Yasawi'},'ЮНЕСКО'],['әл-Фараби',{ru:'Аль-Фараби',en:'Al-Farabi'},'ФИЛОСОФ'],['Отырар',{ru:'Отрар',en:'Otrar'},'ЕЖЕЛГІ ҚАЛА']]
+  },
+  west_kz: {
+    era:'1801-1845, XIX ғ.',
+    legend:'Бөкей ордасы (1801-1845) — қазақтың соңғы ханы Жәңгірдің заманы. Жәңгір хан — реформатор: алғаш мектеп, мешіт, базар, кітапхана. Курмангазы Сағырбайұлы (1818-1889) — қазақ күйінің класигі, «Балбырауын» авторы.',
+    batyrs:['Жәңгір хан','Бөкей хан','Курмангазы Сағырбайұлы','Дина Нұрпейісова'],
+    monuments:['Хан сарайы (Орда)','Жәңгір мешіті','Ханский лес','Курмангазы туған жері'],
+    tags:['ағарту','күй','дипломатия','сауда'],
+    wiki:[['Курмангазы',{ru:'Курмангазы Сагырбаев',en:'Kurmangazy Sagyrbayuly'},'КҮЙШІ'],['Бөкей ордасы',{ru:'Букеевская Орда',en:'Bukey Horde'},'ХАНДЫҚ'],['Жәңгір хан',{ru:'Жангир (хан Букеевской Орды)',en:'Jangir Khan'},'ХАН']]
+  },
+  jambyl: {
+    era:'VI-XII ғ.',
+    legend:'Ұлы Жібек жолындағы «Көпестер қаласы» — Тараз. Айша бибі кесенесі (XI ғ.) — қазақ архитектурасының інжу-маржаны. Айша мен Қарахан ханзада туралы аңыз — «Ромео мен Джульеттаның» түркі нұсқасы.',
+    batyrs:['Қарахан','Тоқтамыс хан','Байдібек би','Жамбыл Жабаев'],
+    monuments:['Айша бибі кесенесі','Бабажа хатун кесенесі','Қарахан мешіті','Ақыртас сарайы'],
+    tags:['сауда','архитектура','поэзия','Жібек жолы'],
+    wiki:[['Айша бибі',{ru:'Айша-биби',en:'Aisha Bibi'},'ЕСКЕРТКІШ'],['Тараз',{ru:'Тараз',en:'Taraz'},'ЕЖЕЛГІ ҚАЛА'],['Жамбыл Жабаев',{ru:'Джамбул Джабаев',en:'Zhambyl Zhabayev'},'АҚЫН']]
+  }
+};
+
+const CITY_DATA = {
+  astana: {
+    kind:'capital', z:'orta',
+    era:'1832 → 1997 астана',
+    legend:'Есіл жағасында ортағасырда Бозоқ қаласы болған. 1832 жылы Ақмола бекінісі — 1961 Целиноград — 1998 Астана — 2019 Нұр-Сұлтан — 2022 қайта Астана. Бүгінде Ұлы Дала жобаларының орталығы.',
+    batyrs:['Кенесары Қасымұлы','Наурызбай батыр','Нұрсұлтан Назарбаев'],
+    monuments:['Бәйтерек','Хазірет Сұлтан мешіті','Бозоқ қалашығы','Хан Шатыр','Ұлттық музей'],
+    tags:['елорда','дипломатия','сәулет','көрме'],
+    wiki:[['Астана',{ru:'Астана',en:'Astana'},'ЕЛОРДА'],['Бәйтерек',{ru:'Байтерек (Астана)',en:'Baiterek Tower'},'СИМВОЛ'],['Хан Шатыр',{ru:'Хан-Шатыр',en:'Khan Shatyr'},'САУДА']]
+  },
+  almaty_c: {
+    kind:'city', z:'uly',
+    era:'XIX-XXI ғ.',
+    legend:'Іле Алатау бөктерінде. XIX ғ. Верный бекінісі негізінде дамыды. 1929-1997 Қазақ ССР астанасы. Бүгінде мәдениет пен ғылымның басты орталығы. Ежелгі сақ Есік қорғаны маңында.',
+    batyrs:['Райымбек батыр','Абылмансұр (Абылай хан)','Сүйінбай Аронұлы','Ғ. Мұстафин'],
+    monuments:['Райымбек кесенесі','Медеу — жоғары таулы каток','Кок-Тобе','Абай ескерткіші','Ұлттық музей'],
+    tags:['айтыс','ат бәйгесі','тау мәдениеті','мұражайлар'],
+    wiki:[['Алматы',{ru:'Алма-Ата',en:'Almaty'},'ҚАЛА'],['Медеу',{ru:'Медеу',en:'Medeu'},'КАТОК'],['Кок-Тобе',{ru:'Кок-Тюбе',en:'Kok-Tobe'},'ТАУ']]
+  },
+  shymkent: {
+    kind:'city', z:'uly',
+    era:'XII ғ. — қазіргі',
+    legend:'Ежелгі қала (XII ғ.), Ұлы Жібек жолындағы Оңтүстік қақпасы. Түркістан жақындығы — ЮНЕСКО ескерткіштеріне тікелей жолы. 2018 жылы республикалық маңызы бар қала статусын алды.',
+    batyrs:['Байдібек би','Толе би (маңында)','Тұрар Рысқұлов'],
+    monuments:['Оңтүстік ежелгі қала орны','Тұрар Рысқұлов мұражайы','Ежелгі базар','Қоңыртөбе'],
+    tags:['сауда','айтыс','Ұлы Жібек жолы','мәдениет'],
+    wiki:[['Шымкент',{ru:'Шымкент',en:'Shymkent'},'ҚАЛА'],['Байдібек би',{ru:'Байдибек-би',en:'Baidibek'},'БИ'],['Толе би',{ru:'Толе би',en:'Tole Bi'},'БИ']]
+  }
+};
+
+// iso: 2-letter country code (used with flagcdn.com). Emoji flags don't render on Windows Chrome.
+const HERITAGE = [
+  {iso:'kz',name:'Қазақстан',role:'Отан',share:['Домбыра','Ат баптау','Айтыс','Наурыз','Тас балбалдар','Бүркітпен саятшылық']},
+  {iso:'kg',name:'Қырғызстан',role:'Түркі туыс',share:['Манас эпосы','Комуз','Көкпар','Киіз үй','Мал шаруашылығы']},
+  {iso:'uz',name:'Өзбекстан',role:'Ортақ жер',share:['Түркістан жолы','Домбыра','Той дәстүрі','Жібек жолы қалалары']},
+  {iso:'tm',name:'Түрікменстан',role:'Түркі туыс',share:['Ахалтеке жылқысы','Түрікмен кілемі','Дутар','Оймақ']},
+  {iso:'tr',name:'Түркия',role:'Түркі әлемі',share:['Түркі тілдер отбасы','Саз','Дастан','Ат мәдениеті','Түркі кеңесі']},
+  {iso:'az',name:'Әзірбайжан',role:'Түркі туыс',share:['Мұғам','Тар','Дастан','Наурыз','Оғыз тілі']},
+  {iso:'mn',name:'Моңғолия',role:'Ұлы Дала',share:['Шыңғыс хан мұрасы','Морин хуур','Бүркітпен саятшылық','Наадам','Көне түркі жазуы']},
+  {iso:'cn',name:'Шыңжаң (ҚХР)',role:'Қазақ диаспорасы',share:['1.5 млн қазақ','Бүркітшілер','Домбыра','Наурыз','Ой-Толғау']},
+  {iso:'ru',name:'Ресей (Татарстан · Саха · Тыва · Башқұрт)',role:'Түркі туыс',share:['Түркі тілдер','Күй','Хомус (шаңқобыз)','Эпостар','Наурыз']},
+  {iso:'ir',name:'Иран',role:'Түркі диаспора',share:['Түркімен','Азери','Кілем','Дастан','Оғыз тілі']},
+  {iso:'af',name:'Ауғанстан',role:'Қазақ диаспорасы',share:['Қазақ ауылдары','Наурыз','Оймақ','Домбыра']},
+  {iso:'hu',name:'Венгрия',role:'Ежелгі туыс',share:['Мадиярлар','Ат мәдениеті','Тайпалық тарих','Тұран қозғалысы','Жетітайпа']}
+];
+
+const ZLABEL = {uly:'Ұлы жүз', orta:'Орта жүз', kishi:'Кіші жүз'};
+
+// Wikipedia + Commons image lookup with in-memory cache.
+// Pipeline per label:
+//   1) Wikipedia REST summary   (has an infobox image?)
+//   2) MediaWiki pageimages     (any tagged image on the page?)
+//   3) Commons text search      (any relevant file, skipping coats/flags/logos?)
+// Steps 1-2 run per lang (ru → en → kk). Step 3 runs once on the KZ label (best coverage of local names).
+const WIKI_CACHE = new Map();
+
+async function fetchJsonWithRetry(url, tries){
+  tries = tries || 2;
+  for (let i = 0; i < tries; i++) {
+    try {
+      const r = await fetch(url, {mode:'cors'});
+      if (r.ok) return await r.json();
+      if (r.status === 404) return null;  // don't retry on 404
+    } catch (e) {
+      // network / CORS transient — fall through to retry
+    }
+    if (i < tries - 1) await new Promise(r => setTimeout(r, 700 + 400 * i));
+  }
+  return null;
+}
+async function fetchSummary(title, lang){
+  const j = await fetchJsonWithRetry(`https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`);
+  if (!j || !j.thumbnail || !j.thumbnail.source) return null;
+  return {
+    src: j.thumbnail.source.replace(/\/\d+px-/, '/500px-'),
+    page: j.content_urls?.desktop?.page || `https://${lang}.wikipedia.org/wiki/${encodeURIComponent(title)}`
+  };
+}
+
+async function fetchPageImage(title, lang){
+  const url = `https://${lang}.wikipedia.org/w/api.php?action=query&format=json&formatversion=2`
+            + `&prop=pageimages&piprop=thumbnail|original&pithumbsize=500`
+            + `&titles=${encodeURIComponent(title)}&origin=*`;
+  const j = await fetchJsonWithRetry(url);
+  if (!j) return null;
+  const page = j.query?.pages?.[0];
+  const src = page?.thumbnail?.source || page?.original?.source;
+  if (!src) return null;
+  return { src, page: `https://${lang}.wikipedia.org/wiki/${encodeURIComponent(title)}` };
+}
+
+const BAD_FILE = /герб|coat[-_ ]?of[-_ ]?arms|flag|логотип|logo|emblem|печать|seal_of/i;
+async function fetchCommonsSearch(query){
+  const url = `https://commons.wikimedia.org/w/api.php?action=query&format=json&formatversion=2`
+            + `&generator=search&gsrsearch=${encodeURIComponent(query)}&gsrnamespace=6&gsrlimit=10`
+            + `&prop=imageinfo&iiprop=url&iiurlwidth=500&origin=*`;
+  const j = await fetchJsonWithRetry(url);
+  if (!j) return null;
+  const pages = j.query?.pages || [];
+  pages.sort((a,b) => (a.index || 99) - (b.index || 99));
+  const good = pages.find(p => {
+    const t = (p.title || '').toLowerCase();
+    if (!/\.(jpg|jpeg|png|webp)$/i.test(t)) return false;
+    if (BAD_FILE.test(t)) return false;
+    return !!p.imageinfo?.[0]?.thumburl;
+  });
+  if (!good) return null;
+  return {
+    src: good.imageinfo[0].thumburl,
+    page: `https://commons.wikimedia.org/wiki/${encodeURIComponent(good.title)}`
+  };
+}
+
+async function wikiThumb(titleByLang, fallbackLabel){
+  const key = JSON.stringify(titleByLang) + '|' + (fallbackLabel || '');
+  if (WIKI_CACHE.has(key)) return WIKI_CACHE.get(key);
+  const p = (async () => {
+    // 1 + 2 per lang
+    for (const lang of ['ru','en','kk']) {
+      const t = titleByLang[lang];
+      if (!t) continue;
+      let res = await fetchSummary(t, lang);
+      if (res) return res;
+      res = await fetchPageImage(t, lang);
+      if (res) return res;
+    }
+    // 3: Commons text search — try EN title first (search index most stable), then RU, then KZ label
+    const queries = [];
+    if (titleByLang.en) queries.push(titleByLang.en);
+    if (titleByLang.ru) queries.push(titleByLang.ru);
+    if (fallbackLabel && !queries.includes(fallbackLabel)) queries.push(fallbackLabel);
+    for (const q of queries) {
+      const res = await fetchCommonsSearch(q);
+      if (res) return res;
+    }
+    return null;
+  })();
+  WIKI_CACHE.set(key, p);
+  return p;
+}
+
+
+</script>
 
 <script>
   const burger = document.getElementById('burger');
@@ -1120,7 +1793,10 @@
     shanqobyz:{action:"Дыбысты тыңдау →",quiz:"Викторина: шаңқобыз қалай ойналады?",qrTitle:"Резонанс",qrText:"QR арқылы шаңқобыздың ауыз резонансымен шығатын әуенін естіңіз.",history:"Шаңқобыз — түркі халықтарында тараған тілшелі аспап. Ежелгі шамандық рәсімдерде қолданылған."},
     perstenj:{action:"Зергерлік өнері →",quiz:"Викторина: тұмсықты жүзік не үшін?",qrTitle:"Күміс өнері",qrText:"QR арқылы қазақ зергерлерінің скан, зернь техникасын көріңіз.",history:"Тұмсықты жүзік — XIX ғ. Костанай зергерлерінің шығармасы. Тас тұмар (амулет) ретінде қорғаныш беретін."},
     bilezik:{action:"Зергер шығармалары →",quiz:"Викторина: неше агат тас бар?",qrTitle:"Заманауи зергер",qrText:"QR арқылы Шапабаев Қайрат Бұлатұлының шығармаларымен танысыңыз.",history:"Білезік — заманауи зергер Шапабаев Қайрат Бұлатұлының шығармасы. Ежелгі түркі геометрия дәстүрін қайта тірілтеді."},
-    kese:{action:"Қыш өнері →",quiz:"Викторина: осы кесе қай ғасырға?",qrTitle:"Ортағасырлық қыш",qrText:"QR арқылы Отрар, Тараз, Сайрам қыш мектептерін көріңіз.",history:"Кесе — XVIII-XIX ғ. керамика ыдысы. Ұлы Жібек жолы қалаларының — Отрар, Тараз, Сайрам — гончарлы дәстүрі жалғасы."}
+    kese:{action:"Қыш өнері →",quiz:"Викторина: осы кесе қай ғасырға?",qrTitle:"Ортағасырлық қыш",qrText:"QR арқылы Отрар, Тараз, Сайрам қыш мектептерін көріңіз.",history:"Кесе — XVIII-XIX ғ. керамика ыдысы. Ұлы Жібек жолы қалаларының — Отрар, Тараз, Сайрам — гончарлы дәстүрі жалғасы."},
+    korzhyn:{action:"Тоқу өнері →",quiz:"Викторина: қоржын не үшін пайдаланылған?",qrTitle:"Тоқыма ою",qrText:"QR арқылы қоржын тоқу техникасы мен ою мағыналарын көріңіз.",history:"Қоржын — көшпелі қазақтардың дәстүрлі жол қапшығы, ат-түйе үстіне асатын жұп сумка. Жүн жіппен қолмен тоқылған, ортасында ромб медальон, ұштарында бүрлер. Ұзатылу тойында қыздың жасауының маңызды бөлігі."},
+    syrmaq:{action:"Ою жапсыру →",quiz:"Викторина: сырмақтың негізгі техникасы қандай?",qrTitle:"Киіз кілем өнері",qrText:"QR арқылы сырмақ, текемет, түскиіз айырмашылықтары мен жасау процесін көріңіз.",history:"Сырмақ — қазақ киіз кілемдерінің ең күрделі әрі әсем түрі. Түсті киіз кесінділерін ойып, бір-бірімен тігіп біріктіру (мозаика әдісі). Үш ромб-медальон — үш жүздің символы. Ұлттық музей."},
+    dulyga:{action:"Жауынгер қаруы →",quiz:"Викторина: дулығаның бармицасы неден?",qrTitle:"Жауынгер қорғанышы",qrText:"QR арқылы қазақ жауынгерлерінің қару-жарақ жиынтығын көріңіз.",history:"Дулыға — қазақ жауынгерінің темір қорғаныш бас киімі. Реконструкция — заманауи шебер Берік Алибай XVIII-XIX ғ. үлгісі негізінде соққан. Куполовидті, бармицамен."}
   };
 
   // model swap on card click
@@ -1364,19 +2040,225 @@
       </div>`).join('');
   })();
 
-  // Tabbar highlight on scroll into nomads
-  (function tabbarSync(){
-    const tabs = document.querySelectorAll('.tabbar a');
-    const sections = [
-      {id:'exhibits', el:document.getElementById('exhibits')},
-      {id:'nomads',   el:document.getElementById('nomads')}
-    ].filter(s => s.el);
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY + window.innerHeight * 0.4;
-      let cur = 'exhibits';
-      sections.forEach(s => { if (s.el.offsetTop <= y) cur = s.id; });
-      tabs.forEach(t => t.classList.toggle('on', t.getAttribute('href') === '#' + cur));
-    }, {passive:true});
+  // ═════ View router (Экспонаттар / Көшпенділер іздері / Викторина) ═════
+  function setView(view){
+    document.body.dataset.view = view;
+    document.querySelectorAll('.tabbar a').forEach(a => a.classList.toggle('on', a.dataset.view === view));
+    // reset quiz play mode when leaving quiz
+    if (view !== 'quiz') {
+      const qp = document.getElementById('qm-play'); if (qp) qp.hidden = true;
+      const qg = document.getElementById('quiz'); if (qg) qg.hidden = false;
+    }
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  document.querySelectorAll('.tabbar a[data-view], #brand-home').forEach(a => {
+    a.addEventListener('click', e => { e.preventDefault(); setView(a.dataset.view || 'exhibits'); });
+  });
+  document.body.dataset.view = 'exhibits';
+
+  // ═════ Real Kazakhstan map on mobile ═════
+  (function renderKzMap(){
+    const svg = document.getElementById('kz-map-mini');
+    if (!svg || typeof KZ_REGIONS === 'undefined') return;
+    svg.setAttribute('viewBox', KZ_VIEWBOX);
+    let html = KZ_NEIGHBORS.map(n => `<path class="neighbor-fill" d="${n.d}"/>`).join('');
+    html += KZ_REGIONS.map(r => `<path class="region ${r.z}" d="${r.d}" data-id="${r.id}" data-z="${r.z}"><title>${r.name}</title></path>`).join('');
+    html += `<path class="kz-outline" d="${KZ_OUTLINE_D}"/>`;
+    html += KZ_CITIES.map(c => `
+      <g class="city ${c.kind}" data-id="${c.id}">
+        <circle class="dot" cx="${c.x}" cy="${c.y}" r="${c.kind==='capital'?5:4}"/>
+        <text x="${c.x+8}" y="${c.y+4}">${c.name}</text>
+      </g>`).join('');
+    html += KZ_NEIGHBOR_LABELS.map(l => `<text class="neighbor-label" x="${l.x}" y="${l.y}" text-anchor="middle">${l.label}</text>`).join('');
+    svg.innerHTML = html;
+    svg.querySelectorAll('.region').forEach(el => el.addEventListener('click', () => openRegion(el.dataset.id, 'region')));
+    svg.querySelectorAll('.city').forEach(el => el.addEventListener('click', () => openRegion(el.dataset.id, 'city')));
+  })();
+
+  // жүз filter — dim regions on map
+  document.querySelectorAll('#nom-filt span').forEach(f => {
+    f.addEventListener('click', () => {
+      document.querySelectorAll('#nom-filt span').forEach(x => x.classList.remove('on'));
+      f.classList.add('on');
+      const z = f.dataset.z;
+      document.querySelectorAll('#kz-map-mini .region').forEach(p => {
+        p.classList.toggle('dim', z !== 'all' && p.dataset.z !== z);
+      });
+    });
+  });
+
+  // Region/city → open bottom sheet with REGION_DATA content + wiki photos
+  function openRegion(id, kind){
+    const src = kind === 'city' ? CITY_DATA[id] : REGION_DATA[id];
+    if (!src) return;
+    const item = kind === 'city' ? KZ_CITIES.find(x=>x.id===id) : KZ_REGIONS.find(x=>x.id===id);
+    if (!item) return;
+    const name = item.name;
+    const z = kind === 'city' ? src.z : item.z;
+    const zBadge = kind === 'city'
+      ? `<span class="bg ${z}">${src.kind==='capital' ? 'Республика елордасы' : 'Республикалық қала'}</span>`
+      : `<span class="bg ${z}">${ZLABEL[z]}</span>`;
+    nbox.innerHTML = `
+      <div class="grip"></div>
+      <div class="h">
+        <div>
+          <h3>${name}</h3>
+          <div class="era">${src.era}</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+          <button class="close-x" id="nom-close" aria-label="Жабу">×</button>
+          ${zBadge}
+        </div>
+      </div>
+      <p class="lg">${src.legend}</p>
+      ${src.wiki && src.wiki.length ? `
+        <div class="photos">
+          ${src.wiki.map((w,i) => {
+            const t = w[1];
+            const primary = t.ru || t.en || t.kk;
+            const primaryLang = t.ru ? 'ru' : (t.en ? 'en' : 'kk');
+            return `<a data-i="${i}" href="https://${primaryLang}.wikipedia.org/wiki/${encodeURIComponent(primary)}" target="_blank" rel="noopener">
+              <div class="placeholder">Wikipedia сурет жүктелуде…</div>
+              <div class="cap"><b>${w[2]}</b>${w[0]}</div>
+            </a>`;
+          }).join('')}
+        </div>` : ''}
+      <div class="blk"><h5>◆ Батырлар · тұлғалар</h5><ul>${src.batyrs.map(h=>`<li>${h}</li>`).join('')}</ul></div>
+      <div class="blk"><h5>◆ Ескерткіштер</h5><ul>${src.monuments.map(m=>`<li>${m}</li>`).join('')}</ul></div>
+      <div class="blk"><h5>◆ Дәстүрлер · өнер</h5><div class="tg">${src.tags.map(t=>`<span>${t}</span>`).join('')}</div></div>`;
+    nsheet.classList.add('on');
+    nsheet.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('nom-close').addEventListener('click', closeSheet);
+    // Lazy-load wiki photos
+    if (src.wiki) {
+      nbox.querySelectorAll('.photos a').forEach(a => {
+        const w = src.wiki[+a.dataset.i];
+        wikiThumb(w[1], w[0]).then(res => {
+          const ph = a.querySelector('.placeholder');
+          if (!res) { if (ph) ph.textContent = 'сурет табылмады'; return; }
+          const img = document.createElement('img');
+          img.src = res.src; img.alt = w[0]; img.loading = 'lazy';
+          img.onload = () => ph && ph.remove();
+          img.onerror = () => { if (ph) ph.textContent = 'сурет жүктелмеді'; img.remove(); };
+          a.insertBefore(img, a.querySelector('.cap'));
+          if (res.page) a.href = res.page;
+        });
+      });
+    }
+  }
+
+  // ═════ Викторина (mobile) ═════
+  const qmGrid = document.getElementById('qm-grid');
+  const qmPlay = document.getElementById('qm-play');
+
+  function renderQuizGrid(filter){
+    const keys = Object.keys(QUIZ_DATA);
+    const items = keys.filter(k => filter === 'all' || QUIZ_DATA[k].fcat === filter);
+    qmGrid.innerHTML = items.map(k => {
+      const q = QUIZ_DATA[k];
+      const title = (q.label || k).replace(/·.*/, '').trim();
+      return `
+      <div class="qm-card" data-k="${k}">
+        <span class="num">Nº ${q.no}</span>
+        <div class="poster"><img src="${q.poster}" alt=""></div>
+        <div class="body">
+          <span class="cat">${q.cat}</span>
+          <h4>${title}</h4>
+          <div class="meta"><span class="count">${q.questions.length} сұрақ</span><span class="start">Бастау →</span></div>
+        </div>
+      </div>`;
+    }).join('');
+    qmGrid.querySelectorAll('.qm-card').forEach(c => {
+      c.addEventListener('click', () => openQuiz(c.dataset.k));
+    });
+  }
+
+  document.querySelectorAll('#qm-filt span').forEach(f => {
+    f.addEventListener('click', () => {
+      document.querySelectorAll('#qm-filt span').forEach(x => x.classList.remove('on'));
+      f.classList.add('on');
+      renderQuizGrid(f.dataset.f);
+    });
+  });
+  renderQuizGrid('all');
+
+  function openQuiz(key){
+    const q = QUIZ_DATA[key];
+    if (!q) return;
+    const state = { key, idx: 0, score: 0, answered: false };
+    qmPlay.hidden = false;
+    document.getElementById('quiz').hidden = true;
+    window.scrollTo({top:0, behavior:'instant'});
+    renderQuestion(state);
+  }
+  function renderQuestion(state){
+    const q = QUIZ_DATA[state.key];
+    if (state.idx >= q.questions.length) return renderResult(state);
+    const qq = q.questions[state.idx];
+    const pct = Math.round(state.idx / q.questions.length * 100);
+    qmPlay.innerHTML = `
+      <div class="top">
+        <div>
+          <div class="qkicker">${q.cat} · Nº ${q.no}</div>
+          <h3>${q.label ? q.label.split('·')[0].trim() : state.key}</h3>
+        </div>
+        <button class="qclose" id="qm-back">← Артқа</button>
+      </div>
+      <div class="qm-bar"><i style="width:${pct}%"></i></div>
+      <div class="qm-q">
+        <div class="qn">Сұрақ ${state.idx+1} / ${q.questions.length}</div>
+        <div class="qt">${qq.q}</div>
+        <div class="qm-opts">
+          ${qq.a.map((opt,i) => `<button data-i="${i}">${opt}</button>`).join('')}
+        </div>
+        <div class="qm-exp" id="qm-exp" hidden></div>
+        <button class="qm-next" id="qm-next" hidden>Келесі →</button>
+      </div>`;
+    document.getElementById('qm-back').addEventListener('click', () => closeQuiz());
+    qmPlay.querySelectorAll('.qm-opts button').forEach(b => {
+      b.addEventListener('click', () => {
+        if (state.answered) return;
+        state.answered = true;
+        const chosen = +b.dataset.i;
+        qmPlay.querySelectorAll('.qm-opts button').forEach((bb,i) => {
+          bb.disabled = true;
+          if (i === qq.correct) bb.classList.add('correct');
+          else if (i === chosen) bb.classList.add('wrong');
+        });
+        if (chosen === qq.correct) state.score++;
+        const exp = document.getElementById('qm-exp');
+        exp.textContent = qq.exp; exp.hidden = false;
+        const next = document.getElementById('qm-next');
+        next.hidden = false;
+        next.textContent = (state.idx+1 >= q.questions.length) ? 'Нәтижені көру →' : 'Келесі →';
+        next.addEventListener('click', () => { state.idx++; state.answered = false; renderQuestion(state); }, {once:true});
+      });
+    });
+  }
+  function renderResult(state){
+    const q = QUIZ_DATA[state.key];
+    const total = q.questions.length;
+    const label = state.score === total ? '★ Керемет!' : state.score >= total*0.7 ? 'Жақсы жауап!' : state.score >= total/2 ? 'Тағы да көру!' : 'Тағы бір рет ұрыныңыз';
+    qmPlay.innerHTML = `
+      <div class="qm-result">
+        <h3>${q.cat} · ${q.label || state.key}</h3>
+        <div class="score">${state.score}/${total}</div>
+        <div class="label">${label}</div>
+        <div class="btns">
+          <button class="btn-p" id="qm-retry">Қайта тапсыру</button>
+          <button class="btn-g" id="qm-back-list">← Викториналарға</button>
+        </div>
+      </div>`;
+    document.getElementById('qm-retry').addEventListener('click', () => openQuiz(state.key));
+    document.getElementById('qm-back-list').addEventListener('click', closeQuiz);
+  }
+  function closeQuiz(){
+    qmPlay.hidden = true;
+    document.getElementById('quiz').hidden = false;
+    window.scrollTo({top:0, behavior:'instant'});
+  }
+  (function _dummy(){
   })();
 </script>
 
