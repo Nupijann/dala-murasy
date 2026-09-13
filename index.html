@@ -2421,36 +2421,91 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
     renderPanel({ ...meta, id, name:c.name, z:meta.z, kind:'city', cityKind:meta.kind });
   }
 
-  // Wikipedia thumbnail lazy fetch + in-memory cache.
-  // Tries multiple langs in order until one returns a thumbnail — RU Wiki has best coverage of KZ figures.
+  // Wikipedia + Commons image lookup with in-memory cache.
+  // Pipeline per label:
+  //   1) Wikipedia REST summary   (has an infobox image?)
+  //   2) MediaWiki pageimages     (any tagged image on the page?)
+  //   3) Commons text search      (any relevant file, skipping coats/flags/logos?)
+  // Steps 1-2 run per lang (ru → en → kk). Step 3 runs once on the KZ label (best coverage of local names).
   const WIKI_CACHE = new Map();
-  async function fetchOneLang(title, lang){
-    try {
-      const r = await fetch(`https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`, {mode:'cors'});
-      if (!r.ok) return null;
-      const j = await r.json();
-      if (!j || !j.thumbnail || !j.thumbnail.source) return null;
-      return {
-        src: j.thumbnail.source.replace(/\/\d+px-/, '/500px-'),
-        page: j.content_urls?.desktop?.page || `https://${lang}.wikipedia.org/wiki/${encodeURIComponent(title)}`
-      };
-    } catch (e) { return null; }
+
+  async function fetchJsonWithRetry(url, tries){
+    tries = tries || 2;
+    for (let i = 0; i < tries; i++) {
+      try {
+        const r = await fetch(url, {mode:'cors'});
+        if (r.ok) return await r.json();
+        if (r.status === 404) return null;  // don't retry on 404
+      } catch (e) {
+        // network / CORS transient — fall through to retry
+      }
+      if (i < tries - 1) await new Promise(r => setTimeout(r, 700 + 400 * i));
+    }
+    return null;
   }
+  async function fetchSummary(title, lang){
+    const j = await fetchJsonWithRetry(`https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`);
+    if (!j || !j.thumbnail || !j.thumbnail.source) return null;
+    return {
+      src: j.thumbnail.source.replace(/\/\d+px-/, '/500px-'),
+      page: j.content_urls?.desktop?.page || `https://${lang}.wikipedia.org/wiki/${encodeURIComponent(title)}`
+    };
+  }
+
+  async function fetchPageImage(title, lang){
+    const url = `https://${lang}.wikipedia.org/w/api.php?action=query&format=json&formatversion=2`
+              + `&prop=pageimages&piprop=thumbnail|original&pithumbsize=500`
+              + `&titles=${encodeURIComponent(title)}&origin=*`;
+    const j = await fetchJsonWithRetry(url);
+    if (!j) return null;
+    const page = j.query?.pages?.[0];
+    const src = page?.thumbnail?.source || page?.original?.source;
+    if (!src) return null;
+    return { src, page: `https://${lang}.wikipedia.org/wiki/${encodeURIComponent(title)}` };
+  }
+
+  const BAD_FILE = /герб|coat[-_ ]?of[-_ ]?arms|flag|логотип|logo|emblem|печать|seal_of/i;
+  async function fetchCommonsSearch(query){
+    const url = `https://commons.wikimedia.org/w/api.php?action=query&format=json&formatversion=2`
+              + `&generator=search&gsrsearch=${encodeURIComponent(query)}&gsrnamespace=6&gsrlimit=10`
+              + `&prop=imageinfo&iiprop=url&iiurlwidth=500&origin=*`;
+    const j = await fetchJsonWithRetry(url);
+    if (!j) return null;
+    const pages = j.query?.pages || [];
+    pages.sort((a,b) => (a.index || 99) - (b.index || 99));
+    const good = pages.find(p => {
+      const t = (p.title || '').toLowerCase();
+      if (!/\.(jpg|jpeg|png|webp)$/i.test(t)) return false;
+      if (BAD_FILE.test(t)) return false;
+      return !!p.imageinfo?.[0]?.thumburl;
+    });
+    if (!good) return null;
+    return {
+      src: good.imageinfo[0].thumburl,
+      page: `https://commons.wikimedia.org/wiki/${encodeURIComponent(good.title)}`
+    };
+  }
+
   async function wikiThumb(titleByLang, fallbackLabel){
-    // titleByLang: {ru: '...', en: '...', kk: '...'} — try in order, then fall back to
-    // the KZ label on Kazakh Wikipedia.
     const key = JSON.stringify(titleByLang) + '|' + (fallbackLabel || '');
     if (WIKI_CACHE.has(key)) return WIKI_CACHE.get(key);
     const p = (async () => {
+      // 1 + 2 per lang
       for (const lang of ['ru','en','kk']) {
         const t = titleByLang[lang];
         if (!t) continue;
-        const res = await fetchOneLang(t, lang);
+        let res = await fetchSummary(t, lang);
+        if (res) return res;
+        res = await fetchPageImage(t, lang);
         if (res) return res;
       }
-      // last resort: try KZ label verbatim on kk wiki
-      if (fallbackLabel && !titleByLang.kk) {
-        const res = await fetchOneLang(fallbackLabel, 'kk');
+      // 3: Commons text search — try EN title first (search index most stable), then RU, then KZ label
+      const queries = [];
+      if (titleByLang.en) queries.push(titleByLang.en);
+      if (titleByLang.ru) queries.push(titleByLang.ru);
+      if (fallbackLabel && !queries.includes(fallbackLabel)) queries.push(fallbackLabel);
+      for (const q of queries) {
+        const res = await fetchCommonsSearch(q);
         if (res) return res;
       }
       return null;
