@@ -191,6 +191,67 @@
     font-size:9.5px;letter-spacing:.04em;color:rgba(246,236,213,.7);text-align:center;line-height:1.15}
   .tabbar a.on{color:var(--gold-2)}
   .tabbar svg{width:20px;height:20px;display:block}
+
+  /* ─── nomads (traces) mobile section ─── */
+  .nomads{background:var(--paper);padding:22px 18px 26px;border-top:1px solid rgba(138,52,24,.14)}
+  .nomads h2{font-family:var(--f-h);font-weight:500;font-size:28px;line-height:1.05;letter-spacing:-.005em}
+  .nomads h2 em{color:var(--rust);font-style:italic}
+  .nomads .sub{display:block;font-family:var(--f-h);font-style:italic;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(138,52,24,.75);margin-top:4px}
+  .nomads .intro{margin-top:12px;font-size:13.5px;line-height:1.55;color:rgba(34,24,18,.78)}
+  .nom-filt{display:flex;gap:6px;overflow-x:auto;padding:14px 0 4px;-ms-overflow-style:none;scrollbar-width:none}
+  .nom-filt::-webkit-scrollbar{display:none}
+  .nom-filt span{flex-shrink:0;padding:7px 13px;font-family:var(--f-h);font-style:italic;font-size:12.5px;
+    color:var(--ink);border:1px solid rgba(138,52,24,.35);border-radius:18px;background:rgba(255,246,224,.55);white-space:nowrap}
+  .nom-filt span.on{background:var(--rust);color:var(--paper);border-color:var(--rust)}
+  .nom-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+  .nom-card{background:var(--cream);border:1px solid rgba(138,52,24,.2);border-radius:10px;padding:12px 12px 14px;
+    display:flex;flex-direction:column;gap:4px;position:relative;cursor:pointer;transition:.15s}
+  .nom-card:active{transform:scale(.98)}
+  .nom-card .z{position:absolute;top:9px;right:9px;font-family:var(--f-h);font-style:italic;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--paper);background:var(--rust);border-radius:9px;padding:3px 8px}
+  .nom-card .z.orta{background:#607a48}
+  .nom-card .z.kishi{background:#6c4a80}
+  .nom-card h4{font-family:var(--f-h);font-weight:600;font-size:15.5px;line-height:1.15;color:var(--ink);padding-right:56px}
+  .nom-card .era{font-family:var(--f-h);font-style:italic;font-size:11px;color:rgba(138,52,24,.85);letter-spacing:.03em}
+  .nom-card .hero{font-size:11.5px;color:rgba(34,24,18,.7);line-height:1.35;margin-top:2px}
+  .nom-card.dim{opacity:.32}
+
+  /* Modal / bottom sheet for a site */
+  .nom-sheet{position:fixed;inset:0;z-index:40;background:rgba(28,17,8,.55);display:none;align-items:flex-end}
+  .nom-sheet.on{display:flex}
+  .nom-sheet .box{background:var(--paper);width:100%;max-height:88vh;border-radius:16px 16px 0 0;
+    padding:20px 18px 26px;overflow-y:auto;box-shadow:0 -14px 30px rgba(0,0,0,.3)}
+  .nom-sheet .grip{width:44px;height:4px;background:rgba(138,52,24,.3);border-radius:3px;margin:0 auto 12px}
+  .nom-sheet .h{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+  .nom-sheet .h h3{font-family:var(--f-h);font-weight:500;font-size:22px;color:var(--ink);line-height:1.1}
+  .nom-sheet .bg{padding:4px 10px;font-family:var(--f-h);font-style:italic;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--paper);background:var(--rust);border-radius:10px;flex-shrink:0}
+  .nom-sheet .bg.orta{background:#607a48}
+  .nom-sheet .bg.kishi{background:#6c4a80}
+  .nom-sheet .era{font-family:var(--f-h);font-style:italic;font-size:12px;color:rgba(138,52,24,.85);margin-top:4px}
+  .nom-sheet .lg{margin:12px 0 12px;font-size:13.5px;line-height:1.6;color:rgba(34,24,18,.85)}
+  .nom-sheet .blk{margin-top:12px}
+  .nom-sheet .blk h5{font-family:var(--f-h);font-style:italic;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(138,52,24,.85);margin-bottom:5px;font-weight:500}
+  .nom-sheet .blk ul{list-style:none;padding:0;margin:0}
+  .nom-sheet .blk li{padding:3px 0 3px 14px;position:relative;font-size:13px;color:var(--ink);line-height:1.4}
+  .nom-sheet .blk li::before{content:"◆";position:absolute;left:0;top:5px;font-size:7px;color:var(--rust)}
+  .nom-sheet .tg{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+  .nom-sheet .tg span{padding:3px 9px;font-size:11px;font-family:var(--f-h);font-style:italic;color:var(--rust);background:rgba(138,52,24,.09);border:1px solid rgba(138,52,24,.25);border-radius:10px}
+  .nom-sheet .close-x{background:none;border:none;font-size:24px;color:var(--rust);cursor:pointer;padding:0 6px;line-height:1}
+
+  /* Heritage grid (compact) */
+  .gh-mobile{background:linear-gradient(180deg,#ede0c1 0%, #e3d1a2 100%);padding:24px 18px 28px;margin-top:16px;border-radius:14px}
+  .gh-mobile .hd{text-align:center;max-width:280px;margin:0 auto 18px}
+  .gh-mobile .hd .kicker{margin-bottom:8px;font-size:10px}
+  .gh-mobile .hd h3{font-family:var(--f-h);font-weight:500;font-size:22px;line-height:1.1;color:var(--ink)}
+  .gh-mobile .hd h3 em{color:var(--rust);font-style:italic}
+  .gh-mobile .hd p{margin-top:8px;font-size:12.5px;line-height:1.5;color:rgba(34,24,18,.72)}
+  .gh-mobile .grd{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .gh-mini{background:#fbf3de;border:1px solid rgba(138,52,24,.2);border-radius:10px;padding:10px 12px}
+  .gh-mini .flag{font-size:20px;line-height:1}
+  .gh-mini h5{font-family:var(--f-h);font-weight:600;font-size:13px;color:var(--ink);margin-top:5px;line-height:1.15}
+  .gh-mini .rl{font-family:var(--f-h);font-style:italic;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin-top:3px;display:block}
+  .gh-mini ul{list-style:none;padding:0;margin:6px 0 0}
+  .gh-mini li{font-size:10.5px;color:rgba(34,24,18,.72);padding:1px 0 1px 8px;position:relative;line-height:1.3}
+  .gh-mini li::before{content:"·";position:absolute;left:1px;color:var(--rust);font-weight:700}
 </style>
 </head>
 <body>
@@ -914,6 +975,38 @@
   </div>
 </div>
 
+<!-- ═════ Көшпенділер іздері ═════ -->
+<section class="nomads" id="nomads">
+  <h2>Көшпенділер <em>іздері</em></h2>
+  <span class="sub">Traces of the nomads · 15 сакральных мест</span>
+  <p class="intro">Қазақ жерінің әр түкпірі — жеке дастан. Картасынан ізді таңдап, өңірдің батырлары, ескерткіштері мен дәстүрлерімен танысыңыз.</p>
+
+  <div class="nom-filt" id="nom-filt">
+    <span class="on" data-z="all">Барлығы</span>
+    <span data-z="uly">Ұлы жүз</span>
+    <span data-z="orta">Орта жүз</span>
+    <span data-z="kishi">Кіші жүз</span>
+  </div>
+
+  <div class="nom-grid" id="nom-grid"></div>
+
+  <div class="gh-mobile">
+    <div class="hd">
+      <span class="kicker">◆ World · Kazakh & Turkic heritage</span>
+      <h3>Көшпенділер ізі <em>әлемде</em></h3>
+      <p>Түркі әлемі — 180 млн адам, 40+ тіл. Мұра ондаған елде жалғасын табуда.</p>
+    </div>
+    <div class="grd" id="gh-mini-grid"></div>
+  </div>
+</section>
+
+<!-- Bottom sheet for a selected site -->
+<div class="nom-sheet" id="nom-sheet" aria-hidden="true">
+  <div class="box" id="nom-box">
+    <div class="grip"></div>
+  </div>
+</div>
+
 <!-- footer -->
 <footer class="foot">
   <span>© Дала Мұрасы · <em>Nomad Codex</em></span>
@@ -1103,6 +1196,189 @@
       }
     });
   });
+
+  // ═════ Nomads mobile: site list + bottom sheet + heritage ═════
+  const N_SITES = [
+    {id:'mangistau',z:'kishi',name:'Маңғыстау',era:'Ортағасыр — қазіргі',
+      legend:'Каспий жағалауы — 362 әулиелі жер. Бекет ата (1750-1813) — халықтың ұстазы. Оның Оғланды жерасты мешіті бүгінге дейін зиярат орны.',
+      heroes:['Бекет ата','Шопан ата','Есет батыр'],
+      monuments:['Бекет ата жерасты мешіті','Шопан ата кесенесі','Шеркала тауы'],
+      tags:['зиярат','сопылық','киіз үй']},
+    {id:'sarayshyq',z:'kishi',name:'Сарайшық',era:'XIII-XVI ғ.',
+      legend:'Жайық жағасында Алтын Орда мен Ноғай ордасының жаз астанасы. Жеті хан жерленген қасиетті орын.',
+      heroes:['Жәнібек хан','Керей хан','Тохтамыш'],
+      monuments:['Хан ордасы','Жеті хан пантеоны'],
+      tags:['Алтын Орда','сауда жолы']},
+    {id:'bokey',z:'kishi',name:'Бөкей ордасы',era:'1801-1845',
+      legend:'Жайық пен Еділ арасында Бөкей сұлтан Ішкі Орданы құрды. Жәңгір хан — ағартушы реформатор.',
+      heroes:['Бөкей хан','Жәңгір хан','Құрманғазы'],
+      monuments:['Хан сарайы','Жәңгір мешіті'],
+      tags:['ағарту','күй','сауда']},
+    {id:'atyrau',z:'kishi',name:'Атырау · Жайық',era:'XIX ғ.',
+      legend:'Махамбет пен Исатайдың 1836-1838 жылғы көтерілісінің шаңырағы.',
+      heroes:['Махамбет Өтемісұлы','Исатай Тайманұлы'],
+      monuments:['Махамбет музейі','Хан ордасы қалашығы'],
+      tags:['күрес','жырау','айтыс']},
+    {id:'aktobe',z:'kishi',name:'Ақтөбе',era:'XIV-XIX ғ.',
+      legend:'Есет батыр жоңғарға қарсы қол бастады. Абат-Байтақ кесенесі — XIV ғасырдың ескерткіші.',
+      heroes:['Есет батыр','Айтеке би','Тілеу батыр'],
+      monuments:['Абат-Байтақ кесенесі','Хан моласы'],
+      tags:['батырлар','билер соты']},
+    {id:'otyrar',z:'uly',name:'Отырар',era:'V-XVI ғ.',
+      legend:'Ұлы Жібек жолының түйіні. Әл-Фараби (870-950) дүниеге келген жер. 1219 жылы Шыңғыс ханға қарсы Отырар шайқасы.',
+      heroes:['Әл-Фараби','Қайыр хан'],
+      monuments:['Отырар қалашығы','Арыстан баб кесенесі'],
+      tags:['ғылым','сауда','кітапхана']},
+    {id:'turkistan',z:'uly',name:'Түркістан',era:'XII-XVIII ғ.',
+      legend:'Түркі әлемінің рухани астанасы. Ясауи (1093-1166) кесенесі — Әмір Темірдің тапсырысымен 1389-1405 жж. салынған.',
+      heroes:['Қожа Ахмет Ясауи','Әз-Тәуке хан','Тәуекел хан'],
+      monuments:['Ясауи кесенесі (ЮНЕСКО)','Арыстан баб кесенесі'],
+      tags:['зікір','сопылық','ЮНЕСКО']},
+    {id:'taraz',z:'uly',name:'Тараз',era:'VI-XII ғ.',
+      legend:'Ұлы Жібек жолындағы «Көпестер қаласы». Айша бибі мазары — қазақ архитектурасының інжу-маржаны.',
+      heroes:['Қарахан','Байдібек би'],
+      monuments:['Айша бибі кесенесі','Бабажа хатун','Ақыртас'],
+      tags:['сауда','архитектура']},
+    {id:'tamgaly',z:'uly',name:'Тамғалы',era:'Б.з.д. XIV ғ. — б.з. VIII ғ.',
+      legend:'Іле Алатауы бөктерінде 5000+ петроглиф. «Күн-адам» — басы күн сәулесімен қоршалған тәңір. ЮНЕСКО тізімінде.',
+      heroes:['Андроновтықтар','Сақтар','Үйсіндер'],
+      monuments:['Тамғалы петроглифтері','Күн-адам суреті'],
+      tags:['тәңіршілдік','петроглиф','ЮНЕСКО']},
+    {id:'zhetysu',z:'uly',name:'Жетісу · Алматы',era:'Б.з.д. V ғ. — қазіргі',
+      legend:'Жеті өзен елі. Есік қорғанынан 1969 жылы «Алтын адам» табылды. Райымбек батыр Ұлы жүздің қолын бастады.',
+      heroes:['Райымбек батыр','Сүйінбай','Жамбыл Жабаев'],
+      monuments:['Есік «Алтын адам»','Райымбек кесенесі'],
+      tags:['сақ','айтыс','бүркітпен саятшылық']},
+    {id:'ulytau',z:'orta',name:'Ұлытау',era:'X-XV ғ.',
+      legend:'«Ұлы дала қаласы» — қазақ жерінің кіндігі. Жошы хан осында жерленген. Алаша хан күмбезі — ең көне (X-XI ғ.).',
+      heroes:['Жошы хан','Алаша хан','Абылай хан'],
+      monuments:['Жошы хан кесенесі','Алаша хан күмбезі','Домбауыл'],
+      tags:['хандық','құрылтай','эпос']},
+    {id:'astana',z:'orta',name:'Есіл · Бозоқ',era:'VII-XIV ғ. → XIX ғ.',
+      legend:'Есіл жағасында Бозоқ қаласы дамыды. Кенесары хан (1802-1847) осы даланы орталық етіп 10 жыл соғысты.',
+      heroes:['Кенесары Қасымұлы','Наурызбай батыр'],
+      monuments:['Бозоқ қалашығы','Кенесары ескерткіші','Бәйтерек'],
+      tags:['ұлт-азаттық','ағарту']},
+    {id:'saryarka',z:'orta',name:'Сарыарқа · Қарағанды',era:'XVII-XIX ғ.',
+      legend:'«Ортаның кіндігі» — Сарыарқа. Қасым ханның «Қасқа жолы» құқық жинағы. Бөгенбай — жоңғар жеңімпазы.',
+      heroes:['Бөгенбай батыр','Қасым хан','Қазыбек би'],
+      monuments:['Бөгенбай кесенесі','Найзатас петроглифтері'],
+      tags:['билер соты','заң','батырлар']},
+    {id:'shynghystau',z:'orta',name:'Абай · Шыңғыстау',era:'XIX ғ.',
+      legend:'Абай (1845-1904) — ұлттың ұстазы, «Қара сөздердің» авторы. Шәкәрім — оның шәкірті. Қазақ жаңа әдебиетінің бесігі.',
+      heroes:['Абай Құнанбайұлы','Шәкәрім','Мұхтар Әуезов'],
+      monuments:['Жидебай-Бөрілі музей-қорығы','Абай моласы'],
+      tags:['ағарту','поэзия','философия']},
+    {id:'berel',z:'orta',name:'Берел · Алтай',era:'Б.з.д. IV-III ғ.',
+      legend:'Алтайдың мұз-астары ежелгі сақ көсемдерін сақтап қалды. Берелден «Алтын киімді сақ көсемі», алтын мүсіндер табылды — пазырық мәдениеті.',
+      heroes:['Сақ көсемдері','Пазырықтар'],
+      monuments:['Берел қорғандары','Алтын киім','Ат мүсіндері'],
+      tags:['пазырық','алтын']}
+  ];
+
+  const N_HERITAGE = [
+    {flag:'🇰🇿',name:'Қазақстан',role:'Отан',share:['Домбыра','Айтыс','Наурыз','Бүркітпен саятшылық']},
+    {flag:'🇰🇬',name:'Қырғызстан',role:'Түркі туыс',share:['Манас','Комуз','Көкпар','Киіз үй']},
+    {flag:'🇺🇿',name:'Өзбекстан',role:'Ортақ жер',share:['Түркістан','Домбыра','Той','Жібек жолы']},
+    {flag:'🇹🇲',name:'Түрікменстан',role:'Түркі туыс',share:['Ахалтеке','Кілем','Дутар']},
+    {flag:'🇹🇷',name:'Түркия',role:'Түркі әлемі',share:['Түркі тіл','Саз','Дастан','Ат']},
+    {flag:'🇦🇿',name:'Әзірбайжан',role:'Түркі туыс',share:['Мұғам','Тар','Наурыз']},
+    {flag:'🇲🇳',name:'Моңғолия',role:'Ұлы Дала',share:['Шыңғыс хан','Морин хуур','Бүркіт']},
+    {flag:'🇨🇳',name:'Шыңжаң (ҚХР)',role:'Диаспора',share:['1.5 млн қазақ','Бүркітшілер','Наурыз']},
+    {flag:'🇷🇺',name:'Ресей (Тат · Саха · Тыва)',role:'Түркі туыс',share:['Түркі тіл','Күй','Хомус']},
+    {flag:'🇮🇷',name:'Иран',role:'Түркі диаспора',share:['Түркімен','Азери','Кілем']},
+    {flag:'🇦🇫',name:'Ауғанстан',role:'Диаспора',share:['Қазақ ауылы','Наурыз']},
+    {flag:'🇭🇺',name:'Венгрия',role:'Ежелгі туыс',share:['Мадиярлар','Ат','Тұран']}
+  ];
+
+  const N_ZLABEL = {uly:'Ұлы жүз',orta:'Орта жүз',kishi:'Кіші жүз'};
+
+  // Render cards
+  (function renderNomCards(){
+    const g = document.getElementById('nom-grid'); if (!g) return;
+    g.innerHTML = N_SITES.map(s => `
+      <div class="nom-card" data-id="${s.id}" data-z="${s.z}">
+        <span class="z ${s.z}">${N_ZLABEL[s.z].split(' ')[0]}</span>
+        <h4>${s.name}</h4>
+        <span class="era">${s.era}</span>
+        <span class="hero">${s.heroes[0]}${s.heroes[1] ? ' · ' + s.heroes[1] : ''}</span>
+      </div>`).join('');
+    g.querySelectorAll('.nom-card').forEach(c => {
+      c.addEventListener('click', () => openSheet(c.dataset.id));
+    });
+  })();
+
+  // Filter chips
+  document.querySelectorAll('#nom-filt span').forEach(f => {
+    f.addEventListener('click', () => {
+      document.querySelectorAll('#nom-filt span').forEach(x => x.classList.remove('on'));
+      f.classList.add('on');
+      const z = f.dataset.z;
+      document.querySelectorAll('.nom-card').forEach(c => {
+        c.classList.toggle('dim', z !== 'all' && c.dataset.z !== z);
+      });
+    });
+  });
+
+  // Bottom sheet
+  const nsheet = document.getElementById('nom-sheet');
+  const nbox = document.getElementById('nom-box');
+  function openSheet(id){
+    const s = N_SITES.find(x => x.id === id); if (!s) return;
+    nbox.innerHTML = `
+      <div class="grip"></div>
+      <div class="h">
+        <div>
+          <h3>${s.name}</h3>
+          <div class="era">${s.era}</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+          <button class="close-x" id="nom-close" aria-label="Жабу">×</button>
+          <span class="bg ${s.z}">${N_ZLABEL[s.z]}</span>
+        </div>
+      </div>
+      <p class="lg">${s.legend}</p>
+      <div class="blk"><h5>◆ Батырлар · тұлғалар</h5><ul>${s.heroes.map(h => `<li>${h}</li>`).join('')}</ul></div>
+      <div class="blk"><h5>◆ Ескерткіштер</h5><ul>${s.monuments.map(m => `<li>${m}</li>`).join('')}</ul></div>
+      <div class="blk"><h5>◆ Дәстүрлер · өнер</h5><div class="tg">${s.tags.map(t => `<span>${t}</span>`).join('')}</div></div>`;
+    nsheet.classList.add('on');
+    nsheet.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('nom-close').addEventListener('click', closeSheet);
+  }
+  function closeSheet(){
+    nsheet.classList.remove('on');
+    nsheet.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+  nsheet.addEventListener('click', e => { if (e.target === nsheet) closeSheet(); });
+
+  // Heritage
+  (function renderNHeritage(){
+    const g = document.getElementById('gh-mini-grid'); if (!g) return;
+    g.innerHTML = N_HERITAGE.map(c => `
+      <div class="gh-mini">
+        <span class="flag">${c.flag}</span>
+        <h5>${c.name}</h5>
+        <span class="rl">${c.role}</span>
+        <ul>${c.share.map(s => `<li>${s}</li>`).join('')}</ul>
+      </div>`).join('');
+  })();
+
+  // Tabbar highlight on scroll into nomads
+  (function tabbarSync(){
+    const tabs = document.querySelectorAll('.tabbar a');
+    const sections = [
+      {id:'exhibits', el:document.getElementById('exhibits')},
+      {id:'nomads',   el:document.getElementById('nomads')}
+    ].filter(s => s.el);
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY + window.innerHeight * 0.4;
+      let cur = 'exhibits';
+      sections.forEach(s => { if (s.el.offsetTop <= y) cur = s.id; });
+      tabs.forEach(t => t.classList.toggle('on', t.getAttribute('href') === '#' + cur));
+    }, {passive:true});
+  })();
 </script>
 
 </body>
