@@ -800,22 +800,22 @@
           <div class="brand-name">Дала Мұрасы</div>
         </a>
         <nav class="nav-links">
-          <a href="#" class="active" data-view="exhibits">Экспонаттар</a>
-          <a href="#" data-view="nomads">Көшпенділер іздері</a>
-          <a href="#" data-view="quiz">Викторина</a>
+          <a href="#" class="active" data-view="exhibits" data-i18n="nav_exhibits">Экспонаттар</a>
+          <a href="#" data-view="nomads" data-i18n="nav_nomads">Көшпенділер іздері</a>
+          <a href="#" data-view="quiz" data-i18n="nav_quiz">Викторина</a>
         </nav>
-        <div class="lang"><span class="on">KZ</span><span>RU</span><span>EN</span></div>
+        <div class="lang"><span class="on" data-lang="kz">KZ</span><span data-lang="ru">RU</span><span data-lang="en">EN</span></div>
       </div>
     </div>
 
     <!-- ═════ hero copy ═════ -->
     <div class="hero">
       <div class="hero-inner">
-        <h1 class="hero-title">Қазақ мұралары <em>3Д</em> форматында</h1>
+        <h1 class="hero-title"><span data-i18n="hero_title_a">Қазақ мұралары</span> <em data-i18n="hero_title_em">3Д</em> <span data-i18n="hero_title_b">форматында</span></h1>
         <div class="hero-stats">
-          <div><b>30</b><span>Экспонат</span></div>
-          <div><b>30</b><span>3D моделі</span></div>
-          <div><b>150</b><span>Викторина сұрағы</span></div>
+          <div><b>30</b><span data-i18n="stat_exhibit">Экспонат</span></div>
+          <div><b>30</b><span data-i18n="stat_3dmodel">3D моделі</span></div>
+          <div><b>150</b><span data-i18n="stat_quizq">Викторина сұрағы</span></div>
         </div>
       </div>
     </div>
@@ -864,19 +864,19 @@
   <!-- ═════ featured exhibits ═════ -->
   <section class="sect-head">
     <div>
-      <h2>Таңдаулы <em>экспонаттар</em></h2>
-      <span class="sub">Featured artefacts</span>
+      <h2><span data-i18n="exhibits_h2_a">Таңдаулы</span> <em data-i18n="exhibits_h2_em">экспонаттар</em></h2>
+      <span class="sub" data-i18n="exhibits_sub">Featured artefacts</span>
     </div>
     <div class="filt" id="filt">
-      <span class="on" data-f="all">Барлығы</span>
-      <span data-f="home">Тұрмыс</span>
-      <span data-f="clothing">Киім</span>
-      <span data-f="music">Музыка</span>
-      <span data-f="craft">Қолөнер</span>
-      <span data-f="jewelry">Зергерлік</span>
-      <span data-f="game">Ойын</span>
-      <span data-f="weapon">Қару</span>
-      <span data-f="ancient">Ежелгі</span>
+      <span class="on" data-f="all" data-i18n="filt_all">Барлығы</span>
+      <span data-f="home" data-i18n="filt_home">Тұрмыс</span>
+      <span data-f="clothing" data-i18n="filt_clothing">Киім</span>
+      <span data-f="music" data-i18n="filt_music">Музыка</span>
+      <span data-f="craft" data-i18n="filt_craft">Қолөнер</span>
+      <span data-f="jewelry" data-i18n="filt_jewelry">Зергерлік</span>
+      <span data-f="game" data-i18n="filt_game">Ойын</span>
+      <span data-f="weapon" data-i18n="filt_weapon">Қару</span>
+      <span data-f="ancient" data-i18n="filt_ancient">Ежелгі</span>
     </div>
   </section>
 
@@ -1376,7 +1376,7 @@
   <div class="detail-wrap">
     <div class="detail">
       <div class="viewer" id="viewer">
-        <span class="vbadge">360° · интерактив</span>
+        <span class="vbadge" data-i18n="vbadge_360">360° · интерактив</span>
         <span class="vrot" id="vrot">◐ live</span>
         <model-viewer
           id="mv"
@@ -1394,7 +1394,7 @@
           loading="eager">
         </model-viewer>
         <div class="vctrl">
-          <button data-mode="3d" class="on">3D</button><button data-mode="history">Тарихы</button>
+          <button data-mode="3d" class="on">3D</button><button data-mode="history" data-i18n="vctrl_history">Тарихы</button>
         </div>
       </div>
       <div class="info" id="info">
@@ -1428,16 +1428,16 @@
     <div class="nomads-inner">
 
       <div class="nomads-head">
-        <span class="kicker">◆ Traces of the Nomads · 14 облыс + 3 республикалық қала · 3 жүз</span>
-        <h2>Көшпенділер <em>іздері</em></h2>
-        <p>Қазақ жерінің әр түкпірі — жеке дастан. Картадан облысты немесе қаланы басып, өңірдің батырлары, ескерткіштері мен дәстүрлерімен танысыңыз. Ұлы, Орта, Кіші жүздер — үш арна, бір өзен. 2022 жылы бөлініп шыққан Жетісу, Ұлытау, Абай облыстары аналық облыстардың мәтінінде айтылған.</p>
+        <span class="kicker" data-i18n="nomads_kicker">◆ Traces of the Nomads · 14 облыс + 3 республикалық қала · 3 жүз</span>
+        <h2><span data-i18n="nomads_h2_a">Көшпенділер</span> <em data-i18n="nomads_h2_em">іздері</em></h2>
+        <p data-i18n="nomads_p">Қазақ жерінің әр түкпірі — жеке дастан. Картадан облысты немесе қаланы басып, өңірдің батырлары, ескерткіштері мен дәстүрлерімен танысыңыз. Ұлы, Орта, Кіші жүздер — үш арна, бір өзен. 2022 жылы бөлініп шыққан Жетісу, Ұлытау, Абай облыстары аналық облыстардың мәтінінде айтылған.</p>
       </div>
 
       <div class="nomads-filt" id="nomads-filt">
-        <span class="on" data-zhuz="all">Барлығы</span>
-        <span data-zhuz="uly">Ұлы жүз</span>
-        <span data-zhuz="orta">Орта жүз</span>
-        <span data-zhuz="kishi">Кіші жүз</span>
+        <span class="on" data-zhuz="all" data-i18n="nomads_filt_all">Барлығы</span>
+        <span data-zhuz="uly" data-i18n="zhuz_uly">Ұлы жүз</span>
+        <span data-zhuz="orta" data-i18n="zhuz_orta">Орта жүз</span>
+        <span data-zhuz="kishi" data-i18n="zhuz_kishi">Кіші жүз</span>
       </div>
 
       <div class="nomads-map">
@@ -1445,11 +1445,11 @@
         <!-- LEFT: real Kazakhstan admin map (populated by JS from kz_map_paths.js) -->
         <div class="map-svg-wrap">
           <div class="map-legend">
-            <span><i class="u"></i>Ұлы жүз</span>
-            <span><i class="o"></i>Орта жүз</span>
-            <span><i class="k"></i>Кіші жүз</span>
-            <span><i class="capital"></i>Республикалық қала</span>
-            <span class="map-hint">◆ облысты немесе қаланы басыңыз</span>
+            <span><i class="u"></i><span data-i18n="zhuz_uly">Ұлы жүз</span></span>
+            <span><i class="o"></i><span data-i18n="zhuz_orta">Орта жүз</span></span>
+            <span><i class="k"></i><span data-i18n="zhuz_kishi">Кіші жүз</span></span>
+            <span><i class="capital"></i><span data-i18n="map_legend_capital">Республикалық қала</span></span>
+            <span class="map-hint" data-i18n="map_hint">◆ облысты немесе қаланы басыңыз</span>
           </div>
           <svg id="kz-map" class="kz-map" xmlns="http://www.w3.org/2000/svg" aria-label="Қазақстан әкімшілік картасы"></svg>
         </div>
@@ -1457,9 +1457,9 @@
         <!-- RIGHT: Site details panel -->
         <aside class="map-panel" id="map-panel">
           <div class="mp-empty" id="mp-empty">
-            <b>Облысты немесе қаланы таңдаңыз</b>
-            14 облыс + 3 республикалық қала — Түркістаннан Алтайға дейін. Әр өңірде — өз батыры, өз аңызы, өз ескерткіші.
-            <small>◆ Click a region</small>
+            <b data-i18n="mp_empty_title">Облысты немесе қаланы таңдаңыз</b>
+            <span data-i18n="mp_empty_text">14 облыс + 3 республикалық қала — Түркістаннан Алтайға дейін. Әр өңірде — өз батыры, өз аңызы, өз ескерткіші.</span>
+            <small data-i18n="mp_empty_small">◆ Click a region</small>
           </div>
         </aside>
 
@@ -1468,9 +1468,9 @@
       <!-- Global heritage -->
       <div class="global-heritage">
         <div class="gh-head">
-          <span class="kicker">◆ World · Kazakh & Turkic heritage today</span>
-          <h3>Көшпенділер ізі <em>әлемде</em></h3>
-          <p>Қазақ пен түркі мұрасы бүгінде ондаған елде — тілінде, дәстүрінде, өнерінде жалғасын табуда. Түркі әлемі — 180 миллионнан астам адам, 40-тан аса тіл.</p>
+          <span class="kicker" data-i18n="heritage_kicker">◆ World · Kazakh & Turkic heritage today</span>
+          <h3><span data-i18n="heritage_h3_a">Көшпенділер ізі</span> <em data-i18n="heritage_h3_em">әлемде</em></h3>
+          <p data-i18n="heritage_p">Қазақ пен түркі мұрасы бүгінде ондаған елде — тілінде, дәстүрінде, өнерінде жалғасын табуда. Түркі әлемі — 180 миллионнан астам адам, 40-тан аса тіл.</p>
         </div>
         <div class="gh-grid" id="gh-grid"></div>
       </div>
@@ -1483,36 +1483,36 @@
     <div class="quiz-inner">
       <div class="quiz-head">
         <div>
-          <span class="kicker">INTERACTIVE · <b>28</b> QUIZZES</span>
-          <h2>Викторина <em>экспонаттар</em></h2>
-          <p>Әрбір экспонат үшін жеке викторина. Оның тарихы, материалы мен дәстүрі туралы 5–7 сұраққа жауап беріңіз.</p>
+          <span class="kicker"><span data-i18n="quiz_kicker_a">INTERACTIVE</span> · <b>28</b> <span data-i18n="quiz_kicker_b">QUIZZES</span></span>
+          <h2><span data-i18n="quiz_h2_a">Викторина</span> <em data-i18n="quiz_h2_em">экспонаттар</em></h2>
+          <p data-i18n="quiz_p">Әрбір экспонат үшін жеке викторина. Оның тарихы, материалы мен дәстүрі туралы 5–7 сұраққа жауап беріңіз.</p>
         </div>
         <div class="quiz-counts">
-          <div><b id="q-count">28</b><span>викторина</span></div>
-          <div><b id="q-total">140</b><span>сұрақ</span></div>
-          <div><b id="q-passed">0</b><span>өтілді</span></div>
+          <div><b id="q-count">28</b><span data-i18n="quiz_count_quiz">викторина</span></div>
+          <div><b id="q-total">140</b><span data-i18n="quiz_count_q">сұрақ</span></div>
+          <div><b id="q-passed">0</b><span data-i18n="quiz_count_passed">өтілді</span></div>
         </div>
       </div>
       <div class="filt" id="quiz-filt">
-        <span class="on" data-f="all">Барлығы</span>
-        <span data-f="home">Тұрмыс</span>
-        <span data-f="clothing">Киім</span>
-        <span data-f="music">Музыка</span>
-        <span data-f="craft">Қолөнер</span>
-        <span data-f="jewelry">Зергерлік</span>
-        <span data-f="game">Ойын</span>
-        <span data-f="weapon">Қару</span>
-        <span data-f="ancient">Ежелгі</span>
+        <span class="on" data-f="all" data-i18n="filt_all">Барлығы</span>
+        <span data-f="home" data-i18n="filt_home">Тұрмыс</span>
+        <span data-f="clothing" data-i18n="filt_clothing">Киім</span>
+        <span data-f="music" data-i18n="filt_music">Музыка</span>
+        <span data-f="craft" data-i18n="filt_craft">Қолөнер</span>
+        <span data-f="jewelry" data-i18n="filt_jewelry">Зергерлік</span>
+        <span data-f="game" data-i18n="filt_game">Ойын</span>
+        <span data-f="weapon" data-i18n="filt_weapon">Қару</span>
+        <span data-f="ancient" data-i18n="filt_ancient">Ежелгі</span>
       </div>
       <div class="quiz-grid" id="quiz-grid"></div>
 
       <div class="quiz-play" id="quiz-play" hidden>
-        <a class="quiz-back" id="quiz-back">Экспонаттарға оралу</a>
+        <a class="quiz-back" id="quiz-back" data-i18n="quiz_back">Экспонаттарға оралу</a>
         <div class="quiz-play-header">
           <div class="quiz-play-crumb"><span id="qp-crumb-no">Nº 011</span> · <span id="qp-crumb-cat">Тұрмыс</span></div>
-          <div class="quiz-play-eyebrow">ВИКТОРИНА</div>
+          <div class="quiz-play-eyebrow" data-i18n="quiz_play_eyebrow">ВИКТОРИНА</div>
           <h1><span id="qp-title">Саба</span> <em id="qp-sub">— Saba</em></h1>
-          <p class="play-sub"><span id="qp-total-q">5</span> сұрақ · сынап көріңіз</p>
+          <p class="play-sub"><span id="qp-total-q">5</span> <span id="qp-word" data-i18n="quiz_word">сұрақ</span> · <span data-i18n="quiz_try_word">сынап көріңіз</span></p>
           <div class="quiz-progress"><div class="quiz-progress-bar" id="qp-bar"></div></div>
         </div>
         <div class="quiz-play-body" id="quiz-play-body">
@@ -1522,7 +1522,7 @@
             <div class="quiz-poster-label" id="qp-poster-label"></div>
           </div>
           <div class="quiz-question-panel">
-            <span class="quiz-q-index">Сұрақ <span id="qp-qi">1</span> / <span id="qp-qc">5</span></span>
+            <span class="quiz-q-index"><span data-i18n="quiz_q_index">Сұрақ</span> <span id="qp-qi">1</span> / <span id="qp-qc">5</span></span>
             <h3 id="qp-q-text">…</h3>
             <div class="quiz-answers" id="qp-answers"></div>
             <div class="quiz-explain" id="qp-explain" hidden></div>
@@ -1536,8 +1536,8 @@
           <p id="qp-result-msg">Барлық сұраққа жауап бердіңіз.</p>
           <div class="quiz-score"><span id="qp-score">0</span><small> / </small><span id="qp-score-total">5</span></div>
           <div>
-            <button class="btn btn-p" id="qp-retry">Қайта тапсыру</button>
-            <button class="btn btn-g" id="qp-back-list">Басқа викторина</button>
+            <button class="btn btn-p" id="qp-retry" data-i18n="btn_retry2">Қайта тапсыру</button>
+            <button class="btn btn-g" id="qp-back-list" data-i18n="btn_other_quiz">Басқа викторина</button>
           </div>
         </div>
       </div>
@@ -1546,9 +1546,12 @@
 
   <footer class="foot">
     <span>© Дала Мұрасы · <em>Nomad Codex</em></span>
-    <span>жоба жастарға арналған · ашық лицензия</span>
+    <span data-i18n="footer_tagline">жоба жастарға арналған · ашық лицензия</span>
   </footer>
 </main>
+
+<!-- RU/EN translation dictionaries (pure data, shared with mobile.html) -->
+<script src="i18n-data.js"></script>
 
 <!-- Kazakhstan real region paths (14 regions + 5 neighbors, GADM/Natural Earth) -->
 <script>
@@ -1612,8 +1615,9 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
   function keyOf(card){
     return (card.dataset.model || '').replace(/^.*\//,'').replace(/\.glb$/,'').replace(/[^a-z0-9]/gi,'_').toLowerCase();
   }
-  function fmt(n){ return new Intl.NumberFormat('ru-RU').format(n) + ' қаралым'; }
+  function fmt(n){ return new Intl.NumberFormat('ru-RU').format(n) + ' ' + t('views_word'); }
   function setViews(card, n){
+    card.dataset.views = n;
     const meta = card.querySelector('.meta > span:first-child');
     if (meta) meta.textContent = fmt(n);
   }
@@ -1682,6 +1686,33 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
     vrot.textContent = `◐ ${String(deg).padStart(3,'0')}°`;
   });
 
+  // Populate the info panel from a card's (current-language) dataset. Reusable
+  // from the click handler and from applyLang() when the selected card's
+  // language changes.
+  function showCardInfo(card){
+    iNo.textContent = `${t('exhibit_word')} Nº ${card.dataset.no} · ${card.dataset.cat}`;
+    iTitle.innerHTML = `${card.dataset.titleA}<em>${card.dataset.titleB || ''}</em>`;
+    iSub.textContent = card.dataset.sub;
+    iDesc.textContent = card.dataset.desc;
+    iDesc.dataset.mode = 'desc';
+    try {
+      const facts = JSON.parse(card.dataset.facts || '[]');
+      iFacts.innerHTML = facts.map(([k,v]) => `<div class="fact"><b>${k}</b><span>${v}</span></div>`).join('');
+    } catch(e){}
+
+    // per-exhibit action/quiz/QR text
+    const meta = META[keyOf(card)] || {};
+    iAction.textContent  = meta.action  || t('action_fallback');
+    iQuiz.textContent    = meta.quiz    || t('quiz_fallback');
+    iQrTitle.textContent = meta.qrTitle || t('qr_title_fallback');
+    iQrText.textContent  = meta.qrText  || t('qr_text_fallback');
+    iDesc.dataset.desc    = card.dataset.desc || '';
+    iDesc.dataset.history = meta.history || card.dataset.desc || '';
+    // reset vctrl to 3D tab + collapse history-mode layout
+    document.querySelectorAll('.vctrl button').forEach(b => b.classList.toggle('on', b.dataset.mode === '3d'));
+    document.querySelector('.detail').classList.remove('history-mode');
+  }
+
   // click a card → swap model + info
   document.querySelectorAll('.card').forEach(card => {
     card.addEventListener('click', () => {
@@ -1689,37 +1720,17 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
       if (!model) return;
       document.querySelectorAll('.card').forEach(c => {
         c.classList.remove('selected');
-        const t = c.querySelector('.meta .tag');
-        if (t) t.textContent = '◆ 3D';
+        const tagEl = c.querySelector('.meta .tag');
+        if (tagEl) tagEl.textContent = '◆ 3D';
       });
       card.classList.add('selected');
       const tag = card.querySelector('.meta .tag');
-      if (tag) tag.textContent = '◆ Таңдалды';
+      if (tag) tag.textContent = t('tag_selected');
 
       mv.src = model;
       if (card.dataset.camera) mv.cameraOrbit = card.dataset.camera;
 
-      iNo.textContent = `Экспонат Nº ${card.dataset.no} · ${card.dataset.cat}`;
-      iTitle.innerHTML = `${card.dataset.titleA}<em>${card.dataset.titleB || ''}</em>`;
-      iSub.textContent = card.dataset.sub;
-      iDesc.textContent = card.dataset.desc;
-      iDesc.dataset.mode = 'desc';
-      try {
-        const facts = JSON.parse(card.dataset.facts || '[]');
-        iFacts.innerHTML = facts.map(([k,v]) => `<div class="fact"><b>${k}</b><span>${v}</span></div>`).join('');
-      } catch(e){}
-
-      // per-exhibit action/quiz/QR text
-      const meta = META[keyOf(card)] || {};
-      iAction.textContent  = meta.action  || 'Толығырақ →';
-      iQuiz.textContent    = meta.quiz    || 'Викторина';
-      iQrTitle.textContent = meta.qrTitle || 'QR-архив';
-      iQrText.textContent  = meta.qrText  || 'QR-ды сканерлеп қосымша мәліметтерге қол жеткізіңіз.';
-      iDesc.dataset.desc    = card.dataset.desc || '';
-      iDesc.dataset.history = meta.history || card.dataset.desc || '';
-      // reset vctrl to 3D tab + collapse history-mode layout
-      document.querySelectorAll('.vctrl button').forEach(b => b.classList.toggle('on', b.dataset.mode === '3d'));
-      document.querySelector('.detail').classList.remove('history-mode');
+      showCardInfo(card);
 
       viewer.scrollIntoView({behavior:'smooth', block:'center'});
 
@@ -2021,6 +2032,9 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
       const div = document.createElement('div');
       div.className = 'quiz-card' + (passedSet.has(key) ? ' passed' : '');
       div.dataset.key = key;
+      // nameFromKey() already reads the card's (language-aware) title dataset,
+      // which correctly disambiguates the two тақия cards via their titleA text.
+      const title = nameFromKey(key);
       div.innerHTML = `
         <div class="quiz-card-fig">
           <span class="quiz-card-no">Nº ${data.no}</span>
@@ -2028,10 +2042,10 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
         </div>
         <div class="quiz-card-body">
           <span class="cat">${data.cat}</span>
-          <h4>${data.questions[0] ? key.startsWith('taqiya_grey') ? 'Тақия (ер)' : key.startsWith('taqiya_yellow') ? 'Тақия (қыз)' : nameFromKey(key) : key}</h4>
+          <h4>${title}</h4>
           <div class="quiz-card-meta">
-            <span>${data.questions.length} сұрақ</span>
-            <span class="start-btn">${passedSet.has(key) ? 'Қайта тапсыру →' : 'Бастау →'}</span>
+            <span>${data.questions.length} ${t('quiz_word')}</span>
+            <span class="start-btn">${passedSet.has(key) ? t('btn_retry') : t('btn_start')}</span>
           </div>
         </div>`;
       div.addEventListener('click', () => openQuiz(key));
@@ -2057,6 +2071,19 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
 
   // Play state
   let playKey = null, qi = 0, score = 0, playData = null;
+  // Populate the quiz-play header from the current playKey/playData. Reusable
+  // from openQuiz() and from applyLang() when the language changes mid-quiz.
+  function showQuizHeader(){
+    document.getElementById('qp-title').textContent = nameFromKey(playKey);
+    document.getElementById('qp-sub').textContent = '— ' + playData.cat;
+    document.getElementById('qp-total-q').textContent = playData.questions.length;
+    document.getElementById('qp-crumb-no').textContent = 'Nº ' + playData.no;
+    document.getElementById('qp-crumb-cat').textContent = playData.cat;
+    document.getElementById('qp-poster-no').textContent = 'Nº ' + playData.no;
+    document.getElementById('qp-poster-img').src = playData.poster;
+    document.getElementById('qp-poster-label').textContent = playData.label || '';
+    document.getElementById('qp-qc').textContent = playData.questions.length;
+  }
   function openQuiz(key){
     playKey = key;
     playData = QUIZ_DATA[key];
@@ -2068,15 +2095,7 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
     qplay.hidden = false;
     qresult.hidden = true;
     qpBody.style.display = '';
-    document.getElementById('qp-title').textContent = nameFromKey(key);
-    document.getElementById('qp-sub').textContent = '— ' + playData.cat;
-    document.getElementById('qp-total-q').textContent = playData.questions.length;
-    document.getElementById('qp-crumb-no').textContent = 'Nº ' + playData.no;
-    document.getElementById('qp-crumb-cat').textContent = playData.cat;
-    document.getElementById('qp-poster-no').textContent = 'Nº ' + playData.no;
-    document.getElementById('qp-poster-img').src = playData.poster;
-    document.getElementById('qp-poster-label').textContent = playData.label || '';
-    document.getElementById('qp-qc').textContent = playData.questions.length;
+    showQuizHeader();
     renderQuestion();
     qplay.scrollIntoView({behavior:'smooth', block:'start'});
   }
@@ -2099,7 +2118,7 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
     document.getElementById('qp-explain').hidden = true;
     const nextBtn = document.getElementById('qp-next');
     nextBtn.disabled = true;
-    nextBtn.textContent = (qi + 1 === playData.questions.length) ? 'Аяқтау →' : 'Келесі →';
+    nextBtn.textContent = (qi + 1 === playData.questions.length) ? t('btn_finish') : t('btn_next');
   }
 
   function selectAnswer(idx, el){
@@ -2113,7 +2132,7 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
     if (idx === q.correct) score++;
     if (q.exp){
       const exp = document.getElementById('qp-explain');
-      exp.innerHTML = `<b>${idx === q.correct ? 'Дұрыс!' : 'Дұрысы:'}</b>${q.exp}`;
+      exp.innerHTML = `<b>${idx === q.correct ? t('correct_word') : t('correct_answer_word')}</b>${q.exp}`;
       exp.hidden = false;
     }
     document.getElementById('qp-next').disabled = false;
@@ -2132,8 +2151,8 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
       document.getElementById('qp-score').textContent = score;
       document.getElementById('qp-score-total').textContent = total;
       const pct = score / total;
-      const title = pct === 1 ? 'Керемет!' : pct >= 0.6 ? 'Жақсы!' : 'Мықтап оқыңыз';
-      const msg   = pct === 1 ? 'Барлық сұраққа дұрыс жауап бердіңіз!' : pct >= 0.6 ? 'Жарайсыз, көпшілігін дұрыс білдіңіз.' : 'Экспонаттың тарихын оқып, қайта тапсыруға болады.';
+      const title = pct === 1 ? t('result_perfect_title') : pct >= 0.6 ? t('result_good_title') : t('result_retry_title');
+      const msg   = pct === 1 ? t('result_perfect_msg') : pct >= 0.6 ? t('result_good_msg') : t('result_retry_msg');
       document.getElementById('qp-result-title').textContent = title;
       document.getElementById('qp-result-msg').textContent = msg;
       if (score === total) passedSet.add(playKey);
@@ -2225,6 +2244,7 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
   };
 
   const modal = document.getElementById('action-modal');
+  let currentModalKey = null; // tracked so applyLang() can re-render an open modal
   function openModal(key){
     const a = ACTION[key];
     if (!a){
@@ -2234,11 +2254,12 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
       document.querySelector('.detail-wrap').scrollIntoView({behavior:'smooth', block:'start'});
       return;
     }
-    document.getElementById('am-eyebrow').textContent = a.eyebrow || 'Экспонат';
+    currentModalKey = key;
+    document.getElementById('am-eyebrow').textContent = a.eyebrow || t('modal_eyebrow_fallback');
     document.getElementById('am-title').innerHTML = a.title;
     let html = a.body || '';
     if (a.yt) html += `<div class="modal-yt"><iframe src="https://www.youtube.com/embed/${a.yt}?rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>`;
-    if (a.link) html += `<div class="modal-actions"><a class="btn btn-p" href="${a.link}" target="_blank" rel="noopener">${a.linkLabel || 'Ашу →'}</a></div>`;
+    if (a.link) html += `<div class="modal-actions"><a class="btn btn-p" href="${a.link}" target="_blank" rel="noopener">${a.linkLabel || t('modal_link_fallback')}</a></div>`;
     document.getElementById('am-content').innerHTML = html;
     modal.classList.add('on');
     modal.setAttribute('aria-hidden','false');
@@ -2248,6 +2269,7 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
     modal.classList.remove('on');
     modal.setAttribute('aria-hidden','true');
     document.body.style.overflow = '';
+    currentModalKey = null;
     // stop any playing iframe
     const iframe = modal.querySelector('iframe');
     if (iframe) iframe.src = iframe.src;
@@ -2445,7 +2467,9 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
   const ZLABEL = {uly:'Ұлы жүз', orta:'Орта жүз', kishi:'Кіші жүз'};
 
   // Render the real KZ SVG map (neighbors + regions + KZ outline + cities + labels)
-  (function renderMap(){
+  // Render the KZ map SVG. Named (not an IIFE) so applyLang() can re-run it
+  // after mutating KZ_REGIONS[*].name / KZ_CITIES[*].name / KZ_NEIGHBOR_LABELS[*].label.
+  function renderMap(){
     const svg = document.getElementById('kz-map');
     if (!svg || typeof KZ_REGIONS === 'undefined') return;
     svg.setAttribute('viewBox', KZ_VIEWBOX);
@@ -2474,7 +2498,8 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
     svg.querySelectorAll('.city').forEach(el => {
       el.addEventListener('click', () => selectCity(el.dataset.id));
     });
-  })();
+  }
+  renderMap();
 
   function clearSelection(){
     document.querySelectorAll('#kz-map .region.sel, #kz-map .city.sel').forEach(x => x.classList.remove('sel'));
@@ -2595,7 +2620,7 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
   function renderPanel(s){
     const panel = document.getElementById('map-panel');
     const zBadge = s.kind === 'city'
-      ? `<span class="mp-badge ${s.z}">${s.cityKind === 'capital' ? 'Республика елордасы' : 'Республикалық қала'}</span>`
+      ? `<span class="mp-badge ${s.z}">${s.cityKind === 'capital' ? t('badge_capital') : t('badge_city')}</span>`
       : `<span class="mp-badge ${s.z}">${ZLABEL[s.z]}</span>`;
     panel.innerHTML = `
       <div class="mp-head">
@@ -2611,31 +2636,31 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
         <div class="mp-photos" id="mp-photos-${s.id}">
           ${s.wiki.map((w, i) => {
             // w = [label, {ru,en,kk}, category]  — pick RU by default for link, EN as fallback
-            const t = w[1];
-            const primary = t.ru || t.en || t.kk;
-            const primaryLang = t.ru ? 'ru' : (t.en ? 'en' : 'kk');
+            const titles = w[1];
+            const primary = titles.ru || titles.en || titles.kk;
+            const primaryLang = titles.ru ? 'ru' : (titles.en ? 'en' : 'kk');
             return `
             <a class="mp-photo" data-i="${i}"
                href="https://${primaryLang}.wikipedia.org/wiki/${encodeURIComponent(primary)}" target="_blank" rel="noopener">
-              <div class="placeholder">Wikipedia сурет жүктелуде…</div>
+              <div class="placeholder">${t('wiki_loading')}</div>
               <div class="cap"><b>${w[2]}</b>${w[0]}</div>
             </a>`;
           }).join('')}
         </div>
-        <div class="mp-source">◆ фото: Wikipedia Commons · толығырақ — суретті басыңыз</div>
+        <div class="mp-source">${t('mp_source')}</div>
       ` : ''}
 
       <div class="mp-block">
-        <h4>◆ Батырлар · хандар · тұлғалар</h4>
+        <h4>${t('mp_block_batyrs')}</h4>
         <ul>${s.batyrs.map(h => `<li>${h}</li>`).join('')}</ul>
       </div>
       <div class="mp-block">
-        <h4>◆ Ескерткіштер</h4>
+        <h4>${t('mp_block_monuments')}</h4>
         <ul>${s.monuments.map(m => `<li>${m}</li>`).join('')}</ul>
       </div>
       <div class="mp-block">
-        <h4>◆ Дәстүрлер · өнер</h4>
-        <div class="mp-tags">${s.tags.map(t => `<span>${t}</span>`).join('')}</div>
+        <h4>${t('mp_block_tags')}</h4>
+        <div class="mp-tags">${s.tags.map(tag => `<span>${tag}</span>`).join('')}</div>
       </div>`;
 
     // Lazy-load photos
@@ -2648,7 +2673,7 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
         wikiThumb(titles, label).then(res => {
           const ph = a.querySelector('.placeholder');
           if (!res) {
-            if (ph) ph.textContent = 'сурет табылмады';
+            if (ph) ph.textContent = t('wiki_not_found');
             return;
           }
           const img = document.createElement('img');
@@ -2656,7 +2681,7 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
           img.alt = label;
           img.loading = 'lazy';
           img.onload = () => { if (ph) ph.remove(); };
-          img.onerror = () => { if (ph) ph.textContent = 'сурет жүктелмеді'; img.remove(); };
+          img.onerror = () => { if (ph) ph.textContent = t('wiki_load_error'); img.remove(); };
           a.insertBefore(img, a.querySelector('.cap'));
           // Update the link target to point to the resolved Wikipedia page (whichever lang won)
           if (res.page) a.href = res.page;
@@ -2678,7 +2703,8 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
   });
 
   // Render heritage cards — real flag PNGs via flagcdn.com (Chrome on Windows can't render emoji flags)
-  (function renderHeritage(){
+  // Named (not an IIFE) so applyLang() can re-run it after mutating HERITAGE.
+  function renderHeritage(){
     const g = document.getElementById('gh-grid');
     if (!g) return;
     g.innerHTML = HERITAGE.map(c => `
@@ -2688,11 +2714,250 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
         <span class="role">${c.role}</span>
         <ul>${c.share.map(s => `<li>${s}</li>`).join('')}</ul>
       </div>`).join('');
-  })();
+  }
+  renderHeritage();
 
   // Preselect Түркістан облысы so the panel is not empty on first open
   (function preselectTurkistan(){
     if (typeof KZ_REGIONS !== 'undefined') selectRegion('turkistan_obl');
+  })();
+
+  // ═════════════════════════════════════════════════════════════════
+  // i18n orchestrator — RU/EN language switching.
+  // Strategy: every translatable data object (META, QUIZ_DATA, ACTION,
+  // REGION_DATA, CITY_DATA, HERITAGE, ZLABEL, KZ_REGIONS/KZ_CITIES names,
+  // KZ_NEIGHBOR_LABELS, and each .card's dataset) is MUTATED IN PLACE to
+  // the target language. A one-time snapshot of the original kz values is
+  // taken below (before any mutation) so switching back to 'kz' restores
+  // them exactly. All existing render functions (renderMap, renderHeritage,
+  // renderQuizGrid, showCardInfo, showQuizHeader, renderQuestion,
+  // selectRegion/selectCity → renderPanel, openModal) are then simply
+  // re-invoked — none of their own logic needs to know about languages.
+  // ═════════════════════════════════════════════════════════════════
+  (function i18nInit(){
+    if (typeof UI_I18N === 'undefined') return; // i18n-data.js failed to load — stay kz-only
+
+    // 1) One-time snapshot of every KZ-baseline data structure.
+    const KZ_SNAPSHOT = {
+      META: JSON.parse(JSON.stringify(META)),
+      QUIZ_DATA: JSON.parse(JSON.stringify(QUIZ_DATA)),
+      ACTION: JSON.parse(JSON.stringify(ACTION)),
+      REGION_DATA: JSON.parse(JSON.stringify(REGION_DATA)),
+      CITY_DATA: JSON.parse(JSON.stringify(CITY_DATA)),
+      HERITAGE: JSON.parse(JSON.stringify(HERITAGE)),
+      ZLABEL: JSON.parse(JSON.stringify(ZLABEL)),
+      KZ_REGIONS_NAMES: (typeof KZ_REGIONS !== 'undefined') ? KZ_REGIONS.map(r => r.name) : [],
+      KZ_CITIES_NAMES: (typeof KZ_CITIES !== 'undefined') ? KZ_CITIES.map(c => c.name) : [],
+      KZ_NEIGHBOR_LABELS: (typeof KZ_NEIGHBOR_LABELS !== 'undefined') ? KZ_NEIGHBOR_LABELS.map(l => l.label) : [],
+    };
+    // Per-card KZ snapshot, read from the original HTML before any mutation.
+    const CARD_KZ = {};
+    document.querySelectorAll('.card[data-model]').forEach(card => {
+      const key = keyOf(card);
+      const labelEl = card.querySelector('.fig .label');
+      CARD_KZ[key] = {
+        cat: card.dataset.cat, titleA: card.dataset.titleA, titleB: card.dataset.titleB || '',
+        sub: card.dataset.sub, desc: card.dataset.desc, facts: card.dataset.facts,
+        label: labelEl ? labelEl.textContent : null
+      };
+    });
+
+    function applyCardLang(lang){
+      document.querySelectorAll('.card[data-model]').forEach(card => {
+        const key = keyOf(card);
+        const kz = CARD_KZ[key];
+        if (!kz) return;
+        const tr = (lang !== 'kz' && CARD_I18N[key] && CARD_I18N[key][lang]) ? CARD_I18N[key][lang] : null;
+        const cat = tr ? tr.cat : kz.cat;
+        const titleA = tr ? tr.titleA : kz.titleA;
+        const titleB = tr ? (tr.titleB || '') : kz.titleB;
+        const sub = tr ? tr.sub : kz.sub;
+        const desc = tr ? tr.desc : kz.desc;
+        const facts = tr ? JSON.stringify(tr.facts) : kz.facts;
+        const label = tr ? tr.label : kz.label;
+
+        card.dataset.cat = cat;
+        card.dataset.titleA = titleA;
+        card.dataset.titleB = titleB;
+        card.dataset.sub = sub;
+        card.dataset.desc = desc;
+        card.dataset.facts = facts;
+
+        const catEl = card.querySelector('.cat');
+        if (catEl) catEl.textContent = cat;
+        const h4 = card.querySelector('h4');
+        if (h4) h4.textContent = titleA + titleB;
+        const labelEl = card.querySelector('.fig .label');
+        if (labelEl && label != null) labelEl.textContent = label;
+
+        // refresh the view-count text ("N views/қаралым/просмотров") and the
+        // "◆ Selected" badge on whichever card is currently selected
+        if (card.dataset.views != null) setViews(card, +card.dataset.views);
+        const tagEl = card.querySelector('.meta .tag');
+        if (tagEl && card.classList.contains('selected')) tagEl.textContent = t('tag_selected');
+      });
+    }
+
+    function applyMetaLang(lang){
+      Object.keys(KZ_SNAPSHOT.META).forEach(key => {
+        const kz = KZ_SNAPSHOT.META[key];
+        const tr = (lang !== 'kz' && META_I18N[key] && META_I18N[key][lang]) ? META_I18N[key][lang] : null;
+        META[key] = META[key] || {};
+        META[key].action  = tr ? tr.action  : kz.action;
+        META[key].quiz    = tr ? tr.quiz    : kz.quiz;
+        META[key].qrTitle = tr ? tr.qrTitle : kz.qrTitle;
+        META[key].qrText  = tr ? tr.qrText  : kz.qrText;
+        const trHist = (lang !== 'kz' && HISTORY_I18N[lang] && HISTORY_I18N[lang][key]) ? HISTORY_I18N[lang][key] : null;
+        META[key].history = trHist || kz.history;
+      });
+    }
+
+    function applyQuizLang(lang){
+      Object.keys(KZ_SNAPSHOT.QUIZ_DATA).forEach(key => {
+        const kzQ = KZ_SNAPSHOT.QUIZ_DATA[key];
+        // QUIZ_DATA.cat/.label are their OWN short strings (distinct wording from
+        // the card's data-cat/label), so they get their own small dictionary.
+        const qmTr = (lang !== 'kz' && QUIZ_META_I18N[lang] && QUIZ_META_I18N[lang][key]) ? QUIZ_META_I18N[lang][key] : null;
+        QUIZ_DATA[key].cat = qmTr ? qmTr.cat : kzQ.cat;
+        QUIZ_DATA[key].label = qmTr ? qmTr.label : kzQ.label;
+        const trQ = (lang !== 'kz' && QUIZ_I18N[lang] && QUIZ_I18N[lang][key]) ? QUIZ_I18N[lang][key] : null;
+        QUIZ_DATA[key].questions = trQ
+          ? trQ.questions.map((q, i) => ({ q: q.q, a: q.a, exp: q.exp, correct: kzQ.questions[i].correct }))
+          : JSON.parse(JSON.stringify(kzQ.questions));
+      });
+    }
+
+    function applyActionLang(lang){
+      Object.keys(KZ_SNAPSHOT.ACTION).forEach(key => {
+        const kzA = KZ_SNAPSHOT.ACTION[key];
+        const tr = (lang !== 'kz' && ACTION_I18N[lang] && ACTION_I18N[lang][key]) ? ACTION_I18N[lang][key] : null;
+        ACTION[key].eyebrow   = tr ? tr.eyebrow   : kzA.eyebrow;
+        ACTION[key].title     = tr ? tr.title     : kzA.title;
+        ACTION[key].body      = tr ? tr.body      : kzA.body;
+        ACTION[key].linkLabel = tr ? tr.linkLabel : kzA.linkLabel;
+        // yt/link (URLs) stay identical across languages
+      });
+    }
+
+    function applyNomadsLang(lang){
+      Object.keys(KZ_SNAPSHOT.REGION_DATA).forEach(id => {
+        const kzR = KZ_SNAPSHOT.REGION_DATA[id];
+        const tr = (lang !== 'kz' && REGION_I18N[id] && REGION_I18N[id][lang]) ? REGION_I18N[id][lang] : null;
+        REGION_DATA[id].era = tr ? tr.era : kzR.era;
+        REGION_DATA[id].legend = tr ? tr.legend : kzR.legend;
+        REGION_DATA[id].batyrs = tr ? tr.batyrs : kzR.batyrs;
+        REGION_DATA[id].monuments = tr ? tr.monuments : kzR.monuments;
+        REGION_DATA[id].tags = tr ? tr.tags : kzR.tags;
+      });
+      Object.keys(KZ_SNAPSHOT.CITY_DATA).forEach(id => {
+        const kzC = KZ_SNAPSHOT.CITY_DATA[id];
+        const tr = (lang !== 'kz' && CITY_I18N[id] && CITY_I18N[id][lang]) ? CITY_I18N[id][lang] : null;
+        CITY_DATA[id].era = tr ? tr.era : kzC.era;
+        CITY_DATA[id].legend = tr ? tr.legend : kzC.legend;
+        CITY_DATA[id].batyrs = tr ? tr.batyrs : kzC.batyrs;
+        CITY_DATA[id].monuments = tr ? tr.monuments : kzC.monuments;
+        CITY_DATA[id].tags = tr ? tr.tags : kzC.tags;
+      });
+      if (typeof KZ_REGIONS !== 'undefined') {
+        KZ_REGIONS.forEach((r, i) => {
+          const trName = (lang !== 'kz' && REGION_NAMES_I18N[lang]) ? REGION_NAMES_I18N[lang][r.id] : null;
+          r.name = trName || KZ_SNAPSHOT.KZ_REGIONS_NAMES[i];
+        });
+      }
+      if (typeof KZ_CITIES !== 'undefined') {
+        KZ_CITIES.forEach((c, i) => {
+          const trName = (lang !== 'kz' && CITY_NAMES_I18N[lang]) ? CITY_NAMES_I18N[lang][c.id] : null;
+          c.name = trName || KZ_SNAPSHOT.KZ_CITIES_NAMES[i];
+        });
+      }
+      if (typeof KZ_NEIGHBOR_LABELS !== 'undefined') {
+        KZ_NEIGHBOR_LABELS.forEach((l, i) => {
+          const kzLabel = KZ_SNAPSHOT.KZ_NEIGHBOR_LABELS[i];
+          const trLabel = (lang !== 'kz' && NEIGHBOR_I18N[lang]) ? NEIGHBOR_I18N[lang][kzLabel] : null;
+          l.label = trLabel || kzLabel;
+        });
+      }
+      ['uly','orta','kishi'].forEach(z => {
+        const trZ = (lang !== 'kz' && ZLABEL_I18N[lang]) ? ZLABEL_I18N[lang][z] : null;
+        ZLABEL[z] = trZ || KZ_SNAPSHOT.ZLABEL[z];
+      });
+    }
+
+    function applyHeritageLang(lang){
+      const trArr = (lang !== 'kz' && HERITAGE_I18N[lang]) ? HERITAGE_I18N[lang] : null;
+      HERITAGE.forEach((c, i) => {
+        const kzC = KZ_SNAPSHOT.HERITAGE[i];
+        const tr = trArr ? trArr[i] : null;
+        c.name = tr ? tr.name : kzC.name;
+        c.role = tr ? tr.role : kzC.role;
+        c.share = tr ? tr.share : kzC.share;
+      });
+    }
+
+    window.applyLang = function applyLang(lang){
+      // capture DOM selection state BEFORE any re-render wipes it
+      const selRegionId = document.querySelector('#kz-map .region.sel')?.dataset.id;
+      const selCityId = document.querySelector('#kz-map .city.sel')?.dataset.id;
+      const wasHistoryMode = document.querySelector('.vctrl button[data-mode="history"]')?.classList.contains('on');
+
+      LANG = lang;
+      try { localStorage.setItem('dm_lang', lang); } catch(e){}
+      document.documentElement.lang = (lang === 'kz') ? 'kk' : lang;
+
+      document.querySelectorAll('.lang span[data-lang]').forEach(s => {
+        s.classList.toggle('on', s.dataset.lang === lang);
+      });
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        el.textContent = t(el.dataset.i18n);
+      });
+
+      applyCardLang(lang);
+      applyMetaLang(lang);
+      applyQuizLang(lang);
+      applyActionLang(lang);
+      applyNomadsLang(lang);
+      applyHeritageLang(lang);
+
+      renderMap();
+      renderHeritage();
+      const activeFilt = document.querySelector('#quiz-filt .on');
+      renderQuizGrid(activeFilt ? activeFilt.dataset.f : 'all');
+
+      const selectedCard = document.querySelector('.card.selected');
+      if (selectedCard) {
+        showCardInfo(selectedCard);
+        if (wasHistoryMode) {
+          const historyBtn = document.querySelector('.vctrl button[data-mode="history"]');
+          if (historyBtn) historyBtn.click();
+        }
+      }
+
+      if (qplay && !qplay.hidden && playKey) {
+        playData = QUIZ_DATA[playKey];
+        showQuizHeader();
+        if (qresult.hidden) renderQuestion();
+      }
+
+      if (selRegionId) selectRegion(selRegionId);
+      else if (selCityId) selectCity(selCityId);
+      const zhuzOn = document.querySelector('#nomads-filt .on');
+      if (zhuzOn) {
+        const z = zhuzOn.dataset.zhuz;
+        document.querySelectorAll('#kz-map .region').forEach(p => {
+          p.classList.toggle('dim', z !== 'all' && p.dataset.z !== z);
+        });
+      }
+
+      if (currentModalKey) openModal(currentModalKey);
+    };
+
+    document.querySelectorAll('.lang span[data-lang]').forEach(s => {
+      s.addEventListener('click', () => applyLang(s.dataset.lang));
+    });
+
+    // apply a persisted non-kz language choice on load
+    if (LANG !== 'kz') applyLang(LANG);
   })();
 
 </script>
