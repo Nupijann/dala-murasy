@@ -2072,16 +2072,6 @@ const META_I18N = {
       "quiz": "Quiz: what is the maximum number of strands in a qamshy braid?"
     }
   },
-  "Asyk": {
-    "ru": {
-      "action": "Правила игры →",
-      "quiz": "Викторина: как называется положение асыка «сака»?"
-    },
-    "en": {
-      "action": "Game rules →",
-      "quiz": "Quiz: which position of the asyq is called 'saqa'?"
-    }
-  },
   "besik": {
     "ru": {
       "action": "Обряд «бесикке салу» →",
@@ -2291,6 +2281,16 @@ const META_I18N = {
       "action": "Warrior's arms →",
       "quiz": "Quiz: what is the dulyga's aventail made of?"
     }
+  },
+  "asyk": {
+    "ru": {
+      "action": "Правила игры →",
+      "quiz": "Викторина: как называется положение асыка «сака»?"
+    },
+    "en": {
+      "action": "Game rules →",
+      "quiz": "Quiz: which position of the asyq is called 'saqa'?"
+    }
   }
 };
 
@@ -2327,10 +2327,6 @@ const QUIZ_META_I18N = {
     "qamshy_kamshy": {
       "cat": "Ремесло",
       "label": "камча · плетение"
-    },
-    "Asyk": {
-      "cat": "Нац. игра",
-      "label": "овечья кость"
     },
     "besik": {
       "cat": "Быт",
@@ -2415,6 +2411,10 @@ const QUIZ_META_I18N = {
     "dulyga": {
       "cat": "Оружие",
       "label": "шлем воина"
+    },
+    "asyk": {
+      "cat": "Нац. игра",
+      "label": "овечья кость"
     }
   },
   "en": {
@@ -2449,10 +2449,6 @@ const QUIZ_META_I18N = {
     "qamshy_kamshy": {
       "cat": "Craft",
       "label": "qamshy · braiding"
-    },
-    "Asyk": {
-      "cat": "National Game",
-      "label": "sheep's anklebone"
     },
     "besik": {
       "cat": "Household",
@@ -2537,6 +2533,10 @@ const QUIZ_META_I18N = {
     "dulyga": {
       "cat": "Weapon",
       "label": "warrior's helmet"
+    },
+    "asyk": {
+      "cat": "National Game",
+      "label": "sheep's anklebone"
     }
   }
 };
@@ -3688,7 +3688,6 @@ const HISTORY_I18N = {
     "taqiya_yellow_f_kazakh_traditional_headdress": "Девичья тюбетейка — символ юной девушки-подростка и невесты на выданье. От мужской она отличается яркими цветами, золотной вышивкой и нарядными бусинами. Ткань — жёлтый, красный, голубой или зелёный бархат либо шёлк. Сверху крепится одно или два перо филина — считалось, что перо защищает от дурного глаза. Потерять его считалось дурным знаком. Снизу свисают серебряные и золотые подвески, бусины, шашбау (накосные украшения). Убор надевали на праздники, свадебные проводы невесты, национальные торжества. После замужества девичью тюбетейку сменял кимешек — символ женского статуса. Её также надевают на тусау кесер — обряд «разрезания пут» маленького ребёнка. В современных казахских торжествах дизайнеры возрождают тюбетейку, создавая новые стили — она популярна на фестивалях и свадебных церемониях.",
     "saukele_ethno_variant_traditional_headdress": "Саукеле — самый дорогой и самый высокий головной убор, который казахская невеста надевала на свадьбу. Он сформировался в XIV-XVIII веках. Высота достигает 70 см, а иногда и целого метра. Основа — плотная кожа или войлочный конус, обтянутый снаружи красным бархатом. Убор украшали серебром, золотом, жемчугом, сердоликом, костяными вставками. На макушке крепилось длинное лебединое перо — право носить его имели лишь дочери ханов. По бокам свисали длинные шашбау — подвески из нитей жемчуга, спускавшиеся до груди и позвякивавшие при каждом движении невесты. Саукеле обычно изготавливал собственный мастер каждой знатной семьи, и убор демонстрировал её богатство. После свадьбы молодая женщина носила саукеле ещё 3-5 лет (порой вплоть до рождения ребёнка), а затем меняла его на скромный жаулык — платок замужней женщины. Сегодня саукеле — один из самых ценных экспонатов Национального музея, стоимость отдельных образцов оценивается в миллионы долларов.",
     "qamshy_kamshy": "Камча — неизменный спутник табунщика и батыра, символ власти, глубокий знак казахской культуры. Рукоять вытачивают из берёзы, рога горного козла-теке, иногда из кости, длиной около 30-40 см. Плеть плетут из кожи телёнка или быка, используя 8, 16 или 32 тонких ремешка. Высшим мастерством считалось плетение в 64 ремешка. Общая длина камчи — 1-1,5 метра. Рукоять отделывают серебряными накладками и орнаментом. Существуют разные виды: для верховой езды (тонкая), боевая (жёсткая), свадебная (нарядно украшенная), детская (лёгкая). Выражение «у него большая камча» говорят о человеке, наделённом властью. Вручение камчи с пожеланием «сүйінші» на торжествах — знак большого уважения. Камча служила и родовым знаком: у каждого жуза и рода был свой стиль плетения. В современном казахском спорте возрождаются состязания с камчой и игры на меткость.",
-    "Asyk": "Асык — древняя детская игра с использованием бараньих альчиков, уходящая корнями в скифо-сакскую эпоху. Подобные игры в разных вариациях существуют у тюркских, монгольских и персидских народов. У асыка четыре стороны — сака (верхняя, гладкая), алшы (выпуклая), бук (вогнутая) — каждая имеет своё значение в игре. На протяжении тысячелетий казахские дети знали десятки вариантов игры: «Хан талапай», «Атбакыл», «Бес тас», «Уш табан», «Андыма-анды». Сака-асык — «царь» игры, и за право обладать им дети устраивали настоящие состязания. Игра в асыки развивает у ребёнка логику, стратегическое мышление, точность и навыки общения. В древних обрядах асык использовали даже в гадании. Сегодня в казахстанских школах вводятся уроки игры в асыки, а на национальных фестивалях проводятся турниры. В 2017 году игра в асыки включена в список нематериального культурного наследия ЮНЕСКО.",
     "besik": "Бесик — одна из самых почитаемых вещей в казахской семье, детская колыбель. Её вырезают из берёзы, ивы или даже можжевельника — эти деревья считались «живыми». Колыбель украшают резьбой и серебряными накладками, длина составляет около 700 мм. Важнейшая деталь — «шумек» в нижней части, специальное отверстие для отвода естественных нужд младенца, к которому крепится курдючный хвостик ягнёнка. С колыбелью связано несколько важных обрядов: «бесікке салу» — первое укладывание младенца в колыбель на пятый день его жизни, которое совершают бабушки; «тусау кесер» — разрезание символических пут на ножках ребёнка, когда он начинает ходить; «шильдехана» — праздник в честь сорокадневного младенца. Колыбель накрывают кошачьей шкуркой и оберегом-тумаром — для защиты от дурного глаза. Колыбельные «алди-алди» казахские матери исполняли веками, и эта традиция также включена в список ЮНЕСКО.",
     "nomad_sabre": "Сабля — клинковое оружие казахского воина, чья история восходит к древней сакской эпохе. В VII-VIII веках сабля широко применялась в казахской степи дулатами и кипчаками. Клинок ковали из высококачественной стали — часто дамасской или хорасанской. Рукоять изготавливали из берёзы, рога или кости, порой украшали слоновой костью. Длина клинка — около 90 см, вес — 1-1,2 кг. Ножны обтягивали кожей, а их концы отделывали серебром и золотом. Саблю передавали батыры по наследству из поколения в поколение. В годы джунгарского нашествия (1723-1750) батыры Абылай, Абулмансур, Райымбек, Богенбай, Кабанбай и Наурызбай сражались этими саблями в трагический период «Актабан шубырынды», отвоёвывая свободу народа. В XIX веке сабля оставалась главным оружием в войске хана Кенесары. Сегодня такие сабли хранятся в музеях и как фамильные реликвии.",
     "balbal_tas": "Балбал тас — каменные изваяния в облике человека, созданные в эпоху древних тюрков (VI-IX века). Слово «балбал» происходит от тюркского «баба» — «великий предок, защитник». Такие изваяния ставились на могилах прославленных воинов, ханов и биев. Сотни подобных памятников найдены в Казахстане, Монголии, на Алтае, в Тянь-Шане и Южной Сибири. У некоторых изваяний руки держат чашу — символ вечного пира в загробном мире. На других закреплены изображения сабли, камчи, поясной пряжки. Вместе с покойным хоронили его оружие, коня, порой жену и скот — считалось, что он продолжает пользоваться своим имуществом в ином мире. Древние тюрки почитали каменные изваяния как священные, приносили им жертвы и устраивали поминальные трапезы в честь духа умершего. Современные казахские надгробные памятники — прямое продолжение традиции балбал тасов. Они хранятся в национальных музеях и под открытым небом в этно-мемориалах.",
@@ -3709,7 +3708,8 @@ const HISTORY_I18N = {
     "kese": "Пиала (кесе) — керамическое изделие XVIII-XIX веков, происходящее из городов на Великом Шёлковом пути: Отрара, Тараза, Сайрама. Средневековый Отрар (Фараб) был одним из крупнейших центров гончарного ремесла Центральной Азии — здесь родился Аль-Фараби, а сам древний город процветал в V-XVI веках. Процесс изготовления керамики: собирали местную глину, придавали форму на гончарном круге, затем обжигали в специальной печи при температуре 800-1000°C. Особая техника данной пиалы — «роспись по белому фону глазури»: по белой глазури наносился орнамент кобальтовыми и коричневыми минеральными красками. Мотивы орнамента — растительные (древо жизни), геометрические фигуры, порой надписи в стиле куфи. Пиалы обычно использовались для кумыса, чая, талкана. Данное изделие — экспонат историко-культурного комплекса «Old Shymkent» («Шым қала»), музея-заповедника под открытым небом близ Шымкента. Оно возрождает дух средневековых городов Отрара, Сайрама и Испиджаба.",
     "korzhyn": "Коржын — традиционная дорожная сумка кочевых казахов, парная переметная сума, которую вешали на коня или верблюда. Известна со времён древней сакской эпохи — фрагменты подобных тканых сумок найдены в Пазырыкских курганах. Материал — толстая шерстяная нить (овечья, верблюжья), порой окрашенная растительными красителями. Техники изготовления — терме и каражаки — старинные сложные способы плетения, позволяющие создавать многоцветный узор. Форма прямоугольная, в месте сгиба — узкая перемычка-«шея» для перекидывания через седло или плечо. Орнамент на обеих сторонах одинаков — символ равновесия. Наиболее распространённые узоры: ромбовидный медальон (символ солнца, мира, семьи), бараний рог (символ изобилия), звёзды, цветы, цепочки. Цветовая палитра: густо-красный (в центре, доминирующий), белый, чёрный, зелёный, лиловый, жёлтый — все из натуральных красителей (марена, куркума, лист инжира). По краям — нитяные кисточки, считавшиеся оберегом от сглаза. Внутрь укладывали дорожную еду, посуду, мелкие вещи, порой книги. Коржын был важной частью приданого невесты — его передавали новому дому как родовую реликвию. У современных казахов коржын стал элементом дизайна: сумки, предметы интерьера, аксессуары для национальных праздников. Данный экспонат хранится в собрании Национального музея Республики Казахстан.",
     "syrmaq": "Сырмак — самый сложный и красивый вид традиционного казахского войлочного ковра. Его основа — войлок (плотная свалянная овечья или верблюжья шерсть), а техника исполнения — «мозаика», или аппликация из вырезанных узоров. Процесс изготовления таков: сначала свойлачивают два полотна разного цвета (обычно тёмно-коричневое и белое). Затем мастерица вырезает из каждого одинаковые по рисунку фрагменты орнамента. Кусочки соединяют друг с другом мелким плотным швом — так возникают ромбовидные медальоны, растительные мотивы, узор бараньего рога. На изготовление одного сырмака уходит от 3 до 6 месяцев. Три ромбических медальона в центре толкуются как символ трёх жузов или членов рода. Сложный узор ветвей внутри медальона — «древо жизни», отголосок древней тюрко-иранской мифологии. Окружающий его орнамент бараньего рога — символ изобилия, отсылка к скотоводству как главному источнику богатства. Цветовая палитра данного сырмака: густо-коричневый (доминирующий), белый (внутри медальонов), местами лиловые и красные акценты. Сырмак стелили на почётное место в юрте, а порой он входил в приданое невесты. В старинных казахских аулах у каждой семьи был свой сырмак — со своим оберегом и своей историей. Современные мастерицы, особенно в Туркестанской области, сохраняют эту традицию, создавая сырмаки, подходящие и для современного интерьера. Ремесло готовится к включению в список нематериального культурного наследия ЮНЕСКО.",
-    "dulyga": "Дулыга — железный защитный шлем казахского воина. Его истоки восходят к железным шлемам сакской, гуннской и тюркской эпох — VII-V векам до н.э. Подобные железные и бронзовые шлемы найдены в Пазырыкских курганах. В XVIII-XIX веках, в эпоху казахских войн, дулыга оставалась главным средством защиты головы: во время джунгарского нашествия (1723-1750) батыры Абылай, Кабанбай, Наурызбай и Богенбай выходили в бой именно в таких шлемах. Представленный экспонат — точная реконструкция современного мастера Алибая Берика Сатынбекулы, выполненная на основе подлинных образцов XVIII-XIX веков. Конструкция сложна: верхняя часть куполообразная, выкована из цельного железного листа, на макушке закреплено острое металлическое навершие (для устрашения противника либо для крепления перьев или бунчука). На лбу — узкая налобная пластина, защищающая глаза воина. Снаружи нанесён орнамент в стиле арабской каллиграфии — аяты из Корана и защитные молитвы (сура «Ан-Наср»). В нижней части — бармица (кольчужная сетка) из тонких (диаметром 5-8 мм) железных колец, защищающая затылок, шею и плечи от удара саблей. В одной бармице может быть 15-20 тысяч колец — на её изготовление у мастера уходило несколько месяцев. В старину бармица была доступна лишь ханам и знатным батырам — настолько дорогой была эта вещь. Алибай Берик Сатынбекулы — современный кузнец, возрождающий древнюю традицию обработки железа. В его мастерской полностью воссоздаётся снаряжение казахского воина XVIII-XIX веков. Экспонат хранится в Музее декоративно-прикладного искусства имени Шаймардана Сариева."
+    "dulyga": "Дулыга — железный защитный шлем казахского воина. Его истоки восходят к железным шлемам сакской, гуннской и тюркской эпох — VII-V векам до н.э. Подобные железные и бронзовые шлемы найдены в Пазырыкских курганах. В XVIII-XIX веках, в эпоху казахских войн, дулыга оставалась главным средством защиты головы: во время джунгарского нашествия (1723-1750) батыры Абылай, Кабанбай, Наурызбай и Богенбай выходили в бой именно в таких шлемах. Представленный экспонат — точная реконструкция современного мастера Алибая Берика Сатынбекулы, выполненная на основе подлинных образцов XVIII-XIX веков. Конструкция сложна: верхняя часть куполообразная, выкована из цельного железного листа, на макушке закреплено острое металлическое навершие (для устрашения противника либо для крепления перьев или бунчука). На лбу — узкая налобная пластина, защищающая глаза воина. Снаружи нанесён орнамент в стиле арабской каллиграфии — аяты из Корана и защитные молитвы (сура «Ан-Наср»). В нижней части — бармица (кольчужная сетка) из тонких (диаметром 5-8 мм) железных колец, защищающая затылок, шею и плечи от удара саблей. В одной бармице может быть 15-20 тысяч колец — на её изготовление у мастера уходило несколько месяцев. В старину бармица была доступна лишь ханам и знатным батырам — настолько дорогой была эта вещь. Алибай Берик Сатынбекулы — современный кузнец, возрождающий древнюю традицию обработки железа. В его мастерской полностью воссоздаётся снаряжение казахского воина XVIII-XIX веков. Экспонат хранится в Музее декоративно-прикладного искусства имени Шаймардана Сариева.",
+    "asyk": "Асык — древняя детская игра с использованием бараньих альчиков, уходящая корнями в скифо-сакскую эпоху. Подобные игры в разных вариациях существуют у тюркских, монгольских и персидских народов. У асыка четыре стороны — сака (верхняя, гладкая), алшы (выпуклая), бук (вогнутая) — каждая имеет своё значение в игре. На протяжении тысячелетий казахские дети знали десятки вариантов игры: «Хан талапай», «Атбакыл», «Бес тас», «Уш табан», «Андыма-анды». Сака-асык — «царь» игры, и за право обладать им дети устраивали настоящие состязания. Игра в асыки развивает у ребёнка логику, стратегическое мышление, точность и навыки общения. В древних обрядах асык использовали даже в гадании. Сегодня в казахстанских школах вводятся уроки игры в асыки, а на национальных фестивалях проводятся турниры. В 2017 году игра в асыки включена в список нематериального культурного наследия ЮНЕСКО."
   },
   "en": {
     "yurt_low_quality_texture": "The yurt (kiiz úi) is the thousand-year-old dwelling of the nomadic Kazakhs. Its roots trace back to the light portable shelters of the Bronze Age Andronovo culture, while the form we know today was fully established by the 13th century. Three main elements make up its structure: the kerege (folding lattice walls), the uyk (curved roof poles), and the shanyrak (the crown-shaped roof ring). More than 60 uyks run from the tops of the kerege to the shanyrak — and not a single nail is used anywhere. The door always faces the sunset, while the light entering from the east is said to mark the beginning of life. The interior is carefully divided: the tör (place of honor) sits opposite the entrance, the men's side is to the right, and the women's side to the left. The shanyrak stands for the family hearth and the continuity of the lineage. A yurt can be assembled in as little as 40 minutes. In 2014, the craft of making and raising the Kazakh yurt was inscribed on UNESCO's Representative List of the Intangible Cultural Heritage of Humanity. An image of the shanyrak also appears on the state emblem of Kazakhstan.",
@@ -3720,7 +3720,6 @@ const HISTORY_I18N = {
     "taqiya_yellow_f_kazakh_traditional_headdress": "The girl's taqiya is a symbol of a young girl approaching marriageable age. It differs from the men's version in its bright colors, gold embroidery, and ornate beading. The fabric is yellow, red, pale blue, or green velvet or silk. One or two owl feathers are fastened to the top — the owl feather was believed to ward off the evil eye, and losing it was considered a bad omen. Silver, gold, beads, and shashbau (braid ornaments) hang from beneath it. It was worn at weddings, at a bride's farewell ceremony, and at national celebrations. After marriage, the girl's taqiya gave way to the kimeshek, the symbol of a married woman's status; it is also worn by a young child at the tusau keser, the \"rope-cutting\" first-steps ceremony. At today's Kazakh celebrations, designers are reviving the taqiya with new styles, making it a popular sight at festivals and wedding ceremonies.",
     "saukele_ethno_variant_traditional_headdress": "The saukele is the most costly and the tallest headdress worn by a Kazakh bride at her wedding, a form that took shape between the 14th and 18th centuries. It can stand up to 70 cm tall, occasionally reaching a full meter. Its base is thick leather or felt shaped into a cone and covered in red velvet, then adorned with silver, gold, pearls, carnelian, and bone inlays. A long swan feather was fixed at the crown — a privilege reserved for the daughters of khans. Long shashbau ornaments of strung pearls hung from either side, reaching down to the chest and chiming softly with the bride's every movement. Each noble family traditionally had its own master craftsman make the saukele, and the headdress served as a display of the family's wealth. After the wedding, the young bride wore it for another three to five years, sometimes until the birth of her first child, before exchanging it for the zhaulyq, the modest headscarf of a married woman. Today the saukele is among the most valuable pieces in the National Museum's collection, with individual examples valued in the millions of dollars.",
     "qamshy_kamshy": "The qamshy (whip) was the constant companion of the herdsman and the batyr, a symbol of authority and a profound emblem of Kazakh culture. Its handle, about 30–40 cm long, is turned from birch, mountain goat horn, or occasionally bone. The lash is braided from calf or bullock hide, using 8, 16, or 32 fine strips — the finest craftsmen braided as many as 64. The whip's overall length is 1 to 1.5 meters, and the handle is often trimmed with silver fittings and ornament. Several types exist: a slender whip for riding, a stiff whip for battle, an ornately decorated whip for weddings, and a light whip for children. To say a man \"has a large qamshy\" is to say he holds power over the people. Presenting a qamshy as a \"süiinshi\" gift at a celebration is a mark of great respect, and it also served as a clan emblem, with each zhuz and clan favoring its own braiding style. Qamshy races and skill contests are seeing a revival in contemporary Kazakh sport.",
-    "Asyk": "Asyk is an ancient children's game played with sheep anklebones, its roots reaching back before the Scythian-Saka era. Related games in various forms exist among Turkic, Mongolian, and Persian peoples. The asyk bone has four sides — saqa (the flat top), alshy (the convex side), and buk (the concave side) — each carrying its own meaning in play. Over thousands of years, Kazakh children have known dozens of game variants, including \"Khan Talapai,\" \"Atbaqyl,\" \"Bes Tas,\" \"Ush Taban,\" and \"Andyma-Andy.\" The saqa-asyk is the \"king\" of the game, and children would compete fiercely to win it. Through asyk, a child learns logic, strategy, precision, and social interaction; in ancient rituals it was even used for fortune-telling. Today, asyk lessons are being introduced in Kazakhstan's schools, and tournaments are held at national festivals. In 2017, the game of asyk was inscribed on UNESCO's Intangible Cultural Heritage list.",
     "besik": "The besik, or cradle, is one of the most sacred objects in a Kazakh household. It is carved from birch, willow, or even juniper — woods regarded as \"living.\" It is decorated with carving and silver fittings and measures about 700 mm in length. Its most important feature is the shumek, a special fitting in the lower part that channels the infant's waste, fitted with a lamb's tail. Several important rituals surround the cradle: besikke salu, when grandmothers first place the baby into the cradle on the fifth day of life; tusau keser, the cutting of symbolic ties around a child's ankles when they begin to walk; and shildekhana, a celebration held for a forty-day-old infant. A cat's pelt and a protective amulet, the tumar, are placed over the cradle to ward off the evil eye. The lullabies known as \"äldi-äldi,\" sung by Kazakh mothers, developed over centuries and are themselves inscribed on the UNESCO list.",
     "nomad_sabre": "The sabre was the bladed weapon of the Kazakh warrior, its history reaching back to the ancient Saka era. In the 7th and 8th centuries, the Dulat and Qypshaq tribes made wide use of the sabre across the Kazakh steppe. Blades were forged from high-quality steel, often Damascus or Khorasan steel, with handles made of birch, horn, or bone, sometimes inlaid with ivory. The blade measured about 90 cm and weighed 1 to 1.2 kg, while the leather-covered scabbard was fitted with silver and gold at its ends. A sabre was typically handed down within a family from one generation of warriors to the next. During the Dzungar invasions (1723–1750), the batyrs Abylai, Abulmansur, Raiymbek, Bogenbai, Kabanbai, and Nauryzbai fought with such sabres through the tragic era of the \"Aqtaban Shubyryndy\" (Great Disaster), winning back the country's freedom. In the 19th century, the sabre remained the principal weapon of Khan Kenesary's army. Today such sabres are preserved in museums and as family heirlooms.",
     "balbal_tas": "Balbal tas are stone figures carved in human likeness during the era of the ancient Turks (6th–9th centuries). The word \"balbal\" derives from the Turkic \"baba,\" meaning \"great ancestor, protector.\" They were erected at the graves of renowned warriors, khans, and biys. Hundreds of such monuments have been found across Kazakhstan, Mongolia, the Altai, the Tian Shan, and southern Siberia. Some figures hold a cup in their hands, representing an eternal feast in the world of the dead; others bear carved images of a sabre, a whip, or a belt buckle. The deceased was buried together with his weapons, his horse, and sometimes his wife and livestock, in the belief that he would continue to use his possessions in the afterlife. The ancient Turks regarded these stone figures as sacred, offering sacrifices and holding memorial feasts in honor of the departed's spirit. Kazakh gravestones today are a modern echo of the balbal tas tradition, and such monuments are preserved both in national museums and in open-air ethnographic memorials.",
@@ -3741,7 +3740,8 @@ const HISTORY_I18N = {
     "kese": "The kese, or piala, is an 18th–19th-century ceramic vessel originating from cities along the Great Silk Road — Otrar, Taraz, and Sairam. Medieval Otrar (Farab) was one of Central Asia's great centers of pottery craft; it was the birthplace of Al-Farabi, and the ancient city itself flourished from the 5th to the 16th centuries. Making such ceramics involved gathering local clay, shaping it on a potter's wheel, and firing it in a special kiln at 800–1,000°C. This particular piece employs a distinctive \"painted white-glaze\" technique, in which cobalt-blue and brown mineral pigments are applied over a white glaze. Its motifs include plant designs such as the tree of life, geometric figures, and occasionally Kufic inscriptions. Such pialas were typically used for drinking kumys, tea, or talkan. This example is an exhibit of the \"Old Shymkent\" (Shym Qala) historical-cultural complex, an open-air ethnographic museum near Shymkent, and it evokes the spirit of the medieval cities of Otrar, Sairam, and Isfijab.",
     "korzhyn": "The korzhyn is the traditional travel bag of the nomadic Kazakhs, a pair of saddlebags slung across a horse or camel. It has been in use since the ancient Saka era, and fragments of similar woven bags have been found in the Pazyryk burial mounds. It is made from thick woolen thread, spun from sheep or camel wool and sometimes dyed with plant-based pigments, using intricate old weaving techniques such as terme and qazhaki that allow for richly colored patterns. The bag is rectangular, with a narrow strap or \"neck\" at the fold used to sling it over a horse or a person's shoulder, and the ornament is mirrored on both sides as a symbol of balance. Its most common motifs include the diamond-shaped medallion (representing the sun, the world, and the family), the ram's horn (a symbol of abundance), along with stars, flowers, and chain patterns. Its color palette — deep red as the dominant tone, with white, black, green, purple, and yellow — comes entirely from natural dyes such as madder root, turmeric, and fig leaves. Thread tassels at the corners were believed to ward off the evil eye. The korzhyn carried travel food, tableware, small belongings, and sometimes books, and it formed an important part of a bride's dowry, handed down to her new household as a family heirloom. Among Kazakhs today, the korzhyn has become a design element, appearing in bags, interior decor, and accessories for national celebrations. This example is held in the collection of the National Museum of the Republic of Kazakhstan.",
     "syrmaq": "The syrmaq is the most elaborate and beautiful form of traditional Kazakh felt carpet. Its base is felt, densely pressed sheep or camel wool, and its defining technique is a mosaic-style appliqué. To make one, two sheets of felt in different colors — typically dark brown and white — are pressed first. The craftswoman then cuts matching pieces of ornament from each sheet and joins them together with a fine, tight seam, producing diamond-shaped medallions, plant motifs, and ram's-horn patterns. A single syrmaq can take three to six months to complete. The three diamond medallions at its center are interpreted as a symbol of the three zhuzes, or of the members of a clan, while the intricate branching pattern within each medallion represents the tree of life, an echo of ancient Turkic-Iranian mythology. The surrounding ram's-horn motif symbolizes abundance, a reference to livestock herding as the foundation of wealth. This particular syrmaq's palette is dominated by deep brown, with white inside the medallions and touches of purple and red elsewhere. A syrmaq was traditionally laid at the place of honor in a yurt and sometimes formed part of a bride's dowry. In the old Kazakh villages, every family had its own syrmaq, carrying its own protective meaning and its own history. Contemporary craftswomen, especially in Turkistan Region, continue this tradition, making syrmaqs suited to modern interiors, and the craft is being prepared for nomination to UNESCO's Intangible Cultural Heritage list.",
-    "dulyga": "The dulyga was the iron protective helmet of the Kazakh warrior. Its origins trace back to the iron helmets of the Saka, Hun, and Turkic eras, the 7th–5th centuries BCE, and similar iron and bronze helmets have been recovered from the Pazyryk burial mounds. Through the 18th and 19th centuries, during the era of Kazakh wars, the dulyga remained the principal means of head protection: during the Dzungar invasions (1723–1750), the batyrs Abylai, Kabanbai, Nauryzbai, and Bogenbai rode into battle wearing helmets of this kind. This particular exhibit is a precise reconstruction by the contemporary master Alibai Berik Satynbekuly, based on genuine 18th–19th-century originals. Its construction is intricate: the domed upper section is forged from a single sheet of iron, topped with a sharp metal spike, used either to intimidate the enemy or to mount feathers or a standard. A narrow browplate at the front shields the warrior's eyes. The exterior bears ornament in the Arabic calligraphic style — Qur'anic verses and protective prayers, including the Surah \"An-Nasr.\" The lower edge carries a barmitsa, a mail curtain woven from fine iron rings 5–8 mm in diameter, protecting the neck, nape, and shoulders from a sabre strike. A single barmitsa could contain 15,000 to 20,000 rings, taking a craftsman several months to complete; in earlier times, such mail was so costly that only khans and the most distinguished batyrs possessed it. Alibai Berik Satynbekuly is a contemporary blacksmith reviving the ancient tradition of ironworking, and his workshop fully recreates the equipment of the 18th–19th-century Kazakh warrior. The piece is held in the Shaimardan Sariev Museum of Decorative and Applied Arts."
+    "dulyga": "The dulyga was the iron protective helmet of the Kazakh warrior. Its origins trace back to the iron helmets of the Saka, Hun, and Turkic eras, the 7th–5th centuries BCE, and similar iron and bronze helmets have been recovered from the Pazyryk burial mounds. Through the 18th and 19th centuries, during the era of Kazakh wars, the dulyga remained the principal means of head protection: during the Dzungar invasions (1723–1750), the batyrs Abylai, Kabanbai, Nauryzbai, and Bogenbai rode into battle wearing helmets of this kind. This particular exhibit is a precise reconstruction by the contemporary master Alibai Berik Satynbekuly, based on genuine 18th–19th-century originals. Its construction is intricate: the domed upper section is forged from a single sheet of iron, topped with a sharp metal spike, used either to intimidate the enemy or to mount feathers or a standard. A narrow browplate at the front shields the warrior's eyes. The exterior bears ornament in the Arabic calligraphic style — Qur'anic verses and protective prayers, including the Surah \"An-Nasr.\" The lower edge carries a barmitsa, a mail curtain woven from fine iron rings 5–8 mm in diameter, protecting the neck, nape, and shoulders from a sabre strike. A single barmitsa could contain 15,000 to 20,000 rings, taking a craftsman several months to complete; in earlier times, such mail was so costly that only khans and the most distinguished batyrs possessed it. Alibai Berik Satynbekuly is a contemporary blacksmith reviving the ancient tradition of ironworking, and his workshop fully recreates the equipment of the 18th–19th-century Kazakh warrior. The piece is held in the Shaimardan Sariev Museum of Decorative and Applied Arts.",
+    "asyk": "Asyk is an ancient children's game played with sheep anklebones, its roots reaching back before the Scythian-Saka era. Related games in various forms exist among Turkic, Mongolian, and Persian peoples. The asyk bone has four sides — saqa (the flat top), alshy (the convex side), and buk (the concave side) — each carrying its own meaning in play. Over thousands of years, Kazakh children have known dozens of game variants, including \"Khan Talapai,\" \"Atbaqyl,\" \"Bes Tas,\" \"Ush Taban,\" and \"Andyma-Andy.\" The saqa-asyk is the \"king\" of the game, and children would compete fiercely to win it. Through asyk, a child learns logic, strategy, precision, and social interaction; in ancient rituals it was even used for fortune-telling. Today, asyk lessons are being introduced in Kazakhstan's schools, and tournaments are held at national festivals. In 2017, the game of asyk was inscribed on UNESCO's Intangible Cultural Heritage list."
   }
 };
 
@@ -4179,60 +4179,6 @@ const QUIZ_I18N = {
         }
       ]
     },
-    "Asyk": {
-      "questions": [
-        {
-          "q": "Из кости какого животного делают асык?",
-          "a": [
-            "Верблюда",
-            "Лошади",
-            "Овцы",
-            "Телёнка"
-          ],
-          "exp": "Асык — древняя детская игра, использующая бабку (астрагал) овцы."
-        },
-        {
-          "q": "Как называется верхняя плоская сторона асыка из четырёх?",
-          "a": [
-            "Плоская верхняя",
-            "Изогнутая",
-            "Кривая",
-            "Нижняя"
-          ],
-          "exp": "Сака — верхняя плоская сторона асыка, «царь игры»."
-        },
-        {
-          "q": "Когда игра асык вошла в список ЮНЕСКО?",
-          "a": [
-            "2010",
-            "2015",
-            "2017",
-            "2020"
-          ],
-          "exp": "В 2017 году игра асык вошла в список нематериального наследия ЮНЕСКО."
-        },
-        {
-          "q": "В какую из этих игр НЕ играют асыками?",
-          "a": [
-            "Хан талапай",
-            "Атбакыл",
-            "Бес тас",
-            "Тогызкумалак"
-          ],
-          "exp": "Тогызкумалак — отдельная игра, в которую играют камешками на доске."
-        },
-        {
-          "q": "Чему учит ребёнка игра в асык?",
-          "a": [
-            "Только силе",
-            "Логике, тактике, точности",
-            "Пению",
-            "Верховой езде"
-          ],
-          "exp": "Асык развивает логику, стратегию, точность и общение."
-        }
-      ]
-    },
     "besik": {
       "questions": [
         {
@@ -4554,6 +4500,60 @@ const QUIZ_I18N = {
             "Каменный век"
           ],
           "exp": "Известен со времён скифо-сакской эпохи, подобные фрагменты найдены при раскопках."
+        }
+      ]
+    },
+    "asyk": {
+      "questions": [
+        {
+          "q": "Из кости какого животного делают асык?",
+          "a": [
+            "Верблюда",
+            "Лошади",
+            "Овцы",
+            "Телёнка"
+          ],
+          "exp": "Асык — древняя детская игра, использующая бабку (астрагал) овцы."
+        },
+        {
+          "q": "Как называется верхняя плоская сторона асыка из четырёх?",
+          "a": [
+            "Плоская верхняя",
+            "Изогнутая",
+            "Кривая",
+            "Нижняя"
+          ],
+          "exp": "Сака — верхняя плоская сторона асыка, «царь игры»."
+        },
+        {
+          "q": "Когда игра асык вошла в список ЮНЕСКО?",
+          "a": [
+            "2010",
+            "2015",
+            "2017",
+            "2020"
+          ],
+          "exp": "В 2017 году игра асык вошла в список нематериального наследия ЮНЕСКО."
+        },
+        {
+          "q": "В какую из этих игр НЕ играют асыками?",
+          "a": [
+            "Хан талапай",
+            "Атбакыл",
+            "Бес тас",
+            "Тогызкумалак"
+          ],
+          "exp": "Тогызкумалак — отдельная игра, в которую играют камешками на доске."
+        },
+        {
+          "q": "Чему учит ребёнка игра в асык?",
+          "a": [
+            "Только силе",
+            "Логике, тактике, точности",
+            "Пению",
+            "Верховой езде"
+          ],
+          "exp": "Асык развивает логику, стратегию, точность и общение."
         }
       ]
     },
@@ -5801,60 +5801,6 @@ const QUIZ_I18N = {
         }
       ]
     },
-    "Asyk": {
-      "questions": [
-        {
-          "q": "From which animal's bone is the asyk made?",
-          "a": [
-            "Camel",
-            "Horse",
-            "Sheep",
-            "Calf"
-          ],
-          "exp": "Asyk is an ancient children's game using a sheep's anklebone (astragalus)."
-        },
-        {
-          "q": "Which of the asyk's four sides is called \"saqa\"?",
-          "a": [
-            "The flat top side",
-            "The curved side",
-            "The crooked side",
-            "The bottom side"
-          ],
-          "exp": "Saqa is the flat top side of the asyk, the \"king of the game\"."
-        },
-        {
-          "q": "When was the asyk game added to the UNESCO list?",
-          "a": [
-            "2010",
-            "2015",
-            "2017",
-            "2020"
-          ],
-          "exp": "In 2017 the asyk game was added to UNESCO's Intangible Cultural Heritage list."
-        },
-        {
-          "q": "Which of these games is NOT played with asyks?",
-          "a": [
-            "Khan Talapai",
-            "Atbaqyl",
-            "Bes Tas",
-            "Togyzqumalaq"
-          ],
-          "exp": "Togyzqumalaq is a separate game played with pebbles on a board."
-        },
-        {
-          "q": "What does the asyk game teach children?",
-          "a": [
-            "Only strength",
-            "Logic, tactics, precision",
-            "Singing",
-            "Horse riding"
-          ],
-          "exp": "Asyk develops logic, strategy, precision, and social skills."
-        }
-      ]
-    },
     "besik": {
       "questions": [
         {
@@ -6176,6 +6122,60 @@ const QUIZ_I18N = {
             "The Stone Age"
           ],
           "exp": "Known since the Scythian-Saka era; similar fragments have been found in excavations."
+        }
+      ]
+    },
+    "asyk": {
+      "questions": [
+        {
+          "q": "From which animal's bone is the asyk made?",
+          "a": [
+            "Camel",
+            "Horse",
+            "Sheep",
+            "Calf"
+          ],
+          "exp": "Asyk is an ancient children's game using a sheep's anklebone (astragalus)."
+        },
+        {
+          "q": "Which of the asyk's four sides is called \"saqa\"?",
+          "a": [
+            "The flat top side",
+            "The curved side",
+            "The crooked side",
+            "The bottom side"
+          ],
+          "exp": "Saqa is the flat top side of the asyk, the \"king of the game\"."
+        },
+        {
+          "q": "When was the asyk game added to the UNESCO list?",
+          "a": [
+            "2010",
+            "2015",
+            "2017",
+            "2020"
+          ],
+          "exp": "In 2017 the asyk game was added to UNESCO's Intangible Cultural Heritage list."
+        },
+        {
+          "q": "Which of these games is NOT played with asyks?",
+          "a": [
+            "Khan Talapai",
+            "Atbaqyl",
+            "Bes Tas",
+            "Togyzqumalaq"
+          ],
+          "exp": "Togyzqumalaq is a separate game played with pebbles on a board."
+        },
+        {
+          "q": "What does the asyk game teach children?",
+          "a": [
+            "Only strength",
+            "Logic, tactics, precision",
+            "Singing",
+            "Horse riding"
+          ],
+          "exp": "Asyk develops logic, strategy, precision, and social skills."
         }
       ]
     },
@@ -7024,12 +7024,6 @@ const ACTION_I18N = {
       "body": "<p>Тогызкумалак — казахская степная логическая игра. С каждой стороны по 9 лунок, а в центре — «казан». Она закаляет ум и выдержку. В начале XX века была создана федерация, и сегодня проводятся мировые чемпионаты.</p><p><b>Играть онлайн:</b> изучите правила и сразитесь с компьютером или другим игроком.</p>",
       "linkLabel": "Играть онлайн →"
     },
-    "Asyk": {
-      "eyebrow": "Правила игры",
-      "title": "Игры в асык — 5 основных видов",
-      "body": "<ul class=\"modal-list\"><li><b>Хан талапай</b> — дети встают в круг и асыками выигрывают «хана» в центре.</li><li><b>Атбакыл</b> — точным броском своего асыка с расстояния сбивают асык соперника.</li><li><b>Бес тас</b> — подбросить и поймать одной рукой 5 асыков (любимая игра девочек).</li><li><b>Уш табан</b> — набивать удары по своему асыку, пока он не станет «сака» («хозяином»).</li><li><b>Аандыма-анды</b> — найти спрятанный асык.</li></ul><p>В 2017 году включена в список нематериального культурного наследия ЮНЕСКО.</p>",
-      "linkLabel": "Смотреть видео игры →"
-    },
     "nomad_sabre": {
       "eyebrow": "Легенды батыров",
       "title": "Абылай хан и казахская сабля",
@@ -7077,6 +7071,12 @@ const ACTION_I18N = {
       "title": "Саукеле — корона казахской невесты",
       "body": "<p>Саукеле — самый дорогой и высокий головной убор, который надевает девушка на свадебном торжестве проводов. Высота достигает 70 см, а порой и 1 метра. Изготавливался потомственными мастерами и порой оценивался в миллионы тенге.</p><p><b>Той узату</b> — обряд переезда девушки из дома отца в очаг семьи жениха. В этот день она надевает саукеле, а лицо закрывает белым покрывалом. После свадьбы саукеле носят ещё 3-5 лет, а затем меняют на кимешек-жаулык.</p>",
       "linkLabel": "Wikipedia — Саукеле →"
+    },
+    "asyk": {
+      "eyebrow": "Правила игры",
+      "title": "Игры в асык — 5 основных видов",
+      "body": "<ul class=\"modal-list\"><li><b>Хан талапай</b> — дети встают в круг и асыками выигрывают «хана» в центре.</li><li><b>Атбакыл</b> — точным броском своего асыка с расстояния сбивают асык соперника.</li><li><b>Бес тас</b> — подбросить и поймать одной рукой 5 асыков (любимая игра девочек).</li><li><b>Уш табан</b> — набивать удары по своему асыку, пока он не станет «сака» («хозяином»).</li><li><b>Аандыма-анды</b> — найти спрятанный асык.</li></ul><p>В 2017 году включена в список нематериального культурного наследия ЮНЕСКО.</p>",
+      "linkLabel": "Смотреть видео игры →"
     },
     "qamshy_kamshy": {
       "eyebrow": "Искусство мастеров",
@@ -7188,12 +7188,6 @@ const ACTION_I18N = {
       "body": "<p>Togyzqumalaq is a Kazakh steppe logic game. Each side has 9 pits, with a «kazan» (cauldron) in the middle. It sharpens the mind and builds composure. A federation was founded in the early 20th century, and world championships are held today.</p><p><b>Play online:</b> learn the rules and compete against the computer or another player.</p>",
       "linkLabel": "Play online →"
     },
-    "Asyk": {
-      "eyebrow": "Rules of the game",
-      "title": "Asyk games — 5 main types",
-      "body": "<ul class=\"modal-list\"><li><b>Khan talapai</b> — children stand in a circle and use their asyks to win the «khan» in the center.</li><li><b>Atbaqyl</b> — knock down an opponent's asyk with a precise throw of your own from a distance.</li><li><b>Bes tas</b> — toss and catch 5 asyks with one hand (a favorite among girls).</li><li><b>Ush taban</b> — strike your own asyk repeatedly until it becomes a «saqa» («champion»).</li><li><b>Andyma-andy</b> — find the hidden asyk.</li></ul><p>In 2017, it was added to the UNESCO Representative List of the Intangible Cultural Heritage.</p>",
-      "linkLabel": "Watch a game video →"
-    },
     "nomad_sabre": {
       "eyebrow": "Legends of the batyrs",
       "title": "Abylai Khan and the Kazakh sabre",
@@ -7241,6 +7235,12 @@ const ACTION_I18N = {
       "title": "Saukele — the crown of a Kazakh bride",
       "body": "<p>The saukele is the most expensive and tallest headdress a girl wears at her farewell wedding feast. Its height reaches 70 cm, and sometimes even a full metre. It was crafted by hereditary master artisans and could be valued at millions of tenge.</p><p><b>Toi uzatu</b> is the ceremony of a girl's move from her father's home to the hearth of her husband's family. On that day she wears the saukele, her face covered with a white veil. After the wedding, the saukele is worn for another 3-5 years, then exchanged for the kimeshek-zhaulyq.</p>",
       "linkLabel": "Wikipedia — Saukele →"
+    },
+    "asyk": {
+      "eyebrow": "Rules of the game",
+      "title": "Asyk games — 5 main types",
+      "body": "<ul class=\"modal-list\"><li><b>Khan talapai</b> — children stand in a circle and use their asyks to win the «khan» in the center.</li><li><b>Atbaqyl</b> — knock down an opponent's asyk with a precise throw of your own from a distance.</li><li><b>Bes tas</b> — toss and catch 5 asyks with one hand (a favorite among girls).</li><li><b>Ush taban</b> — strike your own asyk repeatedly until it becomes a «saqa» («champion»).</li><li><b>Andyma-andy</b> — find the hidden asyk.</li></ul><p>In 2017, it was added to the UNESCO Representative List of the Intangible Cultural Heritage.</p>",
+      "linkLabel": "Watch a game video →"
     },
     "qamshy_kamshy": {
       "eyebrow": "Craft of Masters",
@@ -7320,6 +7320,105 @@ const ACTION_I18N = {
       "body": "<p>Shapabayev Kairat Bulatuly is a contemporary Kazakh jeweler who revives ancient Turkic traditions. His style is defined by massiveness and geometric precision. He draws inspiration from the roots of Turkic-Mongol art, connecting it to the present day.</p><p>This bracelet is one of his works: three agate stones, geometric ornamentation, an open form. It resembles the bracelets worn by noblewomen (khanym) of the ancient nomads.</p>",
       "linkLabel": "Artist's Works →"
     }
+  }
+};
+
+const MEDIUM_I18N = {
+  "kz": {
+    "yurt_low_quality_texture": "Киіз үй — көшпелі қазақтың даналықпен жасалған үйі: жинауға да, бұзуға да бірнеше ондаған минут жетеді. Оны кереге, уық және шаңырақ құрайды, олар тек ағаш пен киіздің дәл қиылысуымен ұсталады — шеге атымен жоқ. Есігі дәстүр бойынша күн батысқа қаратылады, ал шығыс жарығы жаңа өмірдің басталуын білдіреді. Іші де ретпен бөлінген: қонаққа, үй иесіне өз орны бар. 2014 жылы ЮНЕСКО оны адамзат мұрасы деп таныды, ал шаңырақ бейнесі Қазақстанның елтаңбасында мәңгі қалды.",
+    "dombyra_by_sultan_elamanov": "Домбыра — қазақтың жан дүниесін екі ішекпен жеткізетін аспап, тарихы 4000 жылдан асады. Басты сыры — күй өнері: бір оқиғаны немесе сезімді небәрі екі ішекпен айту шеберлігі. XIX ғасырда екі мектеп қалыптасты — Құрманғазы бастаған батыс дәстүрі және Тәттімбеттің әуезді шығыс мектебі. Шанағы қарағаш немесе қайыңнан ойылады, ішегі бұрын түйе қылынан, қазір нейлоннан. Ұзындығы шамамен 1260 мм, пернесі 19, 62 күй бүгінге дейін сақталған. 2010 жылы Ұлттық домбыра күні бекітіліп, 2014 жылы ЮНЕСКО тізіміне енді.",
+    "kazakh_qobyz_kobyz": "Қобыз — түркі әлеміндегі ең көне ысқы аспаптардың бірі, тегі шамамен IX ғасырға барады, оны Қорқыт ата ойлап тапты деген аңыз бар. Бір ағаштан ойылған қуысы ешкі терісімен қапталады, ал екі ішегі мен садақ тәрізді ысқышы ат жалынан тартылады. Дауысы адам үнін, боздаған түйе мен желдің үнін таңғажайып дәлдікпен жеткізеді. Ежелден бақсылардың рухтарды шақыратын, науқас емдейтін қасиетті аспабы болған. Кеңес дәуірінде бәсеңдеген өнерді XX ғасырда Ыхлас Дүкенұлы қайта тірілтті. Бүгінде Ұлттық консерваторияда өз кафедрасы бар.",
+    "kazakh_shapan": "Шапан — ерлер мен әйелдер бірдей киетін ұзын сырт киім, тегі ортағасырлық түркі-парсы дәстүрінен басталады. Матасы иесінің дәулетіне қарай жібек, барқыт немесе жүннен таңдалып, ең қымбаттарының астары қара мысық терісінен болған. Жиегі зерлі жіппен көмкеріліп, қошқар мүйіз бен қазтабан оюымен әшекейленген. Түсі де дәрежені білдірген — ақ пен қызыл-күрең құрметті адамдарға арналған. «Шапан жабу» — қазақтың ең жоғары құрмет белгісі, бұл дәстүр бүгінде президенттер мен өнер қайраткерлеріне қатысты сақталған.",
+    "taqiya_grey_m_kazakh_national_headdress": "Тақия — жаз мезгіліне арналған жеңіл дөңгелек бас киім, тегі ежелгі түркі-парсы дәстүрінен басталып, ортағасырлық миниатюраларда да кездеседі. Барқыт, шәйі немесе атластан тігіліп, ішіне жұқа кебеже салынады. Ерлер тақиясы көбіне сұр, қара, көк не күрең түсте, сыртына ақ пен зерлі жіппен қошқар мүйіз оюы кестеленеді. Бұл унисекс бас киім емес: ерлер жалаң киеді, әйелдер тек кимешек астынан тағады. Аймаққа қарай стилі өзгереді — оңтүстікте биік конус, батыста жалпақ. Бүгінде тақия жастардың заманауи ұлттық аксессуарына айналды.",
+    "taqiya_yellow_f_kazakh_traditional_headdress": "Қыз тақиясы — бойжеткен қыздың жасын білдіретін бас киім, ер тақиясынан жарқын түсі мен зерлі кестесімен ерекшеленеді. Матасы сары, қызыл немесе жасыл барқыт не жібектен алынады. Үстіне бекітілген үкі қауырсыны жаман көзден қорғайды деп саналған, ал оны жоғалту қауіп есептелген. Астынан күміс пен моншақтан тұратын шашбау түседі. Оны той-думанда, қыз ұзату салтында, тіпті тұсау кесерде киетін болған. Тұрмысқа шыққан соң оның орнын кимешек басады, ал бүгінде дизайнерлер бұл бас киімді фестивальдерге қайта әкелуде.",
+    "saukele_ethno_variant_traditional_headdress": "Сәукеле — қазақ қызының ұзату тойында киетін ең қымбат бас киімі, XIV-XVIII ғасырларда қалыптасқан. Биіктігі 70 см-ге, кейде 1 метрге жетеді, негізі қызыл барқытпен қапталып, күміс, алтын, маржан, ақықпен әшекейленген. Төбесіндегі ұзын аққу қауырсынын тек хан қыздары киюге құқылы болған. Екі бүйірінен түскен маржан шашбау қыздың әр қимылында сылдырап тұрған. Сәукелені әрбір әулет өз шеберіне жасатып, байлығын көрсеткен. Той өткен соң келіншек оны 3-5 жыл киіп, содан кейін қарапайым жаулыққа ауыстырған.",
+    "qamshy_kamshy": "Қамшы — жылқышы мен батырдың қолындағы биліктің белгісі, сабы қайыңнан немесе мүйізден шамамен 30-40 см етіп жасалады. Өрімі тайынша не өгіз терісінен 8, 16, тіпті 32 қайыстан өрілсе, шеберлер 64 өрімге дейін жеткізген. Жалпы ұзындығы 1-1,5 метр, сабы күміс тартпамен әшемделген. Мақсатына қарай түрі де әртүрлі — жеңіл жылқы қамшысы, қатты ұрыс қамшысы, әсем той қамшысы. «Қамшысы үлкен» деген сөз билік иесіне айтылады, ал оны сыйға тарту үлкен құрмет саналған. Әр жүздің өз өрім стилі болған.",
+    "besik": "Бесік — қазақ отбасының ең қасиетті заттарының бірі, «тірі» деп саналатын қайың, тал немесе арша ағашынан ойылады. Ұзындығы шамамен 700 мм, оюмен және күміс мойынтіректермен көмкеріледі. Төменгі жағындағы «шүмек» сәбидің дәретін жинайды, оған қой құйрығы бекітіледі. Сәби бес күндік болғанда әжелер оны алғаш бесікке салады, ал жүре бастаған кезде «тұсау кесер» өткізіледі. Жаман көзден қорғау үшін үстіне мысық терісі мен тұмар жабылады. Ана бесік жырлары — «әлди-әлди» — өзі де ЮНЕСКО тізіміне енген.",
+    "nomad_sabre": "Қылыш — қазақ жауынгерінің жүзді қаруы, тарихы ежелгі сақ дәуірінен басталады, VII-VIII ғасырларда дулат пен қыпшақтар арасында кеңінен тарайды. Жүзі Дамаск немесе Хорасан болатынан соғылып, сабы қайың, мүйіз немесе сүйектен жасалған. Ұзындығы 90 см, салмағы 1-1,2 кг, қынабының ұштары күміспен көмкерілген. Қылыш әулеттен әулетке мұра ретінде берілген. Жоңғар шапқыншылығы жылдарында (1723-1750) Абылай, Райымбек, Богенбай батырлар осы қылыштармен елдің азаттығын қайтарды. XIX ғасырда Кенесары ханның негізгі қаруы болды.",
+    "balbal_tas": "Балбал тас — ежелгі түркі дәуірінің (VI-IX ғасырлар) тастан қашалған адам бейнесіндегі ескерткіштері, «балбал» сөзі «баба» — ұлы ата дегенді білдіреді. Олар атақты жауынгерлер мен хандардың қабірлеріне қойылып, Қазақстанда, Моңғолияда, Алтайда жүздеген үлгісі табылған. Кейбір мүсіндер қолында тостаған ұстап, о дүниедегі мәңгі тойды бейнелейді. Мүрдемен бірге оның қаруы, тұлпары, кейде малы да жерленіп, ол о дүниеде өз мүлкімен жүреді деп есептелген. Ежелгі түркілер бұл тастарды қасиетті санап, оларға құрбандық шалған. Бүгінгі құлпытастар осы дәстүрдің жалғасы.",
+    "tamgaly_sun_man": "Таңбалы — Алматыдан 170 шақырым солтүстік-батыста орналасқан ежелгі петроглиф ескерткіші, мұнда 5000-нан аса тас сурет табылған, ең көнелері қола дәуіріне (б.з.д. XIV-XI ғасырлар) жатады. Ең әйгілісі — басы күн сәулесіндей дөңгелектеніп, қолдары кеңге жайылған «күн басты адам» бейнесі, ол түркі-иран мифологиясындағы Күн-құдайды бейнелейді деп есептеледі. Осы жерде ежелгі шамандық рәсімдер өткізіліп, жақын маңнан құрбандық орындары табылған. 2004 жылы Таңбалы ЮНЕСКО дүниежүзілік мұрасы тізіміне енді — Қазақстандағы үш нысанның бірі.",
+    "astau_tabaq": "Астау — қазақ дастарханының жүрегі, бір бөлек қайың, тал немесе шыршадан ойылып жасалатын үлкен ағаш табақ. Диаметрі 50-80 см, тереңдігі 15-20 см, жиегі қошқар мүйіз оюымен көмкеріледі. Шебер ағашты 3-6 ай кептіріп, содан соң қолмен ғана ойып шығарады. Ең үлкендері «астау патша» деп аталып, 30-40 адамдық тойға арналады. Бесбармақ ішегін үлкенге ұсыну — «бас ұсыну» рәсімі, үлкен құрметтің белгісі. Әр әулеттің бұрын өз астауы болып, ұрпаққа мұра ретінде қалдырылатын.",
+    "torsyk_kymyz": "Торсық — қымыз, су немесе шұбат сақтауға арналған қоңыр былғары ыдыс, тегі скиф-сақ дәуіріне дейін барады. Ересек тайынша не өгіз терісі мұқият тазаланып, ащы сүтпен өңделеді, содан соң екі жағы жіңішке тігіспен қосылады. Сыртына мүйіз бен өсімдік оюлары штамппен басылады, мойны жіңішке, ағаш тығынмен жабылады. Торсықтың ерекшелігі — ішіндегі қымыз ашуын жалғастырып, ыстық күнде де салқын қалады. Батыс Қазақстанда, әсіресе Атырауда мұндай ыдыс шеберлері әлі де бар. Бұл жәдігер — Батыс Қазақстан облыстық музейінің XIX ғасырлық үлгісі.",
+    "sedlo": "Ер-тоқым — жауынгер мен саятшының ажырамас серігі, тарихы ежелгі сақ дәуірінен басталады. Ағаш қаңқасы қатты қайыңнан ойылып, сырты оюлы былғармен қапталады. Ежелде тек ер адамдарға арналса, XVIII-XIX ғасырларда жіңішке әйелдер ері де пайда болды. Батыс Қазақстан облыстық мұражайының осы XIX ғасырлық үлгісі алтын жалатылған ажурлы пластиналармен, қызыл ақықпен әшекейленген — мұндай ерлер тек хандар мен бай әулеттердің меншігі болған. Толық жабдық 30-дан аса бөліктен тұрады — айыл, жүген, тізгін, үзеңгі.",
+    "aibalta": "Айбалтаның аты — «ай» (жарты ай) мен «балта» сөздерінен құралған. Жүзінің ұзындығы 15-25 см, сабы 60-80 см, салмағы 1-2 келі болатын. Бұл қару жақын шайқаста, әсіресе атпен шапқанда, жауды бір соққымен жайратуға мүмкіндік берген. Сабы күміспен, шеке-тартпалармен әшекейленген. Уақыт өте айбалта билер мен байлардың дәрежесін білдіретін нышанға айналды. Осы XIX ғ. үлгі — Батыс Қазақстан облыстық мұражайының қорында.",
+    "qalqan": "Дөңес болат парақтан соғылған қалқанның диаметрі 50-60 см, жиегі мен ортасы латунь пластинамен көмкерілген. Бетінде жаяу және атты жауынгерлер, арқар мен мысық бейнеленген, ал арасында куфи жазулары — Құраннан қорғаныш аяттары. Ішкі жағы қызыл мата мен жұмсақ былғарымен астарланып, соққыны жеңілдеткен. Мұндай қалқандар сирек шайқасқа алынып, көбіне ханзадалар мен билердің салтанат жиындарында көрінген. Осы XVIII ғ. үлгі — Ұлттық музейдің қымбат жәдігерлерінің бірі.",
+    "kubi": "Трапеция тәрізді бұл ыдыс жіңішке қарағай тақтайшалардан жиналып, үш-төрт металл шеңберпен қатайтылған, биіктігі 60-80 см. Ішіндегі піспек — ұзындығы 90 см ағаш сап, төменгі ұшында дөңгелек айырғысы бар. Биенің сүтіне ашытқы қосылып, күні бойы піспекпен 1000-2000 рет бұлғанғаннан кейін «тың қымызға» айналады. Үлкен тойларға арналған күбілер одан да үлкенірек жасалған. Ақмола, Қарағанды, Павлодар өңірлерінде бұл ыдыс өткен ғасырдың ортасына дейін қолданыста болды.",
+    "ojau": "Қайың, тал немесе қара ағаштың бір бөлек кесегінен ойылатын ожаудың ұзындығы 30-50 см, тостағаны 6-10 см тереңдікте. Ағаш ыдыс сынбайды, сырғанамайды, жеңіл әрі көш жолында тасымалдауға оңтайлы болғандықтан бағаланған. Дастарқанда ожауды үйдің үлкені ұстап, қымызды жас ретімен құяды, ал үлкен тойда бірнеше ожау бірге қызмет атқарған. Кейбір шеберлер сабын оюмен әрлеп, қабырғаға ілетін ілгек бекіткен. Ақмола өңірінен жеткен бұл ХХ ғ. басындағы үлгі бүгін этно-фестивальдерде қайта жанданып жатыр.",
+    "sandyq": "Қайың, тал, кейде самырсын ағашынан жасалатын сандықтың ұзындығы 80-120, биіктігі 40-60 см, сырты жұқа металмен қапталып беріктік пен әсемдікке қызмет еткен. Ортасы мен бүйіріне күміс, латунь пластиналар бекітілген. Ішінде қыздың жасауы — кестелі шапан, кимешек, күміс әшекей, кітап пен отбасы мұрасы сақталып, «сандығың толы болсын» деген тілек айтылатын. Құлып-механизмі нағыз өнерге айналып, кейбіреуі үш-төрт кілтпен ғана ашылған. Көш жолында түйеге артылатын бұл жиhаз көшпелі тұрмыстың ажырамас бөлігі болды.",
+    "togyzqumalaq": "«Тоғыз» және «құмалақ» сөзінен құралған атауы «тоғыз тас» дегенді білдіреді, ал тегі 4-5 мың жыл бұрын Африкада пайда болып, Жібек жолымен тараған манкала ойындарына барады. Тақтада екі жақта тоғыздан ұя, ортасында екі «қазан» орналасады, басында әр ұяда тоғыздан, барлығы 162 құмалақ болады. Ойыншылар кезекпен тастарды алып, сағат бағытымен тарата отырып, «отау» мен «түсім» тәсілдерін қолданады. Партия жарты сағаттай созылса, гроссмейстерлер арасында бірнеше сағатқа ұзаруы мүмкін. 1949 жылғы федерациядан бастап, бүгін ойын Азия ойындарында ресми әрі мектеп бағдарламасында бар.",
+    "sazsyrnai": "Тегі қола дәуіріне, б.з.д. II-I мыңжылдыққа тірелетін бұл балшықтан күйдірілген аспаптың пішіні үлкен жұмыртқаны еске түсіреді, бетінде 6-12 дыбыс тесігі бар. Ежелде негізінен малшылар мен балалардың аспабы болып, жайлауда мал бағу кезінде ойналған, кейде діни рәсімдерде де қолданылған. Дыбыс диапазоны шектеулі болғанмен, үні тұнық әрі ерекше. Бүгін қыш шеберлері оны қой, түйе, құс немесе шаңырақ бейнесінде қайта жаңғыртуда. Ұлттық музейдегі нұсқа Түркістанның 1500 жылдығына (2000 ж.) орай жасалып, Қожа Ахмет Ясауи мазары бейнеленген.",
+    "shanqobyz": "Азияда 4-5 мың жыл бұрын пайда болған бұл тілшелі аспап түркі, моңғол, фин-угор халықтарында, тіпті америкалық үндістерде де кездеседі. Металл пластинаның тілшесі саусақпен қозғалады, ал ауыз қуысы резонатор қызметін атқарып, тіл мен ерін өзгеруі арқылы түрлі әуен туындайды. Түнде ойнау «жан рухтарды шақыру» деп есептеліп, жас жігіт сүйген қызына деген сезімін де осылай білдірген. ХХ ғ. басында ұмыт бола бастаған дәстүр бүгін қайта жандануда. Ақмола облыстық мұражайындағы үлгі — 2015 жылы дәстүрлі техникамен жасалған заманауи көшірме.",
+    "perstenj": "«Құс тұмсығы» жүзігінің касты — тас ұяшығы — ұштары үшкірленген сопақ пішінде, шынымен де құс тұмсығын еске түсіреді. Жоғары сапалы күміске агат, ақық немесе бирюза орнатылған, беті скан бен зернь техникасымен, өрілген косичка оюмен әрленген. Жүзік тек әшекей емес, тұмар да саналған — тас иесін жаман көзден қорғайды деп есептеліп, әр тас өз мағынасына ие болған: агат — бедел, ақық — береке, бирюза — сәттілік. Костанай, Ақтөбе өңірлерінде зергерлік құпияны ұрпақтан ұрпаққа беретін әулеттер болған. Бұл XIX ғ. туынды Костанай облыстық мұражайында сақтаулы.",
+    "bilezik": "Қазақ әйелдерінің білезік тағу дәстүрі сақ дәуірінен, б.з.д. VII-V ғасырлардан бастау алады — ежелгі қорымдардан осындай әшекейлер табылған. Заманауи зергер Шапабаев Қайрат Бұлатұлы жасаған бұл үлгі — тұйықталмаған, қолға оңай кигізілетін массивті білезік, беті геометриялық оюмен әрленген, ортасында үш овал агат тас бірдей орналасқан. Ежелгі түркі дәстүрінде білезік тұмар да саналып, оң қолда көрген адамға бақыт қонады деп сенілген, сондықтан қыздарға той сыйы ретінде берілген. Туынды — Шаймардан Сариев атындағы мұражайдың бай жинағында.",
+    "kese": "Бұл ХVIII-ХІХ ғ. қыш кесе Ұлы Жібек жолы бойындағы Отырар, Тараз, Сайрам қалаларынан бастау алады — Әл-Фараби туған, V-ХVІ ғасырда гүлденген Отырар Орталық Азияның ірі құмырашылық орталықтарының бірі болған. Жергілікті балшықтан гончарлы дөңгелекте қалыптасып, 800-1000°C-де күйдірілген бұл ыдыс ак глазурь үстіне көгілдір-қоңыр бояулармен салынған оюымен ерекшеленеді. Оюда өмір ағашы, геометриялық фигуралар, куфи жазулары кездеседі. Қымыз бен шайға арналған кесе Шымкент маңындағы «Шым қала» кешенінің экспонаты, ортағасырлық Отырар рухын жаңғыртады.",
+    "korzhyn": "Ат немесе түйеге асылатын бұл қос қапшықтың тарихы сақ дәуірінен басталады — ұқсас тоқыма сынықтары Пазырық қорғандарынан табылған. Қой немесе түйе жүнінен терме, қажаки тәсілімен тоқылған қоржынның екі жағында бірдей ою салынып, бұл тепе-теңдік белгісі саналады. Ортасындағы ромб медальон күн мен отбасын, қошқар мүйіз молшылықты бейнелейді, түс палитрасы марен мен куркумадан алынған қою қызылға негізделген. Ұштарындағы жіп бүрлері көз тиюден қорғайды деп есептелген. Ішіне жол азығы мен ыдыс-аяқ салынып, қыз ұзатылғанда жасаудың бөлігі болған.",
+    "syrmaq": "Сырмақтың негізін киіз құрайды, ал ерекшелігі — «ою жапсыру» мозаика техникасы: екі түсті (қара-қоңыр мен ақ) киіз басылып, шебер бірдей кесінділерді ойып алып, ұсақ тігіспен біріктіреді. Бір сырмаққа 3-6 ай уақыт кетеді. Ортадағы үш ромб-медальон үш жүзді немесе әулетті бейнелесе, ішіндегі бұтақ мотиві көне мифологиядан жеткен «өмір ағашын», айналасындағы қошқар мүйіз малшылық берекесін білдіреді. Қою қоңыр түс басым, медальон іші ақ, кейбір тұста күлгін-қызыл акцент бар. Төрге жайылатын бұл кілем қыздың жасауының бөлігі болды, бүгін ЮНЕСКО тізіміне ұсынылуда.",
+    "dulyga": "Дулығаның тегі сақ, ғұн, түркі дәуірінің темір шлемдеріне, б.з.д. VII-V ғасырларға тарайды, ал Жоңғар шапқыншылығында (1723-1750) Абылай, Қабанбай, Наурызбай батырлар осындай шлемде шайқасқан. Заманауи ұста Алибай Берік Сатынбекұлы жасаған бұл реконструкцияның күмбез бөлігі бір парақ темірден соғылып, төбесінде үшкір ілгек, маңдайда көзді қорғайтын пластина бар. Сыртында Құраннан аяттар арабтық каллиграфиямен ойылған. Төменінде желкені сақтайтын бармица — 5-8 мм темір сақиналардан тоқылған, бір данасында 15-20 мың сақина болуы мүмкін. Мұндай қымбат жабдық тек хандар мен батырларға бұйырған.",
+    "asyk": "Сақ-скиф дәуірінен бұрын пайда болған бұл ойын қой асығының төрт қырына негізделген: сақа (тегіс жоғарғы бет), алшы (дөңес), бүк (қайыс) — әрқайсысы өз мәнге ие. Ғасырлар бойы балалар «Хан талапай», «Атбақыл», «Бес тас» сияқты ондаған ойын түрін меңгерген, ал сақа-асық ойынның «патшасы» саналған. Асық логика, тапқырлық, дәлдік пен қарым-қатынасты шыңдап, ежелгі рәсімдерде сәуегейлікте де қолданылған. Ұқсас ойындар түркі, моңғол, парсы халықтарында да кездеседі. Бүгін мектептерде асық сабағы өтіп, 2017 жылы ойын ЮНЕСКО тізіміне енген."
+  },
+  "ru": {
+    "yurt_low_quality_texture": "Юрта — жилище, доведённое кочевым опытом до совершенной простоты: собрать и разобрать её можно за десятки минут. Три опоры — кереге, уыки и шанырак — держатся друг за друга точной подгонкой дерева и войлока, без единого гвоздя. Дверь по традиции смотрит на закат, а утренний свет с востока символизирует начало новой жизни. Внутри тоже строгий порядок: у гостя и у хозяина — своё место. В 2014 году ЮНЕСКО включила искусство юрты в список нематериального наследия, а шанырак и сегодня украшает герб Казахстана.",
+    "dombyra_by_sultan_elamanov": "Домбра передаёт целую историю или чувство всего двумя струнами — это искусство кюя, а её собственная история насчитывает более 4000 лет. В XIX веке сложились две школы: западная, связанная с именем Курмангазы, и восточная — певучая традиция Таттимбета. Корпус вырезают из карагача или берёзы, струны, некогда свитые из верблюжьего волоса, сегодня делают из нейлона. Длина инструмента около 1260 мм, ладов — 19, сохранилось 62 кюя. В 2010 году учреждён Национальный день домбры, а в 2014-м искусство игры на ней вошло в список ЮНЕСКО.",
+    "kazakh_qobyz_kobyz": "Кобыз — один из древнейших смычковых инструментов тюркского мира, его происхождение относят к IX веку, а изобретение легенда приписывает Коркыт-ата. Полость, выдолбленная из цельного дерева, обтягивается козьей кожей, а струны и смычок свиваются из конского волоса. Голос кобыза с поразительной точностью передаёт человеческий крик, стон верблюдицы, завывание ветра. Издревле это был священный инструмент бақсы — шаманов, призывавших духов и лечивших больных. В советское время традиция пришла в упадок, и лишь в XX веке Ыкылас Дукенулы возродил её. Сегодня в Национальной консерватории есть кафедра кобыза.",
+    "kazakh_shapan": "Шапан — длинный халат, который в равной мере носили мужчины и женщины, его корни уходят в средневековую тюрко-персидскую традицию. Ткань выбирали по достатку — шёлк, бархат или шерсть, а самые дорогие экземпляры подбивали мехом чёрной кошки. Край отделывали золотной нитью с орнаментом в виде бараньего рога и гусиной лапки. Цвет указывал на статус: белые и красно-бордовые шапаны предназначались для самых уважаемых людей. Вручение шапана — «шапан жабу» — высший знак почёта, которым и сегодня чествуют новых президентов и деятелей искусства.",
+    "taqiya_grey_m_kazakh_national_headdress": "Тюбетейка — лёгкий круглый убор для тёплого сезона, чьи корни уходят в древнюю тюрко-персидскую традицию и встречаются уже на средневековых миниатюрах. Её шьют из бархата, шёлка или атласа, с внутренним каркасом, сохраняющим форму. Мужские тюбетейки чаще серого, чёрного или бордового цвета, украшены вышивкой белой и золотной нитью — бараний рог, древо жизни. Это не унисекс-убор: мужчины носят его открыто, женщины — только под кимешеком. Стиль меняется по региону: высокие конусовидные на юге, плоские на западе. Сегодня тюбетейка — модный аксессуар молодёжи.",
+    "taqiya_yellow_f_kazakh_traditional_headdress": "Девичья тюбетейка отмечала возраст девушки на выданье, отличаясь от мужской яркими цветами и золотной вышивкой. Ткань — жёлтый, красный или зелёный бархат либо шёлк. Перо филина сверху, по поверью, защищало от дурного глаза, а его потеря считалась дурным знаком. Снизу свисал шашбау — подвески из серебра и бус. Убор надевали на свадебные торжества, проводы невесты и даже тусау кесер ребёнка. После замужества его сменял кимешек, а сегодня дизайнеры возрождают этот убор для фестивалей.",
+    "saukele_ethno_variant_traditional_headdress": "Саукеле — самый дорогой головной убор, который казахская невеста надевала на свадьбу; его форма сложилась в XIV-XVIII веках. Высота достигает 70 см, а порой и метра: основа обтянута красным бархатом и украшена серебром, золотом, жемчугом, сердоликом. Длинное лебединое перо на макушке имели право носить только дочери ханов. По бокам свисал жемчужный шашбау, позвякивавший при каждом движении невесты. Убор заказывали у мастера семьи как демонстрацию её достатка. После свадьбы саукеле носили ещё 3-5 лет, затем меняли на скромный жаулык.",
+    "qamshy_kamshy": "Камча — знак власти в руке табунщика и батыра: рукоять длиной 30-40 см вытачивают из берёзы или рога. Плеть плетут из кожи телёнка или быка — в 8, 16 или 32 ремешка, а высшим мастерством считалось плетение в 64 нити. Общая длина — 1-1,5 метра, рукоять отделывают серебром. Вид камчи менялся по назначению: лёгкая для верховой езды, жёсткая боевая, нарядная свадебная. Фраза «у него большая камча» говорилась о человеке, наделённом властью, а подарить её считалось знаком уважения. У каждого рода был свой стиль плетения.",
+    "besik": "Бесик — одна из самых почитаемых вещей в казахской семье, детская колыбель, которую вырезают из берёзы, ивы или можжевельника — деревьев, считавшихся «живыми». Длина около 700 мм, её украшают резьбой и серебряными накладками. В нижней части — «шумек», отверстие для нужд младенца, с курдючным хвостиком ягнёнка. На пятый день жизни бабушки впервые укладывают в неё младенца, а когда ребёнок начинает ходить — проводят «тусау кесер». Сверху колыбель накрывают шкуркой и оберегом-тумаром. Колыбельные «алди-алди» сами вошли в список ЮНЕСКО.",
+    "nomad_sabre": "Сабля — клинковое оружие казахского воина, чья история восходит к сакской эпохе, а в VII-VIII веках широко применялась дулатами и кипчаками. Клинок ковали из дамасской или хорасанской стали, рукоять — из берёзы, рога или кости. Длина клинка около 90 см, вес 1-1,2 кг, концы ножен отделывали серебром. Саблю передавали в семье из поколения в поколение. В годы джунгарского нашествия (1723-1750) батыры Абылай, Райымбек и Богенбай сражались этими саблями, отвоёвывая свободу народа. В XIX веке сабля оставалась главным оружием хана Кенесары.",
+    "balbal_tas": "Балбал тас — каменные изваяния в облике человека, созданные в эпоху древних тюрков (VI-IX века); слово «балбал» происходит от «баба» — великий предок. Их ставили на могилах прославленных воинов и ханов, сотни таких памятников найдены в Казахстане, Монголии, на Алтае. У одних изваяний руки держат чашу — символ вечного пира в загробном мире, у других вырезаны изображения сабли. Вместе с покойным хоронили его оружие, коня, а порой и скот, полагая, что он продолжит пользоваться имуществом в ином мире. Древние тюрки почитали эти фигуры как священные и приносили им жертвы. Современные надгробия — продолжение этой традиции.",
+    "tamgaly_sun_man": "Тамгалы — древний памятник наскального искусства в 170 км к северо-западу от Алматы, где найдено свыше 5000 изображений, самые ранние из которых относятся к бронзовому веку (XIV-XI века до н.э.). Самое знаменитое из них — «солнцеголовый человек»: голова-диск, испускающая лучи, раскинутые руки — предположительно, образ Бога-Солнца из тюрко-иранской мифологии. Здесь некогда проводились шаманские обряды, поблизости найдены жертвенные площадки. В 2004 году Тамгалы включили в список Всемирного наследия ЮНЕСКО — один из трёх объектов такого статуса в Казахстане.",
+    "astau_tabaq": "Астау — сердце казахского дастархана, большое деревянное блюдо, вырезанное из цельного куска берёзы, ивы или ели. Диаметр 50-80 см, глубина 15-20 см, край украшен резьбой в виде бараньего рога. Мастер сушит дерево 3-6 месяцев, затем вручную выдалбливает форму специальным резцом. Самые большие блюда — «астау патша» — делают для торжеств на 30-40 человек. Поднести старшему кишку бешбармака — особый обряд «бас ұсыну», знак глубокого почёта. У каждой семьи раньше было своё астау, передававшееся по наследству.",
+    "torsyk_kymyz": "Торсык — коричневый кожаный сосуд для хранения кумыса, воды или шубата, чьё происхождение восходит к скифо-сакской эпохе. Кожу взрослого телёнка или быка тщательно очищают и обрабатывают кислым молоком, затем сшивают два края тонким швом. Снаружи наносят тиснёный орнамент — рог, растительные мотивы, горловину закрывают деревянной пробкой. Особенность торсыка в том, что кумыс внутри продолжает бродить и остаётся прохладным даже в жару. В Западном Казахстане до сих пор работают мастера, изготавливающие такие сосуды. Этот экспонат — образец XIX века из Западно-Казахстанского музея.",
+    "sedlo": "Седло — неотъемлемый спутник воина и охотника, чья история восходит к сакской эпохе. Деревянный каркас вытачивали из твёрдой берёзы, снаружи покрывали резным орнаментом. В древности седло предназначалось только мужчинам, но в XVIII-XIX веках появились изящные женские сёдла. Этот экземпляр XIX века из Западно-Казахстанского музея украшен ажурными позолоченными пластинами и вставками сердолика — такие сёдла принадлежали лишь ханам и богатым семьям. Полная упряжь включает более 30 деталей — подпругу, узду, поводья, стремена.",
+    "aibalta": "Название «айбалта» происходит от слов «ай» (полумесяц) и «балта» (топор) — по форме лезвия. Лезвие достигало 15-25 см, рукоять — 60-80 см, а вес оружия — 1-2 кг. Лёгкая айбалта позволяла в ближнем бою, особенно на скаку, свалить противника одним ударом. Рукоять отделывали серебром — накладками и кольцами. Со временем она стала знаком отличия биев и состоятельных людей. Экземпляр XIX века хранится в Западно-Казахстанском областном музее.",
+    "qalqan": "Выпуклый стальной щит диаметром около 50-60 см отделан по краю и в центре латунными пластинами. На поверхности выгравированы пешие и конные воины, архары и барсы, а между ними — надписи куфи с кораническими аятами. Изнутри щит обшит красной тканью и мягкой кожей, смягчающей удар. Такие щиты редко брали в бой — чаще их носили ханы и бии на торжествах. Этот экземпляр XVIII века — одна из жемчужин Национального музея.",
+    "kubi": "Сужающийся кверху сосуд собран из тонких сосновых дощечек и стянут тремя-четырьмя обручами, высота — 60-80 см. Внутри — писпек, деревянная мутовка около 90 см с резным кружком на конце. В кобылье молоко добавляют закваску и весь день взбивают писпеком 1000-2000 раз, пока не получится свежий «тың қымыз». Для торжеств кубы делали крупнее обычного. В Акмолинской, Карагандинской, Павлодарской областях сосуд использовали в быту вплоть до середины прошлого века.",
+    "ojau": "Вырезанный из цельного куска берёзы, ивы или чёрного дерева ковш достигает 30-50 см в длину, глубина черпака — 6-10 см. Деревянная утварь ценилась у кочевников за то, что не бьётся, не скользит и легка в перевозке. Ожау всегда держит старший в доме, разливая кумыс по старшинству, а на больших торжествах работают сразу несколько ковшей. Некоторые мастера украшали рукоять резьбой и крепили крючок для стены. Этот экземпляр начала XX века из Акмолинской области сегодня возрождается на фестивалях.",
+    "sandyq": "Сундук из берёзы, ивы или порой кедра достигает 80-120 см в длину и 40-60 см в высоту, снаружи обшит тонким металлом для прочности и красоты. В центре и по бокам закреплены резные серебряные и латунные пластины. Внутри хранили жасау — приданое невесты, расшитый шапан, кимешек, украшения — и произносили пожелание «пусть сундук будет полон». Замковый механизм считался искусством: некоторые сундуки открывались лишь тремя-четырьмя ключами. В перекочёвках его навьючивали на верблюда.",
+    "togyzqumalaq": "Название игры означает «девять шариков», а сама она восходит к семейству манкала, зародившемуся в Африке 4-5 тысяч лет назад и распространившемуся по Шёлковому пути. На доске по девять лунок с каждой стороны и два «казана» в центре, в начале партии в каждой лунке — по девять шариков, всего 162. Игроки поочерёдно раскладывают шарики против часовой стрелки, применяя приёмы «отау» и «түсім». Партия длится около получаса, но поединок гроссмейстеров может растянуться на часы. С 1949 года игра вошла в программу Азиатских игр и казахстанских школ.",
+    "sazsyrnai": "Этот обожжённый из глины духовой инструмент восходит к бронзовому веку, II-I тысячелетиям до нашей эры, а его форма напоминает крупное яйцо с 6-12 отверстиями. В старину на нём играли пастухи и дети на летних джайляу, порой инструмент использовали и в обрядах, поскольку глина считалась связанной с природой. Диапазон звучания ограничен, зато тембр чист и своеобразен. Сегодня гончары возрождают его в форме барана, верблюда или шанырака. Экземпляр Национального музея создан к 1500-летию Туркестана в 2000 году с изображением мавзолея Ходжи Ахмеда Ясави.",
+    "shanqobyz": "Возникший в Азии 4-5 тысяч лет назад язычковый инструмент известен у тюркских, монгольских, финно-угорских народов и даже у американских индейцев. Металлическая пластина с тонким язычком зажата между зубами, а ротовая полость служит резонатором — меняя положение языка и губ, музыкант извлекает разные мелодии. Ночная игра на шанкобызе считалась «призывом духов», а юноша исполнял на нём мелодию, признаваясь в чувствах избраннице. Почти забытый в начале XX века, сегодня он возрождается. Экземпляр Акмолинского музея — реплика 2015 года по традиционной технике.",
+    "perstenj": "У перстня «Птичий клюв» каст — гнездо для камня — овальной формы с заострёнными концами, напоминающими клюв птицы, откуда и название. В серебряное гнездо вставлен агат, сердолик или бирюза, а поверхность украшена сканью и зернью с плетёным узором по краю. Перстень служил не просто украшением, а оберегом: камень защищал от дурного глаза, причём агат означал авторитет, сердолик — благополучие дома, бирюза — удачу в пути. В Костанайской и Актюбинской областях секреты ремесла передавались только по наследству. Изделие XIX века хранится в Костанайском музее.",
+    "bilezik": "Браслеты носили казахские женщины ещё в сакскую эпоху, VII-V века до нашей эры — подобные украшения находят в древних курганах. Представленный экземпляр — работа ювелира Шапабаева Кайрата Булатовича: массивный разомкнутый браслет с геометрическим орнаментом, чей центральный акцент — три овальных агата, равномерно расположенных по кругу. По тюркской традиции браслет служил ещё и оберегом: увидеть его на правой руке значило обрести счастье, поэтому его дарили на свадьбу. Изделие входит в собрание Музея имени Шаймардана Сариева.",
+    "kese": "Эта пиала XVIII-XIX веков происходит из городов Шёлкового пути — Отрара, Тараза, Сайрама, причём средневековый Отрар, родина Аль-Фараби, процветавший с V по XVI век, был крупным гончарным центром Центральной Азии. Слепленная из местной глины и обожжённая при 800-1000°C, пиала расписана по белой глазури кобальтовыми и коричневыми красками. В орнаменте — растительные мотивы, напоминающие древо жизни, и надписи куфи. Такие пиалы использовали для кумыса и чая. Сегодня экспонат хранится в комплексе «Шым-кала» близ Шымкента.",
+    "korzhyn": "История парных переметных сум, которые вешали на коня или верблюда, восходит к сакской эпохе — похожие тканые фрагменты находили в Пазырыкских курганах. Коржын ткут из плотной шерсти техниками терме и қажаки, орнамент повторяется на обеих сторонах как символ равновесия. В центре — ромбовидный медальон, символ солнца и семьи, вокруг — узор бараньего рога, а палитру с преобладанием густо-красного дают марена и куркума. Кисти по краям оберегали от сглаза. Коржын хранил дорожную еду и часто входил в приданое невесты.",
+    "syrmaq": "Основу сырмака составляет войлок, а ценность придаёт техника «ою жапсыру» — мозаичная аппликация: из двух полотен разного цвета мастерица вырезает одинаковые фрагменты и сшивает их мелким швом. На один ковёр уходит от трёх до шести месяцев. Три ромбовидных медальона толкуют как символ трёх жузов, ветвящийся узор внутри — как «древо жизни», а орнамент бараньего рога отсылает к скотоводческому достатку. В палитре преобладает густо-коричневый с белыми вставками и акцентами лилового и красного. Ковёр стелили в юрте на почётное место и включали в приданое.",
+    "dulyga": "Истоки дулыги восходят к железным шлемам сакской и тюркской эпох, VII-V векам до нашей эры, а во время джунгарского нашествия 1723-1750 годов в таких шлемах сражались батыры Абылай, Кабанбай, Наурызбай. Реконструкция мастера Алибая Берика Сатынбекулы повторяет подлинники XVIII-XIX веков: купол выкован из цельного листа, на макушке — острое навершие, налобная пластина защищает глаза. Снаружи — орнамент арабской каллиграфии с кораническими аятами. Бармица из колец 5-8 мм могла содержать 15-20 тысяч звеньев — такая роскошь была доступна лишь ханам и знатным батырам.",
+    "asyk": "Игра, уходящая корнями во времена задолго до скифо-сакской эпохи, строится вокруг четырёх сторон бараньей кости: сака (гладкая), алшы (выпуклая) и бук (вогнутая) — каждая со своим значением. Веками дети осваивали десятки вариантов — «Хан талапай», «Атбакыл», «Бес тас», а сака-асык считался «царём» игры. Асык развивал логику, смекалку и точность, а в древних обрядах кость использовали для гадания. Похожие игры бытуют у тюркских, монгольских и персидских народов. В 2017 году игра вошла в список нематериального наследия ЮНЕСКО."
+  },
+  "en": {
+    "yurt_low_quality_texture": "The yurt is nomadic engineering refined to elegant simplicity: it can be raised or struck in minutes. Its three supports — kerege, uyk poles, and the shanyrak crown — hold together purely through the fit of wood and felt, without a single nail. The door faces the sunset, while morning light from the east was said to mark a new life beginning. The interior follows a strict order, with a set place for guests and hosts. In 2014 UNESCO inscribed yurt-making as intangible heritage, and the shanyrak still crowns Kazakhstan's state emblem.",
+    "dombyra_by_sultan_elamanov": "The dombra can carry a whole story or a private feeling through just two strings — the art of the küi — and its own history stretches back over 4,000 years. Two schools took shape in the 19th century: a Western tradition tied to Kurmangazy, and an Eastern one, led by Tattimbet, known for its lyrical style. The body is carved from elm or birch, and the strings, once twisted from camel hair, are now nylon. It measures about 1,260 mm with 19 frets, and roughly 62 küis survive today. National Dombra Day began in 2010, and in 2014 the art of dombra playing joined UNESCO's heritage list.",
+    "kazakh_qobyz_kobyz": "The qobyz is among the oldest bowed instruments of the Turkic world, dated to around the 9th century, and legend credits its invention to Korkyt-ata. Its hollow body, carved from a single piece of wood, is covered with goat hide, while both strings and bow are twisted from horsehair. Its voice can render the human cry, the moan of a mourning camel, or the wail of the wind with striking precision. It was long the sacred instrument of baqsy shamans, used to summon spirits and heal the sick. Performance declined under Soviet rule until Ykhlas Dukenuly revived it in the 20th century. Today the National Conservatory has its own kobyz department.",
+    "kazakh_shapan": "The shapan is a long outer robe worn equally by men and women, its roots reaching to the medieval Turkic-Persian tradition. The fabric reflected the wearer's means — silk, velvet, or wool — and the finest robes were lined with black cat fur. Edges were trimmed with gold thread in motifs like the ram's horn and goose foot. Color signaled status too: white and deep crimson-red were reserved for the most respected figures. Presenting a shapan — \"shapan zhabu\" — was the highest mark of honor, a tradition still observed when presidents and artists receive the gift of a robe.",
+    "taqiya_grey_m_kazakh_national_headdress": "The taqiya is a light, round summer cap rooted in the ancient Turkic-Persian tradition, and similar shapes already appear in medieval miniatures. It is sewn from velvet, silk, or satin, with a thin inner frame holding its shape. Men's taqiyas are usually grey, black, or maroon, embroidered with white and gold thread in motifs like the ram's horn. It is not unisex — men wear it bare-headed, while women wear it only beneath a kimeshek. Style shifts by region: tall and conical in the south, flat in the west. Today it is a fashionable accessory worn by young people at celebrations.",
+    "taqiya_yellow_f_kazakh_traditional_headdress": "The girl's taqiya marked the age of a young woman of marriageable age, set apart from the men's version by bright colors and gold embroidery. The fabric was yellow, red, or green velvet or silk. An owl feather on top was believed to ward off the evil eye, and losing it was a bad omen. Silver ornaments and beads, the shashbau, hung beneath it. It was worn at weddings, a bride's farewell, and even a child's tusau keser ceremony. After marriage it gave way to the kimeshek, and today designers are reviving it for festivals.",
+    "saukele_ethno_variant_traditional_headdress": "The saukele was the most costly headdress a Kazakh bride wore at her wedding, a form that took shape between the 14th and 18th centuries. It can reach 70 cm, sometimes a full meter, its base covered in red velvet and set with silver, gold, pearls, and carnelian. Only khans' daughters were permitted the long swan feather fixed at the crown. Strands of pearl shashbau hung from either side, chiming with the bride's every movement. Each family commissioned its own craftsman as a display of wealth, and after the wedding it was worn another three to five years before giving way to the modest zhaulyq.",
+    "qamshy_kamshy": "The qamshy is a mark of authority in the hand of a herdsman or batyr: its handle, about 30-40 cm long, is turned from birch or horn. The lash is braided from calf or bullock hide — 8, 16, or even 32 strips, with the finest craftsmen managing 64. Its length runs 1 to 1.5 meters, the handle trimmed with silver. Its form varied by purpose: light for riding, stiff for battle, ornate for weddings. To say a man \"has a large qamshy\" meant he held power, and gifting one was a mark of deep respect. Each clan favored its own braiding style.",
+    "besik": "The besik, one of the most sacred objects in a Kazakh household, is a cradle carved from birch, willow, or juniper — woods regarded as \"living.\" It measures about 700 mm, decorated with carving and silver fittings. Its lower section holds the shumek, a fitting that channels the infant's waste, fitted with a lamb's tail. Grandmothers first place the baby in it on the fifth day of life, and when the child begins to walk, the tusau keser ceremony cuts symbolic ties. A cat's pelt and a tumar amulet guard the cradle from the evil eye. The lullabies known as \"äldi-äldi\" are themselves inscribed on the UNESCO list.",
+    "nomad_sabre": "The sabre was the bladed weapon of the Kazakh warrior, its history reaching to the Saka era and seeing wide use among the Dulat and Qypshaq tribes by the 7th-8th centuries. Blades were forged from Damascus or Khorasan steel, handles from birch, horn, or bone. The blade ran about 90 cm and weighed 1-1.2 kg, its scabbard ends fitted with silver. A sabre was typically passed down within a family across generations. During the Dzungar invasions (1723-1750), batyrs such as Abylai, Raiymbek, and Bogenbai fought with such sabres to win back the nation's freedom. In the 19th century it remained Khan Kenesary's principal weapon.",
+    "balbal_tas": "Balbal tas are stone figures carved in human likeness during the era of the ancient Turks (6th-9th centuries); the word \"balbal\" derives from \"baba,\" meaning great ancestor. They marked the graves of warriors and khans, and hundreds have been found across Kazakhstan, Mongolia, and the Altai. Some figures hold a cup, representing an eternal feast in the afterlife; others bear a carved sabre. The deceased was buried with his weapons, horse, and sometimes livestock, believed to serve him beyond death. The ancient Turks held these figures sacred, offering sacrifices before them. Today's Kazakh gravestones continue this tradition.",
+    "tamgaly_sun_man": "Tamgaly is an ancient rock-art site 170 km northwest of Almaty, where more than 5,000 carvings have been found, the earliest dating to the Bronze Age (14th-11th centuries BCE). Its most famous image is the \"Sun-Headed Man\": a disk-shaped head radiating rays, arms spread wide, thought to depict a sun deity from Turkic-Iranian mythology. The site once hosted shamanic rituals, and sacrificial platforms have been found nearby. In 2004, Tamgaly was inscribed on UNESCO's World Heritage List, one of only three sites in Kazakhstan to hold that status.",
+    "astau_tabaq": "The astau is the heart of the Kazakh dastarkhan, a large wooden bowl carved from a single piece of birch, willow, or spruce. It measures 50-80 cm across and 15-20 cm deep, its rim carved with ram's-horn motifs. A craftsman dries the wood for three to six months, then hollows it entirely by hand with a special chisel. The largest bowls, called \"astau patsha,\" were made for feasts of 30-40 guests. Offering the besbarmaq's intestine to an elder — the \"bas usynu\" ritual — is a gesture of deep respect. Each family once owned its own astau, passed down as an heirloom.",
+    "torsyk_kymyz": "The torsyq is a brown leather flask for storing kumys, water, or shubat, its origins reaching back to the Scythian-Saka era. The hide of an adult calf or bullock is carefully cleaned and treated with sour milk, then its two edges joined with a fine seam. The exterior is stamped with horn and plant motifs, and the narrow neck is stoppered with a wooden plug. What sets the torsyq apart is that kumys keeps fermenting naturally inside it and stays cool even in the heat. Craftsmen in Western Kazakhstan still make such vessels today, and this piece is a genuine 19th-century example from the West Kazakhstan Regional Museum.",
+    "sedlo": "The saddle was the inseparable companion of the warrior and hunter, its history reaching back to the Saka era. Its wooden frame was carved from hard birch and finished with tooled leather ornament. In ancient times saddles were made only for men, but by the 18th-19th centuries slender women's saddles also appeared. This 19th-century example from the West Kazakhstan Regional Museum is decorated with openwork gilded panels and carnelian inlays — such saddles belonged only to khans and wealthy families. A full set of tack includes more than 30 parts, from girth to bridle, reins, and stirrups.",
+    "aibalta": "The name aibalta combines \"ai\" (crescent moon) and \"balta\" (axe), for the shape of its blade. The blade ran 15–25 cm, the handle 60–80 cm, and the whole weapon weighed just 1–2 kg. Light and well-balanced, it let a warrior fell an opponent with a single blow, especially from horseback. Handles were often finished in silver fittings and rings. Over time it became a mark of rank for biys and wealthy men. This 19th-century piece is held at the West Kazakhstan Regional Museum.",
+    "qalqan": "This convex steel shield, roughly 50–60 cm across, is trimmed at the rim and center with brass plates. Its surface is engraved with warriors on foot and horseback, argali and snow leopards, and Kufic inscriptions bearing Qur'anic verses. Inside, red cloth and soft leather cushion the force of a blow. Such shields rarely saw real combat, belonging instead to khans and biys displayed at ceremonies. This 18th-century piece ranks among the National Museum's finest holdings.",
+    "kubi": "Narrower at the top, this vessel is built from thin pine staves bound by three or four hoops and stands 60–80 cm tall. Inside sits the pispek, a wooden churn about 90 cm long with a carved disc at its end. A starter is stirred into mare's milk, then churned 1,000 to 2,000 times a day until it ferments into fresh tyng qymyz. For celebrations, kubis were made larger still. Households in Akmola, Karaganda, and Pavlodar kept such vessels in daily use into the mid-20th century.",
+    "ojau": "Carved from a single piece of birch, willow, or ebony, the ladle runs 30–50 cm long with a bowl 6–10 cm deep. Nomads prized wooden tableware because it neither shatters nor slips and packs easily for travel. The eldest at the table always wields the ojau, pouring kumys by seniority, and at large feasts several may be at work at once. Some craftsmen carved the handle and fitted a hook for hanging. This early 20th-century piece from Akmola now reappears at ethnographic festivals.",
+    "sandyq": "This chest of birch, willow, or occasionally cedar measures 80–120 cm long and 40–60 cm high, clad in thin metal for both strength and ornament. Carved silver and brass panels are set into its center and sides. Inside was kept the jasau, a bride's dowry of embroidered garments and jewelry, given with the wish \"may your chest be full.\" Its locking mechanism was a true art — some needed three or four keys to open. Loaded onto a camel, it traveled with the family on migrations.",
+    "togyzqumalaq": "The name means \"nine pebbles,\" and the game belongs to the mancala family, which arose in Africa some 4,000–5,000 years ago and spread along the Silk Road. Nine pits line each side of the board, with two \"qazan\" pits at center; play opens with nine pebbles per pit, 162 in total. Players sow pebbles counter-clockwise, using tactics like \"otau\" and \"tusim\" to capture stones. A casual game runs half an hour, though grandmasters can play for hours. Since 1949 it has held a place at the Asian Games and in schools.",
+    "sazsyrnai": "This clay wind instrument traces to the Bronze Age, the 2nd–1st millennia BCE, shaped like a large egg with 6 to 12 finger holes. It was played mainly by shepherds and children on summer pastures, and occasionally in religious rites, since clay was thought to connect with nature. Its range is narrow, but the tone is clear and distinctive. Today potters revive it in forms such as sheep, camels, or the shanyrak. The National Museum's example marks Turkistan's 1,500th anniversary in 2000, decorated with the Mausoleum of Khoja Ahmed Yasawi.",
+    "shanqobyz": "Arising in Asia some 4,000–5,000 years ago, this reed instrument is known among Turkic, Mongolian, and Finno-Ugric peoples, and even Native Americans. A metal plate with a thin tongue is held between the teeth while a finger sets it vibrating, and the mouth acts as a resonator, shaping melodies through the tongue and lips. Played at night, it was believed to \"call the spirits,\" and a young man might use it to court a chosen girl. Nearly forgotten by the early 20th century, it is being revived today. The Akmola Museum's piece is a 2015 replica made by traditional technique.",
+    "perstenj": "On the \"Bird's Beak\" ring, the bezel is oval with pointed ends genuinely resembling a bird's beak, giving the piece its name. Set in fine silver with agate, carnelian, or turquoise, its surface is worked in filigree and granulation, bordered by a plaited pattern. The ring served as a tumar, a protective amulet: agate meant authority, carnelian a prosperous household, turquoise a safe journey. Whole jeweler dynasties once worked in Kostanai and Aktobe, guarding their secrets as family knowledge. This 19th-century piece is held at the Kostanai Regional Museum.",
+    "bilezik": "Kazakh women have worn bracelets since the Saka era, the 7th–5th centuries BCE, as pieces found in ancient burial mounds attest. This example, by the contemporary jeweler Shapabayev Kairat Bulatuly, is an open-form bracelet with geometric ornament, centered on three oval agates evenly spaced around the band. In Turkic tradition the bracelet also served as a talisman: glimpsing one on the right hand was thought to bring good fortune, so they were often given as wedding gifts. The piece belongs to the Shaimardan Sariev Museum's jewelry collection.",
+    "kese": "This 18th–19th-century piala traces to cities of the Silk Road — Otrar, Taraz, and Sairam — with medieval Otrar, birthplace of Al-Farabi and flourishing from the 5th to 16th century, a major center of Central Asian pottery. Shaped from local clay and fired at 800–1,000°C, it is painted over white glaze with cobalt and brown pigments. Its ornament includes plant motifs recalling the tree of life and occasional Kufic script. Such bowls served kumys and tea. Today it belongs to the \"Shym Qala\" open-air complex near Shymkent.",
+    "korzhyn": "These paired saddlebags, slung across a horse or camel, trace to the Saka era, when similar woven fragments were placed in the Pazyryk burial mounds. Woven from thick wool using the terme and qazhaki techniques, the korzhyn mirrors its pattern on both sides as a symbol of balance. At its center sits a diamond medallion for the sun and family, framed by a ram's-horn motif, in a palette of deep red drawn from madder and turmeric. Tassels warded off the evil eye. It carried travel food and often formed part of a bride's dowry.",
+    "syrmaq": "The syrmaq's base is felt, but its distinction lies in a mosaic-appliqué technique: from two sheets of contrasting felt, a craftswoman cuts matching pieces of ornament and joins them with a fine seam. A single carpet can take three to six months. Its three diamond medallions are read as a symbol of the three zhuzes, the branching pattern within as the tree of life, and the surrounding ram's-horn motif as a nod to herding wealth. Deep brown dominates the palette, with white inside the medallions. Laid at the place of honor in a yurt, it often formed part of a bride's dowry.",
+    "dulyga": "The dulyga's lineage runs back to the iron helmets of the Saka and Turkic eras, the 7th–5th centuries BCE, and during the Dzungar invasions of 1723–1750 batyrs Abylai, Kabanbai, and Nauryzbai wore helmets like this into battle. This reconstruction by master Alibai Berik Satynbekuly follows 18th–19th-century originals: a domed shell forged from a single sheet, topped with a spike, with a browplate shielding the eyes. Its exterior bears Arabic calligraphic ornament. A mail aventail of rings 5–8 mm across, sometimes 15,000 to 20,000 strong, guarded the neck — a luxury once reserved for khans and batyrs.",
+    "asyk": "Reaching back well before the Scythian-Saka era, this game turns on the four faces of a sheep's anklebone: saqa (flat), alshy (convex), and buk (concave), each with its own meaning. Over centuries, children mastered dozens of variants — \"Khan Talapai,\" \"Atbaqyl,\" \"Bes Tas\" — with the saqa-asyk prized as the game's \"king.\" Asyk sharpened a child's logic, wit, and precision, and in ancient rites the bone was even used for fortune-telling. Related games appear among Turkic, Mongolian, and Persian peoples. In 2017 the game joined UNESCO's Intangible Cultural Heritage list."
   }
 };
 

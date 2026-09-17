@@ -1246,7 +1246,7 @@
 </nav>
 
 <!-- RU/EN translation dictionaries (pure data, shared with index.html) -->
-<script src="i18n-data.js?v=3"></script>
+<script src="i18n-data.js?v=5"></script>
 
 <!-- Real Kazakhstan region paths + shared quiz/region data -->
 <script>
@@ -1320,7 +1320,7 @@ const QUIZ_DATA = {
     Q('Қамшы өрімі қандай материалдан?',['Нейлон','Былғары (тайынша, өгіз терісі)','Мақта','Резеңке'],1,'Өрімі былғарыдан — тайыншаның, өгіздің терісінен өріледі.'),
     Q('Қамшының жалпы ұзындығы қандай?',['30 см','60 см','1-1.5 м','3 м'],2,'Дәстүрлі қамшының ұзындығы 1-1.5 метр.')
   ]},
-  Asyk:{cat:'Ұлттық ойын',fcat:'game',no:'108',poster:'assets/posters/asyk.png',label:'қой сүйегі',questions:[
+  asyk:{cat:'Ұлттық ойын',fcat:'game',no:'108',poster:'assets/posters/asyk.png',label:'қой сүйегі',questions:[
     Q('Асық қандай жануардың сүйегінен жасалады?',['Түйе','Жылқы','Қой','Бұзау'],2,'Асық — қой асығынан жасалған ежелгі бала ойыны.'),
     Q('Асықтың төрт бетінің қайсысы «сақа» деп аталады?',['Тегіс жоғарғы','Иіліп жатқан','Қисық','Астыңғы'],0,'Сақа — асықтың жоғарғы тегіс беті, «ойынның патшасы».'),
     Q('Қашан асық ЮНЕСКО тізіміне енген?',['2010','2015','2017','2020'],2,'2017 жылы асық ойыны ЮНЕСКО материалдық емес мұрасы тізіміне енген.'),
@@ -1810,7 +1810,7 @@ async function wikiThumb(titleByLang, fallbackLabel){
     taqiya_yellow_f_kazakh_traditional_headdress:{action:"Той бас киімдері →",quiz:"Викторина: қыз тақиясында не бекітіледі?",history:"Қыз тақиясы — жас қыздың бас киімі. Үстінде үкі қауырсыны — тазалық пен арулықтың нышаны. Тұрмысқа шыққан соң орнына кимешек келеді."},
     saukele_ethno_variant_traditional_headdress:{action:"Ұзату тойы →",quiz:"Викторина: сәукеле неше жыл киіледі?",history:"Сәукеле — ұзату тойының ең қымбат бас киімі. Биіктігі 70 см-ге жетеді. Некеден кейін 3-5 жыл киіледі, содан «жаулық» алмасады."},
     qamshy_kamshy:{action:"Өрім шеберлігі →",quiz:"Викторина: қамшыда неше өрім болады?",history:"Қамшы — жылқышы мен батырдың серігі, беделдің символы. Өрімі былғарыдан 8, 16, 32 талмен жасалады."},
-    Asyk:{action:"Ойнау ережелерін оқу →",quiz:"Викторина: асықтың сақа деп аталатын түрі?",history:"Асық — қой асығынан жасалған ежелгі бала ойыны. Түркі халықтарында мыңдаған жылдан бері. ЮНЕСКО материалдық емес мұрасы (2017)."},
+    asyk:{action:"Ойнау ережелерін оқу →",quiz:"Викторина: асықтың сақа деп аталатын түрі?",history:"Асық — қой асығынан жасалған ежелгі бала ойыны. Түркі халықтарында мыңдаған жылдан бері. ЮНЕСКО материалдық емес мұрасы (2017)."},
     besik:{action:"«Бесікке салу» дәстүрі →",quiz:"Викторина: сәби бесікке қашан салынады?",history:"Бесік — қайыңнан, талдан ойылған дәстүрлі сәби бесігі. «Бесікке салу», «тұсау кесер», «шілдехана» — бесік айналасында өтетін маңызды дәстүрлер."},
     nomad_sabre:{action:"Батыр аңыздары →",quiz:"Викторина: қылыштың жүзі неден?",history:"Қылыш — қазақ жауынгерінің жүзді қаруы. Жоңғар шапқыншылығы кезінде Абылай, Кенесары әскерінде кең қолданылған."},
     balbal_tas:{action:"Түркі мәдениеті →",quiz:"Викторина: балбал тас кімге орнатылады?",history:"Балбал тас — VI-VIII ғ. ежелгі түркі дәуірінің тастан қашалған адам бейнесіндегі ескерткіш. Мүрдемен бірге қару, тұлпары да жерленген."},
@@ -1833,6 +1833,10 @@ async function wikiThumb(titleByLang, fallbackLabel){
     syrmaq:{action:"Ою жапсыру →",quiz:"Викторина: сырмақтың негізгі техникасы қандай?",history:"Сырмақ — қазақ киіз кілемдерінің ең күрделі әрі әсем түрі. Түсті киіз кесінділерін ойып, бір-бірімен тігіп біріктіру (мозаика әдісі). Үш ромб-медальон — үш жүздің символы. Ұлттық музей."},
     dulyga:{action:"Жауынгер қаруы →",quiz:"Викторина: дулығаның бармицасы неден?",history:"Дулыға — қазақ жауынгерінің темір қорғаныш бас киімі. Реконструкция — заманауи шебер Берік Алибай XVIII-XIX ғ. үлгісі негізінде соққан. Куполовидті, бармицамен."}
   };
+  // medium-length lead paragraph (kz baseline; ru/en come from MEDIUM_I18N on language switch)
+  if (typeof MEDIUM_I18N !== 'undefined') {
+    Object.keys(MEDIUM_I18N.kz || {}).forEach(k => { if (META[k]) META[k].medium = MEDIUM_I18N.kz[k]; });
+  }
 
   // model swap on card click
   const mv    = document.getElementById('mv');
@@ -1868,9 +1872,10 @@ async function wikiThumb(titleByLang, fallbackLabel){
     iAction.textContent  = meta.action  || t('action_fallback');
     iQuiz.textContent    = meta.quiz    || t('quiz_fallback');
     iDesc.dataset.desc    = card.dataset.desc || '';
+    iDesc.dataset.medium  = meta.medium  || card.dataset.desc || '';
     iDesc.dataset.history = meta.history || card.dataset.desc || '';
-    // the main paragraph always shows the fuller (history) text — no separate box
-    iDesc.textContent = iDesc.dataset.history;
+    // 3D tab: medium lead paragraph · Тарихы tab: full history text
+    iDesc.textContent = iDesc.dataset.medium;
     document.querySelectorAll('.vctrl button').forEach(b => b.classList.toggle('on', b.dataset.mode === '3d'));
   }
 
@@ -1900,12 +1905,14 @@ async function wikiThumb(titleByLang, fallbackLabel){
     });
   });
 
-  // the paragraph always holds the full (history) text already — this just
-  // reflects which tab is active
+  // 3D tab: medium lead paragraph · Тарихы tab: full history text
   document.querySelectorAll('.vctrl button').forEach(b => {
     b.addEventListener('click', () => {
       document.querySelectorAll('.vctrl button').forEach(x => x.classList.remove('on'));
       b.classList.add('on');
+      iDesc.textContent = b.dataset.mode === 'history'
+        ? (iDesc.dataset.history || iDesc.dataset.medium || '')
+        : (iDesc.dataset.medium || '');
     });
   });
 
@@ -1916,7 +1923,7 @@ async function wikiThumb(titleByLang, fallbackLabel){
     shanqobyz:{eyebrow:'Резонанс',title:'Шаңқобыз — ауыз резонансы',body:`<p>Шаңқобыз — түркі әлемінің ең ежелгі аспаптарының бірі. Металл тілшесі саусақпен қозғалып, ауыз қуысы резонатор рөлін атқарады. Ойнаушының тілі, ерні, тынысы арқылы түрлі әуендер шығарылады. Шамандық рәсімдер мен транс-медитацияда қолданылған.</p>`,yt:'eFL7OiLuyzw',link:'https://www.youtube.com/watch?v=eFL7OiLuyzw',linkLabel:'YouTube-тен тыңдау →'},
 
     togyzqumalaq:{eyebrow:'Ойнау',title:'Тоғызқұмалақ — онлайн ойын',body:`<p>Тоғызқұмалақ — қазақтың дала логикалық ойыны. Екі жақта 9 ұя, ортасында «қазан». Ой мен сабырды шыңдайды. XX ғ. басында федерация құрылып, бүгін дүниежүзілік чемпионаттар өткізіледі.</p><p><b>Онлайн ойнау:</b> ережелерін оқып, компьютермен немесе басқа адаммен жарысыңыз.</p>`,link:'https://togyzqumalaq.com/game/',linkLabel:'Онлайн ойнау →'},
-    Asyk:{eyebrow:'Ойын ережелері',title:'Асық ойындары — 5 негізгі түрі',body:`<ul class="modal-list"><li><b>Хан талапай</b> — балалар шеңберге тұрып, ортадағы «ханды» асықпен ұтады.</li><li><b>Атбақыл</b> — өз асығын қашықтан дәлдеп қарсылас асығын ұрып түсіру.</li><li><b>Бес тас</b> — бір қолмен 5 асықты лақтырып қайта ұстау (қыздардың сүйікті).</li><li><b>Үш табан</b> — асықты «сақа» болғанша ұрып өз атына айналдыру.</li><li><b>Аңдыма-аңды</b> — жасырын асықты табу.</li></ul><p>2017 жылы ЮНЕСКО материалдық емес мәдени мұрасы тізіміне енген.</p>`,link:'https://www.youtube.com/results?search_query=%D0%B0%D1%81%D1%8B%D2%9B+%D0%BE%D0%B9%D1%8B%D0%BD%D1%8B',linkLabel:'Ойын видеосын көру →'},
+    asyk:{eyebrow:'Ойын ережелері',title:'Асық ойындары — 5 негізгі түрі',body:`<ul class="modal-list"><li><b>Хан талапай</b> — балалар шеңберге тұрып, ортадағы «ханды» асықпен ұтады.</li><li><b>Атбақыл</b> — өз асығын қашықтан дәлдеп қарсылас асығын ұрып түсіру.</li><li><b>Бес тас</b> — бір қолмен 5 асықты лақтырып қайта ұстау (қыздардың сүйікті).</li><li><b>Үш табан</b> — асықты «сақа» болғанша ұрып өз атына айналдыру.</li><li><b>Аңдыма-аңды</b> — жасырын асықты табу.</li></ul><p>2017 жылы ЮНЕСКО материалдық емес мәдени мұрасы тізіміне енген.</p>`,link:'https://www.youtube.com/results?search_query=%D0%B0%D1%81%D1%8B%D2%9B+%D0%BE%D0%B9%D1%8B%D0%BD%D1%8B',linkLabel:'Ойын видеосын көру →'},
 
     nomad_sabre:{eyebrow:'Батыр аңыздары',title:'Абылай хан және қазақ қылышы',body:`<p>Жоңғар шапқыншылығына қарсы XVIII ғасырда Абылай хан, Абылмансұр, Райымбек, Богенбай, Қабанбай, Наурызбай батырлар қылышпен елді азат етті. «Ақтабан шұбырынды» кезеңі қазақ жаугершілігінің ең қасіретті беті. Қылыш сол жылдарда жауынгердің серігі ғана емес, жанын жетелеген қасиетті қару болды.</p><p>Кенесары ханның әскерінде (1837-1847) қылыш ең негізгі қару болды.</p>`,link:'https://kk.wikipedia.org/wiki/%D0%90%D0%B1%D1%8B%D0%BB%D0%B0%D0%B9_%D1%85%D0%B0%D0%BD',linkLabel:'Wikipedia — Абылай хан →'},
     aibalta:{eyebrow:'Түркі қаруы',title:'Айбалта — жауынгердің серігі',body:`<p>Айбалта («ай» + «балта» = «жарты ай тәрізді балта») — түркі-моңғол жауынгерлерінің шайқас қаруы. XVIII-XIX ғасырларда билер мен батырлардың қолында айырым белгісі ретінде де қолданылған. Сабы ағаш, күміспен қапталған; басы 15-25 см жүзді ай пішінді. Салмағы 1-2 кг.</p><p>Ертегілерде «айбалталы Наурызбай», «айбалталы Абылай» деген атаулар кездеседі.</p>`,link:'https://kk.wikipedia.org/wiki/%D0%90%D0%B9%D0%B1%D0%B0%D0%BB%D1%82%D0%B0',linkLabel:'Wikipedia — Айбалта →'},
@@ -2005,10 +2012,11 @@ async function wikiThumb(titleByLang, fallbackLabel){
     if (!c) return;
     const meta = META[keyOf(c)] || {};
     iDesc.dataset.desc = iDesc.textContent.trim() || c.dataset.desc || '';
+    iDesc.dataset.medium  = meta.medium  || c.dataset.desc || iDesc.dataset.desc;
     iDesc.dataset.history = meta.history || c.dataset.desc || iDesc.dataset.desc;
     if (meta.action)  iAction.textContent  = meta.action;
     if (meta.quiz)    iQuiz.textContent    = meta.quiz;
-    iDesc.textContent = iDesc.dataset.history;
+    iDesc.textContent = iDesc.dataset.medium;
   })();
 
   // ═════ Nomads mobile: site list + bottom sheet + heritage ═════
@@ -2491,6 +2499,8 @@ async function wikiThumb(titleByLang, fallbackLabel){
         META[key] = META[key] || {};
         META[key].action  = tr ? tr.action  : kz.action;
         META[key].quiz    = tr ? tr.quiz    : kz.quiz;
+        const trMedium = (lang !== 'kz' && MEDIUM_I18N[lang] && MEDIUM_I18N[lang][key]) ? MEDIUM_I18N[lang][key] : null;
+        META[key].medium = trMedium || kz.medium;
         const trHist = (lang !== 'kz' && HISTORY_I18N[lang] && HISTORY_I18N[lang][key]) ? HISTORY_I18N[lang][key] : null;
         META[key].history = trHist || kz.history;
       });
