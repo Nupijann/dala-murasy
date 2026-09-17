@@ -264,7 +264,6 @@
   .detail.history-mode .info .facts .fact{padding:10px 12px}
   .detail.history-mode .info .facts .fact b{font-size:10px;letter-spacing:.14em}
   .detail.history-mode .info .facts .fact span{font-size:12.5px}
-  .detail.history-mode .info .more-info{display:none}
   .detail.history-mode .info .actions{grid-area:acts;margin-top:18px}
   @media (max-width:1200px){
     .detail.history-mode .info{grid-template-columns:1fr 180px;gap:4px 22px}
@@ -293,9 +292,6 @@
   .fact{background:rgba(138,52,24,.06);border-left:3px solid var(--rust);padding:12px 14px;border-radius:2px}
   .fact b{display:block;font-family:var(--f-h);font-style:italic;font-weight:500;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--rust);margin-bottom:4px}
   .fact span{font-size:14px;color:var(--ink);font-weight:500}
-  .more-info{margin-top:24px;padding:14px 18px;border-left:3px solid var(--rust);border-radius:2px;background:rgba(138,52,24,.05);max-width:520px}
-  .more-info b{font-family:var(--f-h);font-style:italic;font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--rust);display:block;margin-bottom:6px}
-  .more-info span{font-size:13.5px;line-height:1.7;color:rgba(34,24,18,.88)}
   .actions{margin-top:26px;display:flex;gap:12px}
   .btn{padding:14px 22px;font-size:13.5px;letter-spacing:.04em;border-radius:4px;font-weight:500;transition:transform .12s, box-shadow .12s}
   .btn:hover{transform:translateY(-1px)}
@@ -1404,10 +1400,6 @@
           <div class="fact"><b>Пернелер</b><span>19</span></div>
           <div class="fact"><b>Күй</b><span>3 үзінді · 07:40</span></div>
         </div>
-        <div class="more-info" id="i-more">
-          <b data-i18n="more_info_label">Толығырақ</b>
-          <span id="i-more-text"></span>
-        </div>
         <div class="actions" id="i-actions">
           <button class="btn btn-p" id="i-action">Күйді тыңдау →</button>
           <button class="btn btn-g" id="i-quiz">Викторина: күйші кім?</button>
@@ -1544,7 +1536,7 @@
 </main>
 
 <!-- RU/EN translation dictionaries (pure data, shared with mobile.html) -->
-<script src="i18n-data.js?v=3"></script>
+<script src="i18n-data.js?v=4"></script>
 
 <!-- Kazakhstan real region paths (14 regions + 5 neighbors, GADM/Natural Earth) -->
 <script>
@@ -1667,7 +1659,6 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
   const iFacts= document.getElementById('i-facts');
   const iAction  = document.getElementById('i-action');
   const iQuiz    = document.getElementById('i-quiz');
-  const iMoreText = document.getElementById('i-more-text');
   const vrot  = document.getElementById('vrot');
   const viewer= document.getElementById('viewer');
 
@@ -1685,20 +1676,20 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
     iNo.textContent = `${t('exhibit_word')} Nº ${card.dataset.no} · ${card.dataset.cat}`;
     iTitle.innerHTML = `${card.dataset.titleA}<em>${card.dataset.titleB || ''}</em>`;
     iSub.textContent = card.dataset.sub;
-    iDesc.textContent = card.dataset.desc;
     iDesc.dataset.mode = 'desc';
     try {
       const facts = JSON.parse(card.dataset.facts || '[]');
       iFacts.innerHTML = facts.map(([k,v]) => `<div class="fact"><b>${k}</b><span>${v}</span></div>`).join('');
     } catch(e){}
 
-    // per-exhibit action/quiz/QR text
+    // per-exhibit action/quiz text
     const meta = META[keyOf(card)] || {};
     iAction.textContent  = meta.action  || t('action_fallback');
     iQuiz.textContent    = meta.quiz    || t('quiz_fallback');
     iDesc.dataset.desc    = card.dataset.desc || '';
     iDesc.dataset.history = meta.history || card.dataset.desc || '';
-    iMoreText.textContent = iDesc.dataset.history;
+    // the main paragraph always shows the fuller (history) text — no separate box
+    iDesc.textContent = iDesc.dataset.history;
     // reset vctrl to 3D tab + collapse history-mode layout
     document.querySelectorAll('.vctrl button').forEach(b => b.classList.toggle('on', b.dataset.mode === '3d'));
     document.querySelector('.detail').classList.remove('history-mode');
@@ -1733,16 +1724,14 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
     });
   });
 
-  // vctrl buttons: 3D shows description, Тарихы swaps in the historical text + resizes layout
+  // vctrl buttons: Тарихы just widens the reading layout — the paragraph
+  // itself always holds the full (history) text already.
   const detailBox = document.querySelector('.detail');
   document.querySelectorAll('.vctrl button').forEach(b => {
     b.addEventListener('click', () => {
       document.querySelectorAll('.vctrl button').forEach(x => x.classList.remove('on'));
       b.classList.add('on');
-      const mode = b.dataset.mode;
-      const isHistory = mode === 'history';
-      detailBox.classList.toggle('history-mode', isHistory);
-      iDesc.textContent = isHistory ? (iDesc.dataset.history || iDesc.dataset.desc || '') : (iDesc.dataset.desc || '');
+      detailBox.classList.toggle('history-mode', b.dataset.mode === 'history');
     });
   });
 
@@ -2284,7 +2273,7 @@ const KZ_NEIGHBOR_LABELS = [{"label": "РЕСЕЙ", "lon": 66, "lat": 56.5, "x":
     iDesc.dataset.history = meta.history || iDesc.dataset.desc;
     if (meta.action)  iAction.textContent  = meta.action;
     if (meta.quiz)    iQuiz.textContent    = meta.quiz;
-    iMoreText.textContent = iDesc.dataset.history;
+    iDesc.textContent = iDesc.dataset.history;
   })();
 
   // initial render

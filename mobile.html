@@ -166,10 +166,6 @@
   .fact{background:rgba(138,52,24,.06);border-left:3px solid var(--rust);padding:10px 12px;border-radius:2px}
   .fact b{display:block;font-family:var(--f-h);font-style:italic;font-weight:500;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--rust);margin-bottom:3px}
   .fact span{font-size:13px;color:var(--ink);font-weight:500}
-  .more-info{margin-top:18px;padding:12px 14px;border-left:3px solid var(--rust);border-radius:2px;background:rgba(138,52,24,.05)}
-  .more-info b{font-family:var(--f-h);font-style:italic;font-weight:600;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--rust);display:block;margin-bottom:5px}
-  .more-info span{font-size:12.5px;line-height:1.65;color:rgba(34,24,18,.88)}
-  .more-info.is-hidden{display:none}
   .actions{margin-top:20px;display:grid;grid-template-columns:1fr;gap:10px}
   .btn{padding:14px 18px;font-size:13.5px;letter-spacing:.04em;border-radius:6px;font-weight:500;text-align:center}
   .btn-p{background:var(--rust);color:var(--paper);box-shadow:0 4px 12px rgba(138,52,24,.24)}
@@ -1158,10 +1154,6 @@
         <div class="fact"><b>Пернелер</b><span>19</span></div>
         <div class="fact"><b>Күй</b><span>3 · 07:40</span></div>
       </div>
-      <div class="more-info" id="i-more">
-        <b data-i18n="more_info_label">Толығырақ</b>
-        <span id="i-more-text"></span>
-      </div>
       <div class="actions" id="i-actions">
         <button class="btn btn-p" id="i-action">Күйді тыңдау →</button>
         <button class="btn btn-g" id="i-quiz">Викторина: күйші кім?</button>
@@ -1851,8 +1843,6 @@ async function wikiThumb(titleByLang, fallbackLabel){
   const iFacts= document.getElementById('i-facts');
   const iAction  = document.getElementById('i-action');
   const iQuiz    = document.getElementById('i-quiz');
-  const iMore     = document.getElementById('i-more');
-  const iMoreText = document.getElementById('i-more-text');
   const vrot  = document.getElementById('vrot');
   const viewer= document.getElementById('viewer');
 
@@ -1869,7 +1859,6 @@ async function wikiThumb(titleByLang, fallbackLabel){
     iNo.textContent = `${t('exhibit_word')} Nº ${card.dataset.no} · ${card.dataset.cat}`;
     iTitle.innerHTML = `${card.dataset.titleA}<em>${card.dataset.titleB || ''}</em>`;
     iSub.textContent = card.dataset.sub;
-    iDesc.textContent = card.dataset.desc;
     try {
       const facts = JSON.parse(card.dataset.facts || '[]');
       iFacts.innerHTML = facts.map(([k,v]) => `<div class="fact"><b>${k}</b><span>${v}</span></div>`).join('');
@@ -1880,8 +1869,8 @@ async function wikiThumb(titleByLang, fallbackLabel){
     iQuiz.textContent    = meta.quiz    || t('quiz_fallback');
     iDesc.dataset.desc    = card.dataset.desc || '';
     iDesc.dataset.history = meta.history || card.dataset.desc || '';
-    iMoreText.textContent = iDesc.dataset.history;
-    iMore.classList.remove('is-hidden');
+    // the main paragraph always shows the fuller (history) text — no separate box
+    iDesc.textContent = iDesc.dataset.history;
     document.querySelectorAll('.vctrl button').forEach(b => b.classList.toggle('on', b.dataset.mode === '3d'));
   }
 
@@ -1911,17 +1900,12 @@ async function wikiThumb(titleByLang, fallbackLabel){
     });
   });
 
+  // the paragraph always holds the full (history) text already — this just
+  // reflects which tab is active
   document.querySelectorAll('.vctrl button').forEach(b => {
     b.addEventListener('click', () => {
       document.querySelectorAll('.vctrl button').forEach(x => x.classList.remove('on'));
       b.classList.add('on');
-      if (b.dataset.mode === 'history') {
-        iDesc.textContent = iDesc.dataset.history || iDesc.dataset.desc || '';
-        iMore.classList.add('is-hidden');
-      } else {
-        iDesc.textContent = iDesc.dataset.desc || '';
-        iMore.classList.remove('is-hidden');
-      }
     });
   });
 
@@ -2024,7 +2008,7 @@ async function wikiThumb(titleByLang, fallbackLabel){
     iDesc.dataset.history = meta.history || c.dataset.desc || iDesc.dataset.desc;
     if (meta.action)  iAction.textContent  = meta.action;
     if (meta.quiz)    iQuiz.textContent    = meta.quiz;
-    iMoreText.textContent = iDesc.dataset.history;
+    iDesc.textContent = iDesc.dataset.history;
   })();
 
   // ═════ Nomads mobile: site list + bottom sheet + heritage ═════
